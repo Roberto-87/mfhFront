@@ -1,0 +1,18 @@
+
+.navbarContainer{
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+}
+
+.navbarItem{
+    text-decoration: none;
+    list-style: none;
+    margin-left: 6px;
+    transition: 1s ease-in;
+}
+
+.navbarItem:hover{
+    color: #f0f0f0;
+    text-decoration: underline;
+}
