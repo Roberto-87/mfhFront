@@ -1,4 +1,5 @@
 import axios from "axios"
+import Navigation from "../components/Navigation"
 
 const fetchExhibitions=async()=>{
     const response= await axios('http://localhost:3001/exhibitions')
@@ -10,7 +11,8 @@ const Exhibitions=async()=>{
       
     return(
         <section>
-           <h1>Exhibitions</h1>
+            <Navigation/>
+           <h1 id="exhibitions">Exhibitions</h1>
        { exhibitions?.data.map(exhibition=> <article key={exhibition.id}>
         <h2>{exhibition.title}</h2>
         <img src={exhibition.download_url} alt={exhibition.name} />

@@ -1,4 +1,5 @@
-const axios= require('axios')
+import axios from "axios"
+import Navigation from '../components/Navigation'
 
 const fetchWorks=async()=>{
     const response= await axios('http://localhost:3001/works')
@@ -8,11 +9,17 @@ const fetchWorks=async()=>{
 const Works=async()=>{
     const works= await fetchWorks()
     
-    return (<div>
-        <h2>Works</h2>
-        {works.map(work=> <li key={work.id}>{work.title}<hr/></li> )}
-
-    </div>)
+    return         <section>
+    <Navigation/>
+   <h1 >Works</h1>
+{ works?.map(exhibition=> <article key={exhibition.id}>
+<h2>{exhibition.title}</h2>
+<img src={exhibition.download_url} alt={exhibition.name} />
+<h2>{exhibition.coverImage}</h2>
+<p>{exhibition.body}</p>
+</article> )
+}
+</section>
  }
 
  export default Works

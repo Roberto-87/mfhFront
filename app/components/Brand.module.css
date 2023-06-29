@@ -1,5 +1,20 @@
 .brandName{
+    color: #000;
     display: flex;
-    justify-content: center;
-    color: rgb(255, 255, 255);
+    padding-left: 6px;
+    align-items: center;
+    letter-spacing: 0.125em;
+    vertical-align: middle;
+    font-family: proxima-nova;
+    font-size: 20px;
+    text-transform: uppercase;
 }
+
+@media (max-width: 815px) {
+    .brandName{
+        font-size: 1em;
+    }
+
+    }
+
+ 

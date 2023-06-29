@@ -1,5 +1,3 @@
-import Navigation from "./components/Navigation";
-import Brand from "./components/Brand";
 import "../styles/globals.css";
 
 export const metadata = {
@@ -13,11 +11,7 @@ export default function RootLayout({ children }) {
       <head>
         <title>Maria Ferrari Hardoy- Artista Visual</title>
       </head>
-      <body>
-        <Brand />
-        <Navigation />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

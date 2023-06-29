@@ -1,20 +1,13 @@
-const Bio=()=>{
-    return(
-        <section>
-            <article>
-           
-                <p> Born in Buenos Aires, Argentina</p>
-                <strong> Education </strong>
-                <p>  
-  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt dolorem, eos cumque exercitationem accusantium quidem quod quam id maiores provident earum facere placeat eligendi corporis numquam! Cum exercitationem sapiente et.
-  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem molestiae fugiat veniam eligendi vitae corporis enim consequuntur at magni commodi deserunt officiis, natus, expedita quasi repellat deleniti dicta est sunt?
+import Navigation from "../components/Navigation"
 
-  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt dolorem, eos cumque exercitationem accusantium quidem quod quam id maiores provident earum facere placeat eligendi corporis numquam! Cum exercitationem sapiente et.
-  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem molestiae fugiat veniam eligendi vitae corporis enim consequuntur at magni commodi deserunt officiis, natus, expedita quasi repellat deleniti dicta est sunt?
-              </p>
-            </article>
-        </section>
-    )
+const Bio=()=>{
+
+        return (<section>
+            <Navigation/>
+            <h1 >Biography</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum a modi sapiente maiores voluptatibus, quos iusto dignissimos magnam sunt nobis nemo porro obcaecati ipsa incidunt, itaque eveniet esse soluta voluptas.</p>
+                </section>)
+    
 
 }
 export default Bio

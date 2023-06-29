@@ -1,0 +1,14 @@
+.landingContainer{
+    background-color: #A25353;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+}
+
+.brandContainer{
+    background-color: #fff;
+    margin-top: 35vh;
+    width: 60vh;
+    padding: 8px;
+}
