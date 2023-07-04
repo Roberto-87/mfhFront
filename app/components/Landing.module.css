@@ -5,12 +5,21 @@
     height: 100vh;
     background: url('../assets/MaríaFerrariHardoy_PhFotografíaDeObra_alta004-carneViva.jpg');
     background-position: center center;
-    background-size: cover;
+     background-size: cover;
 }
 
 .brandContainer{
-    background-color: #fff;
     margin-top: 35vh;
-    width: 60vh;
+    width: 50vh;
     padding: 8px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.brandLanding{
+   color: black;    
+   font-size: 15px;
+    
+
 }

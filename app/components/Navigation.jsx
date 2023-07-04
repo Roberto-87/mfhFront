@@ -46,6 +46,7 @@ const Navigation=()=>{
 
   useEffect(()=>{
     checkMobileMode()
+
   },[])
  
 {
@@ -57,8 +58,11 @@ const Navigation=()=>{
                   <Brand/>
                   <ul className={styles.itemsNavBarContainer}>
                       {links.map(({ label, route }) => (
-                        <li className={styles.navbarItem} key={route}>
+                                 <li className={styles.navbarItem} key={route}>
+                          {route === currentPathName? <Link href={route}><strong>{label}</strong></Link>:
                           <Link href={route}>{label}</Link>
+                                                    }
+
                       </li>
                       
                       ))}
