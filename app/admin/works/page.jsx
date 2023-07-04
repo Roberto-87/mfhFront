@@ -1,8 +1,11 @@
+const { default: FormUploadWork } = require("../../components/FormUploadWork");
+
+FormUploadWork
 
 const Works = () => {
     return (
-      <div>
-        <h1>esto es Admin/Works</h1>
+      <div className={{display:'flex', flexDirection:'row' }}>
+        <FormUploadWork></FormUploadWork>
       </div>
     );
   };

@@ -49,10 +49,10 @@
     .navbarContainerAdmin{
         display: flex;
         justify-content: space-between;
-        background-color: #fff;
+        background-color: #efefef;
         color: black;
         width: 100%;
-        height: 10vh;
+        height: 100%;
         top: 0;
         align-items: center;
     }
