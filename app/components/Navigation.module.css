@@ -28,6 +28,8 @@
     
 }
 
+
+
 .navbarItem:hover{
     text-decoration: underline;
 }
@@ -44,4 +46,18 @@
     }
 
     }
-  
+    .navbarContainerAdmin{
+        display: flex;
+        justify-content: space-between;
+        background-color: #fff;
+        color: black;
+        width: 100%;
+        height: 10vh;
+        top: 0;
+        align-items: center;
+    }
+
+    .avatarAdmin{
+       margin-right: 2%;
+       cursor:pointer
+    }

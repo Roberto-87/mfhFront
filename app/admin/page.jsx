@@ -1,22 +1,15 @@
-const Admin=()=>{
+import * as React from 'react';
+import Landing from '../components/Landing';
+import Admin from './layout';
+
+
+const Home=({children})=>{
     return(
-        <div>
-            <h1>Admin</h1>
-            <ul>
-                <li>Upload</li> 
-                {/* subir nueva muestra o subir obra */}
-                <li>Obras</li> 
-                {/* incluye filtro entre activas e inactivas */}
-                {/* Descarga de PDF */}
-                {/* Posibilidad de ver el detalle y modificarlo */}
-                {/* Posibilidad de inactivar o activar */}
-                <li>Exhibiciones</li> 
-                {/* incluye filtro entre activas e inactivas */}
-                {/* Posibilidad de ver el detalle y modificarlo  */}
-                {/* Posibilidad de inactivar o activar */}
-            </ul>
+        <div className={{display:'flex', flexDirection:'row'}}>
+           <h1>alog</h1>
+           {children}
         </div>
     )
 }
 
-export default Admin
+export default Home

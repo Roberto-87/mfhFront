@@ -5,6 +5,8 @@ import Brand from "./Brand";
 import { useState, useEffect } from "react";
 import  NavBarMobile from "./NavbarMobile";
 import SelectExhibitions from './SelectExhibitions'
+import { usePathname } from 'next/navigation'
+import { Avatar } from "@mui/material";
 
 const links = [
     {
@@ -33,7 +35,9 @@ const links = [
 
 
 const Navigation=()=>{
-
+  const currentPathName= usePathname()
+  const withoutNavbar= ['/admin','/admin/exhibitions','/admin/documents','/admin/biography','/admin/cover','/admin/contact','/admin/works']
+  
   const [mobile, setMobile]= useState(false)
 
   const checkMobileMode = () => {
@@ -44,23 +48,39 @@ const Navigation=()=>{
     checkMobileMode()
   },[])
  
- return (
-    <header className={styles.navbarContainer}>
-          {mobile? <NavBarMobile/>:
-        <nav className={styles.brandContainer}>
-                <Brand/>
-                <ul className={styles.itemsNavBarContainer}>
-                    {links.map(({ label, route }) => (
-                      <li className={styles.navbarItem} key={route}>
-                        <Link href={route}>{label}</Link>
-                    </li>
-                    
-                    ))}
-                            </ul> 
-                </nav>
-                }
-     </header>
-        )
+{
+  return (
+      !withoutNavbar.includes(currentPathName) ?
+      <header className={styles.navbarContainer}>
+            {mobile? <NavBarMobile/>:
+          <nav className={styles.brandContainer}>
+                  <Brand/>
+                  <ul className={styles.itemsNavBarContainer}>
+                      {links.map(({ label, route }) => (
+                        <li className={styles.navbarItem} key={route}>
+                          <Link href={route}>{label}</Link>
+                      </li>
+                      
+                      ))}
+                              </ul> 
+                  </nav>
+                  }
+        </header>
+          :
+          <header className={styles.navbarContainer}>
+              {/*     {mobile? <NavBarMobile/>: */}
+                <nav className={styles.navbarContainerAdmin}>
+                        <Brand/>
+                        <Avatar className={styles.avatarAdmin} >MF</Avatar>
+                    {/* SearchBar */}
+                     </nav>
+                </header>
+                )      
+
+
+}
+
+
 }
 
 export default Navigation
