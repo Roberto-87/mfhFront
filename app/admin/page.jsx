@@ -1,4 +1,4 @@
-import { Navigation } from '../components/Navigation';
+import  AdminNavigation from '../components/Navigation';
 import * as React from 'react';
 
 
@@ -6,8 +6,7 @@ import * as React from 'react';
 const Home=({children})=>{
     return(
         <div >
-      
-           {children}
+                {children}
         </div>
     )
 }
