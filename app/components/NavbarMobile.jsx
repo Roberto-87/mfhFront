@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Brand from './Brand';
+import Link from 'next/link';
+
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -12,8 +14,8 @@ const Navbar = () => {
   };
 
   return (
-<>
-      <Toolbar>
+< >
+      <Toolbar >
         <IconButton
           edge="start"
           color="inherit"
@@ -30,13 +32,19 @@ const Navbar = () => {
       <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer}>
         <List sx={{ width: 250 }} onClick={toggleDrawer}>
           <ListItem button>
-            <ListItemText primary="Opción 1" />
+            <Link href={'/works'}>Works</Link>
           </ListItem>
           <ListItem button>
-            <ListItemText primary="Opción 2" />
+          <Link href={'/exhibitions'}>Exhibitions</Link>
           </ListItem>
           <ListItem button>
-            <ListItemText primary="Opción 3" />
+          <Link href={'/text'}>Papers</Link>
+          </ListItem>
+          <ListItem button>
+          <Link href={'/bio'}>Bio</Link>
+          </ListItem>
+          <ListItem button>
+          <Link href={'/contact'}>Contact</Link>
           </ListItem>
         </List>
       </Drawer>

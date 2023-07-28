@@ -1,0 +1,38 @@
+.cardContainer{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  justify-items: center;
+  padding: 20px;
+  
+}
+
+.cardItem {
+    text-align: center;
+    color: white;
+}
+  
+  .cardImage {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  .textImage{
+    height:60vh;
+    width:60%
+  }
+
+  .imageButton{
+    background-color: transparent;
+    border:none;
+    cursor:pointer
+  }
+  
+  @media screen and (max-width: 767px) {
+    .grid-container {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      padding: 10px;
+    }
+  }

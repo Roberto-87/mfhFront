@@ -1,13 +1,30 @@
+'use client'
 import Navigation from "../components/Navigation"
+import { useState, useEffect } from 'react';
+import getData from '../hooks/getData'
 
-const Bio=()=>{
 
-        return (<section>
-            <Navigation/>
-            <h1 >Biography</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum a modi sapiente maiores voluptatibus, quos iusto dignissimos magnam sunt nobis nemo porro obcaecati ipsa incidunt, itaque eveniet esse soluta voluptas.</p>
-                </section>)
-    
+ const Bio = () => {
+    const [bio, setBio] = useState([]);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        const bioData = await getData('bio');
 
+        setBio(bioData[0].text);
+
+      };      
+      fetchData();  
+    }, []);
+    return (< > 
+        <Navigation/>     
+        <p style={{color:'white'}}>{bio}</p> 
+{/*         <CardBio bio={bio} /> */}
+      
+      </>
+        )
 }
 export default Bio
+
+
+

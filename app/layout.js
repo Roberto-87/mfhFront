@@ -11,6 +11,7 @@ export default function RootLayout({ children }) {
       <head>
         <title>Maria Ferrari Hardoy- Artista Visual</title>
       </head>
+
       <body>{children}</body>
     </html>
   );

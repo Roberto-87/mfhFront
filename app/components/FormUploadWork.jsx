@@ -16,6 +16,7 @@ const ImageUploader = () => {
         const formData = new FormData();
         formData.append('file', selectedFiles[i]);
         formData.append('upload_preset', 'fiwvpzcu');
+        formData.append('folder', 'Obras')
 
         const response = await axios.post(
           'https://api.cloudinary.com/v1_1/mariaferrari/upload',
@@ -35,7 +36,7 @@ const ImageUploader = () => {
   return (
     <div>
       <input type="file" multiple onChange={handleFileSelect} />
-      <button onClick={handleUpload}>Upload</button>
+      <button onClick={handleUpload}>Upload to works</button>
     </div>
   );
 };

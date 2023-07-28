@@ -1,13 +1,28 @@
+'use client'
 import Navigation from "../components/Navigation"
+import { useState, useEffect } from 'react';
+import getData from '../hooks/getData'
 
-const Contacto=()=>{
 
-   return (<section>
-        <Navigation/>
-        <h1 >Contact</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum a modi sapiente maiores voluptatibus, quos iusto dignissimos magnam sunt nobis nemo porro obcaecati ipsa incidunt, itaque eveniet esse soluta voluptas.</p>
-      </section>)
+ const Bio = () => {
+    const [contact, setContact] = useState([]);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        const contactData = await getData('contact');
+        setContact(contactData);
+      };      
+      fetchData();  
+    }, []);
+    return (< > 
+        <Navigation/>     
+        <p>{contact}</p> 
+{/*         <CardBio bio={bio} /> */}
+      
+      </>
+        )
+}
+export default Bio
 
- }
 
- export default Contacto
+

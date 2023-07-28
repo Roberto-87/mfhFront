@@ -1,11 +1,7 @@
 .landingContainer{
-    background-color: #A25353;
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background: url('../assets/MaríaFerrariHardoy_PhFotografíaDeObra_alta004-carneViva.jpg');
-    background-position: center center;
-     background-size: cover;
 }
 
 .brandContainer{
@@ -15,11 +11,19 @@
     background-color: white;
     display: flex;
     justify-content: center;
+    position: relative;
+    top:0;
 }
 
 .brandLanding{
    color: black;    
    font-size: 15px;
-    
+   
 
+}
+
+.imageLanding{
+    position: absolute;
+    width: 100%;
+    z-index: -1;
 }
