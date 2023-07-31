@@ -2,7 +2,7 @@
 import Navigation from "../components/Navigation"
 import CardExhibitions from '../components/CardExhibitions';
 import { useState, useEffect } from 'react';
-import fetchData from "./exhibitionData";
+import {fetchData} from "./exhibitionData";
 
  const Exhibitions = () => {
     const [exhibitions, setExhibitions] = useState([]);
@@ -10,7 +10,9 @@ import fetchData from "./exhibitionData";
     useEffect(() => { 
       const fetchDataExhibition = async () => {
         const exhibitionsFetched = await fetchData();
-        setExhibitions(exhibitionsFetched);
+         setExhibitions(exhibitionsFetched);
+   
+
       };      
       fetchDataExhibition();  
     }, []);

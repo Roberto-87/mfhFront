@@ -1,6 +1,6 @@
 import getData from "../hooks/getData";
 
-const fetchData = async () => {
+export const fetchData = async () => {
   const exhibitionsFetched = await getData("exhibitions");
   const allExhibitions = exhibitionData(exhibitionsFetched);
   return allExhibitions;
@@ -9,15 +9,21 @@ const fetchData = async () => {
 const exhibitionData = (exhibitions) => {
   const allExhibitions = [];
 
-  for (let i = 0; i < exhibitions.length; i++) {
+  const exhibitionOnly = exhibitions.filter(
+    (exhibition) => exhibition.type === "exhibition"
+  );
+
+  for (let i = 0; i < exhibitionOnly.length; i++) {
     const exhibition = {
-      title: exhibitions[i].exhibitionName,
-      place: exhibitions[i].place,
-      date: exhibitions[i].date,
-      format: exhibitions[i].format,
-      images: exhibitions
+      id:exhibitionOnly[i].id,
+      title: exhibitionOnly[i].exhibitionName,
+      place: exhibitionOnly[i].place,
+      date: exhibitionOnly[i].date,
+      format: exhibitionOnly[i].format,
+      type: exhibitionOnly[i].type,
+      images: exhibitionOnly
         .filter(
-          (image) => image.exhibitionName === exhibitions[i].exhibitionName
+          (image) => image.exhibitionName === exhibitionOnly[i].exhibitionName
         )
         .map((each) => each.image),
     };
@@ -29,7 +35,14 @@ const exhibitionData = (exhibitions) => {
       allExhibitions.push(exhibition);
     }
   }
+
   return allExhibitions;
 };
 
-export default fetchData;
+export const returnCuratorialText = async () => {
+  const exhibitions = await getData("exhibitions");
+  const curatorialText = exhibitions.filter(
+    (exhibition) => exhibition.type !== "exhibition"
+  );
+  return curatorialText;
+};

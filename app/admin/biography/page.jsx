@@ -2,8 +2,7 @@
 import Box from '@mui/material/Box';
 import axios from 'axios';
 import { useState } from 'react';
-import FormUploadWork from '../../components/FormUploadWork'
-
+import FormUploadBioImage from '../../components/FormUploadBioImage';
 
 const Biography = () => {
   const[form, setForm]= useState({text:''})
@@ -40,6 +39,7 @@ const Biography = () => {
 
       return (
         <Box>
+<FormUploadBioImage/>
            <form onSubmit={handlerSubmit}>
             <input type='text' name='text' value={form.text} placeholder='ingresa el texto de la Bio' onChange={handlerChange} style={{height:'50ch', width:'50ch'}}></input>
             <button >Send</button>

@@ -22,11 +22,14 @@ setImage(imageFetched)
     <div className={style.landingContainer}>
         <ButtonStart/>
         <img className={style.imageLanding} src={image} alt="" />
+
+      {image &&  
      <div className={style.brandContainer}>
         <Link href='/'><h1 className={style.brandLanding} >Maria Ferrari Hardoy</h1></Link>
-      <div>
-      </div>
+
+
      </div>
+   }
      </div>)
 }
 

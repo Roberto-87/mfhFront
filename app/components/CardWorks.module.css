@@ -24,11 +24,25 @@
     width:60%
   }
 
+
+
   .imageButton{
     background-color: transparent;
     border:none;
     cursor:pointer
   }
+
+  .open-popup {padding:20px}
+.white-popup {
+  position: relative;
+  background: #FFF;
+  padding: 40px;
+  width: auto;
+  max-width: 200px;
+  margin: 20px auto;
+  text-align: center;
+}
+
   
   @media screen and (max-width: 767px) {
     .grid-container {

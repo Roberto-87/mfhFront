@@ -17,6 +17,7 @@ const links = [
       label: "EXHIBITIONS",
       route: "/exhibitions",
     },
+    
     {
       label: "PAPERS",
       route: "/text",
@@ -37,7 +38,6 @@ const links = [
 const Navigation=()=>{
   const currentPathName= usePathname()
   const withoutNavbar= ['/admin','/admin/exhibitions','/admin/documents','/admin/biography','/admin/cover','/admin/contact','/admin/works']
-  
   const [mobile, setMobile]= useState(false)
 
   const checkMobileMode = () => {
@@ -61,15 +61,13 @@ const Navigation=()=>{
                                  <li className={styles.navbarItem} key={route}>
                           {route === currentPathName? <Link href={route}><strong>{label}</strong></Link>:
                           <Link href={route}>{label}</Link>
-                                                    }
-
+                          }
                       </li>
-                      
                       ))}
-                              </ul> 
-                  </nav>
+                  </ul> 
+          </nav>
                   }
-        </header>
+      </header>
           :
           <header className={styles.navbarContainer}>
               {/*     {mobile? <NavBarMobile/>: */}
@@ -81,10 +79,7 @@ const Navigation=()=>{
                 </header>
                 )      
 
-
 }
-
-
 }
 
 export default Navigation

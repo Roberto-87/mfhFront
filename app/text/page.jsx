@@ -1,9 +1,10 @@
 'use client'
 import Navigation from "../components/Navigation"
-import Card from '../components/Card';
 import { useState, useEffect } from 'react';
 import getData from '../hooks/getData'
-
+import CardText from "../components/CardText";
+import { parseISO, format } from 'date-fns';
+import { es } from 'date-fns/locale';
 
  const Works = () => {
     const [papers, setPapers] = useState([]);
@@ -11,7 +12,7 @@ import getData from '../hooks/getData'
     useEffect(() => {
       const fetchData = async () => {
         const papersData = await getData('text');
-        const orderedPapers= papersData.sort((a,b)=> parseInt(a.date)-parseInt(b.date))
+        const orderedPapers= papersData.sort((a,b)=> (parseInt(b.date.split('-')[1]))-parseInt((a.date.split('-')[1])))
          setPapers(orderedPapers);
       };      
       fetchData();  
@@ -21,7 +22,7 @@ import getData from '../hooks/getData'
     return (< > 
         <Navigation/>
       
-        <Card texts={papers} />
+        <CardText texts={papers} />
       
       </>
         )

@@ -12,7 +12,7 @@
     display: flex;
     justify-content: center;
     position: relative;
-    top:0;
+    top:20%;
 }
 
 .brandLanding{
@@ -23,7 +23,7 @@
 }
 
 .imageLanding{
-    position: absolute;
+    position: fixed;
     width: 100%;
     z-index: -1;
 }

@@ -5,9 +5,10 @@
     display: flex;
     flex-direction: row;
     height: 10vh;
-    position: sticky;
+    position: sticky ;
     top: 0;
     flex-wrap: nowrap;
+    z-index: 2;
 }
 
 

@@ -1,8 +1,10 @@
+'use client'
 import * as React from 'react';
 import Landing from './components/Landing';
 
 
 const Home=()=>{
+    
     return(
         <div>
             <Landing/>

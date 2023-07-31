@@ -1,8 +1,8 @@
 'use client'
 import Navigation from "../components/Navigation"
-import Card from '../components/Card';
 import { useState, useEffect } from 'react';
 import getData from '../hooks/getData'
+import CardWorks from "../components/CardWorks";
 
 
  const Works = () => {
@@ -19,7 +19,7 @@ import getData from '../hooks/getData'
     return (< > 
         <Navigation/>
       
-        <Card works={works} />
+        <CardWorks works={works} />
       
       </>
         )
