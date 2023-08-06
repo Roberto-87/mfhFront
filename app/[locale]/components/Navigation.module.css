@@ -1,0 +1,64 @@
+.navbarContainer{
+    background-color: #fff;
+    color: black;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    position: sticky ;
+    top: 0;
+    flex-wrap: nowrap;
+    z-index: 2;
+}
+
+
+.itemsNavBarContainer{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+.navbarItem{
+    text-decoration: none;
+    list-style: none;
+    font-family: proxima-nova;
+    transition: 1s ease-in;
+    display: inline-block;
+    margin-top: 10px; 
+    margin-right: 15px;
+    position: relative;
+    
+}
+
+
+
+.navbarItem:hover{
+    text-decoration: underline;
+}
+
+.brandContainer{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+@media (max-width: 815px) {
+    .navbarItem{
+        font-size: 0.8em;
+    }
+
+    }
+    .navbarContainerAdmin{
+        display: flex;
+        justify-content: space-between;
+        background-color: #efefef;
+        color: black;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        align-items: center;
+    }
+
+    .avatarAdmin{
+       margin-right: 2%;
+       cursor:pointer
+    }

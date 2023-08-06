@@ -1,0 +1,30 @@
+.landingContainer{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.brandContainer{
+    margin-top: 35vh;
+    width: 50vh;
+    padding: 8px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top:20%;
+}
+
+.brandLanding{
+   color: black;    
+   font-size: 15px;
+   
+
+}
+
+.imageLanding{
+    position: fixed;
+    width: 100%;
+    z-index: -1;
+
+}

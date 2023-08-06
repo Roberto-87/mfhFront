@@ -1,0 +1,43 @@
+.navbarAdminContainer{
+    background-color: rgba(89, 94, 108, 0.859);
+    width: 15%;
+    height: 140vh;
+    padding: 20px;
+    padding-top: 3%;
+    align-items: self-start;
+    position:fixed;
+
+}
+
+.itemsNavBarContainer{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    
+}
+.containerNavBarAdmin{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 4px;
+}
+
+.containerIconsAdmin{
+    display: flex;
+    justify-content: flex-end;
+    align-items:self-end;
+    width: 100%;
+    align-items: center;
+
+    
+}
+
+
+.containerLinksAdmin{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+
+}
