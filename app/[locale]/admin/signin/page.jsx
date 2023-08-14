@@ -46,7 +46,7 @@ export default function Signin() {
                   Password
                 </label>
                 <div className="text-sm">
-                  <div onClick={() => router.push('/admin/forgot-password')} className="cursor-pointer font-semibold text-indigo-400 hover:text-indigo-300">
+                  <div onClick={() => router.push('/admin/forgot-password')} className="cursor-pointer font-semibold text-indigo-400 hover:text-indigo-300" style={{cursor:'pointer'}}>
                     Forgot password?
                   </div>
                 </div>
