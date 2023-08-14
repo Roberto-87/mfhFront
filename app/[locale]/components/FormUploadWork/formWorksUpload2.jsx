@@ -1,70 +1,93 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+import  validation from './validation';
+import swal from 'sweetalert';
+import {AiFillCheckCircle} from 'react-icons/ai'
+import { BASE_URL } from '../../../utils/consts';
 
-export default function FormWorksUpload2() {
-  const[form, setForm]= useState({title:'', material:'', size:'',year:'', number:0,type:'obra',files:''})
+export default function FormWorksUpload2({img}) {
+  const[form, setForm]= useState({image:img, title:'', material:'',size:'',number:0,year:'',section:'', status:false})
+  const[error, setError]=useState({})
+  const [errorCheck, setErrorCheck] = useState(false);
+  const [inputTouched, setInputTouched] = useState();
+  const [upload, setUpload] = useState();
 
-  const handleFormData = (event) => {
+  const handleFormData =async (event) => {
     setForm({...form, [event.target.name]:event.target.value})
+    setError(await validation({
+      ...form, [event.target.name]: event.target.value
+    })) 
+    setInputTouched({ ...inputTouched, [event.target.name]: true });
   };
+
+  useEffect(() => {
+    const validate = async () => {
+      const validationError = await validation(form);
+      setError(validationError);
+      setErrorCheck(!(Object.values(validationError).length === 0));
+
+    };
+    
+    validate();
+  }, [form,upload]);
+
 
   const handleUpload = async (event) => {
     event.preventDefault()
-    try {
-      const formData = new FormData();
-      formData.append('file', form.files);
-      formData.append('upload_preset', 'fiwvpzcu');
-      formData.append('folder', 'Obras');
-      //----------------------
-      formData.append('date', form.year);
-      formData.append('year', form.year);
-      formData.append('material', form.material);
-      formData.append('title', form.title);
-       formData.append('type', form.type); 
+   
+      try {
+        const  {image, title, material,size,number,year,section, status}  = form
+  
+      if(!title || !material ||!size ||!number ||!year ||!section || !status )throw new Error('faltan datos obligatorios')
+      const response= await axios.post(`${BASE_URL}works`,form ) 
+      console.log('response from the client:', response);
+      setForm({image:'', title:'', material:'',size:'',number:0,year:'',section:'', status:false})
 
-      const response = await axios.post(
-        'https://api.cloudinary.com/v1_1/mariaferrari/upload',
-        formData,
-        {
-          headers: { 'Content-Type': 'multipart/form-data' },
-        }
-      );
-
-      console.log('Upload response:', response.data);
+      if(response.status!==200 && response.data==='llave duplicada viola restricción de unicidad «Works_number_key»'){
+        swal("El número de la obra ya fue ingresado ");
+      }
+        if(response.status===200){
+        swal("Obra subida correctamente 😁");
+      }      
+      else {
+        swal("Hubo un error al subir la obra ");
+      } 
+       
     } catch (error) {
-      console.error('Upload error:', error);
-    
+      console.error('Upload error:', error.response.data);    
   };
   };
-
-  const onHandleClean=()=>{
-    setForm(...form, form.files='')
-  }
+const onHandleCancel=()=>{
+  setForm({image:img, title:'', material:'',size:'',number:0,year:'',section:'', status:false})
+}
 
 
   return (
-    <form>
+    <form encType='multipart/form-data'>
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12">
+  
         </div>
         <div className="border-b border-gray-900/10 pb-12">
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-3">
-              <label htmlFor="title" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="title" className="block text-sm font-medium leading-6 text-gray-900">
+                
                   Title
               </label>
               <div className="mt-2">
                 <input
                   type="text"
                   onChange={handleFormData}
+                  onFocus={handleFormData}
                   value={form.title}
                   name= 'title'
                   id="title"
                   autoComplete="title-name"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                 { error && error.title && <p>{error.title}</p>}
               </div>
             </div>
 
@@ -82,6 +105,7 @@ export default function FormWorksUpload2() {
                   autoComplete="material"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+           { error && error.material && <p>{error.material}</p>}
               </div>
             </div>
             
@@ -99,6 +123,7 @@ export default function FormWorksUpload2() {
                   autoComplete="size"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                {error && error.size && <p>{error.size}</p>}
               </div>
             </div>
 
@@ -116,6 +141,7 @@ export default function FormWorksUpload2() {
                   autoComplete="year"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                 {error && error.year && <p>{error.year}</p>}
               </div>
             </div>
             
@@ -133,61 +159,70 @@ export default function FormWorksUpload2() {
                   autoComplete="number-work"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                 { error && error.number ? <p style={{color:'red'}}>{error.number}</p>:  <AiFillCheckCircle style={{marginLeft:'5px'}}/>}
+
               </div>
             </div>
            <div className="sm:col-span-3">
-              <label htmlFor="type" className="block text-sm font-medium leading-6 text-gray-900">
+              <label htmlFor="section" className="block text-sm font-medium leading-6 text-gray-900">
                 Type
               </label>
               <div className="mt-2">
                 <select
-                  id="type"
-                  onChange={handleFormData}
-                  name="type"
-                  autoComplete="type-work"
+                  id="section"
+                  onChange ={handleFormData}
+                  name="section"
+                  value={form.section}
+                  autoComplete="section-work"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                  <option name='type' value={form.type}>obra</option>
+                <option value="False" defaultValue></option>
+                  <option value="obra">obra</option>
                        </select>
               </div>
             </div>   
           </div>
         </div>
+        { error && error.section && <p>{error.section}</p>}
+        <div className="sm:col-span-3">
+              <label htmlFor="type" className="block text-sm font-medium leading-6 text-gray-900">
+                actividad
+              </label>
+              <div className="mt-2">
+                <select
+                  id="status"
+                  onChange={handleFormData}
+                  name="status"
+                  value={form.status}
+                  autoComplete="status"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                >
+                  <option value="False" defaultValue></option>
+                  <option value="True">True</option>
+                  <option value="True">False</option>
+                       </select>
+              </div>
+            </div>   
 
       </div>
-      <div className="col-span-full">
-         <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                <div className="text-center">
-                  <PhotoIcon className="mx-auto h-12  text-gray-300" style={{width:'50%'}} aria-hidden="true" />
-                  <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                    <label
-                      htmlFor="file-upload"
-                      className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                    >
-                      <span>Upload a file</span>
-                      <input id="file-upload"  name="files" value={form.files} onChange={handleFormData} type="file" className="sr-only" />
-                 {form.files &&  <button onClick={onHandleClean}>clean</button>}
-                    </label>
-                    <p className="pl-1">or drag and drop</p>
-                  <p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+      { error && error.status && <p>{error.status}</p>}
+
 
       <div className="mt-6 flex items-center justify-end gap-x-6">
-        <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
+        <button type="button" className="text-sm font-semibold leading-6 text-gray-900" onClick={onHandleCancel}>
           Cancel
         </button>
-        <button
-          type="submit"
-          onClick={handleUpload}
-          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          Save
-        </button>
-      </div>
-    </form>
+
+        <button 
+        type="submit"
+        disabled={errorCheck}
+        onClick={handleUpload}
+        className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      >
+        Save
+      </button>
+       </div>
+       </form>
   )
 }
 

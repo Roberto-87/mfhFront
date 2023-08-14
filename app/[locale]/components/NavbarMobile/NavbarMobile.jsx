@@ -1,10 +1,9 @@
 'use client'
 import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
+import { Toolbar, Typography, IconButton, Drawer, List, ListItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Brand from './Brand';
+import Brand from '../Brand/Brand';
 import Link from 'next/link';
-
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);

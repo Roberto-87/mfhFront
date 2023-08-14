@@ -1,11 +1,12 @@
 'use client'
 import Box from '@mui/material/Box';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
-import FormUploadBioImage from '../../components/FormUploadBioImage';
-import Loader from '../../components/Loader'
+import { useState } from 'react';
+import FormUploadBioImage from '../../components/FormUploadBioImage/FormUploadBioImage';
+import Loader from '../../components/Loader/Loader'
 import { useSession } from "next-auth/react";
 import { useRouter } from 'next/navigation';
+import { BASE_URL } from '../../../utils/consts';
 
 const Bio = () => {
   const{status}= useSession()
@@ -31,7 +32,7 @@ const Bio = () => {
   const handlerSubmit=async(event)=>{
     event.preventDefault()
     try {
-      const response = await axios.post('http://localhost:3001/bio', form, {
+      const response = await axios.post(`${BASE_URL}bio`, form, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -40,9 +41,7 @@ const Bio = () => {
       setSend(true)
       setForm({text:''})
     } catch (error) {
-      // Capturar y manejar el error en caso de que ocurra
-      
-      console.error('Error al guardar los datos:', error.message);
+         console.error('Error al guardar los datos:', error.message);
       throw new Error(error.message)
     }
   }

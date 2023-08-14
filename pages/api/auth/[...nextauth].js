@@ -6,7 +6,7 @@ import { auth } from "../../../app/firebase/firebase";
 export const authOptions = {
   // Configure one or more authentication providers
   pages: {
-    signIn: "/signin",
+    signIn: "admin/signin",
   },
   providers: [
     CredentialsProvider({

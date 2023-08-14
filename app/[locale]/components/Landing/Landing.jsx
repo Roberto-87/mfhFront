@@ -1,12 +1,15 @@
 "use client";
-import ButtonStart from "./ButtonStart"
+import ButtonStart from "../ButtonStart/ButtonStart"
 import style from './Landing.module.css'
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import getData from "../hooks/getData";
+import getData from "../../hooks/getData";
 
 const filterImageActive=(images)=>{
-  return images.filter((images)=>images.status===true)[0].image
+   if(images){
+      return images.filter((images)=>images.status===true)[0].image
+
+   }
 }
 
 const Landing=()=>{

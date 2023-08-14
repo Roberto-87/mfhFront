@@ -6,7 +6,10 @@ import{AiFillHome,AiFillCamera} from 'react-icons/ai';
 import {BiLibrary, BiSolidMemoryCard}from 'react-icons/bi';
 import {MdTextsms} from 'react-icons/md'
 import {RiNewspaperLine} from 'react-icons/ri'
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
+import { Button } from "@mui/material";
+import {BiLogOut} from 'react-icons/bi';
+import { redirect  } from "next/navigation";
 
 
 const links = [
@@ -49,13 +52,16 @@ const links = [
 
   ];
 
-
 const AdminNavigation=()=>{
+/*    const session= useSession({
+    required:true,
+
+  })  */
   const {status}= useSession()
   
   if(status==='authenticated'){
     return (
-  
+      
       <header className={styles.navbarAdminContainer}>
             <div>
                  <nav className={styles.brandContainer}>
@@ -75,6 +81,13 @@ const AdminNavigation=()=>{
                       </li>
                       
                       ))}
+                        <div className={styles.containerNavBarAdmin} style={{marginTop:'20%'}}>
+                                            <li  style={{cursor:'pointer'}} onClick={()=> signOut()}>LOGOUT </li>
+                          <div  className={styles.containerLinksAdmin}>
+                          <BiLogOut fontSize={'1.5rem'} onClick={()=> signOut()} style={{cursor:'pointer'}}/>
+                          </div>
+                          </div>
+
                               </ul> 
                   </nav>
   

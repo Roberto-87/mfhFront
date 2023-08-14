@@ -8,7 +8,7 @@ import Modal from '@mui/material/Modal';
 import { Box, Button, Grid, Paper, styled } from "@mui/material";
 import { useRouter } from 'next/navigation'
 import Image from "next/image";
-
+import getData from "../../hooks/getData";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: 'transparent',
@@ -36,53 +36,39 @@ const style = {
   },
 };
 
-const Exhibition=({params})=>{
+const Exhibition=({params })=>{
     const {id}= params
-    const router = useRouter();
-    const[exhibitionTitle, setExhibitionTitle]= useState('')
-    const[exhibitionPlace, setExhibitionPlace]= useState('')
-    const[exhibitionDate,setExhibitionDate]= useState('')
-    const[exhibitionText,setExhibitionText]= useState('')
-    const[exhibitionImages, setExhibitionImages]= useState([])
+   const[exhibitionText,setExhibitionText]= useState('')
+
+    const[exhibition,setExhibition]= useState('')
           const [open, setOpen] = useState(false);
       const handleOpen = () => setOpen(true);
       const handleClose = () => setOpen(false);
 
-    useEffect(() => { 
-
-         const fetchDataExhibition = async () => {
-          const allExhibitionFetched = await fetchData();
-          const exhibition= allExhibitionFetched.find((ex)=>id=== ex.id)
-          if(!exhibition){
-            router.push('/exhibitions');
-            return null; 
-          }
-          const{title, place, date, images}= exhibition
-         const Alltexts= await returnCuratorialText()
-         const text= Alltexts?.find((text)=> (text.exhibitionName).toLowerCase().replace(/ /g, "")===title.toLowerCase().replace(/ /g, ""))
-
-          if(text){
-            
-            setExhibitionText(text.image) 
-          }
-          setExhibitionTitle(title);
-          setExhibitionImages(images);
-          setExhibitionPlace(place)
-          setExhibitionDate(date)
-        };      
-        fetchDataExhibition();  
-      }, []);
-
-
-
-
-    return (< > 
-  
-        <div>
+      useEffect(() => { 
+        const fetchDataExhibition = async () => {
+          const actualExhibition = await getData(`exhibitions/${id}`);
+          setExhibition(actualExhibition[0]);
+          /*        const Alltexts= await returnCuratorialText()
+          const text= Alltexts?.find((text)=> (text.exhibitionName).toLowerCase().replace(/ /g, "")===title.toLowerCase().replace(/ /g, ""))
           
-        <h1 > {exhibitionTitle} </h1>
-        <p>{exhibitionPlace}</p>
-        <p>{exhibitionDate}</p>
+         if(text){
+           setExhibitionTitle(title);
+           setExhibitionPlace(place)
+           
+           setExhibitionDate(date)
+           setExhibitionText(text.image) 
+          }
+          */         };   
+         fetchDataExhibition();  
+      }, []);
+        
+
+    return ( 
+        <Box>         
+        <h1>{exhibition.exhibitionName}</h1>
+        <p>{exhibition.place}</p>
+        <p>{exhibition.date}</p>
   {exhibitionText && 
         <div>
    <Button onClick={handleOpen}>Link a texto curatorial</Button>
@@ -102,8 +88,7 @@ const Exhibition=({params})=>{
         alignItems="center"
       >
      <Item >
-
-          <Image
+         <Image
                  src={exhibitionText}
                   width={300}
                   height={400}
@@ -121,13 +106,11 @@ const Exhibition=({params})=>{
       </Modal>
     </div>
 }
-
        {
-         exhibitionImages.map((image, index)=> <img style={{width:'50%', padding:'1px'}} key={index} src={image}/>)
+         exhibition?.images?.map((image, index)=> <img style={{width:'50%', padding:'1px'}} key={index} src={image}/>)
         } 
-        </div>
-      
-      </>
+        </Box>
+
         )
 }
 

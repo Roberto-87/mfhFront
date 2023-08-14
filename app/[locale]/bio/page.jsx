@@ -2,71 +2,50 @@
 import { useState, useEffect } from 'react';
 import getData from '../hooks/getData'
 import { Box } from "@mui/material";
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import { styled } from '@mui/material/styles';
-import Loader from "../components/Loader";
+import Loader from "../components/Loader/Loader";
 import Image from 'next/image';
+import { Item } from './itemStyle';
 
-
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  backgroundColor:'black',
-  color: theme.palette.text.secondary,
-}));
-
-
- const Bio = () => {
-    const [bio, setBio] = useState({text:'', image:''});
-    const[loading, setLoading]= useState(false)
-  
-    
-    useEffect(()=>{
-      setLoading(true)     
-    if(bio){
-      setTimeout(()=>{
-        setLoading(false);
-     },50)
-    }
-   },[])
+const Bio = () => {
+   const [bio, setBio] = useState({text:'', image:''});
+   const[loading, setLoading]= useState(false)
 
     useEffect(() => {
+      setLoading(true)     
       const fetchData = async () => {
         const bioData = await getData('bio');
         setBio({text:bioData[0].text, image:bioData[0].image})
       };      
       fetchData();  
+      if(bio){
+        setTimeout(()=>{
+          setLoading(false);
+       },50)
+      }
     }, []);
 
-    return (< > 
-
-        <Box sx={{ flexGrow: 1, marginTop:'2%' }}>
-      
+    return (< main>    
+      <Box sx={{ flexGrow: 1, marginTop:'2%' }}>
       {loading && <Loader/>}
           <Item>
         <Grid container spacing={2}>
-  <Grid item xs={12} md={4}>
-    <Item>
+      <Grid item xs={12} md={4}>
+     <Item>
         <Image src={bio.image} width={400} height={250} style={{width:'45%'}} priority alt='imagen de María'  />
-    </Item>
-  </Grid>
-  <Grid item xs={12} md={8}>
-{bio.image &&       
+     </Item>
+   </Grid>
+   <Grid item xs={12} md={8}>
+    {bio.image &&       
     <Item >
     <p style={{color:'white'}}>{bio.text}</p> 
     </Item>
     }
-  </Grid>
-
-</Grid>
-          </Item>
-
-       </Box>
-
-      
-      </>
+     </Grid>
+   </Grid>
+  </Item>
+ </Box>
+</main>
         )
 }
 export default Bio

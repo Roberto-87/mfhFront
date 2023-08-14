@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react';
-import Landing from './components/Landing';
+import Landing from './components/Landing/Landing';
 
 const Home=()=>{
 

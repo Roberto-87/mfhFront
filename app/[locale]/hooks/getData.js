@@ -1,9 +1,9 @@
 import axios from "axios";
-import {DEVELOPMENT_BASE_URL} from '../../utils/consts'
+import {BASE_URL} from '../../utils/consts'
 
 const getData = async (route) => {
   try {
-    const { data } = await axios(`${DEVELOPMENT_BASE_URL}${route}`);
+    const { data } = await axios(`${BASE_URL}${route}`);
     return data;
   } catch (error) {
     return { error };

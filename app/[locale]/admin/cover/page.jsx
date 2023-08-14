@@ -1,8 +1,10 @@
 'use client'
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { useSession } from "next-auth/react";
-import Loader from "../../components/Loader";
+import Loader from "../../components/Loader/Loader";
+import { Box, Grid } from "@mui/material";
+import { Item } from "../[works]/styleMui";
+import AdminActiveWorks from "../../components/AdminActiveWorks/AdminActiveWorks";
 
 
 const Cover = () => {
@@ -17,13 +19,19 @@ const Cover = () => {
  return <Loader></Loader>;
 }
 
-  if(status==='authenticated'){
-    return (
-     <div>
-       <h1>esto es Admin/cover</h1>
-     </div>
-   );
-  }
+return(
+    <Box>
+    {status === 'authenticated' &&
+        <Grid>
+         <Item>
+         <AdminActiveWorks title={'Cover'} fetchingData={'cover'}/>
+       </Item>
+
+        </Grid>
+       }  
+       </Box>
+)
+
   };
   
 export default Cover

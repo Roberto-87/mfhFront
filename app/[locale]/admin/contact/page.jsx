@@ -1,8 +1,10 @@
 'use client'
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import Loader from "../../components/Loader";
+import Loader from "../../components/Loader/Loader";
+import { Box, Grid } from "@mui/material";
+import { Item } from "../[works]/styleMui";
+import AdminActiveWorks from "../../components/AdminActiveWorks/AdminActiveWorks";
 
 
 const Contact = () => {
@@ -18,11 +20,18 @@ return <Loader></Loader>;
 }
 
 if(status==='authenticated'){
-  return (
-      <div>
-        <h1>esto es Admin/contact</h1>
-      </div>
-    );
+  return(
+    <Box>
+    {status === 'authenticated' &&
+        <Grid>
+         <Item>
+         <AdminActiveWorks title={'Data contacto'} fetchingData={'contact'}/>
+       </Item>
+
+        </Grid>
+       }  
+       </Box>
+)
   }
 
   };

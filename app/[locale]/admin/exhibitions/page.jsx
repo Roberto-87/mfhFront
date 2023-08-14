@@ -2,7 +2,12 @@
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import  Loader  from '../../components/Loader';
+import  Loader  from '../../components/Loader/Loader';
+import { Box, Grid } from '@mui/material';
+import { Item } from '../[works]/styleMui';
+import AdminActiveWorks from '../../components/AdminActiveWorks/AdminActiveWorks';
+import FormUploadExhibition from '../../components/FormUploadExhibition/FormUploadExhibition';
+
 
 const Exhibitions = () => {
   const router = useRouter();
@@ -17,12 +22,18 @@ const Exhibitions = () => {
 }
 
     return (
-      <div>
+      <Box sx={{display:'flex', justifyContent:'center'}}>
         {status === 'authenticated' &&
-
-        <h1>esto es Admin/Exhibitions</h1>
+       <Grid>
+        <Item>
+         <AdminActiveWorks title={'Exhibiciones'} fetchingData={'exhibitions'}/> 
+      </Item>
+      <Item>
+        <FormUploadExhibition title={'exhibition'}/>
+      </Item>
+        </Grid>
       }  
-      </div>
+      </Box>
     );
   };
   

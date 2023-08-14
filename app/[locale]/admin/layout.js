@@ -1,20 +1,14 @@
 "use client";
 import * as React from "react";
-import AdminNavigation from "../components/AdminNavigation";
+import AdminNavigation from "../components/AdminNavigation/AdminNavigation";
 require("dotenv").config();
+import SessionProviders from "../../sessionProvider";
 
 export default function Admin({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <title>Maria Ferrari Hardoy- Artista Visual</title>
-      </head>
-      <body>
-        <div>
+        <section>
           <AdminNavigation />
-        </div>
-        {children}
-      </body>
-    </html>
+          {...children}
+        </section>
   );
 }

@@ -1,9 +1,9 @@
 'use client'
 import Link from "next/link";
 import styles from './Navigation.module.css'
-import Brand from "./Brand";
+import Brand from "../Brand/Brand";
 import { useState, useEffect } from "react";
-import  NavBarMobile from "./NavbarMobile";
+import  NavBarMobile from "../NavbarMobile/NavbarMobile";
 import { usePathname, useRouter  } from 'next/navigation'
 
 

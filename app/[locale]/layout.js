@@ -1,6 +1,6 @@
 import "../../styles/globals.css";
 import { useLocale } from "next-intl";
-import Navigation from "./components/Navigation";
+import Navigation from "./components/Navigation/Navigation";
 import SessionProviders from "../sessionProvider";
 
 export const metadata = {
@@ -16,7 +16,7 @@ export default function RootLayout({ children, params }) {
   }
 
   return (
-    <html lang={locale}>
+    <html lang='en'>
       <head>
         <title>Maria Ferrari Hardoy- Artista Visual</title>
       </head>

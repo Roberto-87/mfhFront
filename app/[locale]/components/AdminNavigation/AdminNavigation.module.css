@@ -1,11 +1,12 @@
 .navbarAdminContainer{
-    background-color: rgba(89, 94, 108, 0.859);
+    background-color: #6b6b6b;
     width: 15%;
     height: 140vh;
     padding: 20px;
     padding-top: 3%;
     align-items: self-start;
     position:fixed;
+    top: 0;
 
 }
 

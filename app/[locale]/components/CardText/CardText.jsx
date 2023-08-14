@@ -1,23 +1,10 @@
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Link from 'next/link';
-import { styled } from '@mui/material/styles';
-
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: 'transparent',
-    ...theme.typography.body2,
-    padding: theme.spacing(10),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-
-  }));
-  
+import {Item} from './itemStyle.js'
 
 const CardText=({texts})=>{
-  console.log(texts)
-   
-    return(  
+     return(  
         <Box sx={{ flexGrow: 1 }}>
         <Grid
           container
@@ -26,9 +13,8 @@ const CardText=({texts})=>{
           direction="row"
           justifyContent="center"
           alignItems="center"
-        >
-        
-        {texts &&
+        >        
+      {texts &&
         texts.map((text, index) => (
           <Grid item xs={2} sm={4} md={3} key={text.id}>
             <Item>
@@ -42,9 +28,8 @@ const CardText=({texts})=>{
             </Item>
           </Grid>
         ))}
-
-        </Grid>
-        </Box>
+      </Grid>
+     </Box>
 )}
 
 export default CardText
