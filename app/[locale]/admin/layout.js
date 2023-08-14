@@ -6,9 +6,17 @@ import SessionProviders from "../../sessionProvider";
 
 export default function Admin({ children }) {
   return (
-        <section>
-          <AdminNavigation />
-          {...children}
-        </section>
+    <html lang="en">
+    <body>
+      <section>
+        <AdminNavigation/>
+      {children}
+      </section>
+      </body>
+  </html>
   );
 }
+
+{/* <section>
+{children}
+</section> */}
