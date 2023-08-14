@@ -2,7 +2,7 @@
 import * as React from "react";
 import AdminNavigation from "../components/AdminNavigation/AdminNavigation";
 require("dotenv").config();
-import SessionProviders from "../../sessionProvider";
+
 
 export default function Admin({ children }) {
   return (
@@ -10,6 +10,7 @@ export default function Admin({ children }) {
     <body>
       <section>
         <AdminNavigation/>
+        
       {children}
       </section>
       </body>
