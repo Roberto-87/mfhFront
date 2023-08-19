@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 
 export const style = {
     position: 'absolute',
-    top: '50%',
+    top: '55%',
     left: '55%',
     transform: 'translate(-50%, -50%)',
     height:700,

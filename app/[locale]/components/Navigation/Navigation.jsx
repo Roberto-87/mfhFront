@@ -5,7 +5,7 @@ import Brand from "../Brand/Brand";
 import { useState, useEffect } from "react";
 import  NavBarMobile from "../NavbarMobile/NavbarMobile";
 import { usePathname, useRouter  } from 'next/navigation'
-
+import ButtonsPortfolio from "../ButtonsPortfolio/ButtonsPortfolio";
 
 const links = [
     {
@@ -37,7 +37,7 @@ const links = [
 const Navigation=()=>{
   const currentPathName= usePathname()
   const router= useRouter()
-  const withoutNavbar= ['/admin','/','/admin/exhibitions','/admin/documents','/admin/biography','/admin/cover','/admin/contact','/admin/works']
+  const withoutNavbar= ['/admin','/','/admin/exhibitions','/admin/portfolio','/admin/text','/admin/biography','/admin/cover','/admin/contact','/admin/works','/admin/bio','/admin/signin']
   const [mobile, setMobile]= useState(false)
 
   const checkMobileMode = () => {
@@ -63,10 +63,10 @@ const Navigation=()=>{
                           {route === currentPathName? <Link href={route}><strong>{label}</strong></Link>:
                           <Link href={route}>{label}</Link>
                           }
-                          
                        
                       </li>
                       ))}
+                    <ButtonsPortfolio/>
                           
                   </ul> 
           </nav>

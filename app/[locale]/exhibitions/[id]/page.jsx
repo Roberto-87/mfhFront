@@ -9,6 +9,7 @@ import { Box, Button, Grid, Paper, styled } from "@mui/material";
 import { useRouter } from 'next/navigation'
 import Image from "next/image";
 import getData from "../../hooks/getData";
+import { EXHIBITIONS, TEXT } from "../../../utils/consts";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: 'transparent',
@@ -21,45 +22,45 @@ const Item = styled(Paper)(({ theme }) => ({
 const style = {
   position: 'absolute',
   top: '5%',
-   left: '35%',
-  right: '50%',  
-  width: 500,
+
+  right: '15%',  
+  width: 850,
+  height:550,
   bgcolor: 'background.paper',
   boxShadow: 24,
   p: 4,
   transition: 'transform 0.5s ease', 
   transform: 'scale(1)',
-    ':hover': {
-      transform: 'scale(1.2) translateY(-6.5%)',
-      transition: '2s ease'
+/*   ':hover': {
+      transform: 'scale(1.1)',
+      transition: '2s ease',
+  }, */
+};
 
-  },
+const styleText = {
+  position:'relative',   
 };
 
 const Exhibition=({params })=>{
     const {id}= params
-   const[exhibitionText,setExhibitionText]= useState('')
+   const[exhibitionText,setExhibitionText]= useState({document:'', title:'', author:''})
 
     const[exhibition,setExhibition]= useState('')
-          const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
       const handleOpen = () => setOpen(true);
       const handleClose = () => setOpen(false);
 
       useEffect(() => { 
         const fetchDataExhibition = async () => {
-          const actualExhibition = await getData(`exhibitions/${id}`);
+          const actualExhibition = await getData(`${EXHIBITIONS}/${id}`);
           setExhibition(actualExhibition[0]);
-          /*        const Alltexts= await returnCuratorialText()
-          const text= Alltexts?.find((text)=> (text.exhibitionName).toLowerCase().replace(/ /g, "")===title.toLowerCase().replace(/ /g, ""))
-          
-         if(text){
-           setExhibitionTitle(title);
-           setExhibitionPlace(place)
-           
-           setExhibitionDate(date)
-           setExhibitionText(text.image) 
+          const curatorialTexts= await getData(`${TEXT}/curatorial`)
+          const actualCuratorial= curatorialTexts.find((text)=> text.exhibitionId===id && text.status===true) 
+          if(actualCuratorial){
+            setExhibitionText({['document']:actualCuratorial.image, ['title']:actualCuratorial.title, ['author']:actualCuratorial.author })
           }
-          */         };   
+  
+        };   
          fetchDataExhibition();  
       }, []);
         
@@ -67,9 +68,11 @@ const Exhibition=({params })=>{
     return ( 
         <Box>         
         <h1>{exhibition.exhibitionName}</h1>
+       {exhibition.format && <h2>format: {exhibition.format}</h2>}
         <p>{exhibition.place}</p>
         <p>{exhibition.date}</p>
-  {exhibitionText && 
+
+  {exhibitionText.document && 
         <div>
    <Button onClick={handleOpen}>Link a texto curatorial</Button>
       <Modal
@@ -88,18 +91,22 @@ const Exhibition=({params })=>{
         alignItems="center"
       >
      <Item >
-         <Image
-                 src={exhibitionText}
-                  width={300}
-                  height={400}
+      <div style={{width:'50%'}}>
+
+         <embed
+                 src={exhibitionText.document}
+                  width={600}
+                  height={450}
                   priority
-                  style={{position:'relative'}}
+                  style={{styleText}}
+                
             
                 />
+      </div>
      </Item>
 
           <Typography id="modal-modal-description" sx={{ mt: 2, color:'Black' }}>
-          {exhibitionTitle}- {exhibitionDate}
+          {exhibitionText.title}- {exhibitionText.author}
           </Typography>
           </Grid>
         </Box>

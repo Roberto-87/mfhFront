@@ -3,25 +3,26 @@ import { useState } from "react";
 import { style } from "../../admin/[works]/styleMui";
 import { useEffect } from "react";
 import axios from "axios";
-import { BASE_URL } from "../../../utils/consts";
+import { BASE_URL, EXHIBITIONS, TEXT } from "../../../utils/consts";
 import validation from "../FormUploadWork/validation";
+import getData from "../../hooks/getData";
 
 
-const ModalAdminWOrks=({activeWorks, inactiveWorks,activeImage})=>{
+const ModalAdminText=({activeWorks, inactiveWorks,activeImage})=>{
     const [open, setOpen] = useState(false);
     const [editWork, setEditWork] = useState(false);
     const [activeImageData, setActiveImageData]=useState({})
     const [inActiveImageData, setInActiveImageData]=useState({})
     const[error, setError]=useState({})
-
+    const [exhibitions, setExhibitions]=useState()
     useEffect(()=>{
-      
         if(activeWorks){
             const activeWork= activeWorks?.find((work)=> work.image===activeImage)
-            setActiveImageData({type:activeWork.section,id:activeWork.id, format:activeWork.format,image:activeWork.image, material:activeWork.material, number: activeWork.number, size: activeWork.size, status:activeWork.status , title: activeWork.title, year:activeWork.year })
-        }else if(inactiveWorks) {
+            setActiveImageData({type:activeWork.type,id:activeWork.id, format: activeWork.image.split('.').at(-1), author:activeWork.author,date:activeWork.date, exhibition:activeWork.exhibitionId, status:activeWork.status , title: activeWork.title })
+     
+          }else if(inactiveWorks) {
             const inActiveWork= inactiveWorks?.find((work)=> work.image===activeImage)
-            setInActiveImageData({type:inActiveWork.section, id:inActiveWork.id, format:inActiveWork.format,image:inActiveWork.image, material:inActiveWork.material, number: inActiveWork.number, size: inActiveWork.size, status:inActiveWork.status , title: inActiveWork.title, year:inActiveWork.year })
+            setInActiveImageData({type:inActiveWork.type,id:inActiveWork.id, format: inActiveWork.image.split('.').at(-1),author:inActiveWork.author,date:inActiveWork.date, exhibition:inActiveWork.exhibitionId, status:inActiveWork.status , title: inActiveWork.title })
         }
        setOpen(!open);
     },[activeImage])
@@ -48,12 +49,14 @@ const ModalAdminWOrks=({activeWorks, inactiveWorks,activeImage})=>{
         setEditWork(true)
     }
 
-    const onHandleEditWork=(e)=>{
+    const onHandleEditWork=async(e)=>{
         setActiveImageData({...activeImageData, [e.target.name]:e.target.value})
         setInActiveImageData({...inActiveImageData, [e.target.name]:e.target.value})
+        const response= await getData(EXHIBITIONS)
+        setExhibitions(response)
+   
     }
     const onHandleCancel=()=>{
-      console.log(editWork)
       setEditWork(false)
     }
 
@@ -62,10 +65,10 @@ const ModalAdminWOrks=({activeWorks, inactiveWorks,activeImage})=>{
     const onHandleSave=async(event)=>{
        try {
         event.preventDefault()
-
-         const  {id, image, title, material,size,number,year,type, status}  = activeImageData
-         if(!id || !title || !material ||!size ||!number ||!year ||!type || !status || !image )throw new Error('faltan datos obligatorios')
-         const response= await axios.put(`${BASE_URL}works/edit`,activeImageData ) 
+         const  {id, author, date, exhibition,image,status,title, type}  = activeImageData
+         console.log(activeImageData)
+         if(!id || !author || !date ||!exhibition ||!status ||!title || !type)throw new Error('faltan datos obligatorios')
+         const response= await axios.put(`${BASE_URL}${TEXT}/edit`,activeImageData ) 
          if(!response) throw new Error('error al subir los datos')
         if(response.status===200){
           swal("Cambios guardados exitosamente");
@@ -91,34 +94,47 @@ const ModalAdminWOrks=({activeWorks, inactiveWorks,activeImage})=>{
     <Box sx={style}>
     <div>
     <Button onClick={handleClose} style={{color:'gray', position:'absolute', right:'100%', top:'0%', fontSize:'1em'}}>CERRAR</Button>
-    <img src={activeImage} alt="imagen obra" style={{marginTop:'6%'}} width={200} height={200}/>
+   {
+       activeImageData.format !=='pdf'?
+       <div style={{width:'80%'}}>
+        <img src={activeImage} alt="imagen obra" style={{marginTop:'6%'}} width={400} height={200}/>
+        </div>
+        :
+        <div style={{width:'80%'}}>
+        <embed src={activeImage} alt="imagen obra" style={{marginTop:'6%'}} width={400} height={300}/>
+        </div>
+   }
     <div>
     {activeImageData.status===true && <Button onClick={onHandleEdit}>Edit</Button>}
 
     <div>
     </div>
     </div>
+
 {activeImageData.status===true && !editWork &&   <div>
-       <strong>Title:</strong> {activeImageData.title}
-       <br />
     <strong>Id:</strong> {activeImageData.id}
        <br />
-       <strong>Type:</strong> {activeImageData.type}
+       <strong>Title:</strong> {activeImageData.title}
        <br />
-       <strong>Material:</strong> {activeImageData.material}
+       <strong>Author:</strong> {activeImageData.author}
        <br />
-       <strong>Number:</strong> {activeImageData.number}
+       <strong>Date:</strong> {activeImageData.date}
        <br />
-       <strong>Size:</strong> {activeImageData.size}
+
+    <div>
+    <strong>Exhibition:</strong> {activeImageData.exhibition}
+    </div>
+
        <br />
        <strong>Status:</strong> {activeImageData.status && 'true'} 
        <br />
-       <strong>Year:</strong> {activeImageData.year}
+       <strong>Type:</strong> {activeImageData.type}
        <br />
        <strong>URL:</strong> {activeImageData.image}
        <br />
        </div>
 }
+{/* {id, author, date, exhibitionId,image,status,title, type} */}
 {activeImageData.status===true && editWork===true &&    <form>
        <strong>Title:</strong><input type="text" name='title' onChange={onHandleEditWork} value={activeImageData.title}/> 
        <br />
@@ -126,16 +142,35 @@ const ModalAdminWOrks=({activeWorks, inactiveWorks,activeImage})=>{
        <br />
        <strong>Type:</strong> {activeImageData.type}
        <br />
-       <strong>Material:</strong><input type="text" name='material' onChange={onHandleEditWork} value={activeImageData.material}/> 
+       <strong>Author:</strong><input type="text" name='author' onChange={onHandleEditWork} value={activeImageData.author}/> 
        <br />
-       <strong>Number:</strong> <input type="number" name='number' onChange={onHandleEditWork} value={activeImageData.number}/> 
-             {error && error.number && <p>{error.number}</p>}
+       <strong>Date:</strong> <input type="text" name='date' onChange={onHandleEditWork} value={activeImageData.date}/> 
        <br />
-       <strong>Size:</strong> <input type="text" name='size' onChange={onHandleEditWork} value={activeImageData.size}/> 
+    {activeImageData.type==='curatorial' &&   
+    <div>
+    <strong>Exhibition:</strong> 
+    <select
+      id="exhibition"
+      onChange={onHandleEditWork}
+      name="exhibition"
+      value={activeImageData.exhibition}
+      autoComplete="exhibition"
+      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+    >
+      <option value="False" defaultValue></option>
+      { 
+        exhibitions && exhibitions.map((exhibition, index) => (
+       
+       <option key={index} value={exhibition.id}>
+              {exhibition.exhibitionName} 
+          </option>
+        ))
+      }
+    </select>
+    </div>
+      }
        <br />
        <strong>Status:</strong> {activeImageData.status && 'true'} 
-       <br />
-       <strong>Year:</strong> <input type="text" name='year' onChange={onHandleEditWork} value={activeImageData.year}/> 
        <br />
        <strong>URL:</strong> {activeImageData.image}
        <br />
@@ -153,22 +188,25 @@ const ModalAdminWOrks=({activeWorks, inactiveWorks,activeImage})=>{
       </div>
     </form>
     }
-{inActiveImageData.status===false && !editWork &&   <div>
-       <strong>Title:</strong> {inActiveImageData.title}
-       <br />
+
+{activeImageData.status===false && !editWork &&   <div>
     <strong>Id:</strong> {inActiveImageData.id}
        <br />
+       <strong>Title:</strong> {inActiveImageData.title}
+       <br />
+       <strong>Author:</strong> {inActiveImageData.author}
+       <br />
+       <strong>Date:</strong> {inActiveImageData.date}
+       <br />
+
+    <div>
+    <strong>Exhibition:</strong> {inActiveImageData.exhibition}
+    </div>
+
+       <br />
+       <strong>Status:</strong> {inActiveImageData.status && 'true'} 
+       <br />
        <strong>Type:</strong> {inActiveImageData.type}
-       <br />
-       <strong>Material:</strong> {inActiveImageData.material}
-       <br />
-       <strong>Number:</strong> {inActiveImageData.number}
-       <br />
-       <strong>Size:</strong> {inActiveImageData.size}
-       <br />
-       <strong>Status:</strong> {inActiveImageData.status && 'false'} 
-       <br />
-       <strong>Year:</strong> {inActiveImageData.year}
        <br />
        <strong>URL:</strong> {inActiveImageData.image}
        <br />
@@ -213,4 +251,4 @@ const ModalAdminWOrks=({activeWorks, inactiveWorks,activeImage})=>{
     </Modal> 
     )
 }
-export default ModalAdminWOrks
+export default ModalAdminText

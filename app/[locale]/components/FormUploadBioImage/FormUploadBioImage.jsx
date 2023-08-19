@@ -25,6 +25,7 @@ const ImageUploaderBio = () => {
             headers: { 'Content-Type': 'multipart/form-data' }
           }
         );
+        if(!response) throw new Error('error al subir los datos')
 
         console.log('Upload response:', response.data);
       }

@@ -15,6 +15,7 @@ const handleUploadToCloud = async (selectedFiles, folder) => {
          headers: { 'Content-Type': 'multipart/form-data' }
        }
      );
+     if(!response) throw new Error('error al subir los datos')
 
     setUrlImage(response.data.url)
    }

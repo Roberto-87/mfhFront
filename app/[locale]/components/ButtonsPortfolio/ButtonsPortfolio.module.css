@@ -1,0 +1,10 @@
+.portfolio{
+    text-decoration: none;
+    list-style: none;
+    font-family: proxima-nova;
+    transition: 1s ease-in;
+    display: inline-block;
+    position: relative;
+    color: black;
+    
+}

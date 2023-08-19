@@ -41,6 +41,7 @@ export default function FormWorksUpload2({img}) {
   
       if(!title || !material ||!size ||!number ||!year ||!section || !status )throw new Error('faltan datos obligatorios')
       const response= await axios.post(`${BASE_URL}works`,form ) 
+      if(!response) throw new Error('error al subir los datos')
       console.log('response from the client:', response);
       setForm({image:'', title:'', material:'',size:'',number:0,year:'',section:'', status:false})
 

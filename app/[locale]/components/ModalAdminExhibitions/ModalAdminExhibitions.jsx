@@ -55,6 +55,7 @@ const ModalAdminExhibitions=({activeWorks, inactiveWorks,activeImage})=>{
         const updateExhibition = async () => {
           try {
             const response = await axios.put(`${BASE_URL}exhibitions/edit`, updatedImages);
+            if(!response) throw new Error('error al subir los datos')
             console.log('response from the client:', response);
           } catch (error) {
             console.error('Upload error:', error);
@@ -80,7 +81,8 @@ const ModalAdminExhibitions=({activeWorks, inactiveWorks,activeImage})=>{
         }; 
          setUpdatedImages(updatedExhibition); 
          setUpdated(true)
-         const response= await axios.put(`${BASE_URL}exhibitions/edit`,updatedImages )       
+         const response= await axios.put(`${BASE_URL}exhibitions/edit`,updatedImages )     
+         if(!response) throw new Error('error al subir los datos')  
           console.log('response from the client:', response);
         }
        catch (error) {
@@ -127,6 +129,7 @@ const ModalAdminExhibitions=({activeWorks, inactiveWorks,activeImage})=>{
       newData[0]['images']= updateImages.flat(1)
       console.log(newData)
       const response= await axios.put(`${BASE_URL}exhibitions/edit`,newData['0'] ) 
+      if(!response) throw new Error('error al subir los datos')
       console.log('response from the client:', response);
       swal('Cambios guardados exitosamente')
     } catch (error) {
@@ -149,6 +152,7 @@ const ModalAdminExhibitions=({activeWorks, inactiveWorks,activeImage})=>{
          const  {type,place,date, id,images, number,status, exhibitionName }  = activeImageData
          if(!type || !place  ||!date ||!id ||!images || !number || !status || !exhibitionName )throw new Error('faltan datos obligatorios')
          const response= await axios.put(`${BASE_URL}exhibitions/edit`,activeImageData ) 
+         if(!response) throw new Error('error al subir los datos')
         if(response.status===200){
           swal("Cambios guardados exitosamente");
         }      

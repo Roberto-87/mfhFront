@@ -6,6 +6,7 @@ import Loader from "../../components/Loader/Loader";
 import { Box, Grid } from "@mui/material";
 import AdminActiveWorks from "../../components/AdminActiveWorks/AdminActiveWorks";
 import { Item } from "../[works]/styleMui";
+import FormUploadWork from '../../components/FormUploadWork/FormUploadWork'
 
 const Text = () => { 
     const {status}= useSession()
@@ -20,18 +21,15 @@ const Text = () => {
  }
 
     return (
-      <Box>
-      {status === 'authenticated' &&
-          <Grid>
-           <Item>
-           <AdminActiveWorks title={'Textos'} fetchingData={'text'}/>
-         </Item>
-
-          </Grid>
-         }  
-         </Box>
+<Box>
+  <Item>
+    <AdminActiveWorks title={'Text'} fetchingData={'text'}/>
+  </Item>
+  <Item sx={{width:'100%'}}>
+  <FormUploadWork folder="text" title='Text'/>
+  </Item>
+</Box>
     );
   };
   
 export default Text
-  

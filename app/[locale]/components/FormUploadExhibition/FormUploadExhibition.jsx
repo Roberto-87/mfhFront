@@ -11,6 +11,7 @@ const FormUploadExhibition = ({title}) => {
    const [urlImage, setUrlImage]= useState([])
    const [clean, setClean]= useState()
    const [handleUploadCClicked, setHandleUploadClicked]= useState(false)
+   const [error, setError]= useState(false)
    const inputFileRef = useRef(null);
 
   const handleFileSelect = (event) => {
@@ -37,14 +38,25 @@ const FormUploadExhibition = ({title}) => {
           }
         );
         uploadedUrls.push(response.data.url);
-
+        if(!response) throw new Error('error al subir los datos')
         }
         setUrlImage((prevUrls) => [...prevUrls, ...uploadedUrls]);;
       }
       catch (error) {
       console.error('Upload error:', error);
+      swal('Hubo un error en la carga de los archivos:\n',  error.response.data.error.message)
+      setClean(true)
+      setError(true)
+      setUrlImage()
+      setSelectedFiles([]);
+      if (inputFileRef.current) {
+        inputFileRef.current.value = '';
+      }
+          setHandleUploadClicked(false)
     }
+    
   };  
+  
   const handleClean = () => {
     setClean(true)
     setUrlImage()
@@ -54,6 +66,7 @@ const FormUploadExhibition = ({title}) => {
     }
     setHandleUploadClicked(false)
   };
+
   return (
 
    <div style={{width:'98vw'}}>

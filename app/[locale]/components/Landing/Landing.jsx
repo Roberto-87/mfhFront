@@ -18,6 +18,7 @@ const[image, setImage]= useState()
 useEffect(()=>{
 (async function getCoverImage(){
    const response= await getData('cover')
+   if(!response) throw new Error('error al subir los datos')
    const imageFetched= filterImageActive(response)
    setImage(imageFetched)}
 )()},[])

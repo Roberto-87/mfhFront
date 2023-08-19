@@ -7,9 +7,8 @@ import {BiLibrary, BiSolidMemoryCard}from 'react-icons/bi';
 import {MdTextsms} from 'react-icons/md'
 import {RiNewspaperLine} from 'react-icons/ri'
 import { signOut, useSession } from "next-auth/react";
-import { Button } from "@mui/material";
 import {BiLogOut} from 'react-icons/bi';
-import { redirect  } from "next/navigation";
+import {RiSuitcaseFill} from 'react-icons/ri'
 
 
 const links = [
@@ -43,11 +42,17 @@ const links = [
     route: "/admin/cover",
     icon:<AiFillCamera/>
    
-},  {  
+}, 
+ {  
   label: "CONTACT",
   route: "/admin/contact",
   icon: <MdTextsms/>
 },
+{  
+  label: "PORTFOLIO",
+  route: "/admin/portfolio",
+  icon: <RiSuitcaseFill/>
+}
     
 
   ];

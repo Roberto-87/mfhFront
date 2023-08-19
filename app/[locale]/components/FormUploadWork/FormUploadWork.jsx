@@ -1,20 +1,31 @@
 'use client'
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState,useEffect } from 'react';
 import axios from 'axios';
 import FormWorksUpload2 from './formWorksUpload2'
 import Loader from '../Loader/Loader';
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import handleUploadToCloud from './upToCloud';
+import { Path } from 'react-router-dom';
+import FormUploadPortfolio from '../FormUploadPortfolio/FormUploadPortfolio';
+import FormUploadText from '../FormUploadText/FormUploadText';
+import swal from 'sweetalert';
 
 
-
-const ImageUploader = () => {
+const ImageUploader = ({folder = 'Obras', title='obra'}) => {
    const [selectedFiles, setSelectedFiles] = useState([]);
    const [urlImage, setUrlImage]= useState()
-   const [uploadToCloud, setUploadToCloud]=useState(false)
    const [clean, setClean]= useState()
+   const [pathname, setPathname]= useState()
+   const [error, setError]= useState(false)
    const [handleUploadCClicked, setHandleUploadClicked]= useState(false)
    const inputFileRef = useRef(null);
+   
+   useEffect(() => {
+    const router= window.location.pathname.split('/').at(-1)
+    setPathname(router)
+    console.log(pathname)
+  }, [pathname])
+  
 
   const handleFileSelect = (event) => {
     setSelectedFiles(event.target.files);
@@ -27,7 +38,7 @@ const ImageUploader = () => {
         const formData = new FormData();
         formData.append('file', selectedFiles[i]);
         formData.append('upload_preset', 'fiwvpzcu');
-        formData.append('folder', 'Obras')
+        formData.append('folder', folder)
 
 
         const response = await axios.post(
@@ -37,11 +48,21 @@ const ImageUploader = () => {
             headers: { 'Content-Type': 'multipart/form-data' }
           }
         );
+        if(!response) throw new Error('error al subir los datos')
 
        setUrlImage(response.data.url)
       }
     } catch (error) {
       console.error('Upload error:', error);
+      swal('Hubo un error en la carga de los archivos:\n',  error.response.data.error.message)
+      setClean(true)
+      setError(true)
+      setUrlImage()
+      setSelectedFiles([]);
+      if (inputFileRef.current) {
+        inputFileRef.current.value = '';
+      }
+          setHandleUploadClicked(false)
     }
   };  
   const handleClean = () => {
@@ -59,7 +80,7 @@ const ImageUploader = () => {
    <div>
      <div className="col-span-full">
               <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">
-              <h2>Subir nueva obra</h2> 
+              <h2>Subir nueva {title}</h2> 
               </label>
               <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                 <div className="text-center">
@@ -73,18 +94,32 @@ const ImageUploader = () => {
                       <input id="file-upload" name="file-upload" type="file" className="sr-only"  ref={inputFileRef}   onChange={handleFileSelect} />
                     </label>              <button onClick={handleClean}>Clear</button>
                     <p className="pl-1">or drag and drop</p>
+                    {
+                  pathname==='portfolio' ?   <p className="text-xs leading-5 text-gray-600">PDF up to 10MB</p>
+                    :
                   <p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+                    }
+
                   </div>
             {  selectedFiles.length> 0 &&    <button  onClick={handleUpload}>
-                  Upload to works
-             </button>}
-                </div>
+                  Upload to cloud
+             </button>  }
+                </div> 
               </div>
 
             </div>
+            <section>
+   
+    {urlImage  && selectedFiles.length>0 && pathname === 'portfolio' &&
+      <div>
+      <embed style={{width:'15%', margin:'4px'}} src={urlImage} alt="imagen subida" />
+      <FormUploadPortfolio img={urlImage}/>
+     </div>
+    }       
+ </section>  
   
     {
-     handleUploadCClicked===true && !urlImage   &&
+     handleUploadCClicked===true && !urlImage   &&  
       <div>
      <div style={{display:'flex',justifyContent:'center', marginRight:'30%'}}>
       <Loader/>
@@ -95,7 +130,7 @@ const ImageUploader = () => {
     }
      
   <section>
-    {urlImage  && selectedFiles.length>0 &&
+    {urlImage  && selectedFiles.length>0 && pathname !== 'portfolio'&& pathname!=='text'&&
       <div>
       <img style={{width:'12%', margin:'4px'}} src={urlImage} alt="imagen subida" />
      </div>
@@ -103,12 +138,23 @@ const ImageUploader = () => {
  </section> 
 
  <section>
-     {urlImage  && selectedFiles.length>0 &&
+     {urlImage  && selectedFiles.length>0 && pathname === 'text' &&
+     <div>
+       <embed style={{width:'15%', margin:'4px'}} src={urlImage} alt="imagen subida" />
+       <FormUploadText img={urlImage}/>
+     </div>
+     }
+</section>
+
+ <section>
+     {urlImage  && selectedFiles.length>0 && pathname !== 'portfolio' && pathname!=='text' &&
      <div>
        <FormWorksUpload2 img={urlImage}/>
      </div>
      }
 </section>
+
+
    </div>
      
   );

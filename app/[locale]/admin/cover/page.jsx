@@ -5,7 +5,7 @@ import Loader from "../../components/Loader/Loader";
 import { Box, Grid } from "@mui/material";
 import { Item } from "../[works]/styleMui";
 import AdminActiveWorks from "../../components/AdminActiveWorks/AdminActiveWorks";
-
+import FormUploadWork from '../../components/FormUploadWork/FormUploadWork'
 
 const Cover = () => {
   const{status} = useSession()
@@ -20,16 +20,14 @@ const Cover = () => {
 }
 
 return(
-    <Box>
-    {status === 'authenticated' &&
-        <Grid>
-         <Item>
-         <AdminActiveWorks title={'Cover'} fetchingData={'cover'}/>
-       </Item>
-
-        </Grid>
-       }  
-       </Box>
+<Box>
+  <Item>
+    <AdminActiveWorks title={'Cover'} fetchingData={'cover'}/>
+  </Item>
+  <Item sx={{width:'100%'}}>
+  <FormUploadWork folder="cover" title='Cover'/>
+  </Item>
+</Box>
 )
 
   };

@@ -4,9 +4,6 @@ import { useState, useEffect } from "react";
 import getData from "../../hooks/getData";
 import {MdOutlineRefresh} from 'react-icons/md'
 import CardAdminActivity from "../CardAdminActivity/CardAdminActivity";
-import axios from "axios";
-import { BASE_URL } from "../../../utils/consts";
-import Exhibitions from "../../admin/exhibitions/page";
 import putData from "../../hooks/putData";
 import notFound from '../../assets/no-image-available-icon-vector-id1216251206-568614111.jpg'
 
@@ -20,25 +17,24 @@ const AdminActiveWorks=({title, fetchingData})=>{
        const fetchData = async () => {
         let allWorksAdmin = await getData(fetchingData);
 
-        if(allWorksAdmin){
+        if(allWorksAdmin.length>0){
           const inactiveWorks= allWorksAdmin?.filter((work)=> work.status!==true).sort((a,b)=>b.number-a.number)
           setInActiveWorks(inactiveWorks);
         }
-        if(allWorksAdmin){
+        if(allWorksAdmin.length>0){
           const activeWorks= allWorksAdmin?.filter((work)=> work.status===true).sort((a,b)=>b.number-a.number)
           setActiveWorks(activeWorks)
         }
       };      
       fetchData();  
       setRefresh(false)
-    }, [refresh]);
+    }, [refresh ]);
 
    
 
     const onHandleSwitch = async (work) => {
       const newStatus = !work.status;     
       try {
-        console.log(work)
         const id = work.id;  
         const response = await putData(`${fetchingData}/switchactivity/${id}`)
         console.log('Response from PUT request:', response);

@@ -32,6 +32,7 @@ const CardWorks = ({works}) => {
       setLoading(false);
    },50)
   }
+  console.log(imageActiveIndex)
  },[])
 
   const handlerClick = (event) => {
@@ -101,7 +102,7 @@ const CardWorks = ({works}) => {
        {open && <Button onClick={handleClose} style={{color:'gray', position:'absolute', right:'100%', top:'0%', fontSize:'1em'}}>CERRAR</Button>}
       <div style={{display:'flex', flexDirection:'row-reverse'}}>
          <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-            <SwiperSlide ><button style={{position:'relative',cursor:'pointer', bottom:'50%', left:'1px'}} onClick={onPrevious}><GrPrevious/></button> <img style={{width:'65%'}} src={imageActive} alt={work.title}   onMouseLeave={handleZoom}  onMouseEnter ={handleZoom} zoom="200" />   <button onClick={onNext} style={{position:'relative', bottom:'50%',cursor:'pointer', left:'2px'}}><GrNext/></button></SwiperSlide>
+            <SwiperSlide ><button style={{position:'relative',cursor:'pointer', bottom:'50%', left:'1px'}} onClick={onPrevious}><GrPrevious/></button> <img style={{width:'55%'}} src={imageActive} alt={work.title}   onMouseLeave={handleZoom}  onMouseEnter ={handleZoom} zoom="200" />   <button onClick={onNext} style={{position:'relative', bottom:'50%',cursor:'pointer', left:'2px'}}><GrNext/></button></SwiperSlide>
            </Swiper>
      </div>
        { imageActive &&   <Typography id="modal-modal-description" sx={{ mt: 2, color:'gray' }}>

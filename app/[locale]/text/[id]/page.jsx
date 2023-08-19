@@ -4,47 +4,56 @@ import getData from "../../hooks/getData";
 import { useState } from "react";
 import { Box, Modal } from "@mui/material";
 import { useRouter } from "next/navigation";
+import { TEXT } from "../../../utils/consts";
 
 const style = {
     display: 'flex',
     justifyContent: 'center',
-    transition: 'transform 0.5s ease', 
+    height:'60%',
+    transition: 'transform 0.6s ease', 
     transform: 'scale(1)',
-      ':hover': {
-      transform: 'scale(1.2)', 
-    },
+/*       ':hover': {
+      transform: 'scale(1.5)', 
+    }, */
   };
  
 
 const Text=({params})=>{
     const{id}= params
-    const[paper, setPaper]= useState({title:'',image:'', date:''})
+    const[paper, setPaper]= useState({title:'',image:'', date:'', author:'', type:'',format:''})
     const router= useRouter()
 
     useEffect(()=>{
               const fetchData = async () => {
-              const papersData = await getData('text');
+              const papersData = await getData(TEXT);
               const text= papersData.find((text)=> text.id===id)
               if(!text){
-                router.push('/text')
+                router.push(`/${TEXT}`)
                 return null
               }
-              const {title, image, date}= text
-      
-             setPaper( { ...paper, title, image, date })
+              const {title, image, date, author, type}= text
+              setPaper( { ...paper, title, image, date, author, type,['format']:image.split('.').at(-1) })
+              console.log(paper)
             };      
             fetchData();  
           },[])
    
 return(
     <>
-                <Box sx={{display:'flex', justifyContent:'center', }}>
-            <h1 style={{color:'white'}}>{paper.title} </h1>
-       {/*      <div><p>Fecha {paper.date}</p></div> */}
-            
+    
+     
+
+              <Box sx={{display:'flex', flexDirection:'column', justifyContent:'center'}}>
+         <h1 style={{color:'white'}}>{paper.title}</h1>
+            <p style={{color:'white'}}>Autore: {paper.author}- {paper.date}</p>
             </Box>
+            
             <Box sx={style}>
-              <img src={paper.image} style={{width:'45%'}} alt={paper.title} />
+              {paper.format === 'pdf' ?
+                <embed src={paper.image} style={{width:'35%'}} alt={paper.title}></embed>
+              :
+              <img src={paper.image} style={{width:'35%'}} alt={paper.title} />
+              }
               
                </Box>
 

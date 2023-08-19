@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react';
-import { Toolbar, Typography, IconButton, Drawer, List, ListItem } from '@mui/material';
+import { Toolbar, Typography, IconButton, Drawer, List, ListItem, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Brand from '../Brand/Brand';
 import Link from 'next/link';
@@ -44,6 +44,10 @@ const Navbar = () => {
           </ListItem>
           <ListItem button>
           <Link href={'/contact'}>Contact</Link>
+          </ListItem>
+          <ListItem button>
+          <Button >Portfolio EN</Button>
+          <Button>Portfolio ES</Button>
           </ListItem>
         </List>
       </Drawer>

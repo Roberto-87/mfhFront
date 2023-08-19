@@ -6,7 +6,7 @@ const getNumbers = async (number) => {
 };
 
 
-const validation =async ({ exhibitionName,place, number,type,image,status,date}) => {
+const validation =async ({ exhibitionName,place, date,number,type,image,status,format}) => {
   let errors = {};
  const regexOnlyNumber = /^[1-9]\d*$/;
 
@@ -35,9 +35,12 @@ const validation =async ({ exhibitionName,place, number,type,image,status,date})
       if (!status) {
         errors["status"] = "Por favor seleccioná un status";
       }   
+      if (!format) {
+        errors["format"] = "Por favor seleccioná un formato";
+      }   
     return errors;
   };
 
 
   export default validation;
-  
+

@@ -17,7 +17,8 @@ export const uploadNewImage = async (selectedFiles) => {
          {
            headers: { 'Content-Type': 'multipart/form-data' }
          }
-       );  uploadedUrls.push(response.data.url);
+       );         if(!response) throw new Error('error al subir los datos')
+        uploadedUrls.push(response.data.url);
        return uploadedUrls
      }
    } catch (error) {

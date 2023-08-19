@@ -42,7 +42,7 @@ const CardExhibitions=({ exhibitions})=>{
                 <Item  direction="column" >
                   <Link  href={`/exhibitions/${(exhibition?.id)}`}>
                   { exhibition.images.map((each, index)=> index< 1 &&
-                 <Image width={400} height={300} priority className={styleExhibition.cardImageExhibition} key={index} src={each} /> 
+                 <img style={{width:'80%'}} priority className={styleExhibition.cardImageExhibition} key={index} src={each} /> 
                   )}
               </Link>
               {images &&
@@ -50,6 +50,7 @@ const CardExhibitions=({ exhibitions})=>{
                 <h2 className={styles.cardItem} >{exhibition.exhibitionName}</h2>
                 <p  className={styles.cardItem}>{exhibition.place}</p>
                 <p  className={styles.cardItem}>{exhibition.date}</p>
+                <p  className={styles.cardItem}>{exhibition.format}</p>
               </div>
                   }
                 </Item>

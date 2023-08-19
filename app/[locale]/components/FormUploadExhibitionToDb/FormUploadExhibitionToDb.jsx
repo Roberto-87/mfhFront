@@ -8,7 +8,7 @@ import validation from '../FormUploadExhibition/validation';
 
 export default function FormUploadExhibitionToDb({img}) {
     //img es un array
-  const[form, setForm]= useState({images:img, exhibitionName:'', place:'',date:'',number:0,type:'', status:false})
+  const[form, setForm]= useState({images:img, exhibitionName:'', place:'',date:'',number:0,type:'', status:false, format:''})
   const[error, setError]=useState({})
   const [errorCheck, setErrorCheck] = useState(false);
   const [inputTouched, setInputTouched] = useState();
@@ -35,12 +35,13 @@ export default function FormUploadExhibitionToDb({img}) {
   const handleUpload = async (event) => {
     event.preventDefault()
       try {
-        const  {images, exhibitionName, place,date,number,type, status}  = form
+        const  {images, exhibitionName, place,date,number,type, status, format}  = form
   
-      if(!exhibitionName || !place ||!date ||!number ||!type || !status )throw new Error('faltan datos obligatorios')
+      if(!exhibitionName || !place ||!date ||!number ||!type || !status || !format)throw new Error('faltan datos obligatorios')
       const response= await axios.post(`${BASE_URL}exhibitions`,form ) 
+      if(!response) throw new Error('error al subir los datos')
       console.log('response from the client:', response);
-      setForm({images:'', exhibitionName:'', place:'',date:'',number:0,type:'', status:false})
+      setForm({images:'', exhibitionName:'', place:'',date:'',number:0,type:'', status:false, format:''})
 
       if(response.status!==200 && response.data==='llave duplicada viola restricción de unicidad «Works_number_key»'){
         swal("El número de la obra ya fue ingresado ");
@@ -57,7 +58,7 @@ export default function FormUploadExhibitionToDb({img}) {
   };
   };
 const onHandleCancel=()=>{
-  setForm({images:img, title:'', place:'',date:'',number:0,type:'', status:false})
+  setForm({images:img, title:'', place:'',date:'',number:0,type:'', status:false, format:''})
 }
 
 
@@ -126,6 +127,7 @@ const onHandleCancel=()=>{
                 {error && error.date && <p>{error.date}</p>}
               </div>
             </div>
+            
            
             <div className="sm:col-span-3">
               <label htmlFor="number" className="block text-sm font-medium leading-6 text-gray-900">
@@ -185,13 +187,35 @@ const onHandleCancel=()=>{
                 >
                   <option value="False" defaultValue></option>
                   <option value="True">True</option>
-                  <option value="True">False</option>
+                  <option value="False">False</option>
                        </select>
               </div>
             </div>   
 
       </div>
       { error && error.status && <p>{error.status}</p>}
+
+      <div className="sm:col-span-3">
+              <label htmlFor="type" className="block text-sm font-medium leading-6 text-gray-900">
+                Formato
+              </label>
+              <div className="mt-2">
+                <select
+                  id="format"
+                  onChange={handleFormData}
+                  name="format"
+                  value={form.format}
+                  autoComplete="format"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                >
+                  <option value="False" defaultValue></option>
+                  <option value="Individual">Individual</option>
+                  <option value="Colectiva">Colectiva</option>
+                       </select>
+              </div>
+            </div>   
+
+      { error && error.format && <p>{error.format}</p>}
 
       <div className="mt-6 flex items-center justify-end gap-x-6">
         <button type="button" className="text-sm font-semibold leading-6 text-gray-900" onClick={onHandleCancel}>
