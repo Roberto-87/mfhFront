@@ -8,6 +8,7 @@ import handleUploadToCloud from './upToCloud';
 import { Path } from 'react-router-dom';
 import FormUploadPortfolio from '../FormUploadPortfolio/FormUploadPortfolio';
 import FormUploadText from '../FormUploadText/FormUploadText';
+import FormUploadCover from '../FormUploadCover/FormUploadCover';
 import swal from 'sweetalert';
 
 
@@ -146,8 +147,16 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
      }
 </section>
 
+<section>
+     {urlImage  && selectedFiles.length>0 && pathname === 'cover' &&
+     <div>
+       <FormUploadCover img={urlImage}/>
+     </div>
+     }
+</section>
+
  <section>
-     {urlImage  && selectedFiles.length>0 && pathname !== 'portfolio' && pathname!=='text' &&
+     {urlImage  && selectedFiles.length>0 && pathname !== 'portfolio' && pathname!=='text' && pathname!=='cover'&&
      <div>
        <FormWorksUpload2 img={urlImage}/>
      </div>

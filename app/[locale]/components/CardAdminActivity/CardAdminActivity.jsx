@@ -1,5 +1,4 @@
 import { Box, Card, Grid, Switch } from "@mui/material"
-import { Item } from "../../admin/[works]/styleMui"
 import { useState } from "react"
 import ModalAdminWOrks from "../ModalAdminWorks/ModalAdminWorks"
 import ModalAdminExhibitions from "../ModalAdminExhibitions/ModalAdminExhibitions"
@@ -7,9 +6,6 @@ import ModalAdminPortfolio from "../ModalAdminPortfolio/ModalAdminPortfolio"
 import ModalAdminText from "../ModalAdminText/ModalAdminText"
 import { useEffect } from "react"
 import notFound from '../../assets/no-image-available-icon-vector-id1216251206-568614111.jpg'
-import Image from "next/image"
-import getData from "../../hooks/getData"
-import { EXHIBITIONS, TEXT } from "../../../utils/consts"
  
 
 const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch})=>{
@@ -23,10 +19,8 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
        setPathname(router)
          },[pathname])
 
-    const handleOpen = (e) => {
-
-           const activeImage = e.target.currentSrc;
-           setLocalActiveImage(activeImage);  
+    const handleOpen = (urlImage) => {
+           setLocalActiveImage(urlImage);  
            setActiveImage(activeImage)
            setOpen(true);
        };
@@ -43,7 +37,7 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
                {pathname==='portfolio' || pathname==='text'  ?   
                <Grid style={{ width:'100%'}}>
                   {/* <img  alt={work.title} width={120} height={90} onClick={handleOpen}  style={{cursor:'pointer'}}  src= {work.image} />*/}
-                 <div >
+                 <div onClick={()=>handleOpen(work.image)}>
                   <p>{work.title}</p> 
                   <p>{work.language}</p> 
 
@@ -56,6 +50,15 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
                </Grid>
             }
                
+                          
+            {pathname==='cover' &&             <Grid style={{ width:'100%'}}>
+                   <img  alt={work.title} width={120} height={90} onClick={handleOpen}  style={{cursor:'pointer'}}  src= {work.image} />
+                 <div >
+                  <p>{work.title}</p> 
+                  <p>{work.language}</p> 
+
+                 </div>
+               </Grid>}
 
                </Grid>
         </Card>
@@ -74,10 +77,11 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
               <ModalAdminExhibitions activeWorks={activeWorks} activeImage={localActiveImage} inactiveWorks={inactiveWorks}/>  
            }
 
-{
-              open && work.type==="portfolio" && 
+            {
+              open && work.type==="portfolio" &&                 
               <ModalAdminPortfolio activeWorks={activeWorks} activeImage={localActiveImage} inactiveWorks={inactiveWorks}/>  
-           }
+
+}
     
         </>)
 }

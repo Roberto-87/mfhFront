@@ -9,29 +9,52 @@
 
 .cardItem {
     text-align: center;
-    color: white;
+    color:black;
+    
+  }
+
+  .material {
+  margin-bottom: 0; /* Elimina el margen inferior del elemento del material */
+}
+.title {
+  margin-top: 0; /* Elimina el margen superior del título */
+  margin-bottom: 0; /* Elimina el margen inferior del título */
+}
+
+.material {
+  margin-top: 0; /* Elimina el margen superior del material */
+  margin-bottom: 0; /* Elimina el margen inferior del material */
+}
+
+.size {
+  margin-top: 0; /* Elimina el margen superior del tamaño */
+  margin-bottom: 0; /* Elimina el margen inferior del tamaño */
 }
   
-  .cardImage {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-    cursor: pointer;
-  }
+.cardImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  
+}
 
-  .textImage{
+.textImage{
     height:60vh;
-    width:60%
+    width:60%;
+    color: black;
+    
   }
-
-
-
+  
   .imageButton{
     background-color: transparent;
     border:none;
     cursor:pointer
   }
 
+  .img:hover{
+    width: 600px;
+  }
   .open-popup {padding:20px}
 .white-popup {
   position: relative;
@@ -43,10 +66,11 @@
   text-align: center;
 }
 
-  
+
   @media screen and (max-width: 767px) {
     .grid-container {
       grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
       padding: 10px;
     }
   }
+

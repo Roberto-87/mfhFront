@@ -8,7 +8,6 @@ import putData from "../../hooks/putData";
 import notFound from '../../assets/no-image-available-icon-vector-id1216251206-568614111.jpg'
 
 const AdminActiveWorks=({title, fetchingData})=>{
-
     const [inActiveWorks,setInActiveWorks]= useState([])
     const [activeWorks, setActiveWorks]= useState([])
     const [refresh, setRefresh]= useState(false)

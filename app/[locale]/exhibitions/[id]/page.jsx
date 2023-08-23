@@ -66,11 +66,13 @@ const Exhibition=({params })=>{
         
 
     return ( 
-        <Box>         
+        <Box >  
+          <div style={{color:'black'}}>
         <h1>{exhibition.exhibitionName}</h1>
        {exhibition.format && <h2>format: {exhibition.format}</h2>}
         <p>{exhibition.place}</p>
         <p>{exhibition.date}</p>
+            </div>       
 
   {exhibitionText.document && 
         <div>

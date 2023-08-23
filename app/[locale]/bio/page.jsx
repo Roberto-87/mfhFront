@@ -6,6 +6,8 @@ import Grid from '@mui/material/Grid';
 import Loader from "../components/Loader/Loader";
 import Image from 'next/image';
 import { Item } from './itemStyle';
+import { BIO } from '../../utils/consts';
+
 
 const Bio = () => {
    const [bio, setBio] = useState({text:'', image:''});
@@ -14,7 +16,7 @@ const Bio = () => {
     useEffect(() => {
       setLoading(true)     
       const fetchData = async () => {
-        const bioData = await getData('bio');
+        const bioData = await getData(BIO);
         setBio({text:bioData[0].text, image:bioData[0].image})
       };      
       fetchData();  

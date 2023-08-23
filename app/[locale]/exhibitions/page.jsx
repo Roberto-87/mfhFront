@@ -9,15 +9,11 @@ import { EXHIBITIONS , TEXT} from '../../utils/consts';
   
     useEffect(() => { 
       const fetchDataExhibition = async () => {
-        const exhibitionsFetched = await getData(EXHIBITIONS); //take the images and make an exhibition
-        const exhibitionsActive= exhibitionsFetched.filter((exhibition)=> exhibition.status===true) 
-        setExhibitions(exhibitionsActive);
-
+        const exhibitionsFetched = await getData(`${EXHIBITIONS}/active`);
+       setExhibitions(exhibitionsFetched);
       };      
       fetchDataExhibition();  
     }, []);
-
-
 
     return (< >   
         <CardExhibitions exhibitions={exhibitions} />

@@ -1,10 +1,26 @@
-.portfolio{
-    text-decoration: none;
+.containerPortfolioEs, .containerPortfolioEn{
+
     list-style: none;
-    font-family: proxima-nova;
+   cursor: pointer;
     transition: 1s ease-in;
     display: inline-block;
     position: relative;
-    color: black;
-    
+    color: black;   
+    margin-right: 5px;
+    padding-left: -4%;
+    font-size: 1em;
+    margin-top: 8px;
+    width: 100%;
+
+     
+}
+
+
+.containerPortfolioEn:hover,.containerPortfolioEs:hover {
+    text-decoration: underline;
+  
+}
+.containerPortfolioEs:active,
+ .containerPortfolioEn:active{
+    font-weight: bold  
 }

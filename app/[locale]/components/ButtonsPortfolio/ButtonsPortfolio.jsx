@@ -4,6 +4,8 @@ import getData from '../../hooks/getData'
 import {useState, useEffect} from 'react'
 import styles from './ButtonsPortfolio.module.css'
 import { PORTFOLIO } from "../../../utils/consts"
+import { Comfortaa } from "next/font/google"
+import { comfortaa } from "../../fonts/fonts"
 
 
 const ButtonsPortfolio=()=>{
@@ -31,10 +33,11 @@ const ButtonsPortfolio=()=>{
 
  
   return(
-        <Box>
-            <a className={styles.portfolio} href={englishshPortfolio} target="_blank" download>Portfolio EN</a> 
-            <a className={styles.portfolio} href={spanishPortfolio} target="_blank" download>Portfolio ES</a>
+        <Box sx={{display:'flex'}} >
+            <a class={comfortaa.className} className={styles.containerPortfolioEs} href={englishshPortfolio} target="_blank" download><i>PORTFOLIO EN</i></a> 
+            <a class={comfortaa.className} className={styles.containerPortfolioEn} href={spanishPortfolio} target="_blank" download><i>PORTFOLIO ES</i></a>
         </Box>
+   
     )
 }
 

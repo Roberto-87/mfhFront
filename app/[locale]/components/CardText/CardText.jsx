@@ -19,11 +19,11 @@ const CardText=({texts})=>{
           <Grid item xs={2} sm={4} md={3} key={text.id}>
             <Item>
               <Link href={`/text/${text.id}`}>
-                <h2 style={{ color: 'white' }}>{text.title.toUpperCase()}</h2>
+                <h2 style={{ color: 'black' }}>{text.title.toUpperCase()}</h2>
               </Link>
               <Link href={`/text/${text.id}`}>
                 <h2 style={{ color: 'grey' }}>{text.type.toUpperCase()}</h2>
-                   <h2 style={{ color: 'white' }}>{text.author.toUpperCase()}</h2>
+                   <h2 style={{ color: 'black' }}>{text.author.toUpperCase()}</h2>
                    </Link>
             </Item>
           </Grid>

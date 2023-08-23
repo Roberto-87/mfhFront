@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import  NavBarMobile from "../NavbarMobile/NavbarMobile";
 import { usePathname, useRouter  } from 'next/navigation'
 import ButtonsPortfolio from "../ButtonsPortfolio/ButtonsPortfolio";
+import {comfortaa} from'../../fonts/fonts'
 
 const links = [
     {
@@ -60,7 +61,7 @@ const Navigation=()=>{
                   <ul className={styles.itemsNavBarContainer}>
                       {links.map(({ label, route }) => (
                                  <li className={styles.navbarItem} key={route}>
-                          {route === currentPathName? <Link href={route}><strong>{label}</strong></Link>:
+                          {route === currentPathName? <Link className={comfortaa.className} href={route}><strong>{label}</strong></Link>:
                           <Link href={route}>{label}</Link>
                           }
                        

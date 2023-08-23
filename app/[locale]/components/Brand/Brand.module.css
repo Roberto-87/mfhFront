@@ -1,13 +1,17 @@
 .brandName{
     color: #000;
     display: flex;
-    padding-left: 6px;
     align-items: center;
     letter-spacing: 0.125em;
     vertical-align: middle;
     font-family: proxima-nova;
-
+    width: 100%;
+    font-size: 1.5em;
     text-transform: uppercase;
+}
+
+.brandContainer{
+    width: 100%;
 }
 
 @media (max-width: 815px) {

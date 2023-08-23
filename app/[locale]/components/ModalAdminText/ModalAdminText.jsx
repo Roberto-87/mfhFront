@@ -15,8 +15,10 @@ const ModalAdminText=({activeWorks, inactiveWorks,activeImage})=>{
     const [inActiveImageData, setInActiveImageData]=useState({})
     const[error, setError]=useState({})
     const [exhibitions, setExhibitions]=useState()
+   
     useEffect(()=>{
         if(activeWorks){
+          console.log(activeImage)
             const activeWork= activeWorks?.find((work)=> work.image===activeImage)
             setActiveImageData({type:activeWork.type,id:activeWork.id, format: activeWork.image.split('.').at(-1), author:activeWork.author,date:activeWork.date, exhibition:activeWork.exhibitionId, status:activeWork.status , title: activeWork.title })
      
@@ -67,7 +69,7 @@ const ModalAdminText=({activeWorks, inactiveWorks,activeImage})=>{
         event.preventDefault()
          const  {id, author, date, exhibition,image,status,title, type}  = activeImageData
          console.log(activeImageData)
-         if(!id || !author || !date ||!exhibition ||!status ||!title || !type)throw new Error('faltan datos obligatorios')
+         if(!id || !author || !date  ||!status ||!title || !type)throw new Error('faltan datos obligatorios')
          const response= await axios.put(`${BASE_URL}${TEXT}/edit`,activeImageData ) 
          if(!response) throw new Error('error al subir los datos')
         if(response.status===200){

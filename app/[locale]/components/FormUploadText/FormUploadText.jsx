@@ -4,7 +4,6 @@ import axios from 'axios';
 import  validation from './validation';
 import swal from 'sweetalert';
 import { BASE_URL, EXHIBITIONS, TEXT } from '../../../utils/consts';
-import { PORTFOLIO } from '../../../utils/consts';
 import getData from '../../hooks/getData';
 import { Box } from '@mui/material';
 

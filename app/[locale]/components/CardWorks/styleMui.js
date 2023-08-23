@@ -20,14 +20,16 @@ export const Item = styled(Paper)(({ theme }) => ({
       
   };  
 
-  
- export const styleCarrouselWorks = {
-  position: 'absolute',
-  top: '50%',
-  left: '60%',
-  transform: 'translate(-50%, -50%)',
-  width: 900,
-  bgcolor: 'black',
-  boxShadow: 24,
+
+  export const styleCarrouselWorks = {
+    position: 'fixed', // Mantener el modal fijo
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '100vw',
+    boxShadow: 24,
+    backgroundColor: 'white',
+    padding:'1%',
+
     
-};  
+  }; 

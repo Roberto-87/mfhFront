@@ -9,17 +9,15 @@ import {WORKS} from '../../utils/consts.js'
 
   useEffect(() => {
    const fetchData = async () => {
-     const worksData = await getData(WORKS);
-     const activeWorks= worksData?.filter((works)=> works.status===true)
-     setWorks(activeWorks);
-
+     const worksData = await getData(`${WORKS}/active`);
+     setWorks(worksData);
     };      
     fetchData();  
   }, []);
     
     return (< > 
         <CardWorks works={works} />
-      </>
+        </>
         )
 }
 export default Works
