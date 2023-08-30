@@ -1,7 +1,7 @@
 'use client'
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import Loader from "../../components/Loader/Loader";
+import LoaderAnimation from "../../components/LoaderAnimation/LoaderAnimation";
 import { Box, Grid } from "@mui/material";
 import { Item } from "../[works]/styleMui";
 import AdminActiveWorks from "../../components/AdminActiveWorks/AdminActiveWorks";
@@ -16,7 +16,7 @@ const Cover = () => {
    } 
 
  if (status === 'loading') {
- return <Loader></Loader>;
+ return <LoaderAnimation></LoaderAnimation>;
 }
 
 return(

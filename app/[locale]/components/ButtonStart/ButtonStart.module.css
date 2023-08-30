@@ -2,7 +2,48 @@
     display: flex;
     justify-content: flex-end;
     gap:4px;
-    padding: 4px;
-
+    padding: 8px;
+    transition: 2s ease-in-out;
 }
 
+.containerStartButton button:hover{
+    border:white
+}
+
+.linkStartButton {
+    font-size: 2em !important;
+}
+
+@media screen and (max-width: 819px) {
+    .containerStartButton{
+        display: flex;
+        justify-content: flex-end;
+        width: 80%;
+    }
+    .linkStartButton{
+        margin-top: 10%;    
+        margin-right: 12%;
+      }
+}
+@media screen and (max-width: 915px) {
+    .containerStartButton{
+        display: flex;
+        justify-content: flex-end;
+        width: 80%;
+    }
+    .linkStartButton{
+        margin-top: 2%;    
+        margin-right: 1%;
+      }
+}
+@media screen and (max-width: 1300px) {
+    .containerStartButton{
+    padding: 0;
+    }
+    .linkStartButton{
+        margin-top: 3%;    
+        display:flex;
+        justify-content: center;
+
+      }
+}

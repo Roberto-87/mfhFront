@@ -1,95 +1,106 @@
 'use client'
-import { Box, Button, Modal, Typography } from "@mui/material"
-import { useState } from "react"
-import { GrNext, GrPrevious } from "react-icons/gr"
-import Swiper from "swiper"
-import { SwiperSlide } from "swiper/react"
-import Grid from '@mui/material/Grid';
+import React, { useEffect } from 'react';
+import styles from '../CardWorks/CardWorks.module.css';
+import stylesCarrousel from './ModalCarrousel.module.css'
+import Box from '@mui/material/Box';
+import style from './ModalCarrousel.module.css'
 import 'swiper/css';
 import 'swiper/css/navigation'
+import {  useState } from 'react';
+import { Button, Modal  } from '@mui/material';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { useEffect } from 'react';
-import  Loader  from "../Loader/Loader";
-import {comfortaa} from '../../fonts/fonts'
-import arrowNext from '../../assets/nextButton.png'
+import {styleCarrouselExhibitions} from '../CardWorks/styleMui'
 import {
   TransformWrapper,
   TransformComponent,
-  useControls
 } from "react-zoom-pan-pinch";
-import React, { useCallback, useRef } from "react";
-import QuickPinchZoom, { make3dTransformValue } from "react-quick-pinch-zoom";
-import { MapInteractionCSS } from "react-map-interaction";
+import { GrNext, GrPrevious } from 'react-icons/gr';
 
-
-const ModalCarrousel=({work})=>{
-    const [open, setOpen] = useState(false);
-    let [imageActive, setImageActive] = useState();
-    let[imageActiveIndex, setImageActiveIndex]= useState(1)
-
-
-    const handleClose=()=>{
-      setOpen(false)
-    }
-
-    const onPrevious=()=>{    
-        let indexImageActive= works.findIndex((url)=> url.image===imageActive)
-        setImageActive('')
-        
-        if(indexImageActive-1 < 0){
-         setImageActiveIndex(works.length-1)
-         setImageActive(works.at(-1).image)
-        }else{
-         setImageActiveIndex((indexImageActive-1))
-         setImageActive(works[indexImageActive-1].image)
+const ModalCarrousel = ({ allImages, activeImage, open,onClose}) => {
+  let[imageActiveIndex, setImageActiveIndex]= useState(0)
+  const[imageActive, setImageActive]=useState(activeImage)
+  
+  const onPrevious=(event)=>{   
+    event.stopPropagation(); 
+    let indexImageActive= allImages.findIndex((url)=> url===imageActive)
+    setImageActive('')
+    
+    if(indexImageActive-1 < 0){
+     setImageActiveIndex(allImages.length-1)
+     setImageActive(allImages.at(-1))
+ 
+    }else{
+      setImageActiveIndex((indexImageActive-1))
+      setImageActive(allImages[indexImageActive-1])
        }
+  }
+  const onNext=(event)=>{
+    event.stopPropagation();
+    setImageActiveIndex((imageActiveIndex + 1) % allImages.length);
+    setImageActive(allImages[(imageActiveIndex + 1) % allImages.length]);
+  
+  }
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowLeft') {
+        onPrevious(event);
+      } else if (event.key === 'ArrowRight') {
+        onNext(event);
       }
+    };
 
-        const onNext=()=>{
-        setImageActiveIndex((imageActiveIndex + 1) % works.length);
-        setImageActive(works[(imageActiveIndex + 1) % works.length].image);
-       
-     }
+    document.addEventListener('keydown', handleKeyDown);
 
-    return(
-      <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
-      <Box sx={styleCarrouselWorks}   >
-     {open && <Button  onClick={handleClose} style={{color:'gray', backgroundColor:'black',  padding:'10%',position:'absolute', right:'100%', top:'0%', fontSize:'1em' }}></Button>}
-    <div style={{display:'flex', flexDirection:'row-reverse',  position:'relative', top:'50%',width:'100%',display:'flex', justifyContent:'center'}} >
-       <Swiper navigation={true} modules={[Navigation]} className="mySwiper" style={{width:'100%', height:'100%', }}>
-          <SwiperSlide  className={styles.swiper} style={{ display:'flex', justifyContent:'center',height:'80vh', width:'100vw', alignItems:'center', padding:'4px'}}>
-            <button className={styles.buttonBefore}  style={{cursor:'pointer', bottom:'0%', backgroundColor:'transparent', position:'relative',right:'0%',border:'none'}} onClick={onPrevious}>
-              <GrPrevious/>
-              </button>  
-              <div className={styles.containerImg} style={{display:'flex', alignItems:'center', justifyContent:'center',width:'30%' }}>
-<TransformWrapper options={{ limitToBounds: false }}>
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [imageActiveIndex]);
+
+  return (
+    <Modal open={open} onClose={onClose} onClick={onClose}  aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+    <Box sx={styleCarrouselExhibitions}    >
+    <div  style={{display:'flex', flexDirection:'row-reverse',  position:'relative', top:'50%',width:'100%',display:'flex', justifyContent:'center'}} >
+     <Swiper navigation={true} modules={[Navigation]} className="mySwiper" style={{width:'100%', height:'100%', }}>
+        <SwiperSlide  className={styles.swiper} style={{ display:'flex', justifyContent:'center',height:'95vh', width:'100vw', alignItems:'center', padding:'4px'}}>
+            <div className={styles.containerImgModal} style={{display:'flex', alignItems:'center', justifyContent:'center',width:'32%' }}>
+              <button className={styles.buttonBefore}  style={{cursor:'pointer', bottom:'0%', backgroundColor:'transparent', position:'relative',right:'0%',border:'none',height:'100%'}} onClick={onPrevious}>
+            <GrPrevious/>
+            </button>  
+<TransformWrapper  options={{ limitToBounds: false }}>
 {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
-  <React.Fragment>
-    <TransformComponent>
-      <img
-        src={imageActive}
-        cursor='grab'
-        style={{ width: '100%', cursor: 'grab', touchAction: 'none' }}
-        alt={work.title}
-      />
-    </TransformComponent>
-  </React.Fragment>
+<React.Fragment >
+  <TransformComponent >
+<div  >
+     <img 
+      style={{
+        maxWidth:'100%',
+        maxHeight:'auto',
+        width: '850px', 
+        cursor: 'grab',
+        touchAction: 'none',
+      }}
+      className={stylesCarrousel.imgCarrousel}
+      src={imageActive}
+      cursor='grab'
+   
+      alt='imagen de exhibición'
+    />  
+ </div>   
+  
+  </TransformComponent>
+</React.Fragment>
 )}
 </TransformWrapper> 
-        </div>
-           <button className={styles.buttonAfter} onClick={onNext} style={{cursor:'pointer', bottom:'0%' , backgroundColor:'transparent', position:'relative',right:'0%', border:'none' }}>
-           <GrNext/>
-              </button> 
-                </SwiperSlide>
-         </Swiper>
-   </div>
-     { imageActive &&  
-      <div id="modal-modal-description" style={{ marginTop:'6px', color:'gray',display:'flex', justifyContent:'center', alignItems:'center',height:'100%', width:'100%'}} className={comfortaa.className}>
-         { works && `${activeImageData.title }, ${activeImageData.year}. ${activeImageData.material} ${activeImageData.size}.`} 
-      </div>}
-        </Box>
-    </Modal> 
-    )
+<button className={styles.buttonAfter} onClick={onNext} style={{cursor:'pointer', bottom:'0%' , backgroundColor:'transparent', position:'relative',right:'0%', border:'none',height:'100%' }}>
+         <GrNext/>
+            </button> 
+      </div>
+              </SwiperSlide>
+       </Swiper>
+ </div>
+      </Box>
+  </Modal>                 
+  )  
 }
-
-export default ModalCarrousel
+export default ModalCarrousel;

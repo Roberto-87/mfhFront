@@ -1,4 +1,4 @@
-
+'use client'
 import Link from "next/link";
 import styles from './AdminNavigation.module.css'
 import { FaImage } from 'react-icons/fa';
@@ -9,14 +9,15 @@ import {RiNewspaperLine} from 'react-icons/ri'
 import { signOut, useSession } from "next-auth/react";
 import {BiLogOut} from 'react-icons/bi';
 import {RiSuitcaseFill} from 'react-icons/ri'
-
+import { useState, useEffect } from "react";
+import { redirect } from "next/navigation";
 
 const links = [
-  {
+/*   {
     label: "HOME ",
     route: "/admin",
     icon: <AiFillHome/>
-  },
+  }, */
     {
       label: "WORKS",
       route: "/admin/works",
@@ -58,16 +59,15 @@ const links = [
   ];
 
 const AdminNavigation=()=>{
-/*    const session= useSession({
-    required:true,
-
-  })  */
+  const [user, setUser]=useState()
   const {status}= useSession()
   
   if(status==='authenticated'){
     return (
       
       <header className={styles.navbarAdminContainer}>
+          {/*   <div style={{marginTop:'2px', display:'flex', justifyContent:'center', padding:'4px', borderRadius:'1%',backgroundColor:'#7070708c' }}> {user}</div> */}
+     
             <div>
                  <nav className={styles.brandContainer}>
                    <ul className={styles.itemsNavBarContainer}>
@@ -86,12 +86,15 @@ const AdminNavigation=()=>{
                       </li>
                       
                       ))}
-                        <div className={styles.containerNavBarAdmin} style={{marginTop:'20%'}}>
+                             <div className={styles.containerNavBarAdmin} style={{marginTop:'20%'}}>
+                                 
                                             <li  style={{cursor:'pointer'}} onClick={()=> signOut()}>LOGOUT </li>
                           <div  className={styles.containerLinksAdmin}>
                           <BiLogOut fontSize={'1.5rem'} onClick={()=> signOut()} style={{cursor:'pointer'}}/>
+                      
                           </div>
                           </div>
+                
 
                               </ul> 
                   </nav>

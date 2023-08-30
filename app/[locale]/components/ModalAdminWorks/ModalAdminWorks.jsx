@@ -7,7 +7,7 @@ import { BASE_URL } from "../../../utils/consts";
 import validation from "../FormUploadWork/validation";
 
 
-const ModalAdminWOrks=({activeWorks, inactiveWorks,activeImage})=>{
+const ModalAdminWOrks=({activeWorks, inactiveWorks,activeImage,handleClose, handleOpen})=>{
     const [open, setOpen] = useState(false);
     const [editWork, setEditWork] = useState(false);
     const [activeImageData, setActiveImageData]=useState({})
@@ -18,6 +18,7 @@ const ModalAdminWOrks=({activeWorks, inactiveWorks,activeImage})=>{
       
         if(activeWorks){
             const activeWork= activeWorks?.find((work)=> work.image===activeImage)
+            console.log(activeImage)
             setActiveImageData({type:activeWork.section,id:activeWork.id, format:activeWork.format,image:activeWork.image, material:activeWork.material, number: activeWork.number, size: activeWork.size, status:activeWork.status , title: activeWork.title, year:activeWork.year })
         }else if(inactiveWorks) {
             const inActiveWork= inactiveWorks?.find((work)=> work.image===activeImage)
@@ -33,16 +34,6 @@ const ModalAdminWOrks=({activeWorks, inactiveWorks,activeImage})=>{
       };  
       validate();
     }, [activeImageData.number]);
-  
-
-    
-    const handleOpen = () => {
-        setOpen(true);
-      };
-    
-      const handleClose = () => {
-        setOpen(false);
-      };
 
     const onHandleEdit=()=>{
         setEditWork(true)

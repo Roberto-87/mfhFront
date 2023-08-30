@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import getData from '../hooks/getData'
 import { Box } from "@mui/material";
 import Grid from '@mui/material/Grid';
-import Loader from "../components/Loader/Loader";
+import LoaderAnimation from "../components/LoaderAnimation/LoaderAnimation";
 import Image from 'next/image';
 import { Item } from './itemStyle';
 import { BIO } from '../../utils/consts';
@@ -29,7 +29,7 @@ const Bio = () => {
 
     return (< main>    
       <Box sx={{ flexGrow: 1, marginTop:'2%' }}>
-      {loading && <Loader/>}
+      {loading && <LoaderAnimation/>}
           <Item>
         <Grid container spacing={2}>
       <Grid item xs={12} md={4}>

@@ -1,0 +1,46 @@
+    @media (min-width: 279px) {
+        .imgCarrousel{
+            width: 210px !important;
+        }
+        }
+        @media (min-width: 360px) {
+            .imgCarrousel{
+                width: 310px !important;
+            }
+            }    
+        @media (min-width: 374px) {
+            .imgCarrousel{
+                width: 320px !important;
+            }
+            }    
+            @media (min-width: 390px) {
+                .imgCarrousel{
+                    width: 350px !important;
+                }
+                }   
+                @media (min-width: 540px) {
+                    .imgCarrousel{
+                        width: 480px !important;
+                    }
+                    }     
+                @media (min-width: 768px) {
+                    .imgCarrousel{
+                        width: 720px !important;
+                    }
+                    }    
+                    @media (min-width:912px) {
+                        .imgCarrousel{
+                            width: 820px !important;
+                        }
+                        }   
+                        @media (min-width:1024px) {
+                            .imgCarrousel{
+                                width: 950px !important;
+                            }
+                            }  
+                            @media (min-width:1280px) {
+                                .imgCarrousel{
+                                   width: 1100px !important; 
+                          
+                                }
+                                }  

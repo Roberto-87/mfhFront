@@ -26,10 +26,21 @@ export const Item = styled(Paper)(({ theme }) => ({
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: '100vw',
+    width: '110vw',
     boxShadow: 24,
     backgroundColor: 'white',
     padding:'1%',
+   
+  }; 
 
-    
+  export const styleCarrouselExhibitions = {
+    position: 'fixed', // Mantener el modal fijo
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '380vw',
+    boxShadow: 24,
+    backgroundColor: 'white',
+    padding:'1%',
+   
   }; 

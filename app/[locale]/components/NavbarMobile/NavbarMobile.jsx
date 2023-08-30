@@ -4,6 +4,7 @@ import { Toolbar, Typography, IconButton, Drawer, List, ListItem, Button } from 
 import MenuIcon from '@mui/icons-material/Menu';
 import Brand from '../Brand/Brand';
 import Link from 'next/link';
+import DropdownNavbar from "../DropdownNavbar/DropdownNavbar";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -24,32 +25,29 @@ const Navbar = () => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontSize:'0.7em'}}>         
           <Brand/>
         </Typography>
       </Toolbar>
       <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer}>
         <List sx={{ width: 250 }} onClick={toggleDrawer}>
           <ListItem button>
-            <Link href={'/works'}>Works</Link>
+            <Link href={'/works'}>WORKS</Link>
           </ListItem>
           <ListItem button>
-          <Link href={'/exhibitions'}>Exhibitions</Link>
+          <Link href={'/exhibitions'}>EXHIBITIONS</Link>
           </ListItem>
           <ListItem button>
-          <Link href={'/text'}>Papers</Link>
+          <Link href={'/text'}>PAPERS</Link>
           </ListItem>
+{/*           <ListItem button>
+          <Link href={'/bio'}>BIO</Link>
+          </ListItem> */}
           <ListItem button>
-          <Link href={'/bio'}>Bio</Link>
-          </ListItem>
-          <ListItem button>
-          <Link href={'/contact'}>Contact</Link>
-          </ListItem>
-          <ListItem button>
-          <Button >Portfolio EN</Button>
-          <Button>Portfolio ES</Button>
+          <Link href={'/contact'}>CONTACT</Link>
           </ListItem>
         </List>
+        <DropdownNavbar style={{backgroundColor:'transparent',color:'black'}}></DropdownNavbar>
       </Drawer>
 </>
 

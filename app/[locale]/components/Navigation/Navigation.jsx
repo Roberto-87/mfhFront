@@ -7,6 +7,7 @@ import  NavBarMobile from "../NavbarMobile/NavbarMobile";
 import { usePathname, useRouter  } from 'next/navigation'
 import ButtonsPortfolio from "../ButtonsPortfolio/ButtonsPortfolio";
 import {comfortaa} from'../../fonts/fonts'
+import DropdownNavbar from "../DropdownNavbar/DropdownNavbar";
 
 const links = [
     {
@@ -22,15 +23,14 @@ const links = [
       label: "TEXTOS",
       route: "/text",
     },
-    {
+/*     {
       label: "BIOGRAFIA",
       route: "/bio",
-    },
+    }, */
      {  
     label: "CONTACTO",
     route: "/contact",
   },
-    
 
   ];
 
@@ -38,7 +38,7 @@ const links = [
 const Navigation=()=>{
   const currentPathName= usePathname()
   const router= useRouter()
-  const withoutNavbar= ['/admin','/','/admin/exhibitions','/admin/portfolio','/admin/text','/admin/biography','/admin/cover','/admin/contact','/admin/works','/admin/bio','/admin/signin']
+  const withoutNavbar= ['/admin','/','/admin/exhibitions','/admin/portfolio','/admin/text','/admin/biography','/admin/cover','/admin/contact','/admin/works','/admin/bio','/admin/signin','/admin/forgot-password']
   const [mobile, setMobile]= useState(false)
 
   const checkMobileMode = () => {
@@ -56,21 +56,20 @@ const Navigation=()=>{
       !withoutNavbar.includes(currentPathName) ?
       <header className={styles.navbarContainer}>
             {mobile? <NavBarMobile/>:
-          <nav className={styles.brandContainer}>
-                  <Brand/>
-                  <ul className={styles.itemsNavBarContainer}>
+           
+           <nav className={styles.brandContainer}>
+              <Brand/>                 
                       {links.map(({ label, route }) => (
                                  <li className={styles.navbarItem} key={route}>
                           {route === currentPathName? <Link className={comfortaa.className} href={route}><strong>{label}</strong></Link>:
                           <Link href={route}>{label}</Link>
                           }
-                       
+
                       </li>
                       ))}
-                    <ButtonsPortfolio/>
-                          
-                  </ul> 
-          </nav>
+                      <li className={styles.navbarItem}><DropdownNavbar/></li>
+               
+         </nav>
                   }
       </header>
           :

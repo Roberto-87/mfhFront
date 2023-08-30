@@ -3,17 +3,20 @@ import { useState } from "react";
 import { styleModalExhibition } from "../../admin/[works]/styleMui";
 import { useEffect } from "react";
 import axios from "axios";
-import { BASE_URL } from "../../../utils/consts";
+import { BASE_URL, EXHIBITIONS } from "../../../utils/consts";
 import validation from "../FormUploadExhibition/validation";
 import { searchExhibitionFromImage } from "./searchExhibitionFromImage";
 import {MdOutlineRefresh} from 'react-icons/md'
 import {AiOutlinePlus} from 'react-icons/ai'
 import notFoundImage from '../../assets/no-image-available-icon-vector-id1216251206-568614111.jpg'
 import { uploadNewImage } from "./uploadNewImage";
-import Loader from "../Loader/Loader";
+import LoaderAnimation from "../LoaderAnimation/LoaderAnimation";
 import swal from "sweetalert";
+import getData from "../../hooks/getData";
 
-const ModalAdminExhibitions=({activeWorks, inactiveWorks,activeImage})=>{
+
+
+const ModalAdminExhibitions=({activeWorks, inactiveWorks,activeImage, handleClose, handleOpen})=>{
     const [open, setOpen] = useState(false);
     const [editWork, setEditWork] = useState(false);
     const [activeImageData, setActiveImageData]=useState({})
@@ -28,16 +31,17 @@ const ModalAdminExhibitions=({activeWorks, inactiveWorks,activeImage})=>{
     const[upload, setUpload]= useState(false)
     const[idToUpload, setIdToUpload]=useState()
 
+
   useEffect(() => {
     const validate = async () => {
       const validationError = await validation({number:activeImageData.number});
       setError(validationError);
-    };  
+    };    
     validate();
-  }, [activeImageData.number]);
+  }, []);
 
     useEffect(()=>{
-         if(activeWorks){
+        if(activeWorks){
           const activeExhibition= searchExhibitionFromImage(activeWorks,activeImage)
           setActiveImageData(activeExhibition)
 
@@ -46,7 +50,7 @@ const ModalAdminExhibitions=({activeWorks, inactiveWorks,activeImage})=>{
          setInActiveImageData(inactiveExhibition)
         }
        setOpen(!open);
-       
+       setRefresh(false)
     },[activeImage,refresh])
 
     
@@ -81,26 +85,20 @@ const ModalAdminExhibitions=({activeWorks, inactiveWorks,activeImage})=>{
         }; 
          setUpdatedImages(updatedExhibition); 
          setUpdated(true)
+
          const response= await axios.put(`${BASE_URL}exhibitions/edit`,updatedImages )     
          if(!response) throw new Error('error al subir los datos')  
-          console.log('response from the client:', response);
-        }
-       catch (error) {
+         console.log('response from the client:', response);
+      }
+      catch (error) {
         console.error('Upload error:', error);    
-    };  
+       };  
  
     }
     const onHandleRefresh=()=>{
       setRefresh(true)
     }
-    
-    const handleOpen = () => {
-      setOpen(true);
-    };
-  
-    const handleClose = () => {
-      setOpen(false);
-    };
+
 
   const onHandleEdit=()=>{
       setEditWork(true)
@@ -109,13 +107,18 @@ const ModalAdminExhibitions=({activeWorks, inactiveWorks,activeImage})=>{
   const onHandlenewFiles=(event)=>{
     const files=event.target.files
     setUploadFiles(files)
+
   }
   const onHandleNewImage=async(id)=>{
+    setUpload(true)
     setIdToUpload(id)
     const uploadToCloud= await uploadNewImage(uploadFiles)
+   
+    if(uploadToCloud){
+      setUpload(false)
+      swal('Imagen subida exitosamente al cloud')
+    }
     setUrlCloudNewImages(uploadToCloud)
-    setUpload(true)
-    
   }
   
   
@@ -130,21 +133,21 @@ const ModalAdminExhibitions=({activeWorks, inactiveWorks,activeImage})=>{
       console.log(newData)
       const response= await axios.put(`${BASE_URL}exhibitions/edit`,newData['0'] ) 
       if(!response) throw new Error('error al subir los datos')
-      console.log('response from the client:', response);
-      swal('Cambios guardados exitosamente')
+      if(response){
+        swal('Cambios guardados exitosamente')
+        setUploadFiles('')
+        setNewImage(false)
+      }
+      
     } catch (error) {
       console.error('Upload error:', error);
     }
-
-
   }
 
-  if(upload){
-    swal('Imagen subida exitosamente al cloud')
-  } 
-    useEffect(()=>{
-       console.log(updatedImages)//data para put en la db
-    },[updatedImages])
+  useEffect(()=>{
+
+ 
+    },[updatedImages,activeImageData,refresh])
 
     const onHandleSave=async(event)=>{
        try {
@@ -174,28 +177,21 @@ const ModalAdminExhibitions=({activeWorks, inactiveWorks,activeImage})=>{
                 >
     <Box sx={styleModalExhibition}>
    <AiOutlinePlus fontSize="1.5rem" onClick={()=>setNewImage(true)} ></AiOutlinePlus>
-{newImage &&  <div>
-  <input id="file-upload" onChange={onHandlenewFiles}  multiple name="file-upload" type="file" className="sr-only"/> 
-  <button onClick={()=>onHandleNewImage(activeImageData.id)}> upload to cloud</button>
-  <button onClick={()=>onHandleConfirm(activeImageData.id)}> Save</button>{/* hace el put */}
-</div>
-} 
-{newImage && upload  && 
-<div style={{backgroundColor:'white'}}>
-<Loader></Loader>
-<p>subiendo...</p>
-</div>
-                 
-}
-    
+   
     <div>
     <Button onClick={handleClose} style={{color:'gray', position:'absolute', right:'100%', top:'0%', fontSize:'1em'}}>CERRAR</Button>
      <Grid style={{display:"flex"}}>
 
-{activeImageData.status=== true ? activeImageData?.images.map((e,index)=><Card style={{marginTop:'1%',width:'40%',display:'flex', justifyContent:'center'}} key={e.index} >
-      <Switch  defaultChecked onChange={()=>onHandleImage(activeImageData.images[index])}/>
-  <img src={e || notFoundImage}  alt="imagen exhibicion" style={{marginTop:'1%'}} width={60} height={60}/>
-  </Card> )
+{activeImageData.status  ? activeImageData?.images.map((e,index)=>
+
+<Grid style={{ marginTop: '1%', width: '40%', display: 'grid', margin: '2px', flexWrap: 'wrap',  gridTemplateColumns: 'repeat(auto-fill, 65px)', justifyContent: 'center',
+    gap: '5px',
+  }} key={e.index} >
+    <Switch  defaultChecked onChange={()=>onHandleImage(activeImageData.images[index])}/>
+  <img src={e || notFoundImage}  alt="imagen exhibicion" style={{marginTop:'1%'}} width={65} height={65}/>
+  </Grid> 
+
+  )
 :
 
 inActiveImageData.status===false && inActiveImageData?.images.map((e,index)=><img key={e.index} src={e || notFoundImage} alt="imagen exhibicion" style={{marginTop:'1%'}} width={150} height={200}/>)
@@ -225,7 +221,27 @@ inActiveImageData.status===false && inActiveImageData?.images.map((e,index)=><im
        <strong>Status:</strong> {activeImageData.status && 'true'} 
        <br />
        </div>
+
 }
+<div>
+
+{newImage &&  
+<div>
+      <input id="file-upload" onChange={onHandlenewFiles}  multiple name="file-upload" type="file" className="sr-only"/> 
+      <button onClick={()=>onHandleNewImage(activeImageData.id)}> upload to cloud</button>
+      <button onClick={()=>onHandleConfirm(activeImageData.id)}> Save</button>{/* hace el put */}
+</div>
+} 
+{
+upload===true  && 
+<div style={{backgroundColor:'white', color:'black', position:'fixed', bottom:'25%',alignItems:'center', width:'35%', height:'40%', paddingBottom:'1%',borderRadius:'0.5%'}}>
+<LoaderAnimation></LoaderAnimation>
+<p style={{marginLeft:'45%'}}>Subiendo...</p>
+</div>                 
+}
+
+
+</div>
 {activeImageData &&  activeImageData.status===true && editWork===true &&    <form>
        <strong>Exhibition Name:</strong><input type="text" name='exhibitionName' onChange={onHandleEditWork} value={activeImageData.exhibitionName}/> 
        <br />

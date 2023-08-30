@@ -2,7 +2,7 @@
 import { useSession } from "next-auth/react";
 import {useRouter} from "next/navigation";
 import { useEffect } from "react";
-import Loader from "../../components/Loader/Loader";
+import LoaderAnimation from "../../components/LoaderAnimation/LoaderAnimation";
 import { Box, Grid } from "@mui/material";
 import AdminActiveWorks from "../../components/AdminActiveWorks/AdminActiveWorks";
 import { Item } from "../[works]/styleMui";
@@ -17,7 +17,7 @@ const Text = () => {
      } 
  
    if (status === 'loading') {
-   return <Loader></Loader>;
+   return <LoaderAnimation></LoaderAnimation>;
  }
 
     return (

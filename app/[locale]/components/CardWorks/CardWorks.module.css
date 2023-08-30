@@ -10,6 +10,7 @@
 .cardItem {
     text-align: center;
     color:black;
+    font-size: 0.8em;
     
   }
 
@@ -35,8 +36,18 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
-  cursor: pointer;
-  
+  cursor: pointer;  
+}
+.controls{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+}
+
+.imgModal:hover{
+  overflow: visible;
+  width: 1000px;
 }
 
 .textImage{
@@ -73,4 +84,83 @@
       padding: 10px;
     }
   }
+  @media screen and (min-width: 280px) {
+    .containerImgModal  {
+      width: 80% !important;
+    }
+    .buttonBefore, .buttonAfter{
+     height: 25% !important;
+    }
+    .modalDescription{
+      margin-left: 20px;
+      margin-bottom:5% !important;
+    }
+  }
+
+  @media screen and (min-width: 360px) {
+    .containerImgModal  {
+      width: 80% !important;
+    }
+    .buttonBefore, .buttonAfter{
+      height: 50% !important;
+    }
+    .modalDescription{
+      margin-left: -20px;
+
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .containerImgModal  {
+      width: 85% !important;
+    }
+    .buttonBefore, .buttonAfter{
+      height: 70% !important;
+    }
+    .modalDescription{
+      margin-bottom:4% !important;
+
+    }
+  }
+
+  @media screen and (min-width: 840px) {
+    .containerImgModal  {
+      width: 70% !important;
+    }
+    .buttonBefore, .buttonAfter{
+      height: 70% !important;
+    }
+    .modalDescription{
+       display: flex  !important;
+       justify-content: flex-start !important;
+       margin-left: 14%;
+    }
+  }
+  
+  @media screen and (min-width: 1000px) {
+    .containerImgModal  {
+      width: 35% !important;
+    }
+    .buttonBefore, .buttonAfter{
+      height: 70% !important;
+    }
+    .modalDescription{
+      display: flex  !important;
+      justify-content: center !important ;
+      margin-left: -45px;   
+      width: 100%;
+      margin:none
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    .containerImgModal  {
+      display: flex ;
+      align-items: center;
+      justify-content: center;
+      width:29% !important;
+    }
+     .modalDescription{
+      margin-left: none;
+    }
+  }
+
 

@@ -2,7 +2,7 @@
 import React, { useRef, useState,useEffect } from 'react';
 import axios from 'axios';
 import FormWorksUpload2 from './formWorksUpload2'
-import Loader from '../Loader/Loader';
+import LoaderAnimation from '../LoaderAnimation/LoaderAnimation';
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import handleUploadToCloud from './upToCloud';
 import { Path } from 'react-router-dom';
@@ -10,7 +10,7 @@ import FormUploadPortfolio from '../FormUploadPortfolio/FormUploadPortfolio';
 import FormUploadText from '../FormUploadText/FormUploadText';
 import FormUploadCover from '../FormUploadCover/FormUploadCover';
 import swal from 'sweetalert';
-
+import FormUploadContact from '../FormUploadContact/FormUploadContact';
 
 const ImageUploader = ({folder = 'Obras', title='obra'}) => {
    const [selectedFiles, setSelectedFiles] = useState([]);
@@ -79,7 +79,8 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
   return (
 
    <div>
-     <div className="col-span-full">
+    {pathname !== 'contact'&& 
+        <div className="col-span-full">
               <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">
               <h2>Subir nueva {title}</h2> 
               </label>
@@ -96,11 +97,10 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
                     </label>              <button onClick={handleClean}>Clear</button>
                     <p className="pl-1">or drag and drop</p>
                     {
-                  pathname==='portfolio' ?   <p className="text-xs leading-5 text-gray-600">PDF up to 10MB</p>
-                    :
+                      pathname==='portfolio' ?   <p className="text-xs leading-5 text-gray-600">PDF up to 10MB</p>
+                      :
                   <p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
                     }
-
                   </div>
             {  selectedFiles.length> 0 &&    <button  onClick={handleUpload}>
                   Upload to cloud
@@ -109,6 +109,7 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
               </div>
 
             </div>
+            }
             <section>
    
     {urlImage  && selectedFiles.length>0 && pathname === 'portfolio' &&
@@ -118,12 +119,20 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
      </div>
     }       
  </section>  
+ <section>
+   
+   { pathname === 'contact' &&
+     <div>
+      <FormUploadContact/>
+    </div>
+   }       
+</section>  
   
     {
      handleUploadCClicked===true && !urlImage   &&  
       <div>
      <div style={{display:'flex',justifyContent:'center', marginRight:'30%'}}>
-      <Loader/>
+      <LoaderAnimation/>
       </div>  
       <p>subiendo Imagen...</p>
       </div>

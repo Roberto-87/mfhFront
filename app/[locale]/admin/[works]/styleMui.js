@@ -30,7 +30,7 @@ export const style = {
     left: '55%',
     transform: 'translate(-50%, -50%)',
     height:500,
-    width: 900,
+    width: 1500,
     padding:'2%',
     bgcolor: 'black',
     boxShadow: 24,

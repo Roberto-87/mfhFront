@@ -7,7 +7,7 @@ import { BASE_URL, PORTFOLIO } from "../../../utils/consts";
 import validation from "../FormUploadWork/validation";
 
 
-const ModalAdminPortfolio=({activeWorks, inactiveWorks,activeImage})=>{
+const ModalAdminPortfolio=({activeWorks, inactiveWorks,activeImage,handleClose, handleOpen})=>{
     const [open, setOpen] = useState(false);
     const [editWork, setEditWork] = useState(false);
     const [activeImageData, setActiveImageData]=useState({})
@@ -26,15 +26,6 @@ const ModalAdminPortfolio=({activeWorks, inactiveWorks,activeImage})=>{
        setOpen(!open);
     },[activeImage])
 
-
-    
-    const handleOpen = () => {
-        setOpen(true);
-      };
-    
-      const handleClose = () => {
-        setOpen(false);
-      };
 
     const onHandleEdit=()=>{
         setEditWork(true)
@@ -83,7 +74,7 @@ const ModalAdminPortfolio=({activeWorks, inactiveWorks,activeImage})=>{
     <Box sx={style}>
     <div>
     <Button onClick={handleClose} style={{color:'gray', position:'absolute', right:'100%', top:'0%', fontSize:'1em'}}>CERRAR</Button>
-    <embed src={activeImage} alt="imagen obra" style={{marginTop:'6%'}} width={200} height={200}/>
+    <embed src={activeImage} alt="imagen obra" style={{marginTop:'3%'}} width={500} height={450}/>
     <div>
     {activeImageData.status===true && <Button onClick={onHandleEdit}>Edit</Button>}
 

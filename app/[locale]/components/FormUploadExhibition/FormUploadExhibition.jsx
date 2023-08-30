@@ -2,7 +2,7 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import FormWorksUpload2 from '../FormUploadWork/formWorksUpload2'
-import Loader from '../Loader/Loader';
+import LoaderAnimation from '../LoaderAnimation/LoaderAnimation';
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import FormUploadExhibitionToDb from '../FormUploadExhibitionToDb/FormUploadExhibitionToDb';
 
@@ -100,7 +100,7 @@ const FormUploadExhibition = ({title}) => {
      handleUploadCClicked===true &&urlImage&& urlImage.length !==selectedFiles.length   &&
       <div>
      <div style={{display:'flex',justifyContent:'center', marginRight:'30%'}}>
-      <Loader/>
+      <LoaderAnimation/>
       </div>  
       <p>subiendo Imagenes...</p>
       </div>

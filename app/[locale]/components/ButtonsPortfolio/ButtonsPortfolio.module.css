@@ -1,26 +1,40 @@
-.containerPortfolioEs, .containerPortfolioEn{
-
+/* .containerPortfolio{
     list-style: none;
-   cursor: pointer;
+    cursor: pointer;
     transition: 1s ease-in;
     display: inline-block;
-    position: relative;
-    color: black;   
-    margin-right: 5px;
-    padding-left: -4%;
+    background-color: transparent !important; 
+    border: none;
+    align-items: start;
+    text-decoration: none !important;
+    list-style: none;
+    margin-right: 15px;
+    font-family: 1em;
+    padding: 0;
+    margin-top: 14px;
     font-size: 1em;
-    margin-top: 8px;
-    width: 100%;
+    color: black !important;   
+}  */
+.containerPortfolio{
+    background-color:transparent;
+    padding:0;
+    border: none;
+    color: black;
+    list-style: none;
+    cursor: pointer;
+    transition: 1s ease-in;
+    display: inline-block;
+    align-items: start;
+    text-decoration: none !important;
+    list-style: none;
+    padding: 0;
+    font-size: 1em;
+    color: black !important;   
 
-     
 }
-
-
-.containerPortfolioEn:hover,.containerPortfolioEs:hover {
+.containerPortfolio:hover {
     text-decoration: underline;
-  
 }
-.containerPortfolioEs:active,
- .containerPortfolioEn:active{
+.containerPortfolio:active{
     font-weight: bold  
 }

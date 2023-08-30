@@ -1,0 +1,23 @@
+@media screen and (max-width:1000px) {
+    .textContainer {
+     display: flex !important;
+     justify-content: center !important;
+     flex-direction: column;
+font-size: 0.8em;
+margin-left:3%;
+
+    }
+    .type{
+        margin: none;
+        padding: none;
+    }
+  }
+
+  .textContainer {
+   margin-bottom: none ;
+   margin-top: 0;
+}
+
+.textContainerContainer{
+       margin-top: 20px;
+   }

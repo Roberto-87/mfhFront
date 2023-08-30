@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import axios from 'axios';
 import { useState } from 'react';
 import FormUploadBioImage from '../../components/FormUploadBioImage/FormUploadBioImage';
-import Loader from '../../components/Loader/Loader'
+import LoaderAnimation from '../../components/LoaderAnimation/LoaderAnimation'
 import { useSession } from "next-auth/react";
 import { useRouter } from 'next/navigation';
 import { BASE_URL } from '../../../utils/consts';
@@ -19,7 +19,7 @@ const Bio = () => {
    } 
 
  if (status === 'loading') {
- return <Loader></Loader>;
+ return <LoaderAnimation></LoaderAnimation>;
 }
   const handlerChange=(event)=>{
     if(event.target.value){

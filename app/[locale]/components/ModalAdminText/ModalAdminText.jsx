@@ -1,4 +1,4 @@
-import { Box, Button, Modal,Switch } from "@mui/material"
+import { Box, Button, Modal } from "@mui/material"
 import { useState } from "react";
 import { style } from "../../admin/[works]/styleMui";
 import { useEffect } from "react";
@@ -8,7 +8,7 @@ import validation from "../FormUploadWork/validation";
 import getData from "../../hooks/getData";
 
 
-const ModalAdminText=({activeWorks, inactiveWorks,activeImage})=>{
+const ModalAdminText=({activeWorks, inactiveWorks,activeImage,handleClose, handleOpen})=>{
     const [open, setOpen] = useState(false);
     const [editWork, setEditWork] = useState(false);
     const [activeImageData, setActiveImageData]=useState({})
@@ -38,16 +38,7 @@ const ModalAdminText=({activeWorks, inactiveWorks,activeImage})=>{
     }, [activeImageData.number]);
   
 
-    
-    const handleOpen = () => {
-        setOpen(true);
-      };
-    
-      const handleClose = () => {
-        setOpen(false);
-      };
-
-    const onHandleEdit=()=>{
+   const onHandleEdit=()=>{
         setEditWork(true)
     }
 
@@ -97,15 +88,16 @@ const ModalAdminText=({activeWorks, inactiveWorks,activeImage})=>{
     <div>
     <Button onClick={handleClose} style={{color:'gray', position:'absolute', right:'100%', top:'0%', fontSize:'1em'}}>CERRAR</Button>
    {
-       activeImageData.format !=='pdf'?
-       <div style={{width:'80%'}}>
-        <img src={activeImage} alt="imagen obra" style={{marginTop:'6%'}} width={400} height={200}/>
+    activeImageData.status==='true'&&   activeImageData.format !=='pdf'?
+       <div style={{width:'100%'}}>
+        <img src={activeImage} alt="imagen obra" style={{marginTop:'0.5%'}} width={400} height={300}/>
         </div>
         :
-        <div style={{width:'80%'}}>
-        <embed src={activeImage} alt="imagen obra" style={{marginTop:'6%'}} width={400} height={300}/>
-        </div>
+        <div style={{width:'100%',display:'flex', justifyContent:'flex-start'}}>
+        <embed src={activeImage} alt="imagen obra" style={{marginTop:'4%'}} width={650} height={350}/>        </div>
    }
+
+
     <div>
     {activeImageData.status===true && <Button onClick={onHandleEdit}>Edit</Button>}
 
@@ -113,7 +105,8 @@ const ModalAdminText=({activeWorks, inactiveWorks,activeImage})=>{
     </div>
     </div>
 
-{activeImageData.status===true && !editWork &&   <div>
+{activeImageData.status===true && !editWork &&  
+ <div>
     <strong>Id:</strong> {activeImageData.id}
        <br />
        <strong>Title:</strong> {activeImageData.title}
@@ -123,18 +116,15 @@ const ModalAdminText=({activeWorks, inactiveWorks,activeImage})=>{
        <strong>Date:</strong> {activeImageData.date}
        <br />
 
-    <div>
-    <strong>Exhibition:</strong> {activeImageData.exhibition}
-    </div>
-
-       <br />
+        <div>
+        <strong>Exhibition:</strong> {activeImageData.exhibition}
+        </div>
        <strong>Status:</strong> {activeImageData.status && 'true'} 
        <br />
        <strong>Type:</strong> {activeImageData.type}
        <br />
-       <strong>URL:</strong> {activeImageData.image}
-       <br />
-       </div>
+
+   </div>
 }
 {/* {id, author, date, exhibitionId,image,status,title, type} */}
 {activeImageData.status===true && editWork===true &&    <form>
@@ -171,11 +161,9 @@ const ModalAdminText=({activeWorks, inactiveWorks,activeImage})=>{
     </select>
     </div>
       }
-       <br />
        <strong>Status:</strong> {activeImageData.status && 'true'} 
        <br />
-       <strong>URL:</strong> {activeImageData.image}
-       <br />
+
        <div className="mt-6 flex items-center justify-end gap-x-6">
         <button type="button" onClick={onHandleCancel} className="text-sm font-semibold leading-6 text-gray-900"  >
           Cancel
@@ -191,7 +179,7 @@ const ModalAdminText=({activeWorks, inactiveWorks,activeImage})=>{
     </form>
     }
 
-{activeImageData.status===false && !editWork &&   <div>
+{inActiveImageData.status===false && !editWork &&   <div>
     <strong>Id:</strong> {inActiveImageData.id}
        <br />
        <strong>Title:</strong> {inActiveImageData.title}
@@ -210,44 +198,9 @@ const ModalAdminText=({activeWorks, inactiveWorks,activeImage})=>{
        <br />
        <strong>Type:</strong> {inActiveImageData.type}
        <br />
-       <strong>URL:</strong> {inActiveImageData.image}
-       <br />
        </div>
 }
-{inActiveImageData.status===false && editWork===true &&    <form>
-       <strong>Title:</strong><input type="text" name='title' onChange={onHandleEditWork} value={inActiveImageData.title}/> 
-       <br />
-       <strong>Id:</strong> {inActiveImageData.id}
-       <br />
-       <strong>Type:</strong> {inActiveImageData.type}
-       <br />
-       <strong>Material:</strong><input type="text" name='material' onChange={onHandleEditWork} value={inActiveImageData.material}/> 
-       <br />
-       <strong>Number:</strong> <input type="number" name='number' onChange={onHandleEditWork} value={inActiveImageData.number}/> 
 
-       <br />
-       <strong>Size:</strong> <input type="text" name='size' onChange={onHandleEditWork} value={inActiveImageData.size}/> 
-       <br />
-       <strong>Status:</strong> {inActiveImageData.status && 'true'} 
-       <br />
-       <strong>Year:</strong> <input type="text" name='year' onChange={onHandleEditWork} value={inActiveImageData.year}/> 
-       <br />
-       <strong>URL:</strong> {inActiveImageData.image}
-       <br />
-       <div className="mt-6 flex items-center justify-end gap-x-6">
-        <button type="button"  className="text-sm font-semibold leading-6 text-gray-900"  >
-          Cancel
-        </button>
-        <button
-          type="submit"
-          onClick={onHandleSave}
-          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          Save
-        </button>
-      </div>
-    </form>
-    }
     </div>
     </Box>
     </Modal> 

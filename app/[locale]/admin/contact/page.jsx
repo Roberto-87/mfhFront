@@ -1,11 +1,11 @@
 'use client'
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import Loader from "../../components/Loader/Loader";
+import LoaderAnimation from "../../components/LoaderAnimation/LoaderAnimation";
 import { Box, Grid } from "@mui/material";
 import { Item } from "../[works]/styleMui";
 import AdminActiveWorks from "../../components/AdminActiveWorks/AdminActiveWorks";
-
+import FormUploadWork from "../../components/FormUploadWork/FormUploadWork"
 
 const Contact = () => {
 const {status}= useSession()
@@ -16,22 +16,21 @@ if (status === 'unauthenticated') {
  } 
 
 if (status === 'loading') {
-return <Loader></Loader>;
+return <LoaderAnimation></LoaderAnimation>;
 }
 
 if(status==='authenticated'){
-  return(
-    <Box>
-    {status === 'authenticated' &&
-        <Grid>
-         <Item>
-         <AdminActiveWorks title={'Data contacto'} fetchingData={'contact'}/>
-       </Item>
+  return (
+<Box>
+  <Item>
+    <AdminActiveWorks title={'vías de contacto'} fetchingData={'contact'}/>
+  </Item>
+  <Item sx={{width:'100%'}}>
+  <FormUploadWork folder = {'Contact'} title='vía de contacto'/>
+  </Item>
+</Box>
+);
 
-        </Grid>
-       }  
-       </Box>
-)
   }
 
   };

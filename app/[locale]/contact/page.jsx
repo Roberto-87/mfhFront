@@ -1,31 +1,29 @@
 'use client'
 import { useState, useEffect } from 'react';
 import getData from '../hooks/getData'
-import { Box } from "@mui/material";
+import { Box, Card} from "@mui/material";
 import CardContact from '../components/CardContact/CardContact'
+import { CONTACT } from '../../utils/consts';
 
-
- const Bio = () => {
+const Contact = () => {
     const [contact, setContact] = useState();
   
     useEffect(() => {
       const fetchData = async () => {
-        const contactData = await getData('contact');
-        const typeOfContact= contactData.map((network)=> network.type)
-        const infoContact= contactData.map((network)=> network.contactValue)
-        setContact(infoContact)
-      };      
+        const contactData = await getData(`${CONTACT}/active`);
+        setContact(contactData.reverse())
+       };      
       fetchData();  
     }, []);
     return (< >
     <Box>
-     <CardContact contactData={contact}/>
+      <CardContact contact={contact}/>
     </Box>    
     </>
 
         )
 }
-export default Bio
+export default Contact
 
 
 

@@ -5,5 +5,7 @@ export const searchExhibitionFromImage=(work, image)=>{
         return({type:work[i].type, place:work[i].place, date:work[i].date ,id:work[i].id, images:work[i].images,  number: work[i].number, status:work[i].status , exhibitionName: work[i].exhibitionName })
         }
       }
+    }else {
+      return 'work not found'
     }
   }

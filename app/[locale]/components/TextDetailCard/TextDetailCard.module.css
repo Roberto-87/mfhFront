@@ -1,0 +1,18 @@
+@media screen and (max-width: 414px) {
+    .containerDocument {
+         height: 80%;
+        width: 173vw !important;
+        display: flex;
+        justify-content: flex-start;
+
+    }
+  }
+
+  @media screen and (max-width: 285px) {
+    .containerDocument {
+         height: 90%;
+        width: 155vw !important;
+        display: flex;
+        justify-content: flex-start;
+    }
+  }

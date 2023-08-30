@@ -2,6 +2,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Link from 'next/link';
 import {Item} from './itemStyle.js'
+import { comfortaa } from '../../fonts/fonts.js';
+import styles from './CardText.module.css'
 
 const CardText=({texts})=>{
      return(  
@@ -16,20 +18,22 @@ const CardText=({texts})=>{
         >        
       {texts &&
         texts.map((text, index) => (
-          <Grid item xs={2} sm={4} md={3} key={text.id}>
-            <Item>
-              <Link href={`/text/${text.id}`}>
-                <h2 style={{ color: 'black' }}>{text.title.toUpperCase()}</h2>
+          <div  className={styles.textContainerContainer}item xs={2} sm={4} md={3} key={text.id} style={{display:'flex', justifyContent:'flex-start', marginLeft:'2.6%', flexDirection:'column', width:'100%'}}>
+     <div className={styles.textContainer}>
+              <Link href={`/text/${text.id}`} style={{margin:'0'}}>
+                <h4  className={comfortaa.className} style={{ color: 'black' }}>{`${text.title.toUpperCase()} por ${text.author}.`}</h4>
               </Link>
-              <Link href={`/text/${text.id}`}>
-                <h2 style={{ color: 'grey' }}>{text.type.toUpperCase()}</h2>
-                   <h2 style={{ color: 'black' }}>{text.author.toUpperCase()}</h2>
-                   </Link>
-            </Item>
-          </Grid>
+  </div>
+          </div>
         ))}
       </Grid>
      </Box>
 )}
 
 export default CardText
+{/*               <Link href={`/text/${text.id}`}>
+              {text.type==='curatorial' ? 
+              <h2 className={`${comfortaa.className}${styles.type}`} style={{ color: 'grey' }}><i>TEXTO {text.type.toUpperCase()}</i></h2>
+              :
+              <h2 className={`${comfortaa.className}${styles.type}`} style={{ color: 'grey' }}><i></i>{text.type.toUpperCase()}</h2>
+            }     </Link> */}

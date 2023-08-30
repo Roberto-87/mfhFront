@@ -2,7 +2,7 @@
 import Box from "@mui/material/Box";
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import Loader from '../../components/Loader/Loader';
+import LoaderAnimation from '../../components/LoaderAnimation/LoaderAnimation';
 import {  Item } from "./styleMui";
 import AdminActiveWorks from "../../components/AdminActiveWorks/AdminActiveWorks";
 import FormUploadWork from "../../components/FormUploadWork/FormUploadWork";
@@ -16,7 +16,7 @@ const Works = () => {
       } 
       
       if (status === 'loading') {
-        return <Loader></Loader>;
+        return <LoaderAnimation></LoaderAnimation>;
       }
 if(status==='authenticated'){
   return (
