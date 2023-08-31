@@ -15,6 +15,7 @@ import {styleCarrouselWorks, Item} from './styleMui'
 import {comfortaa} from '../../fonts/fonts'
 import { TransformWrapper, TransformComponent} from "react-zoom-pan-pinch";
 import { GrNext, GrPrevious } from 'react-icons/gr';
+import ModalWorks from "../ModalWorks/ModalWorks";
 
 const CardWorks = ({works}) => {
   const[loading, setLoading]= useState(false)
@@ -27,8 +28,6 @@ const CardWorks = ({works}) => {
   const[images, setImages]= useState([])
   const[activeImageData, setActiveImageData]= useState()
   const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
-
-
 
   useEffect(()=>{
     console.log(works)
@@ -110,31 +109,30 @@ const CardWorks = ({works}) => {
     <Box sx={{ flexGrow: 1 }} className={comfortaa.className}>
       {loading && <LoaderAnimation/>}
       <Grid container spacing={{ xs: 2, md: 3, sm:3 }} columns={{ xs: 1, sm: 1, md: 9 }} direction="row" justifyContent="center" alignItems="center">
-
-        {works &&
+    {works &&
           works?.map((work) => (
             <Grid item xs={2} sm={1} md={3} lg={2} xl={3} key={work.id}>
               <Button onClick={handleOpen} >
-                <img className={styles.cardImage} src={work.image} onClick={handlerClick} alt={work.title} />
+                <img className={styles.cardImage} src={work.image} onPrevious={onPrevious} onNext={onNext} onClick={handlerClick} alt={work.title} />
               </Button>
             <div>
-         
-      {work.image &&
+    {work.image &&
      <Box sx={{ marginLeft: '8px' }}>
-     <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+     <div className={styles.containerData}>
      <h2 className={`${styles.cardItem} ${styles.title}`}>{work.title}, {work.year}</h2>
      </div>
-     <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+     <div  className={styles.containerMaterialSize}>
          <p className={`${styles.cardItem} ${styles.material}`}>{work.material} </p>
-         
      </div>
-     <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+     <div className={styles.containerMaterialSize}>
           <p className={`${styles.cardItem} ${styles.size}`}>{work.size}</p>
      </div>
     </Box>
      } 
-              
-       <Modal open={open} onClose={handleClose} onClick={handleClose}  aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+   
+{/*      {open && <ModalWorks works={works} activeImageData={activeImageData}/>} */}
+          
+        <Modal open={open} onClose={handleClose} onClick={handleClose}  aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
         <Box sx={styleCarrouselWorks}    >
         <div  style={{display:'flex', flexDirection:'row-reverse',  position:'relative', top:'50%',width:'100%',display:'flex', justifyContent:'center'}} >
          <Swiper navigation={true} modules={[Navigation]} className="mySwiper" style={{width:'100%', height:'100%', }}>
@@ -177,7 +175,8 @@ const CardWorks = ({works}) => {
            { works && `${activeImageData.title }, ${activeImageData.year}. ${activeImageData.material} ${activeImageData.size}.`} 
         </div>}
           </Box>
-      </Modal>       
+      </Modal>    
+   {/*   ---------------------     */} 
           </div>
  
   </Grid>

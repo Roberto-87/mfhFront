@@ -1,12 +1,10 @@
 'use client'
-import { Box, Button } from "@mui/material"
+import { Box } from "@mui/material"
 import getData from '../../hooks/getData'
 import {useState, useEffect} from 'react'
 import styles from './ButtonsPortfolio.module.css'
 import { PORTFOLIO } from "../../../utils/consts"
-import { Comfortaa } from "next/font/google"
 import { comfortaa } from "../../fonts/fonts"
-
 
 const ButtonsPortfolio=()=>{
     const[spanishPortfolio, setSpanishPortfolio]=useState()
@@ -35,6 +33,7 @@ const ButtonsPortfolio=()=>{
   return(
         <Box sx={{display:'flex'}} >
             <a class={comfortaa.className} className={styles.containerPortfolioEs} href={englishshPortfolio} target="_blank" download><i>PORTFOLIO EN</i></a> 
+
             <a class={comfortaa.className} className={styles.containerPortfolioEn} href={spanishPortfolio} target="_blank" download><i>PORTFOLIO ES</i></a>
         </Box>
    

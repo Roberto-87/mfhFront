@@ -6,6 +6,7 @@ import LoaderAnimation from '../../components/LoaderAnimation/LoaderAnimation';
 import {  Item } from "./styleMui";
 import AdminActiveWorks from "../../components/AdminActiveWorks/AdminActiveWorks";
 import FormUploadWork from "../../components/FormUploadWork/FormUploadWork";
+import { WORKS } from "../../../utils/consts";
 
 const Works = () => {  
     const router = useRouter();
@@ -14,26 +15,19 @@ const Works = () => {
     if (status === 'unauthenticated') {
          router.push('/works'); 
       } 
-      
-      if (status === 'loading') {
+    if (status === 'loading') {
         return <LoaderAnimation></LoaderAnimation>;
       }
-if(status==='authenticated'){
+    if(status==='authenticated'){
   return (
 <Box>
   <Item>
-    <AdminActiveWorks title={'Obras'} fetchingData={'works'}/>
+    <AdminActiveWorks title={'Obras'} fetchingData={WORKS}/>
   </Item>
   <Item sx={{width:'100%'}}>
   <FormUploadWork/>
   </Item>
 </Box>
-);
-
-  }
-
-
-  
-};
-
+);}
+}
 export default Works;

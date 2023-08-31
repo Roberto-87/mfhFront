@@ -6,6 +6,7 @@ import ModalAdminPortfolio from "../ModalAdminPortfolio/ModalAdminPortfolio"
 import ModalAdminText from "../ModalAdminText/ModalAdminText"
 import { useEffect } from "react"
 import notFound from '../../assets/no-image-available-icon-vector-id1216251206-568614111.jpg'
+import Image from "next/image"
  
 
 const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch })=>{
@@ -54,6 +55,13 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
                   <img alt={work.title} onClick={()=>handleOpen(work.images[0])}  style={{marginBottom:'1px'}} width={130} height={100} src={work.images[0] || notFound}/>
              </div>
                
+                }
+                {
+                  pathname==='bio' && 
+                  <div>
+                    <Image width={120} height={140} src={work.image}/> 
+                    <p>{work.text}</p>
+                  </div>
                 }
               {work.title &&  
               <div>

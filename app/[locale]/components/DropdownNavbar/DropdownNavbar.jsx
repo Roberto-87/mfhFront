@@ -7,12 +7,12 @@ import { comfortaa } from "../../fonts/fonts"
 import getData from '../../hooks/getData'
 import { PORTFOLIO } from '../../../utils/consts'
 import styles from '../ButtonsPortfolio/ButtonsPortfolio.module.css'
+import { Divider } from '@mui/material'
 
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
-
 export default function Example() {
     const[spanishPortfolio, setSpanishPortfolio]=useState()
     const[englishshPortfolio, setEnglishshPortfolio]=useState()
@@ -64,6 +64,7 @@ export default function Example() {
                 </a>
               )}
             </Menu.Item>
+            <Divider />
             <Menu.Item>
               {({ active }) => (
                 <a href={englishshPortfolio} target="_blank" download className={classNames(

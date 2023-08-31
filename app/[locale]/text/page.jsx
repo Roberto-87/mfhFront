@@ -3,10 +3,7 @@ import { useState, useEffect } from 'react';
 import getData from '../hooks/getData'
 import CardText from "../components/CardText/CardText";
 import {TEXT} from '../../utils/consts'
-
-const textOrdered=(texts)=>{
-  return texts.sort((a,b)=> b.date.split(' ')[1]- a.date.split(' ')[1])
-}
+import { textOrdered } from '../../utils/functions';
 
 const Works = () => {
     const [papers, setPapers] = useState([]);

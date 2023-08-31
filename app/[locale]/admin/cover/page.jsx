@@ -6,6 +6,7 @@ import { Box, Grid } from "@mui/material";
 import { Item } from "../[works]/styleMui";
 import AdminActiveWorks from "../../components/AdminActiveWorks/AdminActiveWorks";
 import FormUploadWork from '../../components/FormUploadWork/FormUploadWork'
+import { COVER } from "../../../utils/consts";
 
 const Cover = () => {
   const{status} = useSession()
@@ -22,7 +23,7 @@ const Cover = () => {
 return(
 <Box>
   <Item>
-    <AdminActiveWorks title={'Cover'} fetchingData={'cover'}/>
+    <AdminActiveWorks title={'Cover'} fetchingData={COVER}/>
   </Item>
   <Item sx={{width:'100%'}}>
   <FormUploadWork folder="cover" title='Cover'/>

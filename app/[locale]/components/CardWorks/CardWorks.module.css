@@ -12,9 +12,13 @@
     color:black;
     font-size: 0.8em;
     
-  }
+}
+.containerData, .containerMaterialSize{
+  display: flex;
+  justify-content: flex-start;
+}
 
-  .material {
+.material {
   margin-bottom: 0; /* Elimina el margen inferior del elemento del material */
 }
 .title {
@@ -121,10 +125,61 @@
 
     }
   }
+  @media screen and (min-width: 600px) {
+    .containerImgModal  {
+      width: 65% !important;
+    }
+    .buttonBefore, .buttonAfter{
+      height: 70% !important;
+    }
+    .modalDescription{
+      margin-bottom:4% !important;
+
+    }
+  }
+  @media screen and (min-width: 720px) {
+    .containerImgModal  {
+      width: 55% !important;
+    }
+    .buttonBefore, .buttonAfter{
+      height: 70% !important;
+    }
+    .modalDescription{
+      margin-bottom:4% !important;
+
+    }
+  }
 
   @media screen and (min-width: 840px) {
     .containerImgModal  {
-      width: 70% !important;
+      width: 65% !important;
+    }
+    .buttonBefore, .buttonAfter{
+      height: 70% !important;
+    }
+    .modalDescription{
+       display: flex  !important;
+       justify-content: flex-start !important;
+       margin-left: 14%;
+    }
+  }
+  
+  @media screen and (min-width: 880px) {
+    .containerImgModal  {
+      width: 55% !important;
+    }
+    .buttonBefore, .buttonAfter{
+      height: 70% !important;
+    }
+    .modalDescription{
+       display: flex  !important;
+       justify-content: flex-start !important;
+       margin-left: 14%;
+    }
+  }
+  @media screen and (min-width: 940px) {
+    .containerImgModal  {
+      width: 40% !important;
     }
     .buttonBefore, .buttonAfter{
       height: 70% !important;
@@ -151,6 +206,7 @@
       margin:none
     }
   }
+
   @media screen and (min-width: 1200px) {
     .containerImgModal  {
       display: flex ;

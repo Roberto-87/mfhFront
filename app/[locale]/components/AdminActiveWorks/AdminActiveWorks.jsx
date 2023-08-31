@@ -5,7 +5,6 @@ import getData from "../../hooks/getData";
 import {MdOutlineRefresh} from 'react-icons/md'
 import CardAdminActivity from "../CardAdminActivity/CardAdminActivity";
 import putData from "../../hooks/putData";
-import notFound from '../../assets/no-image-available-icon-vector-id1216251206-568614111.jpg'
 
 const AdminActiveWorks=({title, fetchingData})=>{
     const [inActiveWorks,setInActiveWorks]= useState([])
@@ -15,8 +14,7 @@ const AdminActiveWorks=({title, fetchingData})=>{
     useEffect(() => {
        const fetchData = async () => {
         let allWorksAdmin = await getData(fetchingData)
-
-        if(allWorksAdmin.length>0){
+              if(allWorksAdmin.length>0){
           const inactiveWorks= allWorksAdmin?.filter((work)=> work.status!==true).sort((a,b)=>b.number-a.number)
           setInActiveWorks(inactiveWorks);
         }

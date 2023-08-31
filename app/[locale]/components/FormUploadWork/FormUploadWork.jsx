@@ -3,14 +3,13 @@ import React, { useRef, useState,useEffect } from 'react';
 import axios from 'axios';
 import FormWorksUpload2 from './formWorksUpload2'
 import LoaderAnimation from '../LoaderAnimation/LoaderAnimation';
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
-import handleUploadToCloud from './upToCloud';
-import { Path } from 'react-router-dom';
+import { PhotoIcon } from '@heroicons/react/24/solid'
 import FormUploadPortfolio from '../FormUploadPortfolio/FormUploadPortfolio';
 import FormUploadText from '../FormUploadText/FormUploadText';
 import FormUploadCover from '../FormUploadCover/FormUploadCover';
 import swal from 'sweetalert';
 import FormUploadContact from '../FormUploadContact/FormUploadContact';
+import FormUploadBio from '../FormUploadBio/FormUploadBio';
 
 const ImageUploader = ({folder = 'Obras', title='obra'}) => {
    const [selectedFiles, setSelectedFiles] = useState([]);
@@ -26,12 +25,11 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
     setPathname(router)
     console.log(pathname)
   }, [pathname])
-  
 
   const handleFileSelect = (event) => {
     setSelectedFiles(event.target.files);
   }; 
-
+/* ------------------------------------------ */
    const handleUpload = async () => {   
      try {
     setHandleUploadClicked(true)
@@ -66,6 +64,7 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
           setHandleUploadClicked(false)
     }
   };  
+  /* ------------------------------------------ */
   const handleClean = () => {
     setClean(true)
     setUrlImage()
@@ -124,6 +123,14 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
    { pathname === 'contact' &&
      <div>
       <FormUploadContact/>
+    </div>
+   }       
+</section>  
+<section>
+   
+   { pathname === 'bio' &&
+     <div>
+      <FormUploadBio/>
     </div>
    }       
 </section>  

@@ -7,6 +7,7 @@ import { Box, Grid } from '@mui/material';
 import { Item } from '../[works]/styleMui';
 import AdminActiveWorks from '../../components/AdminActiveWorks/AdminActiveWorks';
 import FormUploadExhibition from '../../components/FormUploadExhibition/FormUploadExhibition';
+import { EXHIBITIONS } from '../../../utils/consts';
 
 
 const Exhibitions = () => {
@@ -26,7 +27,7 @@ const Exhibitions = () => {
         {status === 'authenticated' &&
        <Grid>
         <Item>
-         <AdminActiveWorks title={'Exhibiciones'} fetchingData={'exhibitions'}/> 
+         <AdminActiveWorks title={'Exhibiciones'} fetchingData={EXHIBITIONS}/> 
       </Item>
       <Item>
         <FormUploadExhibition title={'exhibition'}/>

@@ -5,24 +5,24 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { TEXT } from "../../../utils/consts";
 import TextDetailCard from "../../components/TextDetailCard/TextDetailCard";
- 
+import { papersFinder } from "../../../utils/functions"; 
+
 const Text=({params})=>{
     const{id}= params
-    const[paper, setPaper]= useState({title:'',image:'', date:'', author:'', type:'',format:''})
+    const[paper, setPaper]= useState({})
     const router= useRouter()
 
     useEffect(()=>{
               const fetchData = async () => {
               const papersData = await getData(TEXT);
-              const text= papersData.find((text)=> text.id===id)
+              const text= papersFinder(papersData, id)
               if(!text){
                 router.push(`/${TEXT}`)
                 return null
               }
               const {title, image, date, author, type}= text
               setPaper( { ...paper, title, image, date, author, type,['format']:image.split('.').at(-1) })
-              console.log(paper)
-            };      
+             };      
             fetchData();  
           },[])
    

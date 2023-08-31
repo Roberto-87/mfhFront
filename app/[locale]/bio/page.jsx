@@ -33,7 +33,7 @@ const Bio = () => {
           <Item>
         <Grid container spacing={2}>
       <Grid item xs={12} md={4}>
-     <Item>
+     <Item >
         <Image src={bio.image} width={400} height={250} style={{width:'45%'}} priority alt='imagen de María'  />
      </Item>
    </Grid>

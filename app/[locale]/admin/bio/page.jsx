@@ -6,7 +6,10 @@ import FormUploadBioImage from '../../components/FormUploadBioImage/FormUploadBi
 import LoaderAnimation from '../../components/LoaderAnimation/LoaderAnimation'
 import { useSession } from "next-auth/react";
 import { useRouter } from 'next/navigation';
-import { BASE_URL } from '../../../utils/consts';
+import { BASE_URL, BIO } from '../../../utils/consts';
+import AdminActiveWorks from "../../components/AdminActiveWorks/AdminActiveWorks";
+import FormUploadWork from '../../components/FormUploadWork/FormUploadWork'
+import { Item } from '../[works]/styleMui';
 
 const Bio = () => {
   const{status}= useSession()
@@ -32,7 +35,7 @@ const Bio = () => {
   const handlerSubmit=async(event)=>{
     event.preventDefault()
     try {
-      const response = await axios.post(`${BASE_URL}bio`, form, {
+      const response = await axios.post(`${BASE_URL}${BIO}`, form, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -47,16 +50,16 @@ const Bio = () => {
   }
 
 if(status==='authenticated'){
-  return (
-<Box>
-<FormUploadBioImage/>
-  <form onSubmit={handlerSubmit}>
-    <input type='text' name='text' value={form.text} placeholder='ingresa el texto de la Bio' onChange={handlerChange} style={{height:'50ch', width:'50ch'}}></input>
-    <button >Send</button>
-  </form>
-  {send &&  <p> Se envió el texto: {form.text}</p>}
-</Box >
-);
+  return(
+    <Box>
+      <Item>
+        <AdminActiveWorks title={'Bio'} fetchingData={BIO}/>
+      </Item>
+      <Item sx={{width:'100%'}}>
+      <FormUploadWork folder="bio" title='Bio'/>
+      </Item>
+    </Box>
+    )
 }
 }
   

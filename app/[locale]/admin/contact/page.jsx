@@ -6,6 +6,7 @@ import { Box, Grid } from "@mui/material";
 import { Item } from "../[works]/styleMui";
 import AdminActiveWorks from "../../components/AdminActiveWorks/AdminActiveWorks";
 import FormUploadWork from "../../components/FormUploadWork/FormUploadWork"
+import { CONTACT } from "../../../utils/consts";
 
 const Contact = () => {
 const {status}= useSession()
@@ -23,7 +24,7 @@ if(status==='authenticated'){
   return (
 <Box>
   <Item>
-    <AdminActiveWorks title={'vías de contacto'} fetchingData={'contact'}/>
+    <AdminActiveWorks title={'vías de contacto'} fetchingData={CONTACT}/>
   </Item>
   <Item sx={{width:'100%'}}>
   <FormUploadWork folder = {'Contact'} title='vía de contacto'/>

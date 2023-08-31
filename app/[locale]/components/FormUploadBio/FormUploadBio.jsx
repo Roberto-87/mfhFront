@@ -3,39 +3,23 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import  validation from './validation';
 import swal from 'sweetalert';
-import { BASE_URL, EXHIBITIONS, TEXT } from '../../../utils/consts';
-import getData from '../../hooks/getData';
-import { Box } from '@mui/material';
+import { BASE_URL, CONTACT } from '../../../utils/consts';
+import { Button } from '@mui/material';
+import Link from 'next/link';
 
-export default function FormUploadText({img}) {
-    const[form, setForm]= useState({image:img, title:'', type:'', date:'', author:'',  status:false })
+export default function FormUploadBio() {
+    const[form, setForm]= useState({description:'', type:'', link:'', status:false })
     const[error, setError]=useState({})
     const [errorCheck, setErrorCheck] = useState(false);
     const [inputTouched, setInputTouched] = useState();
     const [upload, setUpload] = useState();
-    const[curatorial, setCuratorial]= useState(false)
-    const[exhibitionPaper, setExhibitionPaper]= useState(false)
-    const [exhibitions, setExhibitions]= useState()
-  
+    const [newForm, setNewForm]= useState(false)
+    
   const handleFormData =async (event) => {
-      const exhibitionSelected= event.target.value
-      setExhibitionPaper(exhibitionSelected )
-
       setForm({...form, [event.target.name]:event.target.value })
-
-      setError(await validation({
-          ...form, [event.target.name]: event.target.value
-        })) 
-        
-        setInputTouched({ ...inputTouched, [event.target.name]: true });
-        if (name === 'type' && value === 'curatorial') {
-          setCuratorial(true);
-        } else {
-          setCuratorial(false);
-        }
-        setCuratorial(true)
-        const response= await getData(EXHIBITIONS)
-        setExhibitions(response)
+      setError(await validation({...form, [event.target.name]: event.target.value})) 
+      setInputTouched({ ...inputTouched, [event.target.name]: true });
+      
     };
     
     useEffect(() => {
@@ -45,24 +29,26 @@ export default function FormUploadText({img}) {
             setErrorCheck(!(Object.values(validationError).length === 0));
         };
         validate();
+        console.log(error)
     }, [form,upload]);
     
-    
+  
   const handleUpload = async (event) => {
     event.preventDefault()   
       try {
-      const  { title, type, date,author, status} = form
-      if(!title || !type|| !date || !author || !status )throw new Error('faltan datos obligatorios')
-      const response= await axios.post(`${BASE_URL}${TEXT}`,form ) 
+      const  {description, type, link, status } = form
+      if(!description|| !type || !link || !status )throw new Error('faltan datos obligatorios')
+ 
+      const response= await axios.post(`${BASE_URL}${CONTACT}`,form ) 
       if(!response) throw new Error('error al subir los datos')
       console.log('response from the client:', response);
-      setForm({title:'', type:'', date:'',author:'', status:false})
+      setForm({description:'', type:'', link:'', status:false})
 
       if(response.status===200){
-        swal("Texto subido correctamente 😁");
+        swal("info subida correctamente 😁");
       }      
       else {
-        swal("Hubo un error al subir el texto ");
+        swal("Hubo un error al subir la info ");
       } 
        
     } catch (error) {
@@ -70,42 +56,43 @@ export default function FormUploadText({img}) {
   };
   };
 const onHandleCancel=()=>{
-  setForm({image:img, title:'', type:'', date:'', author:'', status:false})
+  setForm({description:'', type:'', link:'',  status:false})
+  setNewForm(false)
+}
+const onHandlerClick=()=>{
+    setNewForm(true)
 }
 
 return (
-    <form encType='multipart/form-data'>
+    <>
+   
+    {newForm && 
+     <form encType='multipart/form-data'>
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12">
-  
         </div>
         <div className="border-b border-gray-900/10 pb-12">
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-
-
             <div className="sm:col-span-3">
-              <label htmlFor="title" className="block text-sm font-medium leading-6 text-gray-900">
-         title
+              <label htmlFor="description" className="block text-sm font-medium leading-6 text-gray-900">
+         Descripción
               </label>
               <div className="mt-2">
                 <input
                   type="text"
-                  value={form.title}
+                  value={form.description}
                   onChange={handleFormData}
-                  name="title"
-                  id="title"
-                  autoComplete="title"
+                  name="description"
+                  id="description"
+                  autoComplete="description"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-           { error && error.title && <p>{error.title}</p>}
+           { error && error.description && <p>{error.description}</p>}
               </div>
             </div>            
-
-
             <label htmlFor="type" className="block text-sm font-medium leading-6 text-gray-900">
                 Tipo
               </label>
-
                 <select
                   id="type"
                   onChange={handleFormData}
@@ -114,78 +101,45 @@ return (
                   autoComplete="type"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                  <option value="False" defaultValue></option>
-                  <option value="curatorial">texto curatorial</option>
-                  <option value="prensa">prensa</option>
+            <option value="False" defaultValue></option>
+                    <option value="instagram">Instagram</option>
+                    <option value="facebook">Facebook</option>
+                    <option value="twitter">Twitter</option>
+                    <option value="linkedin">LinkedIn</option>
+                    <option value="snapchat">Snapchat</option>
+                    <option value="whatsapp">WhatsApp</option>
+                    <option value="telegram">Telegram</option>
+                    <option value="mail">Correo electrónico</option>
+                    <option value="telefono">Teléfono</option>    
+                    <option value="tiktok">Tik tok</option>      
+                    <option value="youtube">Youtube</option>             
             </select>
            { error && error.type && <p>{error.type}</p>}
-
-           {
-  form.type === 'curatorial' && (
-    <Box>
-    <label htmlFor="type" className="block text-sm font-medium leading-6 text-gray-900">
-Exhibición
-              </label>
-    <select
-      id="exhibition"
-      onChange={handleFormData}
-      name="exhibition"
-      value={form.exhibition}
-      autoComplete="exhibition"
-      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-    >
-      <option value="False" defaultValue></option>
-      { 
-        exhibitions && exhibitions.map((exhibition, index) => (
-       
-       <option key={index} value={exhibition.id}>
-              {exhibition.exhibitionName} 
-          </option>
-        ))
-      }
-    </select>
-    </Box>
-  )
-}
+         
 
 <div className="sm:col-span-3">
-              <label htmlFor="date" className="block text-sm font-medium leading-6 text-gray-900">
-         Fecha
+              <label htmlFor="link" className="block text-sm font-medium leading-6 text-gray-900">
+         Link
               </label>
               <div className="mt-2">
                 <input
                   type="text"
-                  value={form.date}
+                  value={form.link}
                   onChange={handleFormData}
-                  name="date"
-                  id="date"
-                  autoComplete="date"
+                  placeholder='https://instagram.com'
+                  name="link"
+                  id="link"
+                  autoComplete="link"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
-           { error && error.date && <p>{error.date}</p>}
+           {form.type==='whatsapp' && <p><i>→ Ejemplo de link a usuario de Whatsapp: https://wa.me/54911...</i> </p>}
+           {form.type==='telegram' && <div> <Link style={{textDecoration:'underline'}} href={'https://uncomohacer.com/como-copiar-y-compartir-un-enlace-de-perfil-de-telegram-como-reconocer-un-enlace/?expand_article=1'}> Cómo compartir usuario de Telegram?</Link></div>
+           }       
+           { error && error.link && <p>{error.link}</p>}
               </div>
             </div>    
-    
-            <div className="sm:col-span-3">
-              <label htmlFor="author" className="block text-sm font-medium leading-6 text-gray-900">
-         Autore
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  value={form.author}
-                  onChange={handleFormData}
-                  name="author"
-                  id="author"
-                  autoComplete="author"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-           { error && error.author && <p>{error.author}</p>}
-              </div>
-            </div>               
-
-
-            <label htmlFor="status" className="block text-sm font-medium leading-6 text-gray-900">
+  
+               <label htmlFor="status" className="block text-sm font-medium leading-6 text-gray-900">
 status
               </label>
 
@@ -223,5 +177,11 @@ status
        </div>
   
        </form>
-       )
+    }
+    
+    </>
+          )
 }
+
+
+
