@@ -28,3 +28,27 @@ export const textOrdered=(texts)=>{
 export const papersFinder=(papers, id)=>{
   return papers.find((text)=> text.id===id)
 }
+
+export const uploadFunction =async()=>{
+  try {
+      for (let i = 0; i < selectedFiles.length; i++) {
+        const formData = new FormData();
+        formData.append('file', selectedFiles[i]);
+        formData.append('upload_preset', 'fiwvpzcu');
+        formData.append('folder', folder)
+
+
+        const response = await axios.post(
+          'https://api.cloudinary.com/v1_1/mariaferrari/upload',
+          formData,
+          {
+            headers: { 'Content-Type': 'multipart/form-data' }
+          }
+        );
+        if(!response) throw new Error('error al subir los datos')
+       return response.data.url     
+      }
+    } catch (error) {
+      return error
+    }
+}

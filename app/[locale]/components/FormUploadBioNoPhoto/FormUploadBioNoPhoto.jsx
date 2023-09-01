@@ -8,8 +8,8 @@ import { Button } from '@mui/material';
 import Link from 'next/link';
 import {AiFillCheckCircle} from 'react-icons/ai'
 
-export default function FormUploadBio({img}) {
-    const[form, setForm]= useState({image:img, title:'', subtitle:'', text:'',type:'',number:0, status:false })
+export default function FormUploadBioNoPhoto() {
+    const[form, setForm]= useState({title:'', subtitle:'', text:'',type:'',number:0, status:false })
     const[error, setError]=useState({})
     const [errorCheck, setErrorCheck] = useState(false);
     const [inputTouched, setInputTouched] = useState();
@@ -59,13 +59,16 @@ export default function FormUploadBio({img}) {
   };
   };
 const onHandleCancel=()=>{
-  setForm({image:'',title:'', subtitle:'', text:'', type:'',number:0, status:false})
+  setForm({title:'', subtitle:'', text:'', type:'',number:0, status:false})
   setNewForm(false)
+}
+const onHandlerClick=()=>{
+    setNewForm(true)
 }
 
 return (
     <>
-   {!newForm && <form encType='multipart/form-data'>
+   {newForm && <form encType='multipart/form-data'>
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12">
         </div>

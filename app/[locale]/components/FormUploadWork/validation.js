@@ -1,7 +1,8 @@
+import { WORKS } from "../../../utils/consts";
 import getData from "../../hooks/getData";
 
 const getNumbers = async (number) => {
-  const numbers = await getData('works/numbers');
+  const numbers = await getData(`${WORKS}/numbers`);
   return numbers.includes(number);
 
 };

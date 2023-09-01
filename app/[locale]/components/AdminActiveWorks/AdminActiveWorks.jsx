@@ -25,7 +25,7 @@ const AdminActiveWorks=({title, fetchingData})=>{
       };      
       fetchData();  
       setRefresh(false)
-    }, [refresh, activeWorks, inActiveWorks ]);
+    }, [refresh]);
   
 
     const onHandleSwitch = async (work) => {

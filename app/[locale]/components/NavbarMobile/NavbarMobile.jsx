@@ -40,9 +40,9 @@ const Navbar = () => {
           <ListItem button>
           <Link href={'/text'}>PAPERS</Link>
           </ListItem>
-{/*           <ListItem button>
+           <ListItem button>
           <Link href={'/bio'}>BIO</Link>
-          </ListItem> */}
+          </ListItem> 
           <ListItem button>
           <Link href={'/contact'}>CONTACT</Link>
           </ListItem>

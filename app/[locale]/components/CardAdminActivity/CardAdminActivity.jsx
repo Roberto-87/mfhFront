@@ -4,6 +4,7 @@ import ModalAdminWOrks from "../ModalAdminWorks/ModalAdminWorks"
 import ModalAdminExhibitions from "../ModalAdminExhibitions/ModalAdminExhibitions"
 import ModalAdminPortfolio from "../ModalAdminPortfolio/ModalAdminPortfolio"
 import ModalAdminText from "../ModalAdminText/ModalAdminText"
+import ModalAdminBio from "../ModalAdminBio/ModalAdminBio"
 import { useEffect } from "react"
 import notFound from '../../assets/no-image-available-icon-vector-id1216251206-568614111.jpg'
 import Image from "next/image"
@@ -15,10 +16,14 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
     const [localActiveImage, setLocalActiveImage] = useState(null);
     const [pathname, setPathname]= useState()
 
-    const handleOpen = (urlImage) => {
+    const handleOpen = (urlImage, id) => {
           setOpen(true);
            setLocalActiveImage(urlImage);  
            setActiveImage(activeImage)
+           if(pathname==='bio'){
+            console.log(id)
+            setLocalActiveImage(id);  
+           } 
       };
     
       const handleClose=()=>{
@@ -38,9 +43,9 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
            {  work.status===false &&   <Switch  onChange={()=>onHandleSwitch(inactiveWorks[index])} /> }
            {  work.status===true &&   <Switch defaultChecked onChange={()=>onHandleSwitch(activeWorks[index])} /> }
         
-               {pathname==='portfolio' || pathname==='text' || pathname==='contact' ?   
+               {pathname==='portfolio' || pathname==='text' || pathname==='contact' || pathname==='bio'?   
                <Grid style={{ width:'100%'}}>
-                 <div onClick={()=>handleOpen(work.image)} style={{width:'100%'}}>
+                 <div onClick={()=>handleOpen(work.image,work.id)} style={{width:'100%'}}>
                   <p>{work.title}</p> 
                   <p>{work.language}</p> 
                   <p>{work.description}</p> 
@@ -49,7 +54,7 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
                </Grid>
                :
                <Grid style={{ width:'100%', display:'flex', justifyContent:'center'}}>
-                {work.exhibitionName &&
+                {work.exhibitionName && 
                <div >
                   <h6 style={{wordWrap: 'break-word',marginBottom:'4px',height:'10px', marginTop:'0'}}>{work.exhibitionName}</h6>
                   <img alt={work.title} onClick={()=>handleOpen(work.images[0])}  style={{marginBottom:'1px'}} width={130} height={100} src={work.images[0] || notFound}/>
@@ -59,12 +64,13 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
                 {
                   pathname==='bio' && 
                   <div>
-                    <Image width={120} height={140} src={work.image}/> 
-                    <p>{work.text}</p>
+                    <p>{work.title}</p>
                   </div>
+
                 }
+
               {work.title &&  
-              <div>
+              <div onClick={()=>handleOpen(work.id)}>
                 <img alt={work.title} onClick={()=>handleOpen(work.image)}  style={{marginLeft:'6px'}}  width={100} height={90} src={work.image }/> 
               </div>
                   }
@@ -75,7 +81,7 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
             {pathname==='cover' && 
                     <Grid style={{ width:'100%', display:'flex', justifyContent:'center'}}>
                    <div>
-                   <img alt={work.title} onClick={()=>handleOpen(work.image)}  style={{marginLeft:'6px'}}  width={100} height={90} src={work.image }/> 
+                   <img alt={work.title} onClick={()=>handleOpen(work.image)}  style={{marginLeft:'6px', cursor:'auto'}}  width={100} height={90} src={work.image }/> 
                  </div>
                  </Grid>
             }
@@ -101,7 +107,12 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
               open && work.type==="portfolio" &&                 
               <ModalAdminPortfolio activeWorks={activeWorks} activeImage={localActiveImage} inactiveWorks={inactiveWorks} handleClose={handleClose} handleOpen={handleOpen} />  
 
-}  
+            }  
+            {
+              open && pathname==="bio" &&                 
+              <ModalAdminBio  activeWorks={activeWorks} activeImage={localActiveImage} inactiveWorks={inactiveWorks} handleClose={handleClose} handleOpen={handleOpen} />  
+
+            }  
     
         </>)
 }

@@ -23,10 +23,10 @@ const links = [
       label: "TEXTOS",
       route: "/text",
     },
-/*     {
+     {
       label: "BIOGRAFIA",
       route: "/bio",
-    }, */
+    }, 
      {  
     label: "CONTACTO",
     route: "/contact",

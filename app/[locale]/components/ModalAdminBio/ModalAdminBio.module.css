@@ -1,0 +1,13 @@
+.scroller {
+    text-align: left;
+    width: 650px;
+    height: 550px;
+  /*   overflow-y: scroll; */
+    display: flex;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    scroll-snap-type: y mandatory; 
+    margin-left:15% ;
+  }
+/* 
+ width: '70%', marginLeft: '15%', overflow: 'auto', scrollMargin: '20px'}} */

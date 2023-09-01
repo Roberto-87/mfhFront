@@ -9,7 +9,9 @@ import FormUploadText from '../FormUploadText/FormUploadText';
 import FormUploadCover from '../FormUploadCover/FormUploadCover';
 import swal from 'sweetalert';
 import FormUploadContact from '../FormUploadContact/FormUploadContact';
+import FormUploadBioNoPhoto from '../FormUploadBioNoPhoto/FormUploadBioNoPhoto';
 import FormUploadBio from '../FormUploadBio/FormUploadBio';
+import { Button } from '@mui/material';
 
 const ImageUploader = ({folder = 'Obras', title='obra'}) => {
    const [selectedFiles, setSelectedFiles] = useState([]);
@@ -18,9 +20,11 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
    const [pathname, setPathname]= useState()
    const [error, setError]= useState(false)
    const [handleUploadCClicked, setHandleUploadClicked]= useState(false)
+   const [noPhoto, setNoPhoto]= useState(false)
    const inputFileRef = useRef(null);
-   
+
    useEffect(() => {
+    setNoPhoto(false)
     const router= window.location.pathname.split('/').at(-1)
     setPathname(router)
     console.log(pathname)
@@ -75,10 +79,12 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
     setHandleUploadClicked(false)
 
   };
+  const onHandleForm=()=> setNoPhoto(true)
+
   return (
 
    <div>
-    {pathname !== 'contact'&& 
+    {pathname !== 'contact' && 
         <div className="col-span-full">
               <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">
               <h2>Subir nueva {title}</h2> 
@@ -101,17 +107,15 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
                   <p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
                     }
                   </div>
-            {  selectedFiles.length> 0 &&    <button  onClick={handleUpload}>
-                  Upload to cloud
-             </button>  }
+            {  selectedFiles.length> 0 &&    <button  onClick={handleUpload}>Upload to cloud</button>  }
                 </div> 
               </div>
 
             </div>
             }
-            <section>
    
-    {urlImage  && selectedFiles.length>0 && pathname === 'portfolio' &&
+   <section>
+      {urlImage  && selectedFiles.length>0 && pathname === 'portfolio' &&
       <div>
       <embed style={{width:'15%', margin:'4px'}} src={urlImage} alt="imagen subida" />
       <FormUploadPortfolio img={urlImage}/>
@@ -120,39 +124,44 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
  </section>  
  <section>
    
-   { pathname === 'contact' &&
+   { pathname === 'contact' && 
      <div>
       <FormUploadContact/>
     </div>
    }       
 </section>  
-<section>
-   
-   { pathname === 'bio' &&
-     <div>
-      <FormUploadBio/>
-    </div>
-   }       
-</section>  
   
-    {
+  {
      handleUploadCClicked===true && !urlImage   &&  
       <div>
-     <div style={{display:'flex',justifyContent:'center', marginRight:'30%'}}>
+     <div style={{display:'flex',justifyContent:'center', marginRight:'20%'}}>
       <LoaderAnimation/>
       </div>  
       <p>subiendo Imagen...</p>
       </div>
  
-    }
+  }
      
   <section>
-    {urlImage  && selectedFiles.length>0 && pathname !== 'portfolio'&& pathname!=='text'&&
+    {urlImage  && selectedFiles.length>0 && pathname !== 'portfolio'&& pathname!=='text'&& 
       <div>
       <img style={{width:'12%', margin:'4px'}} src={urlImage} alt="imagen subida" />
      </div>
     }       
  </section> 
+ <section>
+   
+   {pathname==='bio' && selectedFiles.length===0 && <Button variant="contained" onClick={onHandleForm}>omitir foto</Button>}
+   {urlImage  && selectedFiles.length>0 && pathname === 'bio' &&
+     <div>
+     {noPhoto===true ? 
+     <FormUploadBioNoPhoto/> : 
+     <FormUploadBio img={urlImage}/> 
+   } 
+
+     </div>
+   }       
+</section>  
 
  <section>
      {urlImage  && selectedFiles.length>0 && pathname === 'text' &&
@@ -172,7 +181,7 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
 </section>
 
  <section>
-     {urlImage  && selectedFiles.length>0 && pathname !== 'portfolio' && pathname!=='text' && pathname!=='cover'&&
+     {urlImage  && selectedFiles.length>0 && pathname !== 'portfolio' && pathname!=='text' && pathname!=='cover'&&pathname!=='bio'&&
      <div>
        <FormWorksUpload2 img={urlImage}/>
      </div>
