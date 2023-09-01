@@ -10,9 +10,15 @@ import { getDimensions } from '../../utils/functions';
 
     useEffect(() => { 
       const fetchDataExhibition = async () => {
-        const exhibitionsFetched = await getData(`${EXHIBITIONS}/active`);
-        const worksWithDimensions = await getDimensions(exhibitionsFetched);
-        setExhibitions(worksWithDimensions);
+        try {
+          const exhibitionsFetched = await getData(`${EXHIBITIONS}/active`);
+          const worksWithDimensions = await getDimensions(exhibitionsFetched);
+          if(!exhibitionsFetched )throw new Error('error el recibir las exhibiciones')
+          if(!worksWithDimensions )throw new Error('error el recibir las dimensiones')
+          setExhibitions(worksWithDimensions);          
+        } catch (error) {
+          return {error:error.message}
+        }
       };      
       fetchDataExhibition();  
     }, []);

@@ -10,9 +10,14 @@ const Works = () => {
   
   useEffect(() => {
     const fetchData = async () => {
-      const worksData = await getData(`${WORKS}/active`);
-      const worksWithDimensions = await getDimensions(worksData);
-      setWorks(worksWithDimensions);
+      try {
+        const worksData = await getData(`${WORKS}/active`);
+        const worksWithDimensions = await getDimensions(worksData);
+        setWorks(worksWithDimensions);
+        
+      } catch (error) {
+        return {error:error.message}
+      }
     };  
     fetchData();
   }, []);  

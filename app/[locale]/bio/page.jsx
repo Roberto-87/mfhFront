@@ -12,12 +12,17 @@ const Bio = () => {
    const[loading, setLoading]= useState(false)
 
     useEffect(() => {
-
-      const fetchData = async () => {
-        const bioData = await getData(`${BIO}/active`);
-        setBio(bioData)
-      };      
-      fetchData();  
+try {
+  const fetchData = async () => {
+    const bioData = await getData(`${BIO}/active`);
+    if(!bioData.length>0)throw new Error('error al obtener los datos de la bio.')
+    setBio(bioData)
+  };      
+  fetchData();  
+} catch (error) {
+  return {error:error.message}
+}
+ 
  
     }, []);
 

@@ -9,11 +9,17 @@ const Contact = () => {
     const [contact, setContact] = useState();
   
     useEffect(() => {
-      const fetchData = async () => {
-        const contactData = await getData(`${CONTACT}/active`);
-        setContact(contactData.reverse())
-       };      
-      fetchData();  
+      try {
+        const fetchData = async () => {
+          const contactData = await getData(`${CONTACT}/active`);
+          if(!contactData.length>0)throw new Error('error al obtener los datos de contacto.')
+          setContact(contactData.reverse())
+         };      
+        fetchData();  
+        
+      } catch (error) {
+        return{ error: error.message}
+      }
     }, []);
     return (< >
     <Box>
