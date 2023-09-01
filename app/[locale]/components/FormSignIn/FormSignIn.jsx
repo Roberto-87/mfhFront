@@ -46,11 +46,11 @@ const FormSignIn=()=>{
                   <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">
                     Password
                   </label>
-                  <div className="text-sm">
+{/*                   <div className="text-sm">
                     <div onClick={() => router.push('/admin/forgotPassword')} className="cursor-pointer font-semibold text-indigo-400 hover:text-indigo-300" style={{cursor:'pointer'}}>
                       Forgot password?
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="mt-2">
                   <input
