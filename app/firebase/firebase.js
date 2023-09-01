@@ -1,5 +1,6 @@
 import { getApp, getApps, initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getAnalytics } from "firebase/analytics";
 const dotenv = require('dotenv');
 dotenv.config();
 const {REACT_APP_API_KEY, REACT_APP_AUTH_DOMAIN, REACT_APP_PROJECT_ID,REACT_APP_STORAGE_BUCKET, REACT_APP_MESSAGING_SENDER_ID,REACT_APP_APP_ID, REACT_APP_MEASUREMENT_ID}= process.env
@@ -13,9 +14,8 @@ const firebaseConfig = {
   appId: REACT_APP_APP_ID,
   measurementId: REACT_APP_MEASUREMENT_ID,
 };
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
-
-const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
-const auth = getAuth();
-
-export { app, auth };
+/* export { app, auth }; */
