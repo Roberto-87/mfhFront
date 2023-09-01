@@ -45,7 +45,7 @@ export default function FormSignIn() {
                   Password
                 </label>
                 <div className="text-sm">
-                  <div onClick={() => router.push('/admin/forgot-password')} className="cursor-pointer font-semibold text-indigo-400 hover:text-indigo-300">
+                  <div onClick={() => router.push('/admin/forgotPassword')} className="cursor-pointer font-semibold text-indigo-400 hover:text-indigo-300">
                     Forgot password?
                   </div>
                 </div>

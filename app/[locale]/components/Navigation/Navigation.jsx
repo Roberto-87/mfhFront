@@ -38,7 +38,7 @@ const links = [
 const Navigation=()=>{
   const currentPathName= usePathname()
   const router= useRouter()
-  const withoutNavbar= ['/admin','/','/admin/exhibitions','/admin/portfolio','/admin/text','/admin/biography','/admin/cover','/admin/contact','/admin/works','/admin/bio','/admin/signin','/admin/forgot-password']
+  const withoutNavbar= ['/admin','/','/admin/exhibitions','/admin/portfolio','/admin/text','/admin/biography','/admin/cover','/admin/contact','/admin/works','/admin/bio','/admin/signin','/admin/forgotPassword']
   const [mobile, setMobile]= useState(false)
 
   const checkMobileMode = () => {
