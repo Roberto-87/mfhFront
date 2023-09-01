@@ -2,9 +2,14 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../app/firebase/firebase";
+const dotenv = require('dotenv');
+dotenv.config();
+const {REACT_APP_NEXTAUTH_SECRET}= process.env
+
 
 export const authOptions = {
   // Configure one or more authentication providers
+  secret: process.env.REACT_APP_NEXTAUTH_SECRET,
   pages: {
 /*     signIn: "admin/signin", */
     signIn:'//mfh-front-roberto-87.vercel.app/admin/signin'
