@@ -41,5 +41,5 @@ redirect('admin/signin')
   
 }
 
-/* Admin.requireAuth= true */
+ Admin.requireAuth= true 
 

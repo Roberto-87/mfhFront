@@ -6,7 +6,8 @@ import { auth } from "../../../app/firebase/firebase";
 export const authOptions = {
   // Configure one or more authentication providers
   pages: {
-    signIn: "admin/signin",
+/*     signIn: "admin/signin", */
+    signIn:'//mfh-front-roberto-87.vercel.app/admin/signin'
   },
   providers: [
     CredentialsProvider({
