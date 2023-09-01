@@ -1,14 +1,14 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import  validation from './validation';
+import  validation from '../FormUploadBioNoPhoto/validation';
 import swal from 'sweetalert';
 import { BASE_URL, BIO } from '../../../utils/consts';
 import { Button } from '@mui/material';
 import Link from 'next/link';
 import {AiFillCheckCircle} from 'react-icons/ai'
 
-export default function FormUploadBio({img}) {
+export default function FormUploadBioPhoto({img}) {
     const[form, setForm]= useState({image:img, title:'', subtitle:'', text:'',type:'',number:0, status:false })
     const[error, setError]=useState({})
     const [errorCheck, setErrorCheck] = useState(false);
@@ -42,7 +42,7 @@ export default function FormUploadBio({img}) {
       const  {title, text,type, status } = form
       if(!title || !text ||  !type || !number || !status )throw new Error('faltan datos obligatorios')
  
-      const response= await axios.post(`${BASE_URL}${BIO}/whitoutphoto`,form  ) 
+      const response= await axios.post(`${BASE_URL}${BIO}`,form  ) 
       if(!response) throw new Error('error al subir los datos')
       console.log('response from the client:', response);
       setForm({title:'',subtitle:'', text:'',type:'',number:0, status:false})
@@ -65,7 +65,7 @@ const onHandleCancel=()=>{
 
 return (
     <>
-   {!newForm && <form encType='multipart/form-data'>
+<form encType='multipart/form-data'>
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12">
         </div>
@@ -200,7 +200,7 @@ status
   
        </form>
     
-}
+
     </>
           )
 }

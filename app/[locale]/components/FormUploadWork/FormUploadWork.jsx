@@ -10,7 +10,7 @@ import FormUploadCover from '../FormUploadCover/FormUploadCover';
 import swal from 'sweetalert';
 import FormUploadContact from '../FormUploadContact/FormUploadContact';
 import FormUploadBioNoPhoto from '../FormUploadBioNoPhoto/FormUploadBioNoPhoto';
-import FormUploadBio from '../FormUploadBio/FormUploadBio';
+import FormUploadBioPhoto from '../FormUploadBioPhoto/FormUploadBioPhoto';
 import { Button } from '@mui/material';
 
 const ImageUploader = ({folder = 'Obras', title='obra'}) => {
@@ -156,7 +156,7 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
      <div>
      {noPhoto===true ? 
      <FormUploadBioNoPhoto/> : 
-     <FormUploadBio img={urlImage}/> 
+     <FormUploadBioPhoto img={urlImage}/> 
    } 
 
      </div>

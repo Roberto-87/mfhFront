@@ -44,9 +44,10 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
            {  work.status===true &&   <Switch defaultChecked onChange={()=>onHandleSwitch(activeWorks[index])} /> }
         
                {pathname==='portfolio' || pathname==='text' || pathname==='contact' || pathname==='bio'?   
-               <Grid style={{ width:'100%'}}>
+               <Grid style={{ width:'100%',display:'flex', justifyContent:'center'}}>
                  <div onClick={()=>handleOpen(work.image,work.id)} style={{width:'100%'}}>
-                  <p>{work.title}</p> 
+                 {work.image && pathname==='bio' && <Image width={100} height={90} src={work.image} />}
+                  <p  style={{ wordWrap: 'break-word' }}>{work.title}</p> 
                   <p>{work.language}</p> 
                   <p>{work.description}</p> 
                   <p  style={{ wordWrap: 'break-word' }}>{work.link}</p> 
@@ -61,14 +62,7 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
              </div>
                
                 }
-                {
-                  pathname==='bio' && 
-                  <div>
-                    <p>{work.title}</p>
-                  </div>
-
-                }
-
+  
               {work.title &&  
               <div onClick={()=>handleOpen(work.id)}>
                 <img alt={work.title} onClick={()=>handleOpen(work.image)}  style={{marginLeft:'6px'}}  width={100} height={90} src={work.image }/> 

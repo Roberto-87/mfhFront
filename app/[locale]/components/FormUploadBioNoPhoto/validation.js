@@ -24,11 +24,10 @@ const validation =async ({ title,text, type,number, status}) => {
       errors["number"] = "Solo se permiten números"
   } else if (number) {
     const numberExists = await getNumbers(number);
-    if (numberExists) {
+    if (numberExists ) {
       errors["number"] = "Ya existe una bio con ese número";
     }
-  }
-    if (!status) {
+  }  if (!status) {
       errors["status"] = "Por favor seleccioná un status.";
    }  
      return errors;

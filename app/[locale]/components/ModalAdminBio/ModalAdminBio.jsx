@@ -4,27 +4,37 @@ import { style } from "../../admin/[works]/styleMui";
 import { useEffect } from "react";
 import axios from "axios";
 import { BASE_URL, BIO } from "../../../utils/consts";
-import validation from "../FormUploadWork/validation";
+import validation from "../FormUploadBioNoPhoto/validation";
 import styleModal from './ModalAdminBio.module.css'
+import {AiFillCheckCircle} from 'react-icons/ai'
+import Image from "next/image";
 
 const ModalAdminBio=({activeWorks, inactiveWorks,activeImage,handleClose, handleOpen})=>{
-    const [open, setOpen] = useState(false);
+
     const [editWork, setEditWork] = useState(false);
     const [activeImageData, setActiveImageData]=useState({})
     const [inActiveImageData, setInActiveImageData]=useState({})
     const[error, setError]=useState({})
 
+
     useEffect(()=>{
-      
-        if(activeWorks){
-            const activeWork= activeWorks?.find((work)=> work.id===activeImage)
-           console.log(activeWork)
-            setActiveImageData({id:activeWork.id, title: activeWork.title, subtitle:activeWork.subtitle,image:activeWork.image,text: activeWork.text, status:activeWork.status})
+      if(activeWorks){
+        const activeWork= activeWorks?.find((work)=> work.id===activeImage)
+        console.log(activeWork)
+            setActiveImageData({id:activeWork.id, title: activeWork.title, subtitle:activeWork.subtitle,image:activeWork.image, number:activeWork.number, text: activeWork.text, status:activeWork.status})
         }else if(inactiveWorks) {
             const inActiveWork= inactiveWorks?.find((work)=> work.id===activeImage)
-            setInActiveImageData({id:inActiveWork.id,title: inActiveWork.title, subtitle:inActiveWork.subtitle, image:inActiveWork.image, text: inActiveWork.text, status:inActiveWork.status  })
+            setInActiveImageData({id:inActiveWork.id,title: inActiveWork.title, subtitle:inActiveWork.subtitle, image:inActiveWork.image, number:inActiveWork.number,  text: inActiveWork.text, status:inActiveWork.status  })
         } 
-       setOpen(!open);
+   
+    
+       const validate = async () => {
+        const validationError = await validation(activeImageData);
+        setError(validationError);
+   
+      };
+      
+      validate();
     },[activeImage])
 
 
@@ -32,9 +42,12 @@ const ModalAdminBio=({activeWorks, inactiveWorks,activeImage,handleClose, handle
         setEditWork(true)
     }
 
-    const onHandleEditWork=(e)=>{
+    const onHandleEditWork=async(e)=>{
         setActiveImageData({...activeImageData, [e.target.name]:e.target.value})
         setInActiveImageData({...inActiveImageData, [e.target.name]:e.target.value})
+        setError(await validation({
+          ...activeImageData, [e.target.name]: e.target.value
+        })) 
     }
     const onHandleCancel=()=>{
       console.log(editWork)
@@ -74,10 +87,14 @@ const ModalAdminBio=({activeWorks, inactiveWorks,activeImage,handleClose, handle
                 >
     <Box sx={style}>
     <div>
+  
     <Button onClick={handleClose} style={{color:'gray', position:'absolute', right:'100%', top:'0%', fontSize:'1em'}}>CERRAR</Button>
-   {activeImageData.image && <embed src={activeImage} alt="imagen obra" style={{marginTop:'3%'}} width={500} height={450}/>}
-    <div>
+  <div>
     {activeImageData.status===true && <Button onClick={onHandleEdit}>Edit</Button>}
+  </div>
+   {activeImageData.image && 
+   <Image src={activeImageData.image} alt="imagen obra" style={{marginTop:'0%', display:'inline-flex'}} width={250} height={200}/>}
+    <div>
 
     <div>
     </div>
@@ -91,7 +108,7 @@ const ModalAdminBio=({activeWorks, inactiveWorks,activeImage,handleClose, handle
     <br />
     <strong>Status:</strong> {activeImageData.status && 'true'}
     <br />
-    <strong>Number:</strong> {inActiveImageData.number}
+    <strong>Number:</strong> {activeImageData.number}
     <br />
     <strong>Text:</strong>
     <div className={styleModal.scroller}>
@@ -100,7 +117,8 @@ const ModalAdminBio=({activeWorks, inactiveWorks,activeImage,handleClose, handle
   </div>
 )}
 
-{activeImageData.status===true && editWork===true &&    <form>
+{activeImageData.status===true && editWork===true &&   
+ <form>
        <strong>Title:</strong><input type="text" name='title' onChange={onHandleEditWork} value={activeImageData.title}/> 
        <br />
        <strong>Subtitulo:</strong><input type="text" name='subtitle' onChange={onHandleEditWork} value={activeImageData.subtitle}/> 
@@ -108,8 +126,17 @@ const ModalAdminBio=({activeWorks, inactiveWorks,activeImage,handleClose, handle
        <strong>Status:</strong> {activeImageData.status && 'true'} 
        <br />
        <strong>Number:</strong><input type="number" name='number' onChange={onHandleEditWork} value={activeImageData.number}/> 
+       { error && error.number ? <p style={{color:'red'}}>{error.number}</p>:  <AiFillCheckCircle style={{marginLeft:'5px'}}/>}
        <br />
-       <strong>Text:</strong><input type="text" name='text' onChange={onHandleEditWork} value={activeImageData.text}/> 
+       <strong>Text:</strong>      
+       <textarea
+  name="text"
+  onChange={onHandleEditWork}
+  className={styleModal.scroller}
+  value={activeImageData.text}
+  rows="4" // Ajusta la cantidad de filas que deseas mostrar inicialmente
+  style={{ overflowY: 'scroll' }} // Agrega la barra de desplazamiento
+/>
        <br />
        <div className="mt-6 flex items-center justify-end gap-x-6">
         <button type="button" onClick={onHandleCancel} className="text-sm font-semibold leading-6 text-gray-900"  >
