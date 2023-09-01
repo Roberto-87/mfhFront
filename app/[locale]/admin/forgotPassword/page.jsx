@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { auth } from '../../../firebase';
+import { auth } from '../../../firebase/firebase';
 import { sendPasswordResetEmail } from "firebase/auth";
 
 export default function ForgotPassword() {
