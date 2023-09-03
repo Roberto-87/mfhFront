@@ -1,5 +1,5 @@
 //export const BASE_URL= 'http://localhost:3001/' 
-export const BASE_URL='postgres://mfh_bd_user:zahVljYFlr7XNWkw8CVK77F3lTU2mp3f@dpg-cjp54pdhe99c73805u10-a.oregon-postgres.render.com/mfh_bd'
+export const BASE_URL='postgres://mfh_bd_user:zahVljYFlr7XNWkw8CVK77F3lTU2mp3f@dpg-cjp54pdhe99c73805u10-a.oregon-postgres.render.com/mfh_bd/'
 export const PORTFOLIO= 'portfolio'
 export const WORK= 'work'
 export const TEXT= 'text'
