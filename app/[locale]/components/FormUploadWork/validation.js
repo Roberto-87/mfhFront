@@ -2,6 +2,7 @@ import { WORKS } from "../../../utils/consts";
 import getData from "../../hooks/getData";
 
 const getNumbers = async (number) => {
+  if(!number)throw new Error('no hay un numero para consultar')
   const numbers = await getData(`${WORKS}/numbers`);
   return numbers.includes(number);
 

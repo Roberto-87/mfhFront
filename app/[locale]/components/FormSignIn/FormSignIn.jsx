@@ -56,7 +56,7 @@ const FormSignIn=()=>{
                   <input
                     id="password"
                     name="password"
-                    type="text"
+                    type="password"
                     autoComplete="current-password"
                     onChange={(e) => setPassword(e.target.value)}
                     required
