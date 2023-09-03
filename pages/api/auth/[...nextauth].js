@@ -9,7 +9,7 @@ const {REACT_APP_NEXTAUTH_SECRET}= process.env
 
 export const authOptions = {
   // Configure one or more authentication providers
-  secret: process.env.REACT_APP_NEXTAUTH_SECRET,
+  secret: process.env.NEXT_PUBLIC_SECRET,
   pages: {
 /*     signIn: "admin/signin", */
     signIn:'//mfh-front-roberto-87.vercel.app/admin/signin'

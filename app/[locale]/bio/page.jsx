@@ -11,8 +11,8 @@ const Bio = () => {
    const [bio, setBio] = useState();
    const[loading, setLoading]= useState(false)
 
-    useEffect(() => {
-try {
+useEffect(() => {
+  try {
   const fetchData = async () => {
     const bioData = await getData(`${BIO}/active`);
     if(!bioData.length>0)throw new Error('error al obtener los datos de la bio.')
