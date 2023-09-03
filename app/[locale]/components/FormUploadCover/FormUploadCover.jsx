@@ -60,7 +60,7 @@ export default function FormUploadCover({img}) {
       } 
        
     } catch (error) {
-      console.error('Upload error:', error.response);    
+      console.error('Upload error:', error);    
   };
   };
 const onHandleCancel=()=>{
