@@ -34,7 +34,8 @@ const FormUploadExhibition = ({title}) => {
           'https://api.cloudinary.com/v1_1/mariaferrari/upload',
           formData,
           {
-            headers: { 'Content-Type': 'multipart/form-data' }
+            headers: { 'Content-Type': 'multipart/form-data' },
+            params: { secure: true } // Agregar esta línea
           }
         );
         uploadedUrls.push(response.data.url);

@@ -15,7 +15,8 @@ export const uploadNewImage = async (selectedFiles) => {
          'https://api.cloudinary.com/v1_1/mariaferrari/upload',
          formData,
          {
-           headers: { 'Content-Type': 'multipart/form-data' }
+          headers: { 'Content-Type': 'multipart/form-data' },
+          params: { secure: true } // Agregar esta línea
          }
        );         if(!response) throw new Error('error al subir los datos')
         uploadedUrls.push(response.data.url);

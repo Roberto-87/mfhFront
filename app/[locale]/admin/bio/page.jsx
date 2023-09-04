@@ -37,8 +37,10 @@ const Bio = () => {
     try {
       const response = await axios.post(`${BASE_URL}${BIO}`, form, {
         headers: {
-          'Content-Type': 'application/json',
+          headers: { 'Content-Type': 'multipart/form-data' },
+          params: { secure: true } // Agregar esta línea
         },
+        
       });
       console.log('Datos guardados exitosamente:', response.data);
       setSend(true)
