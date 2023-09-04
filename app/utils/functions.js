@@ -19,7 +19,7 @@ export const getDimensions = async (works) => {
 
 export const imagesMaped=(exhibitions)=>{
   if(!exhibitions)throw new Error('exhibitions not found ') 
-    return exhibitions?.map((each)=> each.image)
+    return exhibitions?.map((each)=> each.images)
    }
 
 export const exhibitionSort=(exhibitions)=>{

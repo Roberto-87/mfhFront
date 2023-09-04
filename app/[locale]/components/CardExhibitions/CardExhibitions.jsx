@@ -17,7 +17,6 @@ const CardExhibitions=({ exhibitions})=>{
   useEffect(()=>{
      const orderedExhibitions= exhibitionSort(exhibitions)
     setOrderedExhibition(orderedExhibitions)
-    console.log(orderedExhibitions)
     setImages(imagesMaped(orderedExhibitions))
     setLoading(true)     
    if(images){

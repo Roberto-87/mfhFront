@@ -26,8 +26,7 @@ import { getDimensions } from '../../utils/functions';
 
     return (< >   
         <CardExhibitions exhibitions={exhibitions} />
-        <p>prueba</p>
-         </>
+        </>
         )
 }
 export default Exhibitions
