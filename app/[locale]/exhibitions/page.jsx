@@ -12,6 +12,7 @@ import { getDimensions } from '../../utils/functions';
       const fetchDataExhibition = async () => {
         try {
           const exhibitionsFetched = await getData(`${EXHIBITIONS}/active`);
+          console.log(exhibitionsFetched)
           const worksWithDimensions = await getDimensions(exhibitionsFetched);
           if(!exhibitionsFetched )throw new Error('error el recibir las exhibiciones')
           if(!worksWithDimensions )throw new Error('error el recibir las dimensiones')
@@ -24,8 +25,7 @@ import { getDimensions } from '../../utils/functions';
     }, []);
 
     return (< >   
-   { exhibitions.map((exhibition, index)=> <img key={index} src={exhibition.images[0].replace('http', 'https')}></img>) }
-{/*         <CardExhibitions exhibitions={exhibitions} /> */}
+        <CardExhibitions exhibitions={exhibitions} />
         </>
         )
 }
