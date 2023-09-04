@@ -18,6 +18,7 @@ const CardExhibitions=({ exhibitions})=>{
    if(!exhibitions)throw new Error('Exhibitions not found ')
     const orderedExhibitions= exhibitionSort(exhibitions)
     setOrderedExhibition(orderedExhibitions)
+    console.log(orderedExhibitions)
     const mapImages= imagesMaped(orderedExhibitions)
     setImages(mapImages)
     setLoading(true)     
