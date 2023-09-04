@@ -18,8 +18,8 @@ const ImageListExhibition=({exhibition})=>{
         exhibition?.images?.map((image, index) => (
           <ImageListItem  key={index}  style={{gap:'2px', display:'flex', justifyContent:'center'}}>        
           <img
-                src={`${image.replace('http', 'https')}`}
-                srcSet={`${image.replace('http', 'https')}?w=164&h=200&fit=crop&auto=format&dpr=2 2x`}
+                src={`${image}?w=164&h=164&fit=crop&auto=format`}
+                srcSet={`${image}?w=164&h=200&fit=crop&auto=format&dpr=2 2x`}
                 alt={'imagen de exhibición'}
                 loading="lazy"
                 onClick={()=>onHandleClick(image)}
