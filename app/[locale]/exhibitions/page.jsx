@@ -17,7 +17,7 @@ import { getDimensions } from '../../utils/functions';
           if(!worksWithDimensions )throw new Error('error el recibir las dimensiones')
           setExhibitions(worksWithDimensions);          
         } catch (error) {
-          return {error:error.message}
+          return {error:error}
         }
       };      
       fetchDataExhibition();  
