@@ -38,7 +38,7 @@ const Exhibition=({params })=>{
     return ( 
       <Box sx={{paddingRight:'1%',paddingLeft:'1%'}}>  
       {loading && <LoaderAnimation/>}
-    {exhibition.images && <ExhibitionData exhibition={exhibition}/> }
+    {exhibition  && <ExhibitionData exhibition={exhibition}/> }
     {exhibitionText.document && 
      <div style={{display:'flex', alignItems:'flex-start', justifyContent:'center'}}>
         <Button className={comfortaa.className} style={{color:'black',margin:'1px', paddingTop:'2px'}} onClick={handleOpen}><i>texto curatorial</i></Button>
