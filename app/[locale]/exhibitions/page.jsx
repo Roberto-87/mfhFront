@@ -15,7 +15,7 @@ import { getDimensions } from '../../utils/functions';
           const worksWithDimensions = await getDimensions(exhibitionsFetched);
           if(!exhibitionsFetched )throw new Error('error el recibir las exhibiciones')
           if(!worksWithDimensions )throw new Error('error el recibir las dimensiones')
-          setExhibitions(worksWithDimensions);          
+          setExhibitions(exhibitionsFetched);          
         } catch (error) {
           return {error:error.message}
         }
