@@ -16,7 +16,7 @@ const Exhibition=({params })=>{
    const [open, setOpen] = useState(false);
    const [loading, setLoading] = useState(false);
    
-    const handleOpen = () => setOpen(true);
+   const handleOpen = () => setOpen(true);
    const handleClose = () => setOpen(false);
 
   useEffect(() => { 

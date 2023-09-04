@@ -24,7 +24,7 @@ const ImageListExhibition=({exhibition})=>{
                 loading="lazy"
                 onClick={()=>onHandleClick(image)}
                 style={{cursor:'pointer'}}
-              />
+              /> 
          </ImageListItem>
         ))
 }  
