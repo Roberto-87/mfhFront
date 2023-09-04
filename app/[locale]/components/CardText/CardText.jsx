@@ -21,7 +21,7 @@ const CardText=({texts})=>{
           <div  className={styles.textContainerContainer}item xs={2} sm={4} md={3} key={text.id} style={{display:'flex', justifyContent:'flex-start', marginLeft:'2.6%', flexDirection:'column', width:'100%'}}>
      <div className={styles.textContainer}>
               <Link href={`/text/${text.id}`} style={{margin:'0'}}>
-                <h4  className={comfortaa.className} style={{ color: 'black' }}>{`${text.title} por ${text.author}.`}</h4>
+                <h4  className={comfortaa.className} style={{ color: 'black' }}>{`${text.title.toUpperCase()} por ${text.author}.`}</h4>
               </Link>
   </div>
           </div>
