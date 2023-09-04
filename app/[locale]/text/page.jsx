@@ -12,7 +12,8 @@ const Works = () => {
       const fetchData = async () => {
         const papersData = await getData(`${TEXT}/active`);
         const orderedPapers= textOrdered(papersData)
-        setPapers(orderedPapers);
+        const httpsFormat= orderedPapers.map((item)=> item.image.replace('http', 'https'))
+        setPapers(httpsFormat);
       };      
       fetchData();  
     }, []);
