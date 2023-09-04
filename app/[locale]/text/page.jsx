@@ -13,7 +13,7 @@ const Works = () => {
         const papersData = await getData(`${TEXT}/active`);
         const orderedPapers= textOrdered(papersData)
         const httpsFormat= orderedPapers.map((item)=> item.image.replace('http', 'https'))
-        setPapers(httpsFormat);
+        setPapers(orderedPapers);
       };      
       fetchData();  
     }, []);
