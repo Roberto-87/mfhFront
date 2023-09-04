@@ -15,7 +15,7 @@ const ImageListExhibition=({exhibition})=>{
     return(
       <ImageList cols={1} /* columns={{ xs: 1, sm: 1, md: 1, xl:3 }} */ >
      { 
-        exhibition?.images?.map((image, index) => (
+        exhibition?.image?.map((image, index) => (
           <ImageListItem  key={index}  style={{gap:'2px', display:'flex', justifyContent:'center'}}>        
           <img
                 src={`${image.replace('http', 'https')}`}
