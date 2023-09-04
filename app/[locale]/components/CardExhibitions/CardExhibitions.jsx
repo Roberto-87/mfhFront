@@ -15,6 +15,7 @@ const CardExhibitions=({ exhibitions})=>{
   const[images, setImages]= useState([])
   
   useEffect(()=>{
+   if(!exhibitions)throw new Error('Exhibitions not found ')
     const orderedExhibitions= exhibitionSort(exhibitions)
     setOrderedExhibition(orderedExhibitions)
     const mapImages= imagesMaped(orderedExhibitions)

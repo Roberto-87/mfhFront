@@ -30,8 +30,7 @@ const CardWorks = ({works}) => {
   const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(()=>{
-    console.log(works)
-    if(!works)throw new Error('Works not found ')
+   if(!works)throw new Error('Works not found ')
     const allImages= works.map((work)=>work.image)
     setImages(allImages)
     setLoading(true)      
