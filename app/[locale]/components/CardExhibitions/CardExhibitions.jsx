@@ -36,10 +36,10 @@ const CardExhibitions=({ exhibitions})=>{
               <Grid item xs={2} sm={4} md={3} lg={2} xl={3} key={index} >
                 <div  direction="column" className={comfortaa.className}>
                   <ExhibitionLink exhibition={exhibition} />
-              {images && <div style={{fontSize:'0.7rem'}} >
+                  <div style={{fontSize:'0.7rem'}} >
                   <ExhibitionData exhibition={exhibition}/>
               </div>
-              }
+              
                 </div>
               </Grid>
             ))}
