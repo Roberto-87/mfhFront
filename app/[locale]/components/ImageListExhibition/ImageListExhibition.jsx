@@ -19,7 +19,7 @@ const ImageListExhibition=({exhibition})=>{
           <ImageListItem  key={index}  style={{gap:'2px', display:'flex', justifyContent:'center'}}>        
           <img
                 src={`${image.replace('http', 'https')}`}
-                srcSet={`${image}?w=164&h=200&fit=crop&auto=format&dpr=2 2x`}
+                srcSet={`${image.replace('http', 'https')}?w=164&h=200&fit=crop&auto=format&dpr=2 2x`}
                 alt={'imagen de exhibición'}
                 loading="lazy"
                 onClick={()=>onHandleClick(image)}
