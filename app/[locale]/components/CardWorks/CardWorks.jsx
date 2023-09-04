@@ -173,7 +173,7 @@ const CardWorks = ({works}) => {
      </div>
        { imageActive &&  
         <div id="modal-modal-description" style={{ marginTop:'6px', color:'gray',display:'flex', justifyContent:'center', alignItems:'center',height:'100%', width:'100%'}} className={`${styles.modalDescription} ${comfortaa.className}`}>
-           { works && `${activeImageData.title }, ${activeImageData.year}. ${activeImageData.material} ${activeImageData.size}.`} 
+           { works && activeImageData && `${activeImageData.title }, ${activeImageData.year}. ${activeImageData.material} ${activeImageData.size}.`} 
         </div>}
           </Box>
       </Modal>    
