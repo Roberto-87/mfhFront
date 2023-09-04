@@ -10,7 +10,7 @@ const Works = () => {
   
     useEffect(() => {
       const fetchData = async () => {
-        const papersData = await getData(TEXT);
+        const papersData = await getData(`${TEXT}/active`);
         const orderedPapers= textOrdered(papersData)
         setPapers(orderedPapers);
       };      
