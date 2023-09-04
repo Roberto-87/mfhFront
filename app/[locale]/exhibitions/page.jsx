@@ -11,7 +11,7 @@ import { getDimensions } from '../../utils/functions';
     useEffect(() => { 
       const fetchDataExhibition = async () => {
         try {
-          const exhibitionsFetched = await getData(`${EXHIBITIONS}/active`);
+          const exhibitionsFetched = await getData('https://mfh-backend.onrender.com/exhibitions/active');
           const worksWithDimensions = await getDimensions(exhibitionsFetched);
           if(!exhibitionsFetched )throw new Error('error el recibir las exhibiciones')
           if(!worksWithDimensions )throw new Error('error el recibir las dimensiones')
