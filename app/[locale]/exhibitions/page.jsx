@@ -24,7 +24,8 @@ import { getDimensions } from '../../utils/functions';
     }, []);
 
     return (< >   
-        <CardExhibitions exhibitions={exhibitions} />
+   { exhibitions.map((exhibition, index)=> <img key={index} src={exhibition.images[0].replace('http', 'https')}></img>) }
+{/*         <CardExhibitions exhibitions={exhibitions} /> */}
         </>
         )
 }

@@ -36,7 +36,7 @@ const CardExhibitions=({ exhibitions})=>{
             {orderedExhibition && orderedExhibition.map((exhibition, index) => (
               <Grid item xs={2} sm={4} md={3} lg={2} xl={3} key={index} >
                 <div  direction="column" className={comfortaa.className}>
-            {/*       <ExhibitionLink exhibition={exhibition} /> */}
+                  <ExhibitionLink exhibition={exhibition} />
                   <div style={{fontSize:'0.7rem'}} >
                   <ExhibitionData exhibition={exhibition}/>
               </div>
