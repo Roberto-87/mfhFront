@@ -15,7 +15,8 @@ import { getDimensions } from '../../utils/functions';
           const worksWithDimensions = await getDimensions(exhibitionsFetched);
           if(!exhibitionsFetched )throw new Error('error el recibir las exhibiciones')
           if(!worksWithDimensions )throw new Error('error el recibir las dimensiones')
-          setExhibitions(worksWithDimensions);          
+          const httpsFormat= worksWithDimensions?.map((work)=> work.image.replace('http', 'https'))
+          setExhibitions(httpsFormat);          
         } catch (error) {
           return {error:error.message}
         }

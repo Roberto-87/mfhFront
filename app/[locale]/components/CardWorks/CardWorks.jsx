@@ -63,7 +63,7 @@ const CardWorks = ({works}) => {
   const handlerClick = (event) => {
     setCarrousel(!carrousel);
     setImageActive(event.target.currentSrc);
-   
+    
     let indexImageActive= works.findIndex((url)=> url.image===imageActive)
     let imageActiveData= works.find((url)=> url.image===event.target.currentSrc)
 
