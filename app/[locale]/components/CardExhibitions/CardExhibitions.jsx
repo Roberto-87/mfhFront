@@ -33,7 +33,7 @@ const CardExhibitions=({ exhibitions})=>{
         <Box sx={{ flexGrow: 1 }} >
           <Grid container spacing={{ xs: 2, md: 3, lg:2, xl:2 }} columns={{ xs: 1, sm: 1, md: 1, lg:3, xl:3 }} direction="row" justifyContent="center" alignItems="center" >
           {loading && <LoaderAnimation/>}
-            {orderedExhibition && orderedExhibition.map((exhibition, index) => (
+            {orderedExhibition && exhibitions.map((exhibition, index) => (
               <Grid item xs={2} sm={4} md={3} lg={2} xl={3} key={index} >
                 <div  direction="column" className={comfortaa.className}>
                   <ExhibitionLink exhibition={exhibition} />
