@@ -12,10 +12,9 @@ import { getDimensions } from '../../utils/functions';
       const fetchDataExhibition = async () => {
         try {
           const exhibitionsFetched = await getData(`${EXHIBITIONSGET}/active`);
-          const worksWithDimensions = await getDimensions(exhibitionsFetched);
+/*           const worksWithDimensions = await getDimensions(exhibitionsFetched); */
           if(!exhibitionsFetched )throw new Error('error el recibir las exhibiciones')
-          if(!worksWithDimensions )throw new Error('error el recibir las dimensiones')
-         console.log(exhibitionsFetched)
+/*           if(!worksWithDimensions )throw new Error('error el recibir las dimensiones') */
           setExhibitions(exhibitionsFetched);          
         } catch (error) {
           return {error:error.message}
