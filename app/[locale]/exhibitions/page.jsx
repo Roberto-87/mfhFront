@@ -11,7 +11,7 @@ import { getDimensions } from '../../utils/functions';
     useEffect(() => { 
       const fetchDataExhibition = async () => {
         try {
-          const exhibitionsFetched = await getData(`${EXHIBITIONS}`);
+          const exhibitionsFetched = await getData(`${EXHIBITIONS}/active`);
           const worksWithDimensions = await getDimensions(exhibitionsFetched);
           if(!exhibitionsFetched )throw new Error('error el recibir las exhibiciones')
           if(!worksWithDimensions )throw new Error('error el recibir las dimensiones')
@@ -26,6 +26,7 @@ import { getDimensions } from '../../utils/functions';
 
     return (< >   
         <CardExhibitions exhibitions={exhibitions} />
+        <p>prueba</p>
          </>
         )
 }
