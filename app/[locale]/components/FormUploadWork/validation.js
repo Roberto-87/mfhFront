@@ -3,9 +3,10 @@ import getData from "../../hooks/getData";
 
 const getNumbers = async (number) => {
   if(!number)throw new Error('no hay un numero para consultar')
-  const numbers = await getData(`${WORKS}/numbers`);
-  return numbers.includes(number);
-
+    const numbers = await getData(`${WORKS}/numbers`);
+    if(!numbers) return false
+   
+    return numbers.includes(number);
 };
 
 const validation =async ({ title, material,size,number,year,section, image,status}) => {
