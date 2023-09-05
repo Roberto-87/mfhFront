@@ -2,7 +2,7 @@
 import CardExhibitions from '../components/CardExhibitions/CardExhibitions';
 import { useState, useEffect } from 'react';
 import getData from '../hooks/getData';
-import { EXHIBITIONSGET} from '../../utils/consts';
+import { EXHIBITIONS} from '../../utils/consts';
 import { getDimensions } from '../../utils/functions';
 
  const Exhibitions = () => {
@@ -11,7 +11,7 @@ import { getDimensions } from '../../utils/functions';
     useEffect(() => { 
       const fetchDataExhibition = async () => {
         try {
-          const exhibitionsFetched = await getData(`${EXHIBITIONSGET}/active`);
+          const exhibitionsFetched = await getData(`${EXHIBITIONS}/active`);
 /*           const worksWithDimensions = await getDimensions(exhibitionsFetched); */
           if(!exhibitionsFetched )throw new Error('error el recibir las exhibiciones')
 /*           if(!worksWithDimensions )throw new Error('error el recibir las dimensiones') */
