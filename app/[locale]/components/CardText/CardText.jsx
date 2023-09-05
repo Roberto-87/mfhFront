@@ -6,8 +6,6 @@ import { comfortaa } from '../../fonts/fonts.js';
 import styles from './CardText.module.css'
 
 const CardText=({texts})=>{
-    console.log(texts)
-
      return(  
         <Box sx={{ flexGrow: 1 }}>
         <Grid
@@ -33,3 +31,9 @@ const CardText=({texts})=>{
 )}
 
 export default CardText
+{/*               <Link href={`/text/${text.id}`}>
+              {text.type==='curatorial' ? 
+              <h2 className={`${comfortaa.className}${styles.type}`} style={{ color: 'grey' }}><i>TEXTO {text.type.toUpperCase()}</i></h2>
+              :
+              <h2 className={`${comfortaa.className}${styles.type}`} style={{ color: 'grey' }}><i></i>{text.type.toUpperCase()}</h2>
+            }     </Link> */}
