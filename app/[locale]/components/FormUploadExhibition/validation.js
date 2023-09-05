@@ -2,6 +2,7 @@ import getData from "../../hooks/getData";
 
 const getNumbers = async (number) => {
   const numbers = await getData('exhibitions/number');
+  if(!numbers) return false
   return numbers.includes(number);  
 };
 
