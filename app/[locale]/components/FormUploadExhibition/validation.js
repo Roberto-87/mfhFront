@@ -1,7 +1,9 @@
+import { EXHIBITIONS } from "../../../utils/consts";
 import getData from "../../hooks/getData";
 
 const getNumbers = async (number) => {
-  const numbers = await getData('exhibitions/number');
+  if(!number)throw new Error('no hay un numero para consultar')
+  const numbers = await getData(`${EXHIBITIONS}/number`);
   if(!numbers) return false
   return numbers.includes(number);  
 };
