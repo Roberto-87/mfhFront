@@ -12,6 +12,7 @@ import FormUploadContact from '../FormUploadContact/FormUploadContact';
 import FormUploadBioNoPhoto from '../FormUploadBioNoPhoto/FormUploadBioNoPhoto';
 import FormUploadBioPhoto from '../FormUploadBioPhoto/FormUploadBioPhoto';
 import { Button } from '@mui/material';
+import { imageFormat } from '../../../utils/functions';
 
 const ImageUploader = ({folder = 'Obras', title='obra'}) => {
    const [selectedFiles, setSelectedFiles] = useState([]);
@@ -146,7 +147,7 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
   <section>
     {urlImage  && selectedFiles.length>0 && pathname !== 'portfolio'&& pathname!=='text'&& 
       <div>
-      <img style={{width:'12%', margin:'4px'}} src={urlImage} alt="imagen subida" />
+      <img style={{width:'12%', margin:'4px'}} src={imageFormat(urlImage)} alt="imagen subida" />
      </div>
     }       
  </section> 

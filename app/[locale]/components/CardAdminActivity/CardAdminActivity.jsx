@@ -8,6 +8,7 @@ import ModalAdminBio from "../ModalAdminBio/ModalAdminBio"
 import { useEffect } from "react"
 import notFound from '../../assets/no-image-available-icon-vector-id1216251206-568614111.jpg'
 import Image from "next/image"
+import {imageFormat} from '../../../utils/functions'
  
 
 const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch })=>{
@@ -30,6 +31,7 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
         setOpen(false)
       }
       useEffect(()=>{
+        console.log(work.image)
         const router= window.location.pathname.split('/').at(-1)
         setPathname(router)
           },[pathname, localActiveImage, open])
@@ -58,7 +60,7 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
                 {work.exhibitionName && 
                <div >
                   <h6 style={{wordWrap: 'break-word',marginBottom:'4px',height:'10px', marginTop:'0'}}>{work.exhibitionName}</h6>
-                  <img alt={work.title} onClick={()=>handleOpen(work.images[0])}  style={{marginBottom:'1px'}} width={130} height={100} src={work.images[0] || notFound}/>
+                  <img alt={work.title} onClick={()=>handleOpen(work.images[0])}  style={{marginBottom:'1px'}} width={130} height={100} src={imageFormat(work.images[0]) || notFound}/>
              </div>
                
                 }
