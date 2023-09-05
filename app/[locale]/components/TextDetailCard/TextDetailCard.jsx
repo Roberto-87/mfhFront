@@ -7,7 +7,7 @@ const TextDetailCard=({paper})=>{
  return(
  <Box sx={styleTextDetail} className={style.containerDocument} >
     {paper.format === 'pdf' ?
-      <embed src={imageFormat(paper.image)} style={{width:'65%',height:'100%'}} alt={paper.title}></embed>
+      <embed src={(paper.image)} style={{width:'65%',height:'100%'}} alt={paper.title}></embed>
     :
     <img src={imageFormat(paper.image)} style={{width:'35%'}} alt={paper.title} />
     }
