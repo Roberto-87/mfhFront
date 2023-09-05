@@ -129,9 +129,7 @@ const CardWorks = ({works}) => {
      </div>
     </Box>
      } 
-   
-{/*      {open && <ModalWorks works={works} activeImageData={activeImageData}/>} */}
-          
+         
         <Modal open={open} onClose={handleClose} onClick={handleClose}  aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
         <Box sx={styleCarrouselWorks}    >
         <div  style={{display:'flex', flexDirection:'row-reverse',  position:'relative', top:'50%',width:'100%',display:'flex', justifyContent:'center'}} >
