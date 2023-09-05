@@ -7,12 +7,7 @@ const TextDetailCard=({paper})=>{
  <Box sx={styleTextDetail} className={style.containerDocument} >
     <Box sx={{display:'flex', flexDirection:'column', justifyContent:'center',color:'black'}}>
   </Box>
-
-    {paper.format === 'pdf' ?
-      <embed src={paper.image.replace('http','https')} style={{width:'65%',height:'100%'}} alt={paper.title}></embed>
-    :
-    <img src={paper.image} style={{width:'35%'}} alt={paper.title} />
-    }
+   <embed src={paper.image.replace('http','https')} style={{width:'65%',height:'100%'}} alt={paper.title}></embed>
  </Box>     
  )
 }
