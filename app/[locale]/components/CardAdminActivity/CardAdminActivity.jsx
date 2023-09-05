@@ -31,7 +31,6 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
         setOpen(false)
       }
       useEffect(()=>{
-        console.log(work.image)
         const router= window.location.pathname.split('/').at(-1)
         setPathname(router)
           },[pathname, localActiveImage, open])
@@ -67,7 +66,7 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
   
               {work.title &&  
               <div onClick={()=>handleOpen(work.id)}>
-                <img alt={work.title} onClick={()=>handleOpen(work.image)}  style={{marginLeft:'6px'}}  width={100} height={90} src={work.image }/> 
+                <img alt={work.title} onClick={()=>handleOpen(work.image)}  style={{marginLeft:'6px'}}  width={100} height={90} src={imageFormat(work.image)}/> 
               </div>
                   }
                </Grid>
