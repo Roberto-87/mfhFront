@@ -1,21 +1,26 @@
+'use client'
+import { useState, useEffect } from 'react';
 import getData from '../hooks/getData'
 import CardText from "../components/CardText/CardText";
 import {TEXT} from '../../utils/consts'
 import { textOrdered } from '../../utils/functions';
 
-const fetchData = async () => {
-  const papersData = await getData(`${TEXT}/active`);
-  if(!papersData) throw new Error('no one text data')
-  const orderedPapers= textOrdered(papersData)
-  return orderedPapers
-};
-
-const Texts =async () => {  
-    const papers= await fetchData();  
+const Works = () => {
+    const [papers, setPapers] = useState([]);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        const papersData = await getData(`${TEXT}/active`);
+        const orderedPapers= textOrdered(papersData)
+        const httpsFormat= orderedPapers.map((item)=> item.image.replace('http', 'https'))
+        setPapers(orderedPapers);
+      };      
+      fetchData();  
+    }, []);
 
     return (< > 
         <CardText texts={papers} />
         </>
         )
 }
-export default Texts
+export default Works
