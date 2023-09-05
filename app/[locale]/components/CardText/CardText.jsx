@@ -6,6 +6,7 @@ import { comfortaa } from '../../fonts/fonts.js';
 import styles from './CardText.module.css'
 
 const CardText=({texts})=>{
+  
      return(  
         <Box sx={{ flexGrow: 1 }}>
         <Grid
