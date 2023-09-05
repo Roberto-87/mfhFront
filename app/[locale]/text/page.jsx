@@ -12,7 +12,7 @@ const fetchData = async () => {
   return textHttpsFormat
 };    
 
-const Text = async() => {
+const Works = async() => {
     const papers= await fetchData()
 
 return (< > 
@@ -20,4 +20,4 @@ return (< >
         </>
         )
 }
-export default Text
+export default Works
