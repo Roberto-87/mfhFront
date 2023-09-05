@@ -160,7 +160,7 @@
     .modalDescription{
        display: flex  !important;
        justify-content: flex-start !important;
-       margin-left: 17.5%;
+       margin-left:-10%;
     }
     .imgModal{
       width: 80% !important;
