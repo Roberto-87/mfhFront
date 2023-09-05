@@ -43,7 +43,6 @@ return(
       </div>     
      </>:
       <>
-          <ButtonStart/>
         <div className={style.brandContainer}>
         <Link href='/'><h1 style={{color:'black'}} className={`${Mplus1.className}${style.brandLanding}`} >MARIA FERRARI HARDOY</h1></Link>
         </div>     
