@@ -160,7 +160,10 @@
     .modalDescription{
        display: flex  !important;
        justify-content: flex-start !important;
-       margin-left: 14%;
+       margin-left: 17.5%;
+    }
+    .imgModal{
+      width: 85% !important;
     }
   }
   
@@ -173,8 +176,8 @@
     }
     .modalDescription{
        display: flex  !important;
-       justify-content: flex-start !important;
-       margin-left: 14%;
+       justify-content: center !important;
+       margin-left:-10%;
     }
   }
   @media screen and (min-width: 940px) {
@@ -187,7 +190,10 @@
     .modalDescription{
        display: flex  !important;
        justify-content: flex-start !important;
-       margin-left: 14%;
+       margin-left:30%;
+    }
+    .imgModal{
+      width: 100% !important;
     }
   }
   
@@ -201,7 +207,7 @@
     .modalDescription{
       display: flex  !important;
       justify-content: center !important ;
-/*       margin-left: -45px;    */
+      margin-left: -45px;   
       width: 100%;
       margin:none
     }
@@ -212,10 +218,10 @@
       display: flex ;
       align-items: center;
       justify-content: center;
-      width:29% !important;
+      width:35% !important;
     }
      .modalDescription{
-      margin-left: none;
+      margin-left: -5%;
     }
   }
 

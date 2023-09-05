@@ -154,7 +154,7 @@ const CardWorks = ({works}) => {
           }}
           src={imageActive}
           cursor='grab'
-       
+          className={styles.imgModal}
           alt={work.title}
         />
      </div>   

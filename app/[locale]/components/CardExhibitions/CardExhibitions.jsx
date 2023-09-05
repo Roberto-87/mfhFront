@@ -15,7 +15,6 @@ const CardExhibitions=({ exhibitions})=>{
   const[images, setImages]= useState([])
   
   useEffect(()=>{
-   if(!exhibitions)throw new Error('Exhibitions not found ')
     const orderedExhibitions= exhibitionSort(exhibitions)
     setOrderedExhibition(orderedExhibitions)
     const mapImages= imagesMaped(orderedExhibitions)
@@ -26,6 +25,7 @@ const CardExhibitions=({ exhibitions})=>{
       setLoading(false);
    },50)
   }
+  setLoading(false)     
  },[])
   
  return (
@@ -44,7 +44,7 @@ const CardExhibitions=({ exhibitions})=>{
                 </div>
               </Grid>
             ))}
-          </Grid>
+                 </Grid>
         </Box>
       </main>
       );

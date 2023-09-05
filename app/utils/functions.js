@@ -18,13 +18,15 @@ export const getDimensions = async (works) => {
   };
 
 export const imagesMaped=(exhibitions)=>{
-  if(!exhibitions)throw new Error('exhibitions not found ') 
+  if(exhibitions){
     return exhibitions?.map((each)=> each.images)
    }
+  }
 
 export const exhibitionSort=(exhibitions)=>{
-  if(!exhibitions)throw new Error('exhibitions not found ') 
-  return exhibitions?.sort((a,b)=>a.number - b.number)
+  if(exhibitions.length>0){
+    return exhibitions?.sort((a,b)=>a.number - b.number)
+  }
 }   
 
 export const textOrdered=(texts)=>{

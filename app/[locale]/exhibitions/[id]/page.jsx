@@ -23,6 +23,7 @@ const Exhibition=({params })=>{
     setLoading(true)
     const fetchDataExhibition = async () => {
       const actualExhibition = await getData(`${EXHIBITIONS}/${id}`);
+      console.log(actualExhibition)
       setExhibition(actualExhibition[0]);
       const curatorialTexts= await getData(`${TEXT}/curatorial`)
       const actualCuratorial= curatorialTexts.find((text)=> text.exhibitionId===id && text.status===true) 

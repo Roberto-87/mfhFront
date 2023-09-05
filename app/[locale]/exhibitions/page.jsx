@@ -1,29 +1,19 @@
-'use client'
 import CardExhibitions from '../components/CardExhibitions/CardExhibitions';
-import { useState, useEffect } from 'react';
 import getData from '../hooks/getData';
 import { EXHIBITIONS} from '../../utils/consts';
-import { getDimensions } from '../../utils/functions';
 
- const Exhibitions = () => {
-    const [exhibitions, setExhibitions] = useState([]);
+const fetchData = async () => {
+  const worksData = await getData(`${EXHIBITIONS}/active`);
+     if (!worksData) {
+     throw new Error('Failed to fetch data')
+}
+    return worksData
+ };  
 
-    useEffect(() => { 
-      const fetchDataExhibition = async () => {
-        try {
-          const exhibitionsFetched = await getData(`${EXHIBITIONS}/active`);
-/*           const worksWithDimensions = await getDimensions(exhibitionsFetched); */
-          if(!exhibitionsFetched )throw new Error('error el recibir las exhibiciones')
-/*           if(!worksWithDimensions )throw new Error('error el recibir las dimensiones') */
-          setExhibitions(exhibitionsFetched);          
-        } catch (error) {
-          return {error:error.message}
-        }
-      };      
-      fetchDataExhibition();  
-    }, []);
+ const Exhibitions = async () => {
+  const exhibitions= await fetchData()
 
-    return (< >   
+    return (< >
         <CardExhibitions exhibitions={exhibitions} />
         </>
         )
