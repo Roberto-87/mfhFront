@@ -38,9 +38,9 @@ return(
      <>
      <ButtonStart/>
         <img className={style.imageLanding} src={image}   alt="imagen de portada"  />
- {/*      <div className={style.brandContainer}> */}
+      <div className={style.brandContainer}>
       <Link href='/'><h1 className={`${Mplus1.className}${style.brandLanding}`} >MARIA FERRARI HARDOY</h1></Link>
-{/*       </div>   */}   
+      </div>     
      </>
      }
      </div>)
