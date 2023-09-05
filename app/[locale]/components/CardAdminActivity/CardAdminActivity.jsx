@@ -22,8 +22,7 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
            setLocalActiveImage(urlImage);  
            setActiveImage(activeImage)
            if(pathname==='bio'){
-            console.log(id)
-            setLocalActiveImage(id);  
+              setLocalActiveImage(id);  
            } 
       };
     

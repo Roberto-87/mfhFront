@@ -14,7 +14,7 @@ const AdminActiveWorks=({title, fetchingData})=>{
     useEffect(() => {
        const fetchData = async () => {
         let allWorksAdmin = await getData(fetchingData)
-              if(allWorksAdmin.length>0){
+          if(allWorksAdmin.length>0){
           const inactiveWorks= allWorksAdmin?.filter((work)=> work.status!==true).sort((a,b)=>b.number-a.number)
           setInActiveWorks(inactiveWorks);
         }

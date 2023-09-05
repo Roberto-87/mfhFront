@@ -19,7 +19,6 @@ const ModalAdminWOrks=({activeWorks, inactiveWorks,activeImage,handleClose, hand
   
         if(activeWorks){
             const activeWork= activeWorks?.find((work)=>imageFormat( work.image)===imageFormat(activeImage))
-
             setActiveImageData({type:activeWork.section,id:activeWork.id, format:activeWork.format,image:activeWork.image, material:activeWork.material, number: activeWork.number, size: activeWork.size, status:activeWork.status , title: activeWork.title, year:activeWork.year })
         }else if(inactiveWorks) {
             const inActiveWork= inactiveWorks?.find((work)=> imageFormat(work.image)===imageFormat(activeImage))
