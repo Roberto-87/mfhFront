@@ -201,7 +201,7 @@
     .modalDescription{
       display: flex  !important;
       justify-content: center !important ;
-      margin-left: -45px;   
+/*       margin-left: -45px;    */
       width: 100%;
       margin:none
     }
