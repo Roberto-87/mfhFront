@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../../utils/consts";
 import validation from "../FormUploadWork/validation";
+import { imageFormat } from "../../../utils/functions";
 
 
 const ModalAdminWOrks=({activeWorks, inactiveWorks,activeImage,handleClose, handleOpen})=>{
@@ -15,13 +16,13 @@ const ModalAdminWOrks=({activeWorks, inactiveWorks,activeImage,handleClose, hand
     const[error, setError]=useState({})
 
     useEffect(()=>{
-      console.log(activeImage)
+  
         if(activeWorks){
-            const activeWork= activeWorks?.find((work)=> work.image===activeImage)
-            console.log(activeImage)
+            const activeWork= activeWorks?.find((work)=>imageFormat( work.image)===imageFormat(activeImage))
+
             setActiveImageData({type:activeWork.section,id:activeWork.id, format:activeWork.format,image:activeWork.image, material:activeWork.material, number: activeWork.number, size: activeWork.size, status:activeWork.status , title: activeWork.title, year:activeWork.year })
         }else if(inactiveWorks) {
-            const inActiveWork= inactiveWorks?.find((work)=> work.image===activeImage)
+            const inActiveWork= inactiveWorks?.find((work)=> imageFormat(work.image)===imageFormat(activeImage))
             setInActiveImageData({type:inActiveWork.section, id:inActiveWork.id, format:inActiveWork.format,image:inActiveWork.image, material:inActiveWork.material, number: inActiveWork.number, size: inActiveWork.size, status:inActiveWork.status , title: inActiveWork.title, year:inActiveWork.year })
         }
        setOpen(!open);
