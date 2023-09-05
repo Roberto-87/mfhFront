@@ -6,6 +6,7 @@ import axios from "axios";
 import { BASE_URL, EXHIBITIONS, TEXT } from "../../../utils/consts";
 import validation from "../FormUploadWork/validation";
 import getData from "../../hooks/getData";
+import { imageFormat } from "../../../utils/functions";
 
 
 const ModalAdminText=({activeWorks, inactiveWorks,activeImage,handleClose, handleOpen})=>{
@@ -90,11 +91,11 @@ const ModalAdminText=({activeWorks, inactiveWorks,activeImage,handleClose, handl
    {
     activeImageData.status==='true'&&   activeImageData.format !=='pdf'?
        <div style={{width:'100%'}}>
-        <img src={activeImage} alt="imagen obra" style={{marginTop:'0.5%'}} width={400} height={300}/>
+        <img src={imageFormat(activeImage)} alt="imagen obra" style={{marginTop:'0.5%'}} width={400} height={300}/>
         </div>
         :
         <div style={{width:'100%',display:'flex', justifyContent:'flex-start'}}>
-        <embed src={activeImage} alt="imagen obra" style={{marginTop:'4%'}} width={650} height={350}/>        </div>
+        <embed src={imageFormat(activeImage)} alt="imagen obra" style={{marginTop:'4%'}} width={650} height={350}/>        </div>
    }
 
 
