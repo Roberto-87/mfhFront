@@ -10,7 +10,7 @@ const fetchData = async () => {
   return orderedPapers
 };
 
-const Text =async () => {  
+const Texts =async () => {  
     const papers= await fetchData();  
 
     return (< > 
@@ -18,4 +18,4 @@ const Text =async () => {
         </>
         )
 }
-export default Text
+export default Texts

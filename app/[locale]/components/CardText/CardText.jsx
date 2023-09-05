@@ -31,9 +31,3 @@ const CardText=({texts})=>{
 )}
 
 export default CardText
-{/*               <Link href={`/text/${text.id}`}>
-              {text.type==='curatorial' ? 
-              <h2 className={`${comfortaa.className}${styles.type}`} style={{ color: 'grey' }}><i>TEXTO {text.type.toUpperCase()}</i></h2>
-              :
-              <h2 className={`${comfortaa.className}${styles.type}`} style={{ color: 'grey' }}><i></i>{text.type.toUpperCase()}</h2>
-            }     </Link> */}
