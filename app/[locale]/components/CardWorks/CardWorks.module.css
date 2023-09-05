@@ -139,7 +139,7 @@
   }
   @media screen and (min-width: 720px) {
     .containerImgModal  {
-      width: 55% !important;
+      width: 50% !important;
     }
     .buttonBefore, .buttonAfter{
       height: 70% !important;
@@ -152,7 +152,7 @@
 
   @media screen and (min-width: 840px) {
     .containerImgModal  {
-      width: 65% !important;
+      width: 55% !important;
     }
     .buttonBefore, .buttonAfter{
       height: 70% !important;
