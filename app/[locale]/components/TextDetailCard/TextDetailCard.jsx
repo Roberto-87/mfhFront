@@ -4,21 +4,16 @@ import style from './TextDetailCard.module.css'
 
 const TextDetailCard=({paper})=>{
  return(
-  <>
-  {paper.format === 'pdf' ?
-    <div style={{display:'flex', justifyContent:'center',height:'100%'}}>
+ <Box sx={styleTextDetail} className={style.containerDocument} >
+    <Box sx={{display:'flex', flexDirection:'column', justifyContent:'center',color:'black'}}>
+  </Box>
+
+    {paper.format === 'pdf' ?
       <embed src={paper.image.replace('http','https')} style={{width:'65%',height:'100%'}} alt={paper.title}></embed>
-    </div>
-
-  :
-  <div style={{display:'flex', justifyContent:'center',height:'100%'}}>
-  <img src={paper.image} style={{width:'35%'}} alt={paper.title} />
-  </div>
-
-  }
-  
-  </>
-
+    :
+    <img src={paper.image} style={{width:'35%'}} alt={paper.title} />
+    }
+ </Box>     
  )
 }
 export default TextDetailCard
