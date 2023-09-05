@@ -15,7 +15,7 @@ const ModalAdminWOrks=({activeWorks, inactiveWorks,activeImage,handleClose, hand
     const[error, setError]=useState({})
 
     useEffect(()=>{
-      
+      console.log(activeImage)
         if(activeWorks){
             const activeWork= activeWorks?.find((work)=> work.image===activeImage)
             console.log(activeImage)
