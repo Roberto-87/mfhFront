@@ -158,7 +158,7 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
    
    
    {pathname==='bio' && noPhoto===true && !urlImage && selectedFiles.length===0 &&  <FormUploadBioNoPhoto/> }
-   {pathname==='bio' && !noPhoto && selectedFiles.length>0 && urlImage.length>0 && <FormUploadBioPhoto img={imageFormat(urlImage)}/> }
+   {pathname==='bio' && !noPhoto && urlImage && <FormUploadBioPhoto img={imageFormat(urlImage)}/> }
 
         
 </section>  
