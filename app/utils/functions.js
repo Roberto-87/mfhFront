@@ -64,4 +64,9 @@ export const uploadFunction =async()=>{
     }
 }
 
-export const imageFormat=(img)=> img.replace('http','https')
+export const imageFormat=(img)=> {
+ if(img){
+  return   img.replace('http','https')
+ }
+
+}
