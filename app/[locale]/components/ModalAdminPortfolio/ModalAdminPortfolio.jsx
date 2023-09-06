@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { BASE_URL, PORTFOLIO } from "../../../utils/consts";
 import validation from "../FormUploadWork/validation";
+import { imageFormat } from "../../../utils/functions";
 
 
 const ModalAdminPortfolio=({activeWorks, inactiveWorks,activeImage,handleClose, handleOpen})=>{
@@ -74,7 +75,7 @@ const ModalAdminPortfolio=({activeWorks, inactiveWorks,activeImage,handleClose, 
     <Box sx={style}>
     <div>
     <Button onClick={handleClose} style={{color:'gray', position:'absolute', right:'100%', top:'0%', fontSize:'1em'}}>CERRAR</Button>
-    <embed src={activeImage} alt="imagen obra" style={{marginTop:'3%'}} width={500} height={450}/>
+    <embed src={imageFormat(activeImage)} alt="imagen obra" style={{marginTop:'3%'}} width={500} height={450}/>
     <div>
     {activeImageData.status===true && <Button onClick={onHandleEdit}>Edit</Button>}
 
