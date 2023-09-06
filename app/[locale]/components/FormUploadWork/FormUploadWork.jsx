@@ -28,7 +28,6 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
     setNoPhoto(false)
     const router= window.location.pathname.split('/').at(-1)
     setPathname(router)
-    console.log(pathname)
   }, [pathname])
 
   const handleFileSelect = (event) => {
@@ -81,7 +80,9 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
     setHandleUploadClicked(false)
 
   };
-  const onHandleForm=()=> setNoPhoto(true)
+  const onHandleForm=()=> {
+    setNoPhoto(true)
+  }
 
   return (
 
@@ -154,15 +155,10 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
  <section>
    
    {pathname==='bio' && selectedFiles.length===0 && <Button variant="contained" onClick={onHandleForm}>omitir foto</Button>}
-   {urlImage  && selectedFiles.length>0 && pathname === 'bio' &&
-     <div>
-     {noPhoto===true ? 
-     <FormUploadBioNoPhoto/> : 
-     <FormUploadBioPhoto img={urlImage}/> 
-   } 
+   {pathname==='bio' && selectedFiles.length>0 && <FormUploadBioPhoto img={urlImage}/> }
+   {pathname==='bio' && noPhoto &&  <FormUploadBioNoPhoto/> }
 
-     </div>
-   }       
+        
 </section>  
 
  <section>

@@ -65,6 +65,7 @@ const onHandleCancel=()=>{
 
 return (
     <>
+    {newForm &&
 <form encType='multipart/form-data'>
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12">
@@ -199,6 +200,7 @@ status
        </div>
   
        </form>
+       }
     
 
     </>
