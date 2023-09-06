@@ -34,7 +34,7 @@ export default function FormUploadText({img}) {
           setCuratorial(false);
         }
         setCuratorial(true)
-        const response= await getData(EXHIBITIONS)
+        const response= await getData(`${EXHIBITIONS}/active`)
         setExhibitions(response)
     };
     
