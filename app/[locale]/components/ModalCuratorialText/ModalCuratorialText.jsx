@@ -11,7 +11,7 @@ const ModalCuratorialText=({exhibitionText, open, onClose})=>{
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 1, sm: 1, md: 9, xl:3 }}  direction="row" justifyContent="center" alignItems="center">
              <Item >
               <div style={{width:'50%'}}>
-                <embed src={exhibitionText.document.replace('http','https')} width={600} height={450} priority style={{styleText}}/>
+                <embed src={(exhibitionText.document)} width={600} height={450} priority style={{styleText}}/>
               </div>
              </Item>
              <Typography id="modal-modal-description" className={comfortaa.className} sx={{ mt: 2, color:'Black' }}>

@@ -95,7 +95,7 @@ const ModalAdminText=({activeWorks, inactiveWorks,activeImage,handleClose, handl
         </div>
         :
         <div style={{width:'100%',display:'flex', justifyContent:'flex-start'}}>
-        <embed src={imageFormat(activeImage)} alt="imagen obra" style={{marginTop:'4%'}} width={650} height={350}/>        </div>
+        <embed src={(activeImage)} alt="imagen obra" style={{marginTop:'4%'}} width={650} height={350}/>        </div>
    }
 
 
