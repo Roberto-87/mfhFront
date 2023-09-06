@@ -24,9 +24,9 @@ const Bio = () => {
 }
   return(
     <Box>
-    <Item>
-      <AdminActiveWorks title={'Bio'} fetchingData={BIO}/>
-    </Item>
+    <Item sx={{width:'100%'}}>
+      <FormUploadWork folder="bio" title='Bio'/>
+      </Item>
     </Box> 
 
     /*     <Box>
