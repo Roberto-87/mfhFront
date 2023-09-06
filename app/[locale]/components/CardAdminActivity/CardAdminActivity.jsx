@@ -102,11 +102,11 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
               <ModalAdminPortfolio activeWorks={activeWorks} activeImage={localActiveImage} inactiveWorks={inactiveWorks} handleClose={handleClose} handleOpen={handleOpen} />  
 
             }  
-            {
+{/*             {
               open && pathname==="bio" &&                 
               <ModalAdminBio  activeWorks={activeWorks} activeImage={localActiveImage} inactiveWorks={inactiveWorks} handleClose={handleClose} handleOpen={handleOpen} />  
 
-            }  
+            }   */}
     
         </>)
 }
