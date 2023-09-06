@@ -93,7 +93,7 @@ const ModalAdminBio=({activeWorks, inactiveWorks,activeImage,handleClose, handle
     {activeImageData.status===true && <Button onClick={onHandleEdit}>Edit</Button>}
   </div>
    {activeImageData.image && 
-   <Image src={activeImageData.image} alt="imagen obra" style={{marginTop:'0%', display:'inline-flex'}} width={150} height={250}/>}
+   <Image src={activeImageData.image} alt="imagen obra" style={{marginTop:'0%', display:'inline-flex'}} width={200} height={250}/>}
     <div>
 
     <div>
