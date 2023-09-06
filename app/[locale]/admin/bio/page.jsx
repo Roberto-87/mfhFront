@@ -23,15 +23,21 @@ const Bio = () => {
  return <LoaderAnimation></LoaderAnimation>;
 }
   return(
-    <p>bio</p>
-/*     <Box>
-      <Item>
-        <AdminActiveWorks title={'Bio'} fetchingData={BIO}/>
-      </Item>
-      <Item sx={{width:'100%'}}>
+    <Box>
+    <Item>
+      <AdminActiveWorks title={'Bio'} fetchingData={BIO}/>
+    </Item>
+    </Box> 
+
+    /*     <Box>
+          <Item>
+            <AdminActiveWorks title={'Bio'} fetchingData={BIO}/>
+          </Item>
+          </Box> 
+          <Item sx={{width:'100%'}}>
       <FormUploadWork folder="bio" title='Bio'/>
       </Item>
-    </Box> */
+      */
     )
 
 }
