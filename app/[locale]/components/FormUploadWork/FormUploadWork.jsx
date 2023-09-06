@@ -166,8 +166,8 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
  <section>
      {urlImage  && selectedFiles.length>0 && pathname === 'text' &&
      <div>
-       <embed style={{width:'15%', margin:'4px'}} src={urlImage} alt="imagen subida" />
-       <FormUploadText img={urlImage}/>
+       <embed style={{width:'15%', margin:'4px'}} src={imageFormat(urlImage)} alt="imagen subida" />
+       <FormUploadText img={imageFormat(urlImage)}/>
      </div>
      }
 </section>

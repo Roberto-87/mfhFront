@@ -20,8 +20,7 @@ const ModalAdminBio=({activeWorks, inactiveWorks,activeImage,handleClose, handle
     useEffect(()=>{
       if(activeWorks){
         const activeWork= activeWorks?.find((work)=> work.id===activeImage)
-        console.log(activeWork)
-            setActiveImageData({id:activeWork.id, title: activeWork.title, subtitle:activeWork.subtitle,image:activeWork.image, number:activeWork.number, text: activeWork.text, status:activeWork.status})
+         setActiveImageData({id:activeWork.id, title: activeWork.title, subtitle:activeWork.subtitle,image:activeWork.image, number:activeWork.number, text: activeWork.text, status:activeWork.status})
         }else if(inactiveWorks) {
             const inActiveWork= inactiveWorks?.find((work)=> work.id===activeImage)
             setInActiveImageData({id:inActiveWork.id,title: inActiveWork.title, subtitle:inActiveWork.subtitle, image:inActiveWork.image, number:inActiveWork.number,  text: inActiveWork.text, status:inActiveWork.status  })
