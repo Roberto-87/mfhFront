@@ -53,7 +53,7 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
           }
         );
         if(!response) throw new Error('error al subir los datos')
-
+          console.log(response.data.url)
        setUrlImage(response.data.url)
       }
     } catch (error) {
@@ -146,17 +146,19 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
   }
      
   <section>
-    {urlImage  && selectedFiles.length>0 && pathname !== 'portfolio'&& pathname!=='text'&& 
+    {urlImage  && selectedFiles.length>0 && pathname !== 'portfolio' && pathname!=='text'&& 
       <div>
       <img style={{width:'12%', margin:'4px'}} src={imageFormat(urlImage)} alt="imagen subida" />
      </div>
     }       
  </section> 
+
  <section>
-   
    {pathname==='bio' && selectedFiles.length===0 && <Button variant="contained" onClick={onHandleForm}>omitir foto</Button>}
-   {pathname==='bio' && selectedFiles.length>0 && <FormUploadBioPhoto img={urlImage}/> }
-   {pathname==='bio' && noPhoto &&  <FormUploadBioNoPhoto/> }
+   
+   
+   {pathname==='bio' && noPhoto===true && !urlImage && selectedFiles.length===0 &&  <FormUploadBioNoPhoto/> }
+   {pathname==='bio' && !noPhoto && selectedFiles.length>0 && urlImage.length>0 && <FormUploadBioPhoto img={imageFormat(urlImage)}/> }
 
         
 </section>  

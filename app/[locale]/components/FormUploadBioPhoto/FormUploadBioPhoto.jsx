@@ -45,7 +45,7 @@ export default function FormUploadBioPhoto({img}) {
       const response= await axios.post(`${BASE_URL}${BIO}`,form  ) 
       if(!response) throw new Error('error al subir los datos')
       console.log('response from the client:', response);
-      setForm({title:'',subtitle:'', text:'',type:'',number:0, status:false})
+      setForm({image:'',title:'',subtitle:'', text:'',type:'',number:0, status:false})
 
       if(response.status===200){
         swal("info subida correctamente 😁");
