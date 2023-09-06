@@ -21,9 +21,9 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
           setOpen(true);
            setLocalActiveImage(urlImage);  
            setActiveImage(activeImage)
-/*            if(pathname==='bio'){
+           if(pathname==='bio'){
               setLocalActiveImage(id);  
-           }  */
+           } 
       };
     
       const handleClose=()=>{
@@ -84,7 +84,7 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
         </Card>
              </Box>
            {
-              open && work.section==="obra" && 
+              open && pathname==="works" && 
               <ModalAdminWOrks activeWorks={activeWorks} activeImage={localActiveImage} inactiveWorks={inactiveWorks}handleClose={handleClose} handleOpen={handleOpen} />  
            }
           {
