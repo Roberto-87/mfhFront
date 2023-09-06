@@ -12,21 +12,24 @@ const FormSignIn=()=>{
    
     return (
       <Box sx={{display:'flex', justifyContent:'center', height:'100vh', backgroundColor:'black'}} >
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8" style={{borderRadius:'1%', padding:'2%',marginTop:'3%',height:'85vh', boxShadow: '0 0 10px #ffffff, 0 0 20px #798079, 0 0 30px #3e413e', animation: 'neon-animation 1.5s infinite alternate'}} >
-          <div className="sm:mx-auto sm:w-full sm:max-w-sm " style={{marginTop:'50%'}}>
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8" style={{borderRadius:'1%', marginTop:'3%',height:'80vh', boxShadow: '0 0 10px #ffffff, 0 0 20px #798079, 0 0 30px #3e413e', animation: 'neon-animation 1.5s infinite alternate',backgroundColor:'#000020'}} >
+         <div>
+          <img src={'https://res.cloudinary.com/mariaferrari/image/upload/v1694018282/logoAxolotl_jvcg7j.png'} alt={"logo axolotl"}/>
+         </div>
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm " style={{ width:'20vw'}}>
          <div >
-            <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
+           {/*             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
               Sign in to your account
-            </h2>
+            </h2> */}
   
          </div>
           </div>
   
-          <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm ">
+          <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm "style={{display:'flex', justifyContent:'center', flexDirection:'row', marginTop:'5%'}}>
             <div className="space-y-6 ">
               <div  >
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
-                  Email address
+               User
                 </label>
                 <div className="mt-2 ">
                   <input
