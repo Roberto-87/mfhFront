@@ -99,7 +99,7 @@ const ModalAdminText=({activeWorks, inactiveWorks,activeImage,handleClose, handl
    }
 
 {
-    inActiveImageData.status==='true'&&   activeImageData.format !=='pdf'?
+    inActiveImageData.status==='false'&&   activeImageData.format !=='pdf'?
        <div style={{width:'100%'}}>
         <img src={imageFormat(activeImage)} alt="imagen obra" style={{marginTop:'0.5%'}} width={400} height={300}/>
         </div>
