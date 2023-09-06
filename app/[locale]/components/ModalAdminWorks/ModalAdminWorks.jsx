@@ -21,9 +21,9 @@ const ModalAdminWOrks=({activeWorks, inactiveWorks,activeImage,handleClose, hand
         const activeWork= activeWorks?.find((work)=>( work.id===activeImage))
         console.log(activeWorks)
         console.log(activeImage)
-
         setActiveImageData({type:activeWork.section,id:activeWork.id, format:activeWork.format,image:activeWork.image, material:activeWork.material, number: activeWork.number, size: activeWork.size, status:activeWork.status , title: activeWork.title, year:activeWork.year })
-        }else if(inactiveWorks) {
+
+      }else if(inactiveWorks) {
             const inActiveWork= inactiveWorks?.find((work)=> (work.id)===(activeImage))
             setInActiveImageData({type:inActiveWork.section, id:inActiveWork.id, format:inActiveWork.format,image:inActiveWork.image, material:inActiveWork.material, number: inActiveWork.number, size: inActiveWork.size, status:inActiveWork.status , title: inActiveWork.title, year:inActiveWork.year })
         }
@@ -85,7 +85,9 @@ const ModalAdminWOrks=({activeWorks, inactiveWorks,activeImage,handleClose, hand
     <Box sx={style}>
     <div>
     <Button onClick={handleClose} style={{color:'gray', position:'absolute', right:'100%', top:'0%', fontSize:'1em'}}>CERRAR</Button>
-    <img src={imageFormat(activeImageData.image)} alt="imagen obra" style={{marginTop:'6%'}} width={200} height={200}/>
+    {activeImageData.status===true ?<img src={imageFormat(activeImageData.image)} alt="imagen obra" style={{marginTop:'6%'}} width={200} height={200}/>
+    :
+    <img src={imageFormat(inActiveImageData.image)} alt="imagen obra" style={{marginTop:'6%'}} width={200} height={200}/>}
     <div>
     {activeImageData.status===true && <Button onClick={onHandleEdit}>Edit</Button>}
 
