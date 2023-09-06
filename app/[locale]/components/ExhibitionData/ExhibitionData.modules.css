@@ -1,5 +1,12 @@
 
-
+@media screen and (max-width: 279px) {
+   .containerExhibition{
+        display: flex !important;
+        justify-content: center !important;
+        margin: none !important;
+    
+    }
+  }
 
 @media screen and (max-width: 375px) {
     .containerExhibition{
