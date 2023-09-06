@@ -4,7 +4,7 @@ import { useState } from 'react';
 import LoaderAnimation from '../../components/LoaderAnimation/LoaderAnimation'
 import { useSession } from "next-auth/react";
 import { useRouter } from 'next/navigation';
-import {  BIO } from '../../../utils/consts';
+import {  BIO, COVER, WORKS } from '../../../utils/consts';
 import AdminActiveWorks from "../../components/AdminActiveWorks/AdminActiveWorks";
 import FormUploadWork from '../../components/FormUploadWork/FormUploadWork'
 import { Item } from '../[works]/styleMui';
@@ -24,20 +24,13 @@ const Bio = () => {
 }
   return(
     <Box>
-    <Item sx={{width:'100%'}}>
+      <Item>
+        <AdminActiveWorks title={'Bio'} fetchingData={COVER}/>
+      </Item>
+      <Item sx={{width:'100%'}}>
       <FormUploadWork folder="bio" title='Bio'/>
       </Item>
-    </Box> 
-
-    /*     <Box>
-          <Item>
-            <AdminActiveWorks title={'Bio'} fetchingData={BIO}/>
-          </Item>
-          </Box> 
-          <Item sx={{width:'100%'}}>
-      <FormUploadWork folder="bio" title='Bio'/>
-      </Item>
-      */
+    </Box>
     )
 
 }
