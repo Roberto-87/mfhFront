@@ -46,7 +46,7 @@ const ModalAdminText=({activeWorks, inactiveWorks,activeImage,handleClose, handl
     const onHandleEditWork=async(e)=>{
         setActiveImageData({...activeImageData, [e.target.name]:e.target.value})
         setInActiveImageData({...inActiveImageData, [e.target.name]:e.target.value})
-        const response= await getData(EXHIBITIONS)
+        const response= await getData(`${EXHIBITIONS}/active`)
         setExhibitions(response)
    
     }
@@ -98,6 +98,16 @@ const ModalAdminText=({activeWorks, inactiveWorks,activeImage,handleClose, handl
         <embed src={(activeImage)} alt="imagen obra" style={{marginTop:'4%'}} width={650} height={350}/>        </div>
    }
 
+{
+    inActiveImageData.status==='true'&&   activeImageData.format !=='pdf'?
+       <div style={{width:'100%'}}>
+        <img src={imageFormat(activeImage)} alt="imagen obra" style={{marginTop:'0.5%'}} width={400} height={300}/>
+        </div>
+        :
+        <div style={{width:'100%',display:'flex', justifyContent:'flex-start'}}>
+        <embed src={(activeImage)} alt="imagen obra" style={{marginTop:'4%'}} width={650} height={350}/>        </div>
+   }
+  
 
     <div>
     {activeImageData.status===true && <Button onClick={onHandleEdit}>Edit</Button>}
