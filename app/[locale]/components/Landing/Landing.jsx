@@ -34,7 +34,7 @@ return(
 </>
      }
      
-     {image.length >0  ?    
+     {image ?    
      <>
      <ButtonStart/>
         <img className={style.imageLanding} src={image}   alt="imagen de portada"  />
