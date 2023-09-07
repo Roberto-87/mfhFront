@@ -8,8 +8,10 @@ import ModalAdminBio from "../ModalAdminBio/ModalAdminBio"
 import { useEffect } from "react"
 import notFound from '../../assets/no-image-available-icon-vector-id1216251206-568614111.jpg'
 import Image from "next/image"
-import {imageFormat} from '../../../utils/functions'
- 
+import {deleteWork, imageFormat, searchFolder} from '../../../utils/functions'
+import {BsTrash} from 'react-icons/bs'
+import swal from "sweetalert"
+
 
 const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch })=>{
     const[activeImage, setActiveImage]= useState()
@@ -29,6 +31,14 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
       const handleClose=()=>{
         setOpen(false)
       }
+      const onHandleDelete=async(work)=>{
+        const {id, image}= work
+        const workId= id
+        const urlImage= image
+        const folder= searchFolder(pathname) 
+        const deleting= await deleteWork(pathname,workId,urlImage,folder)
+        swal('Se ha eliminado el elemento.') 
+      }
       useEffect(()=>{
         const router= window.location.pathname.split('/').at(-1)
         setPathname(router)
@@ -40,7 +50,13 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
         <Card style={{  cursor:'pointer', height:'100%' ,display:'flex', justifyContent:'center'}} key={work.id}>
              <Grid item xs={6}  container spacing={1} style={{width:'100%' ,}}  >
 
-           {  work.status===false &&   <Switch  onChange={()=>onHandleSwitch(inactiveWorks[index])} /> }
+           {  work.status===false && 
+           <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', width:'100%'}}>
+             <BsTrash style={{fontSize:'1.5rem', marginTop:'1px'}} onClick={()=>onHandleDelete(inactiveWorks[index])}/>
+             <Switch   onChange={()=>onHandleSwitch(inactiveWorks[index])} /> 
+           </div>
+        
+             }
            {  work.status===true &&   <Switch defaultChecked onChange={()=>onHandleSwitch(activeWorks[index])} /> }
         
                {pathname==='portfolio' || pathname==='text' || pathname==='contact' || pathname==='bio'?   
