@@ -25,28 +25,27 @@ useEffect(()=>{
 
 return(
   <div className={style.landingContainer}>
-{/*      {
+     {
 !image &&      <>
 <ButtonStart/>
  <div className={style.brandContainer}>
   <Link href='/'><h1 className={Mplus1.className} class={style.brandLandingWhithoutImg} >MARIA FERRARI HARDOY</h1></Link>
  </div>     
 </>
-     } */}
+     }
      
-     {image.length ===0 ?    
+     {image ?    
      <>
-             <div className={style.brandContainer}>
-        <Link href='/'><h1 style={{color:'black'}} className={`${Mplus1.className}${style.brandLanding}`} >MARIA FERRARI HARDOY</h1></Link>
-        </div>     
-     </>:
-      <>
-      <ButtonStart/>
+     <ButtonStart/>
         <img className={style.imageLanding} src={image}   alt="imagen de portada"  />
       <div className={style.brandContainer}>
       <Link href='/'><h1 className={`${Mplus1.className}${style.brandLanding}`} >MARIA FERRARI HARDOY</h1></Link>
-      </div>   
-
+      </div>     
+     </>:
+      <>
+        <div className={style.brandContainer}>
+        <Link href='/'><h1 style={{color:'black'}} className={`${Mplus1.className}${style.brandLanding}`} >MARIA FERRARI HARDOY</h1></Link>
+        </div>     
        </>
      }
      </div>)
