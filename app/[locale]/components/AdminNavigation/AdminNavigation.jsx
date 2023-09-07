@@ -105,12 +105,7 @@ const AdminNavigation=()=>{
           )
 
   }
-  return (
-    <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
-    </>
-  )
+
 }
 
 module.exports= AdminNavigation
