@@ -75,29 +75,14 @@ export const imageFormat=(img)=> {
   return   img.replace('http','https')
  }
 }
-export const deleteFromCloud=async(urlImage, folder)=>{
-  try {
-    const { data } = await axios(
-      `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/search/by_asset_folder?asset_folder=${folder}`,
-      {
-        auth: {
-          username: API_KEY,
-          password: API_SECRET,
-        },
-      }
-    );
-    if (!data) throw new Error("Error en la solicitud a Cloudinary");
-    const resources = data.resources;
-    console.log(resources)  
-
-  } catch (error) {
-    console.log(error.message);
-    return { error: error.message };
-  }
+export const deleteFromCloud=async(urlImage,route, folder)=>{
+  const response= await axios.delete(`${BASE_URL}${route}/destroyfromcloud`,{
+    params: { folder: folder, urlImage: urlImage },
+  })
+  return response 
 };
 
-export const deleteWork=async(route,workId,urlImage, folder)=>{
-const deleteInCloud= await deleteFromCloud(urlImage, folder) 
+export const deleteWork=async(route,workId)=>{
 const response= await axios.delete(`${BASE_URL}${route}/delete/${workId}`)
 return response 
 }

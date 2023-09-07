@@ -8,7 +8,7 @@ import ModalAdminBio from "../ModalAdminBio/ModalAdminBio"
 import { useEffect } from "react"
 import notFound from '../../assets/no-image-available-icon-vector-id1216251206-568614111.jpg'
 import Image from "next/image"
-import {deleteWork, imageFormat, searchFolder} from '../../../utils/functions'
+import {deleteFromCloud, deleteWork, imageFormat, searchFolder} from '../../../utils/functions'
 import {BsTrash} from 'react-icons/bs'
 import swal from "sweetalert"
 
@@ -36,7 +36,9 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
         const workId= id
         const urlImage= image
         const folder= searchFolder(pathname) 
-        const deleting= await deleteWork(pathname,workId,urlImage,folder)
+        const deleteFromDb= await deleteWork(pathname,workId,urlImage,folder)
+        const deleteResourceFromCloud = await deleteFromCloud(urlImage,pathname, folder)
+        console.log('Response from Cloud:', deleteResourceFromCloud);
         swal('Se ha eliminado el elemento.') 
       }
       useEffect(()=>{
