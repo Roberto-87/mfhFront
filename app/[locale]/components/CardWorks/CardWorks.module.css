@@ -113,19 +113,7 @@
 
     }
   }
-  @media screen and (min-width: 768px) {
-    .containerImgModal  {
-      width: 85% !important;
-    }
-    .buttonBefore, .buttonAfter{
-      height: 70% !important;
-    }
-    .modalDescription{
-      margin-bottom:4% !important;
-
-    }
-  }
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 500px) {
     .containerImgModal  {
       width: 65% !important;
     }
@@ -137,7 +125,31 @@
 
     }
   }
-  @media screen and (min-width: 720px) {
+  @media screen and (min-width: 600px) {
+    .containerImgModal  {
+      width: 60% !important;
+    }
+    .buttonBefore, .buttonAfter{
+      height: 70% !important;
+    }
+    .modalDescription{
+      margin-bottom:4% !important;
+
+    }
+  }
+  @media screen and (min-width: 670px) {
+    .containerImgModal  {
+      width: 50% !important;
+    }
+    .buttonBefore, .buttonAfter{
+      height: 70% !important;
+    }
+    .modalDescription{
+      margin-bottom:4% !important;
+
+    }
+  }
+  @media screen and (min-width: 768px) {
     .containerImgModal  {
       width: 50% !important;
     }
@@ -150,7 +162,9 @@
     }
   }
 
-  @media screen and (min-width: 840px) {
+
+
+  @media screen and (min-width: 815px) {
     .containerImgModal  {
       width: 55% !important;
     }
@@ -169,7 +183,8 @@
   
   @media screen and (min-width: 880px) {
     .containerImgModal  {
-      width: 55% !important;
+      width: 50% !important;
+    
     }
     .buttonBefore, .buttonAfter{
       height: 70% !important;
@@ -182,7 +197,7 @@
   }
   @media screen and (min-width: 940px) {
     .containerImgModal  {
-      width: 40% !important;
+      width: 38% !important;
     }
     .buttonBefore, .buttonAfter{
       height: 70% !important;
@@ -218,7 +233,7 @@
       display: flex ;
       align-items: center;
       justify-content: center;
-      width:35% !important;
+      width:30% !important;
     }
      .modalDescription{
       margin-left: -5%;

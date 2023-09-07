@@ -9,6 +9,7 @@ const FormSignIn=()=>{
     const [password, setPassword] = useState('');
     const [isInvalid, setIsInvalid] = useState(false); 
     const router = useRouter();
+    
    
     return (
       <Box sx={{display:'flex', justifyContent:'center', height:'100vh', backgroundColor:'black'}} >
@@ -70,8 +71,7 @@ const FormSignIn=()=>{
   
               <div>
                 <button
-                  onClick={() => signIn('credentials', {email, password, redirect: true, callbackUrl: '/admin/works'})}
-                  
+                  onClick={signIn('credentials', {email, password, redirect: true, callbackUrl: '/admin/works'})}
                   disabled={!email || !password}
                   className="disabled:opacity-40 flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                 >

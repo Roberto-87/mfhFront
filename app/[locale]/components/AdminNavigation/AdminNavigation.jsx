@@ -60,9 +60,9 @@ const links = [
 
 const AdminNavigation=()=>{
   const [user, setUser]=useState()
-  const {status}= useSession()
+  const { data: session } = useSession()
   
-  if(status==='authenticated'){
+  if (session) {
     return (
       
       <header className={styles.navbarAdminContainer}>
@@ -105,6 +105,12 @@ const AdminNavigation=()=>{
           )
 
   }
+  return (
+    <>
+      Not signed in <br />
+      <button onClick={() => signIn()}>Sign in</button>
+    </>
+  )
 }
 
 module.exports= AdminNavigation
