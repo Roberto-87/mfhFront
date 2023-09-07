@@ -27,13 +27,25 @@
 
        
   }
- @media (min-width:  540px) and (max-width: 911px)  {
+ @media (min-width:  540px) and (max-width: 748px)  {
   .modalContainer {
     margin-left:-70vw !important; 
     margin-top: 8vh;
      }  
 
   }
+  @media (min-width:  750px) and (max-width: 911px)  {
+    .modalContainer {
+      margin-left:-35vw !important; 
+      margin-top: 8vh;
+       }  
+       .doc{
+        height: 850 !important;
+        width: 1000 !important;
+   
+       }
+  
+    }
     @media (min-width:  912px) and (max-width:1023px)  {
       .modalContainer {
         margin-left:-7vw !important; 
