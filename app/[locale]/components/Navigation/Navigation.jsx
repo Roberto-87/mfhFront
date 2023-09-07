@@ -39,24 +39,23 @@ const Navigation=()=>{
   const currentPathName= usePathname()
   const router= useRouter()
   const withoutNavbar= ['/admin','/', '/en', '/es','/admin/exhibitions','/admin/portfolio','/admin/text','/admin/biography','/admin/cover','/admin/contact','/admin/works','/admin/bio','/admin/signin','/admin/forgotPassword']
-  const [mobile, setMobile]= useState(false)
+  const [mobile, setMobile] = useState(window.innerWidth < 768);
 
-  const checkMobileMode = () => {
-     setMobile(window.innerWidth < 768); 
-  };
-
-  useEffect(()=>{
-    checkMobileMode()    
-
-  },[])
- 
+  useEffect(() => {
+    const handleResize = () => {
+      setMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 {
 
   return (
       !withoutNavbar.includes(currentPathName) ?
       <header className={styles.navbarContainer}>
-            {mobile? <NavBarMobile/>:
-           
+            {mobile? <NavBarMobile/>:           
            <nav className={styles.brandContainer}>
               <Brand/>                 
                       {links.map(({ label, route }) => (
