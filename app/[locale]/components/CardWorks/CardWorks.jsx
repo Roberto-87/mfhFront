@@ -80,9 +80,6 @@ const onNext = (event) => {
 };
 
 
-
-
-
   const handleClose=()=>{
     setOpen(false)
   }
