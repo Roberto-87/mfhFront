@@ -15,7 +15,6 @@ import {styleCarrouselWorks, Item} from './styleMui'
 import {comfortaa} from '../../fonts/fonts'
 import { TransformWrapper, TransformComponent} from "react-zoom-pan-pinch";
 import { GrNext, GrPrevious } from 'react-icons/gr';
-import ModalWorks from "../ModalWorks/ModalWorks";
 
 const CardWorks = ({works}) => {
   const[loading, setLoading]= useState(false)
