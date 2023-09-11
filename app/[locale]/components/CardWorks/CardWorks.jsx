@@ -59,16 +59,29 @@ const CardWorks = ({works}) => {
 }, [imageActiveIndex]);
 
 
-  const handlerClick = (event) => {
-    setCarrousel(!carrousel);
-    setImageActive(event.target.currentSrc);
-    
-    let indexImageActive= works.findIndex((url)=> url.image===imageActive)
-    let imageActiveData= works.find((url)=> url.image===event.target.currentSrc)
+const handlerClick = (event) => {
+  setCarrousel(!carrousel);
+  setImageActive(event.target.currentSrc);
+  let indexImageActive= works.findIndex((url)=> url.image===imageActive)
+  let imageActiveData= works[indexImageActive]
+  setActiveImageData(imageActiveData)
+  setImageActiveIndex(indexImageActive) 
+};
+const onPrevious = (event) => {
+  event.stopPropagation();
+  let actualIndex = (imageActiveIndex - 1 + works.length) % works.length;
+  setActiveImageByIndex(actualIndex);
+};
 
-    setActiveImageData(imageActiveData)
-    setImageActiveIndex(indexImageActive) 
-  };
+const onNext = (event) => {
+  event.stopPropagation();
+  let actualIndex = (imageActiveIndex + 1) % works.length;
+  setActiveImageByIndex(actualIndex);
+};
+
+
+
+
 
   const handleClose=()=>{
     setOpen(false)
@@ -79,31 +92,15 @@ const CardWorks = ({works}) => {
 
   }
 
-
-  const onPrevious=(event)=>{   
-    event.stopPropagation(); 
-    let indexImageActive= works.findIndex((url)=> url.image===imageActive)
-    setImageActive('')
-    
-    if(indexImageActive-1 < 0){
-     setImageActiveIndex(works.length-1)
-     setImageActive(works.at(-1).image)
-     let imageActiveData= works.find((url)=> url.image===imageActive)
-     setActiveImageData(imageActiveData)
-    }else{
-      setImageActiveIndex((indexImageActive-1))
-      setImageActive(works[indexImageActive-1].image)
-      let imageActiveData= works.find((url)=> url.image===imageActive)
-      setActiveImageData(imageActiveData)
+  
+  const setActiveImageByIndex = (index) => {
+    if (index >= 0 && index < works.length) {
+      setActiveImageData(works[index]);
+      setImageActive(works[index].image);
+      setImageActiveIndex(index);
     }
-  }
-  const onNext=(event)=>{
-    event.stopPropagation();
-    setImageActiveIndex((imageActiveIndex + 1) % works.length);
-    setImageActive(works[(imageActiveIndex + 1) % works.length].image);
-    let imageActiveData= works.find((url)=> url.image===imageActive)
-    setActiveImageData(imageActiveData)   
-  }
+  };  
+  
 
   return (
     <Box sx={{ flexGrow: 1 }} className={comfortaa.className}>
@@ -113,7 +110,7 @@ const CardWorks = ({works}) => {
           works?.map((work) => (
             <Grid item xs={2} sm={1} md={3} lg={2} xl={3} key={work.id}>
               <Button onClick={handleOpen} >
-                <img className={styles.cardImage} src={work.image} onPrevious={onPrevious} onNext={onNext} onClick={handlerClick} alt={work.title} />
+                <img className={styles.cardImage} src={work.image} onPrevious={onPrevious} onNext={onNext} onClick={handlerClick}  alt={work.title} />
               </Button>
             <div>
     {work.image &&
