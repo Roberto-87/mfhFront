@@ -37,7 +37,12 @@ const CardAdminActivity=({work,activeWorks, inactiveWorks, index, onHandleSwitch
         const urlImage= image
         const folder= searchFolder(pathname) 
         const deleteFromDb= await deleteWork(pathname,workId,urlImage,folder)
-        const deleteResourceFromCloud = await deleteFromCloud(urlImage,pathname, folder)
+        if(pathname!=='contact'){
+          const deleteResourceFromCloud = await deleteFromCloud(urlImage,pathname, folder)
+          console.log(deleteResourceFromCloud)
+        }
+        
+        if(!deleteResourceFromCloud)throw new Error('error al eliminar el elemento')  
         console.log('Response from Cloud:', deleteResourceFromCloud);
         swal('Se ha eliminado el elemento.') 
       }
