@@ -16,6 +16,9 @@ import {comfortaa} from '../../fonts/fonts'
 import { TransformWrapper, TransformComponent} from "react-zoom-pan-pinch";
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import ModalWorks from "../ModalWorks/ModalWorks";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+AOS.init();
 
 const CardWorks = ({works}) => {
   const[loading, setLoading]= useState(false)
@@ -106,8 +109,8 @@ const onNext = (event) => {
     {works &&
           works?.map((work) => (
             <Grid item xs={2} sm={1} md={3} lg={2} xl={3} key={work.id}>
-              <Button onClick={handleOpen} >
-                <img className={styles.cardImage} src={work.image} onPrevious={onPrevious} onNext={onNext} onClick={handlerClick}  alt={work.title} />
+              <Button onClick={handleOpen} data-aos="fade-up">
+                <img className={styles.cardImage}  src={work.image} onPrevious={onPrevious} onNext={onNext} onClick={handlerClick}  alt={work.title} />
               </Button>
             <div>
     {work.image &&
