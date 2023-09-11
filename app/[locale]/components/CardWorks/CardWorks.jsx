@@ -17,7 +17,6 @@ import { TransformWrapper, TransformComponent} from "react-zoom-pan-pinch";
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import ModalWorks from "../ModalWorks/ModalWorks";
 import AOS from 'aos';
-import 'aos/dist/aos.css'; 
 AOS.init();
 
 const CardWorks = ({works}) => {
