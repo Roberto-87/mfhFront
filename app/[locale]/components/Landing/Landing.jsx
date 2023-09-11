@@ -29,7 +29,7 @@ return(
 !image &&      <>
 <ButtonStart/>
  <div className={style.brandContainer}>
-  <Link href='/'><h1 className={Mplus1.className} class={style.brandLandingWhithoutImg} >MARIA FERRARI HARDOY</h1></Link>
+  <Link href='/'><h1 className={`${Mplus1.className}${style.brandLandingWhithoutImg}`}  >MARIA FERRARI HARDOY</h1></Link>
  </div>     
 </>
      }

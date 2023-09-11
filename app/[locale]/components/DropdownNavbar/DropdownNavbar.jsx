@@ -8,8 +8,21 @@ import getData from '../../hooks/getData'
 import { PORTFOLIO } from '../../../utils/consts'
 import styles from '../ButtonsPortfolio/ButtonsPortfolio.module.css'
 import { Divider } from '@mui/material'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
+const theme = createTheme({
+  components: {
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'rgba(255, 255, 255, 0.87)', 
+          color:'black'
+        },
+      },
+    },
+  },
+})
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
@@ -37,7 +50,9 @@ export default function Example() {
   }, []) 
 
   return (
-    <Menu as="div" className="relative inline-block text-left">
+    <ThemeProvider theme={theme}>
+      
+    <Menu as="div" className="relative inline-block text-left" >
         <Menu.Button className={`${styles.containerPortfolio}${comfortaa.className}`} >
        PORTFOLIO
         </Menu.Button>
@@ -80,5 +95,6 @@ export default function Example() {
         </Menu.Items>
       </Transition>
     </Menu>
+    </ThemeProvider>
   )
 }

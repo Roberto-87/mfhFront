@@ -39,7 +39,7 @@ const Navigation=()=>{
   const currentPathName= usePathname()
   const router= useRouter()
   const withoutNavbar= ['/admin','/', '/en', '/es','/admin/exhibitions','/admin/portfolio','/admin/text','/admin/biography','/admin/cover','/admin/contact','/admin/works','/admin/bio','/admin/signin','/admin/forgotPassword']
-  const [mobile, setMobile] = useState(window.innerWidth < 768);
+  const [mobile, setMobile] = useState(typeof window !== 'undefined' && window.innerWidth < 768);
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,7 +55,11 @@ const Navigation=()=>{
   return (
       !withoutNavbar.includes(currentPathName) ?
       <header className={styles.navbarContainer}>
-            {mobile? <NavBarMobile/>:           
+            {mobile?
+            <nav >
+                <NavBarMobile/>
+            </nav>            
+           :           
            <nav className={styles.brandContainer}>
               <Brand/>                 
                       {links.map(({ label, route }) => (

@@ -5,7 +5,7 @@ import { Mplus1} from '../../fonts/fonts'
 const Brand=()=>{
  return(
   <div  className={styles.brandContainer}>
-    <Link href='/'><h1 className={Mplus1.className} >MARIA FERRARI HARDOY</h1></Link>
+    <Link href='/'><h1 className={`${Mplus1.className}${styles.brand}`} >MARIA FERRARI HARDOY</h1></Link>
 
   </div>
    

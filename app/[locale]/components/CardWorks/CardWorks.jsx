@@ -98,7 +98,7 @@ const onNext = (event) => {
       setImageActiveIndex(index);
     }
   };  
-  
+
 
   return (
     <Box sx={{ flexGrow: 1 }} className={comfortaa.className}>
@@ -107,7 +107,7 @@ const onNext = (event) => {
     {works &&
           works?.map((work) => (
             <Grid item xs={2} sm={1} md={3} lg={2} xl={3} key={work.id}>
-              <Button onClick={handleOpen} >
+              <Button onClick={handleOpen} className={styles.slideBottom} >
                 <img className={styles.cardImage}  src={work.image} onPrevious={onPrevious} onNext={onNext} onClick={handlerClick}  alt={work.title} />
               </Button>
             <div>

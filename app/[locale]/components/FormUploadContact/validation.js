@@ -11,7 +11,7 @@ const validation =async ({ description, link, type,status}) => {
     }
     if (!link) {
      errors["link"] = "Por favor agregá un link de vía de comunicación.";
-  } if(link && (!isValidUrl(link))){
+  } if(link && (!isValidUrl(link) && type!=='mail')){
     errors["link"] = "Por favor agregá un link válido.";
   }
     if (!type) {
