@@ -10,14 +10,11 @@
   .linkNavbarMobile{
     color: #837c7c !important;
     letter-spacing: 2px;
-
+    
   }
   .linkNavbarMobile:hover{
     color: rgb(0, 0, 0) !important;
-
-  }
-  .css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
-    background-color: black !important;
+    
   }
   
   @keyframes fadeInRight {

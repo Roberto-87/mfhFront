@@ -40,10 +40,6 @@ const CardWorks = ({works}) => {
       setLoading(false);
    },100)
   } 
- },[activeImageData])
-
-
- useEffect(() => {
   const handleKeyDown = (event) => {
     if (event.key === 'ArrowLeft') {
       onPrevious(event);
@@ -57,7 +53,8 @@ const CardWorks = ({works}) => {
   return () => {
     document.removeEventListener('keydown', handleKeyDown);
   };
-}, [imageActiveIndex]);
+ },[activeImageData,imageActiveIndex])
+
 
 
 const handlerClick = (event) => {

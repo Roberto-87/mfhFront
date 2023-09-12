@@ -46,19 +46,17 @@ const Navigation=()=>{
       setMobile(window.innerWidth < 768);
     };
     window.addEventListener('resize', handleResize);
-    return () => {
+     return () => {
       window.removeEventListener('resize', handleResize);
-    };
+    }
   }, []);
 {
 
   return (
       !withoutNavbar.includes(currentPathName) ?
       <header className={styles.navbarContainer}>
-            {mobile?
-            <nav >
-                <NavBarMobile/>
-            </nav>            
+            {mobile? <NavBarMobile/>
+            
            :           
            <nav className={styles.brandContainer}>
               <Brand/>                 

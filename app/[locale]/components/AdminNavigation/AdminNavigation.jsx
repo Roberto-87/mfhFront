@@ -65,7 +65,7 @@ const AdminNavigation=()=>{
   if (session) {
     return (
       
-      <header className={styles.navbarAdminContainer}>
+      <div className={styles.navbarAdminContainer}>
           {/*   <div style={{marginTop:'2px', display:'flex', justifyContent:'center', padding:'4px', borderRadius:'1%',backgroundColor:'#7070708c' }}> {user}</div> */}
      
             <div>
@@ -101,7 +101,7 @@ const AdminNavigation=()=>{
   
             </div>
                   
-       </header>
+       </div>
           )
 
   }
