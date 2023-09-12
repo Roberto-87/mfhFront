@@ -13,10 +13,10 @@
   @media (min-width:  300px) and (max-width: 911px)  {
     .modalContainer {
       margin-top: 8vh;
-      width: 100%;
+      width: 85%;
      }
      .doc{
-      width: 140vw !important;
+      width: 135vw !important;
      }
        
   }
@@ -34,7 +34,7 @@
         } 
        @media (min-width:  1280px)  {
           .modalContainer {
-            
+           
             justify-content: center;
             display: flex !important;
             flex-direction: row !important;  
