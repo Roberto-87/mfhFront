@@ -13,9 +13,9 @@ export const metadata = {
 export default function RootLayout({ children, params }) {
   const locale = useLocale();
 
-  if (params.locale !== locale) {
+/*   if (params.locale !== locale) {
     notFound();
-  }
+  } */
 
   return (
     <html lang='en' className={comfortaa.className} >

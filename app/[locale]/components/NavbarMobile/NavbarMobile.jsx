@@ -10,6 +10,7 @@ import stylesIcon from '../CardContact/CardContact.module.css'
 import {AiOutlineInstagram,AiOutlineMail,AiOutlineFacebook} from 'react-icons/ai'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
+import { usePathname } from 'next/navigation';
 
 const theme = createTheme({
   components: {
@@ -25,7 +26,8 @@ const theme = createTheme({
 
 const Navbar =() => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
+  const currentPathname= usePathname()
+ 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
@@ -53,20 +55,21 @@ const Navbar =() => {
       </div>
   <List sx={{ width: '100vw', marginTop:'10%'}}  onClick={toggleDrawer}>
     <ListItem  className={styles.animatedListItem} style={{ animationDelay: '0.1s' }}>
-      <Link className={styles.linkNavbarMobile}  href={'/works'}>WORKS</Link>
+      <Link className={styles.linkNavbarMobile}  href={'/works'}>    {currentPathname === '/works' ? <strong>WORKS</strong> : 'WORKS'}</Link>
     </ListItem>
     <ListItem  className={styles.animatedListItem} style={{ animationDelay: '0.2s' }}>
-      <Link className={styles.linkNavbarMobile}  href={'/exhibitions'}>EXHIBITIONS</Link>
+        <Link className={styles.linkNavbarMobile}  href={'/exhibitions'}> {currentPathname==='/exhibitions'?<strong>EXHIBITIONS</strong>:'EXHIBITIONS'}</Link>
     </ListItem>
     <ListItem  className={styles.animatedListItem} style={{ animationDelay: '0.3s' }}>
-      <Link className={styles.linkNavbarMobile}  href={'/text'}>PAPERS</Link>
+        <Link className={styles.linkNavbarMobile}  href={'/text'}>   {currentPathname==='/text'?<strong>PAPERS</strong>: 'PAPERS'}</Link>
     </ListItem>
-    <ListItem className={styles.animatedListItem} style={{ animationDelay: '0.4s' }}>
-      <Link className={styles.linkNavbarMobile}  href={'/bio'}>BIO</Link>
+    <ListItem  className={styles.animatedListItem} style={{ animationDelay: '0.4s' }}>
+     <Link className={styles.linkNavbarMobile}  href={'/bio'}>{currentPathname==='/bio'?<strong> BIO</strong>:'BIO'}</Link>
+      </ListItem>    
+    <ListItem  className={styles.animatedListItem} style={{ animationDelay: '0.5s' }}>
+      <Link className={styles.linkNavbarMobile}  href={'/contact'}>{currentPathname==='/contact'?<strong>CONTACT</strong>:'CONTACT'}</Link>
     </ListItem>
-    <ListItem className={styles.animatedListItem} style={{ animationDelay: '0.5s' }}>
-      <Link  className={styles.linkNavbarMobile} href={'/contact'}>CONTACT</Link>
-    </ListItem>
+
     <ListItem className={styles.animatedListItem} style={{ animationDelay: '0.5s' }}>
   <DropdownNavbar className={styles.animatedListItem}  style={{ backgroundColor: 'transparent', color: 'black' }}></DropdownNavbar>
     </ListItem>
@@ -75,8 +78,8 @@ const Navbar =() => {
    <ListItem className={styles.animatedListItem} style={{ animationDelay: '0.5s', width:'100%' }}>
    <div style={{display:'flex',justifyContent:'center',width:'50%',position:'absolute', alignItems:'center', padding:'6%', marginTop:'8%'}}>
      <AiOutlineFacebook style={{marginTop:'1.35px',fontSize:'1.30em',marginLeft:'6px',color: '#837c7c',cursor:'pointer'}} className={stylesIcon.iconsContact} />
-     <AiOutlineInstagram style={{marginTop:'1.55px',fontSize:'1.4em', marginLeft:'6px',color: '#837c7c',cursor:'pointer' }} className={stylesIcon.iconsContact} />
-     <AiOutlineMail style={{marginTop:'2.1px',fontSize:'1.36em',marginLeft:'6px',color: '#837c7c',cursor:'pointer'}} className={styles.iconsContact} /> 
+     <AiOutlineInstagram style={{marginTop:'1.3px',fontSize:'1.4em', marginLeft:'6px',color: '#837c7c',cursor:'pointer' }} className={stylesIcon.iconsContact} />
+     <AiOutlineMail style={{marginTop:'2.4px',fontSize:'1.36em',marginLeft:'6px',color: '#837c7c',cursor:'pointer'}} className={styles.iconsContact} /> 
    </div> 
    </ListItem>
    

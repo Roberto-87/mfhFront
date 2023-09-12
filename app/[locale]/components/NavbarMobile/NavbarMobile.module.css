@@ -14,8 +14,10 @@
   }
   .linkNavbarMobile:hover{
     color: rgb(0, 0, 0) !important;
+    text-decoration: underline;
     
   }
+
   
   @keyframes fadeInRight {
     0% {

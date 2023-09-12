@@ -22,5 +22,11 @@
     }
 
     } 
+    @media (max-width: 950px) {
+        .brandName h1{
+            font-size: 1.299em;
+        }
+    
+        } 
 
  
