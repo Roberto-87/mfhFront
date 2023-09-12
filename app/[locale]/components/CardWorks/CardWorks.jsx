@@ -16,6 +16,7 @@ import {comfortaa} from '../../fonts/fonts'
 import { TransformWrapper, TransformComponent} from "react-zoom-pan-pinch";
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import ModalWorks from "../ModalWorks/ModalWorks";
+import CloseIcon from '@mui/icons-material/Close';
 
 
 const CardWorks = ({works}) => {
@@ -29,7 +30,7 @@ const CardWorks = ({works}) => {
   const[images, setImages]= useState([])
   const[activeImageData, setActiveImageData]= useState()
   const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
-
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   useEffect(()=>{
    if(!works)throw new Error('Works not found ')
     const allImages= works.map((work)=>work.image)
@@ -50,6 +51,10 @@ const CardWorks = ({works}) => {
   };
  },[activeImageData,imageActiveIndex])
 
+ 
+ const toggleDrawer = () => {
+  setIsDrawerOpen(!isDrawerOpen);
+};
 
 
 const handlerClick = (event) => {
@@ -120,7 +125,6 @@ const onNext = (event) => {
           <p className={`${styles.cardItem} ${styles.size}`}>{work.size}</p>
      </div>
     </Box>
-
         <Modal open={open} onClose={handleClose} onClick={handleClose}  aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
         <Box sx={styleCarrouselWorks}    >
         <div  style={{display:'flex', flexDirection:'row-reverse',  position:'relative', top:'50%',width:'100%',display:'flex', justifyContent:'center'}} >
@@ -134,7 +138,10 @@ const onNext = (event) => {
   {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
     <React.Fragment >
       <TransformComponent >
- <div  onClick={onHandleImageClick}>
+
+ <div   onClick={onHandleImageClick}>
+
+
        <img
           style={{
             width: '100%',

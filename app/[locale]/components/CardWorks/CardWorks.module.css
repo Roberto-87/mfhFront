@@ -8,7 +8,6 @@
   
 }
 
-
 .cardItem {
     text-align: center;
     color:black;
@@ -48,6 +47,7 @@
   max-height: 100%;
   object-fit: cover;
   cursor: pointer;  
+  transition: 2s ease-in-out;
   
 }
 
@@ -249,7 +249,9 @@
       align-items: center;
       justify-content: center;
       width:30% !important;
+      margin-top: 10px;
     }
+
      .modalDescription{
       margin-left: -3%;
     }
