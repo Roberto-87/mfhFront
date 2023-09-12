@@ -16,7 +16,7 @@
     color: black !important;   
 }  */
 .containerPortfolio{
-    background-color:transparent !important;
+    background-color:  #746d6d !important;
     padding:1px;
     border: none;
     list-style: none;
@@ -29,6 +29,7 @@
     padding: 0;
     font-size: 1em;
     color: black !important;   
+
 
 }
 .containerPortfolio:hover {

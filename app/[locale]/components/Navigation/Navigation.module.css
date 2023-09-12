@@ -1,18 +1,19 @@
 .navbarContainer{
-    background-color: #fff;
+    background-color:transparent;
     color: black;
     width: 100%;
     display: flex;
     flex-direction: row;
     height: 10vh;
-    position: sticky ;
-    top: 0;
     flex-wrap: nowrap;
     z-index: 2;
     padding-right: 2%;
+    padding-bottom: 2%;
     padding-left: 1%;
     align-items: center;
-    margin-top: 0.5%;
+    margin-top: 0.5px;
+ 
+ 
 }
 
 
@@ -21,6 +22,7 @@
     justify-content: flex-end;
     width: 100%;
     margin-left: 6%;
+
 }
 
 .navbarItem{
@@ -34,7 +36,7 @@
     font-family: 0.9em;
     margin-top: 1%;    
     font-size: 1em;
-    
+    letter-spacing: 0.4px;
 }
 
 .navbarItem:hover{
@@ -46,9 +48,33 @@
     justify-content: flex-start;
     width: 100%;
     align-items: center;
+    position: fixed ;
+    top: 0;
+    z-index: 2;
+     background-color: transparent;
+    right: 0;
+    padding-bottom: 4px !important;
 }
 
-@media (max-width: 815px) {
+@media (max-width: 955px) {
+    .brandContainer{
+         display: flex;
+         justify-content: flex-start;
+         
+        }
+        .navbarContainer{
+     align-items: center;
+     padding: 0.5%;
+     background-color: white;
+     top: 0;
+ 
+     
+
+    }
+    
+
+    }
+@media (max-width: 956px) {
     .navbarItem{
         font-size: 0.8em;
     }

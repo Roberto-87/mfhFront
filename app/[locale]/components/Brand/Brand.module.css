@@ -4,6 +4,7 @@
     width: 100%;
     font-size: 1.7em;
     text-transform: uppercase;
+    margin-left: 1.5%;
 
 }
 
@@ -16,12 +17,16 @@
   
 }
 
-@media (max-width: 400px) {
+@media (max-width: 860px) {
     .brandName h1{
         font-size: 1.2em;
+        padding-bottom: 2px !important;       
+    margin-left:2.1%;
+    margin-top: 12px;
     }
 
     } 
+
     @media (max-width: 950px) {
         .brandName h1{
             font-size: 1.299em;

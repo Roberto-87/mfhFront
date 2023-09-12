@@ -1,51 +1,25 @@
 
 @media (min-width:  250px) and (max-width: 300px)  {
   .modalContainer {
-    margin-left:-24vw !important; 
     margin-top: 8vh;
-     }
-
-  }
-  @media (min-width:  300px) and (max-width: 413px)  {
-    .modalContainer {
-      margin-left:-15vw !important; 
-      margin-top: 8vh;
+     margin-left: 2vw; 
      }
      .doc{
-      height: 850 !important;
-      width: 1450 !important;
- 
+      width: 155vw !important;
+      height: 220vh;
+     }
+
+  }
+  @media (min-width:  300px) and (max-width: 911px)  {
+    .modalContainer {
+      margin-top: 8vh;
+      width: 100%;
+     }
+     .doc{
+      width: 140vw !important;
      }
        
   }
-  @media (min-width:  414px) and (max-width: 539px)  {
-    .modalContainer {
-      margin-left:-18vw !important; 
-      margin-top: 8vh;
-     }
-
-
-       
-  }
- @media (min-width:  540px) and (max-width: 748px)  {
-  .modalContainer {
-    margin-left:-70vw !important; 
-    margin-top: 8vh;
-     }  
-
-  }
-  @media (min-width:  750px) and (max-width: 911px)  {
-    .modalContainer {
-      margin-left:-35vw !important; 
-      margin-top: 8vh;
-       }  
-       .doc{
-        height: 850 !important;
-        width: 1000 !important;
-   
-       }
-  
-    }
     @media (min-width:  912px) and (max-width:1023px)  {
       .modalContainer {
         margin-left:-7vw !important; 
@@ -60,11 +34,12 @@
         } 
        @media (min-width:  1280px)  {
           .modalContainer {
-            margin-left:-8vw !important; 
+            
+            justify-content: center;
             display: flex !important;
             flex-direction: row !important;  
             margin-top: 3vh;
-            padding: 5% !important;    
+            padding: 0.5% !important;    
              }
           }
       

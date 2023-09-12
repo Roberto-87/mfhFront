@@ -40,17 +40,17 @@ const Navbar =() => {
           color="inherit"
           aria-label="menu"
           onClick={toggleDrawer}
-          sx={{ mr: 2 }}
+          sx={{ mr: 2}}
           
           >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontSize:'0.75em'}}>         
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontSize:'0.75em',}}>         
           <Brand/>
         </Typography>
       </Toolbar>
       <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer} >
-      <div style={{width:'100%', display:'flex', justifyContent:'flex-end'}}>
+      <div style={{width:'100%', display:'flex', justifyContent:'flex-end' }}>
           <CloseIcon onClick={toggleDrawer} style={{fontSize:'35px',fontWeight: 400,lineHeight:'22px',color: '#837c7c'}}/>
       </div>
   <List sx={{ width: '100vw', marginTop:'10%'}}  onClick={toggleDrawer}>
@@ -77,9 +77,9 @@ const Navbar =() => {
    </div>
    <ListItem className={styles.animatedListItem} style={{ animationDelay: '0.5s', width:'100%' }}>
    <div style={{display:'flex',justifyContent:'center',width:'50%',position:'absolute', alignItems:'center', padding:'6%', marginTop:'8%'}}>
-     <AiOutlineFacebook style={{marginTop:'1.35px',fontSize:'1.30em',marginLeft:'6px',color: '#837c7c',cursor:'pointer'}} className={stylesIcon.iconsContact} />
-     <AiOutlineInstagram style={{marginTop:'1.3px',fontSize:'1.4em', marginLeft:'6px',color: '#837c7c',cursor:'pointer' }} className={stylesIcon.iconsContact} />
-     <AiOutlineMail style={{marginTop:'2.4px',fontSize:'1.36em',marginLeft:'6px',color: '#837c7c',cursor:'pointer'}} className={styles.iconsContact} /> 
+     <AiOutlineFacebook style={{marginTop:'1.35px',fontSize:'1.30em',marginLeft:'6px',color: '#746d6d ',cursor:'pointer'}} className={stylesIcon.iconsContact} />
+     <AiOutlineInstagram style={{marginTop:'1.3px',fontSize:'1.4em', marginLeft:'6px',color: '#746d6d ',cursor:'pointer' }} className={stylesIcon.iconsContact} />
+     <AiOutlineMail style={{marginTop:'2.4px',fontSize:'1.36em',marginLeft:'6px',color: '#746d6d ',cursor:'pointer'}} className={styles.iconsContact} /> 
    </div> 
    </ListItem>
    

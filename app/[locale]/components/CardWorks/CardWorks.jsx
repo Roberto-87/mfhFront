@@ -19,7 +19,7 @@ import ModalWorks from "../ModalWorks/ModalWorks";
 
 
 const CardWorks = ({works}) => {
-  const[loading, setLoading]= useState(false)
+  const[imageLoaded, setImageLoaded]= useState(false)
   const [carrousel, setCarrousel] = useState(false);
   let [imageActive, setImageActive] = useState();
   let[imageActiveIndex, setImageActiveIndex]= useState(1)
@@ -34,12 +34,7 @@ const CardWorks = ({works}) => {
    if(!works)throw new Error('Works not found ')
     const allImages= works.map((work)=>work.image)
     setImages(allImages)
-    setLoading(true)      
-  if(images){
-    setTimeout(()=>{
-      setLoading(false);
-   },100)
-  } 
+
   const handleKeyDown = (event) => {
     if (event.key === 'ArrowLeft') {
       onPrevious(event);
@@ -76,7 +71,10 @@ const onNext = (event) => {
   let actualIndex = (imageActiveIndex + 1) % works.length;
   setActiveImageByIndex(actualIndex);
 };
-
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+    console.log(imageLoaded)
+  }
 
   const handleClose=()=>{
     setOpen(false)
@@ -99,16 +97,18 @@ const onNext = (event) => {
 
   return (
     <Box sx={{ flexGrow: 1 }} className={comfortaa.className}>
-      {loading && <LoaderAnimation/>}
       <Grid container spacing={{ xs: 2, md: 3, sm:3 }} columns={{ xs: 1, sm: 1, md: 9 }} direction="row" justifyContent="center" alignItems="center">
     {works &&
           works?.map((work) => (
-            <Grid item xs={2} sm={1} md={3} lg={2} xl={3} key={work.id}>
-              <Button onClick={handleOpen} className={styles.slideBottom} >
-                <img className={styles.cardImage}  src={work.image} onPrevious={onPrevious} onNext={onNext} onClick={handlerClick}  alt={work.title} />
-              </Button>
+            <Grid item xs={2} sm={1} md={3} lg={2} xl={3} key={work.id} >
+ 
+               <Button onClick={handleOpen} className={styles.slideBottom}  >
+               <img    className={styles.cardImage}     onLoad={!handleImageLoad} src={work.image} onClick={handlerClick}  alt={work.title} />
+                </Button>
+{imageLoaded && <LoaderAnimation/>}
             <div>
-    {work.image &&
+
+
      <Box sx={{ marginLeft: '8px' }}>
      <div className={styles.containerData}>
      <h2 className={`${styles.cardItem} ${styles.title}`}>{work.title}, {work.year}</h2>
@@ -120,8 +120,7 @@ const onNext = (event) => {
           <p className={`${styles.cardItem} ${styles.size}`}>{work.size}</p>
      </div>
     </Box>
-     } 
-         
+
         <Modal open={open} onClose={handleClose} onClick={handleClose}  aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
         <Box sx={styleCarrouselWorks}    >
         <div  style={{display:'flex', flexDirection:'row-reverse',  position:'relative', top:'50%',width:'100%',display:'flex', justifyContent:'center'}} >
