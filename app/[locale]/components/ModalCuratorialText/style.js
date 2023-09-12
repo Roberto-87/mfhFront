@@ -5,8 +5,8 @@ export const style = {
     position: 'absolute',
     top: '1%',  
 /*     right: '15%',   */
-    width: '100vw',
-    height:'300vh',
+    width: 1350,
+    height:600,
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 2, 

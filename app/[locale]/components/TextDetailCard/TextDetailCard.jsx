@@ -8,13 +8,13 @@ const TextDetailCard=({paper})=>{
   if(paper.image){
     return(
    <Box sx={styleTextDetail} className={style.containerDocument} >
-      <Box sx={{display:'flex', flexDirection:'column', justifyContent:'center',color:'black'}} className={style.lastContainerDocument}>
-    </Box>
   
       {paper.format === 'pdf' ?
-        <embed className={style.document} src={paper.image} style={{width:'65%',height:'100%'}} alt={paper.title}></embed>
-      :
-      <img className={style.document} src={imageFormat(paper.image)} style={{width:'35%'}} alt={paper.title} />
+      <Box sx={{display:'flex', justifyContent:'center',color:'black', width:'150vw',height:'100%'}} className={style.lastContainerDocument}>
+        <embed className={style.document} src={paper.image} style={{width:'105%',height:'100%'}} alt={paper.title}></embed>
+      </Box>
+        :
+        <img className={style.document} src={imageFormat(paper.image)} style={{width:'35%'}} alt={paper.title} />
       }
    </Box>     
    )

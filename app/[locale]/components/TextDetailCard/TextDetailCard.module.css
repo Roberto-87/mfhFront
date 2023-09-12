@@ -1,5 +1,5 @@
 
-
+/* 
   @media screen and (min-width: 279px) {
     .containerDocument {
       display: flex;
@@ -16,9 +16,10 @@
     .containerDocument {
       display: flex;
       justify-content: center;
-      width: 145vw;
+      width: 100%;
     }
     .document{
+      width: 160vw;
       margin-right  :-10vw !important;   
     }
   }
@@ -31,36 +32,6 @@
 
     }
   }
-
-
-/*   @media screen and (min-width: 900px) {
-    .containerDocument {
-         height: 80%;
-        width: 40% !important;
-        display: flex;
-        justify-content: flex-start;
-
-    }
-    .document{
-      margin-right  :-10vw !important;   
-      width: 40% !important;
-    }
-
-  } */
-/*   @media screen and (min-width: 1000px) {
-    .containerDocument {
-         height: 80%;
-        width: 10% !important;
-        display: flex;
-        justify-content: flex-start;
-
-    }
-    .document{
-      margin-right  :-4vw !important;   
-      width: 20% !important;
-    }
-
-  } */
    @media screen and (min-width: 1279px) {
     .containerDocument {
         height: 80%;
@@ -75,3 +46,4 @@
     }
  
   } 
+ */
