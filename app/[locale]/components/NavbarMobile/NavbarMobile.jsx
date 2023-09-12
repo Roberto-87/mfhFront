@@ -6,10 +6,9 @@ import Brand from '../Brand/Brand';
 import Link from 'next/link';
 import DropdownNavbar from "../DropdownNavbar/DropdownNavbar";
 import styles from './NavbarMobile.module.css'
-import stylesIcon from '../CardContact/CardContact.module.css'
-import {AiOutlineInstagram,AiOutlineMail,AiOutlineFacebook} from 'react-icons/ai'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
+import PrincipalSM from '../PrincipalSM/PrincipalSM';
 
 const theme = createTheme({
   components: {
@@ -70,17 +69,11 @@ const Navbar =() => {
     <ListItem className={styles.animatedListItem} style={{ animationDelay: '0.5s' }}>
   <DropdownNavbar className={styles.animatedListItem}  style={{ backgroundColor: 'transparent', color: 'black' }}></DropdownNavbar>
     </ListItem>
-  {/*  
+ 
     <ListItem className={styles.animatedListItem} style={{ animationDelay: '0.5s' }}>
-   <div style={{display:'flex',justifyContent:'space-around',width:'75%', alignItems:'center', padding:'6%'}}>
-   <AiOutlineFacebook style={{marginTop:'1.4px',fontSize:'1.15em'}} className={stylesIcon.iconsContact} />
-   <AiOutlineInstagram style={{marginTop:'1.5px',fontSize:'1.18em',marginLeft:'1.5px'}} className={stylesIcon.iconsContact} />
-   <AiOutlineMail style={{marginTop:'2px',fontSize:'1.1em'}} className={styles.iconsContact} /> 
-
-
-   </div> 
+      <PrincipalSM/>
     </ListItem>
-    */}
+
   </List>
 </Drawer>
 
