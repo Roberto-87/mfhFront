@@ -13,11 +13,11 @@
   @media (min-width:  300px) and (max-width: 911px)  {
     .modalContainer {
       margin-top: 8vh;
-      width: 85%;
+      width: 90%;
      }
      .doc{
       width: 115vw !important;
-      height: 220vh;
+      height: 200vh;
      }
        
   }

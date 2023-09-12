@@ -6,7 +6,7 @@ export const style = {
     top: '1%',  
 /*     right: '15%',   */
     width: '100vw',
-    height:'250vh',
+    height:'300vh',
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 2, 
