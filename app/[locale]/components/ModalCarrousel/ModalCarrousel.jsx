@@ -16,15 +16,19 @@ import {
   TransformComponent,
 } from "react-zoom-pan-pinch";
 import { GrNext, GrPrevious } from 'react-icons/gr';
+import LoadingBar from 'react-top-loading-bar'
+
 
 const ModalCarrousel = ({ allImages, activeImage, open,onClose}) => {
   let[imageActiveIndex, setImageActiveIndex]= useState(0)
   const[imageActive, setImageActive]=useState(activeImage)
+  const [progress, setProgress] = useState(false);
   
   const onPrevious=(event)=>{   
     event.stopPropagation(); 
     let indexImageActive= allImages.findIndex((url)=> url===imageActive)
     setImageActive('')
+    setProgress(progress + 10)
     
     if(indexImageActive-1 < 0){
      setImageActiveIndex(allImages.length-1)
@@ -36,12 +40,14 @@ const ModalCarrousel = ({ allImages, activeImage, open,onClose}) => {
        }
   }
   const onNext=(event)=>{
+
     event.stopPropagation();
     setImageActiveIndex((imageActiveIndex + 1) % allImages.length);
     setImageActive(allImages[(imageActiveIndex + 1) % allImages.length]);
-  
+setProgress(progress + 10)
   }
   useEffect(() => {
+    setProgress(100)
     const handleKeyDown = (event) => {
       if (event.key === 'ArrowLeft') {
         onPrevious(event);
@@ -60,6 +66,7 @@ const ModalCarrousel = ({ allImages, activeImage, open,onClose}) => {
   return (
     <Modal open={open} onClose={onClose} onClick={onClose}  aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
     <Box sx={styleCarrouselExhibitions}    >
+      <LoadingBar  color='black'progress={progress}  />
     <div  style={{display:'flex', flexDirection:'row-reverse',  position:'relative', top:'50%',width:'100%',display:'flex', justifyContent:'center'}} >
      <Swiper navigation={true} modules={[Navigation]} className="mySwiper" style={{width:'100%', height:'100%', }}>
         <SwiperSlide  className={styles.swiper} style={{ display:'flex', justifyContent:'center',height:'95vh', width:'100vw', alignItems:'center', padding:'4px'}}>

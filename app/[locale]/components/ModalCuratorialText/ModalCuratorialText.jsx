@@ -2,11 +2,13 @@ import { Box, Button, Grid, Modal, Typography } from "@mui/material"
 import { comfortaa } from "../../fonts/fonts"
 import {style, Item, styleText} from './style'
 import stylesMobile from './ModalCuratorialText.module.css'
+import LoadingBar from 'react-top-loading-bar'
 
-const ModalCuratorialText=({exhibitionText, open, onClose})=>{
+const ModalCuratorialText=({exhibitionText, open, onClose, progress})=>{
    
    return(
         <Box>
+                 <LoadingBar  color='black'progress={progress}  />
             <Modal className={stylesMobile.modalContainer}  open={open} onClose={onClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
                 <Box sx={style}>
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 1, sm: 1, md: 9, xl:3 }}  direction="row" justifyContent="center" alignItems="center">

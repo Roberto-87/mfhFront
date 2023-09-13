@@ -44,19 +44,18 @@ const CardWorks = ({works}) => {
   
   
   useEffect(()=>{
-    setProgress(100) 
     AOS.init({
       duration: 1200,
     })
     
-   if(!works)throw new Error('Works not found ')
+    if(!works)throw new Error('Works not found ')
     const allImages= works.map((work)=>work.image)
     setImages(allImages)
     setImageLoaded(true)
 
-  const handleKeyDown = (event) => {
-    if (event.key === 'ArrowLeft') {
-      onPrevious(event);
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowLeft') {
+        onPrevious(event);
     } else if (event.key === 'ArrowRight') {
       onNext(event);
     }
@@ -72,10 +71,11 @@ const CardWorks = ({works}) => {
   }
   document.addEventListener('scroll', handleScroll);
   document.addEventListener('keydown', handleKeyDown);
+  setProgress(100) 
   return () => {
     document.removeEventListener('keydown', handleKeyDown);
   };
- },[activeImageData,imageActiveIndex,  imageLoaded])
+},[activeImageData,imageActiveIndex,  imageLoaded])
 
 const handlerClick = (event) => {
    setProgress(progress + 10)

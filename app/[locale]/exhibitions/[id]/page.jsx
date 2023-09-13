@@ -10,6 +10,7 @@ import ExhibitionData from "../../components/ExhibitionData/ExhibitionData";
 import LoaderAnimation from "../../components/LoaderAnimation/LoaderAnimation";
 import LoadingBar from 'react-top-loading-bar'
 
+
 const Exhibition=({params })=>{
   const {id}= params
   const [progress, setProgress] = useState(0)
@@ -18,11 +19,16 @@ const Exhibition=({params })=>{
    const [open, setOpen] = useState(false);
    const [loading, setLoading] = useState(false);
    
-   const handleOpen = () => setOpen(true);
-   const handleClose = () => setOpen(false);
+   const handleOpen = () => {
+       setOpen(true);
+       setProgress(progress + 10)
+  }
+   const handleClose = () => {
+    setOpen(false)
+    setProgress(progress + 10)
+  };
 
   useEffect(() => { 
-    setProgress(100)
     setLoading(true)
     const fetchDataExhibition = async () => {
       const actualExhibition = await getData(`${EXHIBITIONS}/${id}`);
@@ -34,9 +40,10 @@ const Exhibition=({params })=>{
       if(actualCuratorial){
         setExhibitionText({['document']:actualCuratorial.image, ['title']:actualCuratorial.title, ['author']:actualCuratorial.author })
       }
-      };   
-  setLoading(false)
-      fetchDataExhibition();  
+    };   
+    fetchDataExhibition();  
+    setLoading(false)
+    setProgress(100)
   }, []);
      
     return ( 
@@ -50,7 +57,7 @@ const Exhibition=({params })=>{
         <Button className={comfortaa.className} style={{color:'black',margin:'1px', paddingTop:'2px'}} onClick={handleOpen}><i>texto curatorial</i></Button>
      </div>    
     } 
-    {open && <ModalCuratorialText exhibitionText={exhibitionText} open={handleOpen} onClose={handleClose}/>}  
+    {open && <ModalCuratorialText progress={progress} exhibitionText={exhibitionText} open={handleOpen} onClose={handleClose}/>}  
    
     <ImageListExhibition exhibition={exhibition}/>
    </Box>
