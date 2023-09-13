@@ -6,11 +6,16 @@ import { useEffect, useState } from "react"
 import getData from "../../hooks/getData";
 import { COVER } from "../../../utils/consts";
 import {Mplus1} from '../../fonts/fonts'
+import LoadingBar from 'react-top-loading-bar'
 
 const Landing=()=>{
-const[image, setImage]= useState()
+   const[image, setImage]= useState()
+   const [progress, setProgress] = useState(0)
+     
+useEffect(()=>   setProgress(100),[])
 
-useEffect(()=>{
+  useEffect(()=>{
+
 (async function getCoverImage(){
    try {
       
@@ -25,6 +30,8 @@ useEffect(()=>{
 
 return(
   <div className={style.landingContainer}>
+      <LoadingBar  color='black'progress={progress}  />
+
      {
 !image &&      <>
 <ButtonStart/>

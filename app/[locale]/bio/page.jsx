@@ -6,12 +6,16 @@ import Grid from '@mui/material/Grid';
 import { Item } from './itemStyle';
 import { BIO } from '../../utils/consts';
 import {comfortaa} from '../fonts/fonts'
+import LoadingBar from 'react-top-loading-bar'
+
 
 const Bio = () => {
+  const [progress, setProgress] = useState(0)
    const [bio, setBio] = useState();
    const[loading, setLoading]= useState(false)
 
 useEffect(() => {
+  setProgress( 100)
   try {
   const fetchData = async () => {
     const bioData = await getData(`${BIO}/active`);
@@ -28,7 +32,7 @@ useEffect(() => {
 
     return (< main>    
       <Box sx={{ flexGrow: 1, marginTop:'2%'}}>
-
+      <LoadingBar  color='black'progress={progress}  />
   {bio && bio?.map(({title, image, subtitle, text, id})=> 
   <>
  

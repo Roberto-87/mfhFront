@@ -8,9 +8,11 @@ import ImageListExhibition from "../../components/ImageListExhibition/ImageListE
 import ModalCuratorialText from "../../components/ModalCuratorialText/ModalCuratorialText";
 import ExhibitionData from "../../components/ExhibitionData/ExhibitionData";
 import LoaderAnimation from "../../components/LoaderAnimation/LoaderAnimation";
+import LoadingBar from 'react-top-loading-bar'
 
 const Exhibition=({params })=>{
-   const {id}= params
+  const {id}= params
+  const [progress, setProgress] = useState(0)
    const[exhibitionText,setExhibitionText]= useState({document:'', title:'', author:''})
    const[exhibition,setExhibition]= useState('')
    const [open, setOpen] = useState(false);
@@ -20,6 +22,7 @@ const Exhibition=({params })=>{
    const handleClose = () => setOpen(false);
 
   useEffect(() => { 
+    setProgress(100)
     setLoading(true)
     const fetchDataExhibition = async () => {
       const actualExhibition = await getData(`${EXHIBITIONS}/${id}`);
@@ -38,6 +41,8 @@ const Exhibition=({params })=>{
      
     return ( 
       <Box sx={{paddingRight:'1%',paddingLeft:'1%'}}>  
+        <LoadingBar  color='black'progress={progress}  />
+    
       {loading && <LoaderAnimation/>}
     {exhibition  && <ExhibitionData exhibition={exhibition}/> }
     {exhibitionText.document && 

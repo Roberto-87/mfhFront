@@ -20,7 +20,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { grey } from "@mui/material/colors";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
+import LoadingBar from 'react-top-loading-bar'
 
 const CardWorks = ({works}) => {
   const[imageLoaded, setImageLoaded]= useState(false)
@@ -29,15 +29,22 @@ const CardWorks = ({works}) => {
   let[imageActiveIndex, setImageActiveIndex]= useState(1)
   const [open, setOpen] = useState(false);
   const [zoom, setZoom] = useState(false);
-  const handleOpen = () => setOpen(true);
   const[images, setImages]= useState([])
   const[activeImageData, setActiveImageData]= useState()
   const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
   const [scrollUp, setScrollUp]= useState(false)
   const [scrollDown, setScrollDown]= useState(false)
   const [previousScroll, setPreviosScroll]= useState(0)
-
+  const [progress, setProgress] = useState(0)
+  
+  const handleOpen = () => {
+    setOpen(true);
+    setProgress(progress + 10)
+  }
+  
+  
   useEffect(()=>{
+    setProgress(100) 
     AOS.init({
       duration: 1200,
     })
@@ -71,6 +78,7 @@ const CardWorks = ({works}) => {
  },[activeImageData,imageActiveIndex,  imageLoaded])
 
 const handlerClick = (event) => {
+   setProgress(progress + 10)
   setCarrousel(!carrousel);
   setImageActive(event.target.currentSrc);
   let indexImageActive= works.findIndex((url)=> url.image===imageActive)
@@ -79,21 +87,25 @@ const handlerClick = (event) => {
   setImageActiveIndex(indexImageActive) 
 };
 const onPrevious = (event) => {
+  setProgress(progress + 10)
   event.stopPropagation();
   let actualIndex = (imageActiveIndex - 1 + works.length) % works.length;
   setActiveImageByIndex(actualIndex);
 };
 
 const onNext = (event) => {
+  setProgress(progress + 10)
   event.stopPropagation();
   let actualIndex = (imageActiveIndex + 1) % works.length;
   setActiveImageByIndex(actualIndex);
 };
 const handleImageLoad = () => {
-  setImageLoaded(true);
+  setImageLoaded(false);
+ 
 };
 
   const handleClose=()=>{
+    setProgress(progress + 10)
     setOpen(false)
   }
   const onHandleImageClick=(event)=>{
@@ -119,11 +131,15 @@ const handleImageLoad = () => {
           works?.map((work) => (
             <Grid item xs={2} sm={1} md={3} lg={2} xl={3} key={work.id} >
       
-             <Button onClick={handleOpen} className={styles.slideBottom} data-aos={scrollUp ? 'fade-up' : 'fade-out'}   >
+             <Button onClick={handleOpen}  className={styles.slideBottom} data-aos={scrollUp ? 'fade-up' : 'fade-out'}   >
        <img className={styles.cardImage}  onLoad={handleImageLoad} src={work.image} onClick={handlerClick}  alt={work.title} />
              </Button>
-      
            <div>
+        <LoadingBar  color='black'progress={progress}  />
+{/*       <button onClick={() => setProgress(progress + 10)}>Add 10%</button>
+      <button onClick={() => setProgress(progress + 20)}>Add 20%</button>
+      <button onClick={() => setProgress(100)}>Complete</button>
+      <br /> */}
 
 
      <Box sx={{ marginLeft: '8px' }}>
@@ -151,20 +167,22 @@ const handleImageLoad = () => {
     <React.Fragment >
       <TransformComponent >
 
- <div   onClick={onHandleImageClick}>
+ <div>
 
-      <img
-          style={{
-            width: '100%',
-            cursor: 'grab',
-            touchAction: 'none',
-          }}
-          src={imageActive}
-          onLoad={handleImageLoad}
-          cursor='grab'
-          className={styles.imgModal}
-          alt={work.title}
-        />
+        
+        <img
+            style={{
+              width: '100%',
+              cursor: 'grab',
+              touchAction: 'none',
+            }}
+            src={imageActive}
+            onLoad={handleImageLoad}
+            cursor='grab'
+            className={styles.imgModal}
+            alt={work.title}
+          />        
+
      </div>   
       
       </TransformComponent>

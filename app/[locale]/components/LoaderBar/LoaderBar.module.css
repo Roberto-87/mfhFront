@@ -1,0 +1,17 @@
+#progress-bar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px; /* Altura de la barra de progreso */
+    background-color: transparent;
+    z-index: 9999;
+  }
+  
+  #progress-bar {
+    height: 100%;
+    width: 0; /* Ancho inicial de la barra (0% de progreso) */
+    background-color: #F4442E; /* Color de la barra de progreso */
+    transition: width 0.2s ease; /* Animación de transición */
+  }
+  

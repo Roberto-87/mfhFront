@@ -8,13 +8,16 @@ import {comfortaa} from '../../fonts/fonts'
 import { imagesMaped, exhibitionSort } from '../../../utils/functions';
 import ExhibitionData from '../ExhibitionData/ExhibitionData';
 import ExhibitionLink from '../ExhibitionLink/ExhibitionLink';
+import LoadingBar from 'react-top-loading-bar'
 
 const CardExhibitions=({ exhibitions})=>{
   const[orderedExhibition, setOrderedExhibition]=useState()
   const[loading, setLoading]= useState(false)
   const[images, setImages]= useState([])
+  const [progress, setProgress] = useState(0)
   
   useEffect(()=>{
+    setProgress(100)
     const orderedExhibitions= exhibitionSort(exhibitions)
     setOrderedExhibition(orderedExhibitions)
     const mapImages= imagesMaped(orderedExhibitions)
@@ -32,6 +35,7 @@ const CardExhibitions=({ exhibitions})=>{
       <main >
         <Box sx={{ flexGrow: 1 }} >
           <Grid container spacing={{ xs: 2, md: 3, lg:2, xl:2 }} columns={{ xs: 1, sm: 1, md: 1, lg:3, xl:3 }} direction="row" justifyContent="center" alignItems="center" >
+          <LoadingBar  color='black'progress={progress}  />
           {loading && <LoaderAnimation/>}
             {orderedExhibition && orderedExhibition.map((exhibition, index) => (
               <Grid item xs={2} sm={4} md={3} lg={2} xl={3} key={index} >
