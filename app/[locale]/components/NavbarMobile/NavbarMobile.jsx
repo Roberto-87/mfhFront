@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import { Toolbar, Typography, IconButton, Drawer, List, ListItem, Button } from '@mui/material';
+import { Toolbar, Typography, IconButton, Drawer, List, ListItem, Button, Box } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Brand from '../Brand/Brand';
 import Link from 'next/link';
@@ -8,6 +8,11 @@ import DropdownNavbar from "../DropdownNavbar/DropdownNavbar";
 import styles from './NavbarMobile.module.css'
 import stylesIcon from '../CardContact/CardContact.module.css'
 import {AiOutlineInstagram,AiOutlineMail,AiOutlineFacebook} from 'react-icons/ai'
+import {FiMail,FiInstagram}from 'react-icons/fi'
+import {MdOutlineAlternateEmail}from 'react-icons/md'
+
+import {PiInstagramLogoLight}from 'react-icons/pi'
+import{BsInstagram} from 'react-icons/bs'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
 import { usePathname } from 'next/navigation';
@@ -76,11 +81,18 @@ const Navbar =() => {
    <div >
    </div>
    <ListItem className={styles.animatedListItem} style={{ animationDelay: '0.5s', width:'100%' }}>
-   <div style={{display:'flex',justifyContent:'center',width:'50%',position:'absolute', alignItems:'center', padding:'6%', marginTop:'8%'}}>
-     <AiOutlineFacebook style={{marginTop:'1.35px',fontSize:'1.30em',marginLeft:'6px',color: '#746d6d ',cursor:'pointer'}} className={stylesIcon.iconsContact} />
-     <AiOutlineInstagram style={{marginTop:'1.3px',fontSize:'1.4em', marginLeft:'6px',color: '#746d6d ',cursor:'pointer' }} className={stylesIcon.iconsContact} />
-     <AiOutlineMail style={{marginTop:'2.4px',fontSize:'1.36em',marginLeft:'6px',color: '#746d6d ',cursor:'pointer'}} className={styles.iconsContact} /> 
-   </div> 
+   <Box sx={{width:'25%', display:'flex',justifyContent:'space-around',position:'absolute', alignItems:'center', marginTop:'8%'}}>
+   
+      <Link href={'https://www.instagram.com/mfhardoy'} target='_blank' >
+     <FiInstagram style={{color: '#746d6d ',cursor:'pointer', width:'25px', height:'25px' }}  />
+    </Link>
+    <Link href={'mailto:mariaferrarihardoy@gmail.com'} >
+     <MdOutlineAlternateEmail style={{color: '#746d6d ',cursor:'pointer',width:'25px', height:'25px'}}  /> 
+    </Link>
+    <Link href={'https://www.instagram.com/basiliotaller'} target='_blank' >
+     <FiInstagram style={{color: '#746d6d ',cursor:'pointer', width:'25px', height:'25px' }}  />
+    </Link>
+   </Box> 
    </ListItem>
    
   </List>

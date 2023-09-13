@@ -29,6 +29,7 @@
 .title {
   margin-top: 0; /* Elimina el margen superior del título */
   margin-bottom: 0; /* Elimina el margen inferior del título */
+
 }
 
 .material {
@@ -47,7 +48,12 @@
   object-fit: cover;
   cursor: pointer;  
   transition: 2s ease-in-out;
-    
+/*   max-width:300px !important;
+  max-height:300px !important 
+  descomentar para la opción chiquita
+  */
+  
+  
 }
 
 
@@ -73,7 +79,8 @@
   .imageButton{
     background-color: transparent;
     border:none;
-    cursor:pointer
+    cursor:pointer;
+  
   }
 
   .img:hover{
@@ -93,6 +100,8 @@
  .slideBottom{
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
  }
 
 

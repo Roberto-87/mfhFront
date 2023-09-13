@@ -126,11 +126,11 @@ const handleImageLoad = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }} className={comfortaa.className}>
-      <Grid container spacing={{ xs: 2, md: 3, sm:3 }} columns={{ xs: 1, sm: 1, md: 9 }} direction="row" justifyContent="center" alignItems="center">
+      {/* cambiar lg a 12 para la opción chiquita */}
+      <Grid container spacing={{ xs: 2, md: 3, sm:3,xl:2, lg:1 }} columns={{ xs: 1, sm: 6, md: 9,lg:9}} direction="row" justifyContent="flexEnd" alignItems="center">
     {works &&
           works?.map((work) => (
-            <Grid item xs={2} sm={1} md={3} lg={2} xl={3} key={work.id} >
-      
+            <Grid item xs={3}  key={work.id}  >
              <Button onClick={handleOpen}  className={styles.slideBottom} data-aos={scrollUp ? 'fade-up' : 'fade-out'}   >
        <img className={styles.cardImage}  onLoad={handleImageLoad} src={work.image} onClick={handlerClick}  alt={work.title} />
              </Button>
@@ -144,7 +144,7 @@ const handleImageLoad = () => {
 
      <Box sx={{ marginLeft: '8px' }}>
      <div className={styles.containerData}>
-     <h2 className={`${styles.cardItem} ${styles.title}`}>{work.title}, {work.year}</h2>
+     <h2 className={`${styles.cardItem} ${styles.title}`}>{work.title.toUpperCase()}, {work.year}</h2>
      </div>
      <div  className={styles.containerMaterialSize}>
          <p className={`${styles.cardItem} ${styles.material}`}>{work.material} </p>
