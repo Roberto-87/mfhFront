@@ -17,7 +17,6 @@
   object-fit: cover;
   cursor: pointer;
     
-    
 }
 .containerData, .containerMaterialSize{
   display: flex;
@@ -48,7 +47,7 @@
   object-fit: cover;
   cursor: pointer;  
   transition: 2s ease-in-out;
-  
+    
 }
 
 

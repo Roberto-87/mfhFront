@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 import 'swiper/css';
 import 'swiper/css/navigation'
 import {  useState } from 'react';
-import { Button, Modal  } from '@mui/material';
+import { Button, Card, Modal  } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { useEffect } from 'react';
@@ -17,6 +17,9 @@ import { TransformWrapper, TransformComponent} from "react-zoom-pan-pinch";
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import ModalWorks from "../ModalWorks/ModalWorks";
 import CloseIcon from '@mui/icons-material/Close';
+import { grey } from "@mui/material/colors";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 const CardWorks = ({works}) => {
@@ -30,11 +33,19 @@ const CardWorks = ({works}) => {
   const[images, setImages]= useState([])
   const[activeImageData, setActiveImageData]= useState()
   const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [scrollUp, setScrollUp]= useState(false)
+  const [scrollDown, setScrollDown]= useState(false)
+  const [previousScroll, setPreviosScroll]= useState(0)
+
   useEffect(()=>{
+    AOS.init({
+      duration: 1200,
+    })
+    
    if(!works)throw new Error('Works not found ')
     const allImages= works.map((work)=>work.image)
     setImages(allImages)
+    setImageLoaded(true)
 
   const handleKeyDown = (event) => {
     if (event.key === 'ArrowLeft') {
@@ -43,19 +54,21 @@ const CardWorks = ({works}) => {
       onNext(event);
     }
   };
-
+  const handleScroll=()=>{
+    const actualPosition= window.scrollY
+    if(actualPosition > previousScroll){
+      setScrollDown(true)
+    }else {
+      setScrollUp(true)
+    }
+    setPreviosScroll(actualPosition)
+  }
+  document.addEventListener('scroll', handleScroll);
   document.addEventListener('keydown', handleKeyDown);
-
   return () => {
     document.removeEventListener('keydown', handleKeyDown);
   };
- },[activeImageData,imageActiveIndex])
-
- 
- const toggleDrawer = () => {
-  setIsDrawerOpen(!isDrawerOpen);
-};
-
+ },[activeImageData,imageActiveIndex,  imageLoaded])
 
 const handlerClick = (event) => {
   setCarrousel(!carrousel);
@@ -76,10 +89,9 @@ const onNext = (event) => {
   let actualIndex = (imageActiveIndex + 1) % works.length;
   setActiveImageByIndex(actualIndex);
 };
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-    console.log(imageLoaded)
-  }
+const handleImageLoad = () => {
+  setImageLoaded(true);
+};
 
   const handleClose=()=>{
     setOpen(false)
@@ -106,12 +118,12 @@ const onNext = (event) => {
     {works &&
           works?.map((work) => (
             <Grid item xs={2} sm={1} md={3} lg={2} xl={3} key={work.id} >
- 
-               <Button onClick={handleOpen} className={styles.slideBottom}  >
-               <img    className={styles.cardImage}     onLoad={!handleImageLoad} src={work.image} onClick={handlerClick}  alt={work.title} />
-                </Button>
-{imageLoaded && <LoaderAnimation/>}
-            <div>
+      
+             <Button onClick={handleOpen} className={styles.slideBottom} data-aos={scrollUp ? 'fade-up' : 'fade-out'}   >
+       <img className={styles.cardImage}  onLoad={handleImageLoad} src={work.image} onClick={handlerClick}  alt={work.title} />
+             </Button>
+      
+           <div>
 
 
      <Box sx={{ marginLeft: '8px' }}>
@@ -141,14 +153,14 @@ const onNext = (event) => {
 
  <div   onClick={onHandleImageClick}>
 
-
-       <img
+      <img
           style={{
             width: '100%',
             cursor: 'grab',
             touchAction: 'none',
           }}
           src={imageActive}
+          onLoad={handleImageLoad}
           cursor='grab'
           className={styles.imgModal}
           alt={work.title}
