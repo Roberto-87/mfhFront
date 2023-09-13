@@ -9,6 +9,7 @@ import { imagesMaped, exhibitionSort } from '../../../utils/functions';
 import ExhibitionData from '../ExhibitionData/ExhibitionData';
 import ExhibitionLink from '../ExhibitionLink/ExhibitionLink';
 import LoadingBar from 'react-top-loading-bar'
+import AOS from 'aos';
 
 const CardExhibitions=({ exhibitions})=>{
   const[orderedExhibition, setOrderedExhibition]=useState()
@@ -17,6 +18,10 @@ const CardExhibitions=({ exhibitions})=>{
   const [progress, setProgress] = useState(0)
   
   useEffect(()=>{
+    AOS.init({
+      duration: 1200,
+    })
+
     setLoading(true)     
     const orderedExhibitions= exhibitionSort(exhibitions)
     setOrderedExhibition(orderedExhibitions)
@@ -29,15 +34,15 @@ const CardExhibitions=({ exhibitions})=>{
   
  return (
       <main >
-        <Box sx={{ flexGrow: 1 }} >
+        <Box sx={{ flexGrow: 1 }}    >
           <Grid container spacing={{ xs: 2, md: 3, lg:2, xl:2 }} columns={{ xs: 1, sm: 1, md: 1, lg:3, xl:3 }} direction="row" justifyContent="center" alignItems="center" >
           <LoadingBar  color='black'progress={progress}  />
           {progress< 100 && <LoaderAnimation/>}
             {orderedExhibition && orderedExhibition.map((exhibition, index) => (
-              <Grid item xs={2} sm={4} md={3} lg={2} xl={3} key={index} >
+              <Grid   data-aos={'fade-up'} item xs={2} sm={4} md={3} lg={2} xl={3} key={index} >
           {!loading &&  
                 <div  direction="column" className={comfortaa.className}>
-         <ExhibitionLink exhibition={exhibition} />
+            <ExhibitionLink exhibition={exhibition} />
                   <div style={{fontSize:'0.7rem'}} >
                   <ExhibitionData exhibition={exhibition}/>
               </div>

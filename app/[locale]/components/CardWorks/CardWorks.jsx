@@ -153,7 +153,7 @@ const handleImageLoad = () => {
           <p className={`${styles.cardItem} ${styles.size}`}>{work.size}</p>
      </div>
     </Box>
-        <Modal open={open} onClose={handleClose} onClick={handleClose}  aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+        <Modal open={open} onClose={handleClose}   onClick={handleClose}  aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
         <Box sx={styleCarrouselWorks}    >
         <div  style={{display:'flex', flexDirection:'row-reverse',  position:'relative', top:'50%',width:'100%',display:'flex', justifyContent:'center'}} >
          <Swiper navigation={true} modules={[Navigation]} className="mySwiper" style={{width:'100%', height:'100%', }}>
@@ -167,10 +167,11 @@ const handleImageLoad = () => {
     <React.Fragment >
       <TransformComponent >
 
- <div>
+      <div data-aos="zoom-in"  data-aos-duration="20">
 
         
         <img
+
             style={{
               width: '100%',
               cursor: 'grab',
