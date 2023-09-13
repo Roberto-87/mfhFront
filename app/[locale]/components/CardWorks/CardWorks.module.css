@@ -122,18 +122,26 @@
       margin-left: 20px;
       margin-bottom:5% !important;
     }
+    .brandModal{
+      position:fixed;
+      top:'3.8vw'!important;
+      margin-top:3px
+    }
   }
 
   @media screen and (min-width: 360px) {
     .containerImgModal  {
-      width: 80% !important;
+      width: 70% !important;
     }
     .buttonBefore, .buttonAfter{
       height: 50% !important;
     }
     .modalDescription{
-      margin-left: 1%
+      margin-left: 5%
 
+    }
+    .brandModal{
+      display: none !important;
     }
   }
   @media screen and (min-width: 500px) {
@@ -162,25 +170,29 @@
   }
   @media screen and (min-width: 670px) {
     .containerImgModal  {
-      width: 50% !important;
+      width: 43% !important;
     }
     .buttonBefore, .buttonAfter{
       height: 70% !important;
     }
     .modalDescription{
       margin-bottom:4% !important;
-
+      margin-left: 28%;
+    }
+    .brandModal{
+      display: none !important;
     }
   }
   @media screen and (min-width: 768px) {
     .containerImgModal  {
-      width: 50% !important;
+      width: 42% !important;
     }
     .buttonBefore, .buttonAfter{
       height: 70% !important;
     }
     .modalDescription{
       margin-bottom:4% !important;
+      margin-left: 29%;
 
     }
   }
@@ -233,6 +245,9 @@
     .imgModal{
       width: 100% !important;
     }
+    .brandModal{
+      display: block !important;
+    }
   }
   
   @media screen and (min-width: 1000px) {
@@ -264,6 +279,17 @@
       margin-left: -3%;
     }
 
+  }
+  @media screen and (max-width:720px) {
+    .brandModal{
+  position: fixed;
+  top:50vh
+    }
+    }
+  @media screen and (max-width: 992px) {
+  .brandModal{
+font-size: 10px;
+  }
   }
 
 

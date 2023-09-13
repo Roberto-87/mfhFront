@@ -21,6 +21,8 @@ import { grey } from "@mui/material/colors";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import LoadingBar from 'react-top-loading-bar'
+import ShareButton from "../ShareButton/ShareButton";
+import Brand from '../Brand/Brand'
 
 const CardWorks = ({works}) => {
   const[imageLoaded, setImageLoaded]= useState(false)
@@ -155,21 +157,23 @@ const handleImageLoad = () => {
     </Box>
         <Modal open={open} onClose={handleClose}   onClick={handleClose}  aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
         <Box sx={styleCarrouselWorks}    >
+
+
         <div  style={{display:'flex', flexDirection:'row-reverse',  position:'relative', top:'50%',width:'100%',display:'flex', justifyContent:'center'}} >
          <Swiper navigation={true} modules={[Navigation]} className="mySwiper" style={{width:'100%', height:'100%', }}>
             <SwiperSlide  className={styles.swiper} style={{ display:'flex', justifyContent:'center',height:'95vh', width:'100vw', alignItems:'center', padding:'4px'}}>
                  <button className={styles.buttonBefore}  style={{cursor:'pointer', bottom:'0%', backgroundColor:'transparent', position:'relative',right:'0%',border:'none',height:'100%'}} onClick={onPrevious}>
-                <GrPrevious/>
+                <GrPrevious style={{fontSize:'25px'}}/>
                 </button>  
                 <div className={styles.containerImgModal} style={{display:'flex', alignItems:'center', justifyContent:'center',width:'32%' }}>
 <TransformWrapper  options={{ limitToBounds: false }}>
   {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
     <React.Fragment >
-      <TransformComponent >
+      <TransformComponent  >
 
       <div data-aos="zoom-in"  data-aos-duration="20">
-
         
+
         <img
 
             style={{
@@ -183,27 +187,44 @@ const handleImageLoad = () => {
             className={styles.imgModal}
             alt={work.title}
           />        
+          
+
 
      </div>   
-      
+
+  
       </TransformComponent>
     </React.Fragment>
   )}
 </TransformWrapper> 
           </div>
              <button className={styles.buttonAfter} onClick={onNext} style={{cursor:'pointer', bottom:'0%' , backgroundColor:'transparent', position:'relative',right:'0%', border:'none',height:'100%' }}>
-             <GrNext/>
+             <GrNext style={{fontSize:'25px'}}/>
                 </button> 
+
+
                   </SwiperSlide>
            </Swiper>
      </div>
+
        { imageActive &&  
-        <div id="modal-modal-description" style={{ marginTop:'6px', color:'gray',display:'flex', justifyContent:'center', alignItems:'center',height:'100%', width:'100%'}} className={`${styles.modalDescription} ${comfortaa.className}`}>
-           { works && activeImageData && `${activeImageData.title }, ${activeImageData.year}. ${activeImageData.material} ${activeImageData.size}.`} 
-        </div>}
+       <>
+
+        <div id="modal-modal-description" style={{ marginTop:'8px', color:'gray',display:'flex', justifyContent:'flex-start', alignItems:'center',height:'10%',marginTop:'15px', width:'100%'}} className={`${styles.modalDescription} ${comfortaa.className}`}>
+
+        <div className={styles.brandModal} style={{width:'65%', display:'flex', justifyContent:'flex-end', alignItems:'flex-end',position:'fixed',left:'5vw',top:'2.5vw'}}>
+          <Brand style={{fontSize:'4px' }}/>
+        </div>
+           { works && activeImageData && `${activeImageData.title }, ${activeImageData.year}. ${activeImageData.material} ${activeImageData.size}. ` }
+{/*        <ShareButton/> */}
+        </div>
+
+       </>
+       }
+   
           </Box>
       </Modal>    
-   {/*   ---------------------     */} 
+
           </div>
  
   </Grid>
