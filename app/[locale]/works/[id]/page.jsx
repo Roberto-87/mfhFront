@@ -24,6 +24,7 @@ import { WORKS } from "../../../utils/consts";
 import getData from '../../hooks/getData'
 import {  usePathname, useRouter } from "next/navigation";
 import { Button } from "@mui/material";
+import CloseButton from "../../components/CloseButton/CloseButton";
 
 
 const Work=({params})=>{
@@ -90,82 +91,78 @@ const onNext = () => {
   }
 };
 
-  const handleImageLoad = () => {
+const handleImageLoad = () => {
     setImageLoaded(false);
    
-  };
-  const handleGoBack = () => {
+};
+
+const handleGoBack = () => {
     router.push("/works");
-  };
-    return(
-      <>   
-      <LoadingBar  color='black'progress={progress}  />
+};
+ 
+return(
+      <Box>   
+       <LoadingBar  color='black'progress={progress}  />
         <Box   aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+
         <Box sx={styleCarrouselWorks}    >
+  {work.title &&
+  <div style={{display:'flex', justifyContent:'flex-end',alignItems:'flex-end', width:'90vw' , position:'fixed', top:'8vh', zIndex:'2'  }}>
+  <CloseButton handleGoBack={handleGoBack}  />
+    </div> 
+  }     
         <div  style={{display:'flex', flexDirection:'row-reverse',  position:'relative', top:'50%',width:'100%',display:'flex', justifyContent:'center'}} >
-            <Swiper navigation={true} modules={[Navigation]} className="mySwiper" style={{width:'100%', height:'100%', }}>
+         <Swiper navigation={true} modules={[Navigation]} className="mySwiper" style={{width:'100%', height:'100%', }}>
             <SwiperSlide  className={styles.swiper} style={{ display:'flex', justifyContent:'center',height:'95vh', width:'100vw', alignItems:'center', padding:'4px'}}>
             {work.title &&      <button className={styles.buttonBefore}  style={{cursor:'pointer', bottom:'0%', backgroundColor:'transparent', position:'relative',right:'0%',top:'5%',border:'none',height:'100%'}} onClick={onPrevious}>
                 <GrPrevious style={{fontSize:'20px'}}/>
                 </button>  }
-                <div className={styles.containerImgModal} style={{display:'flex', alignItems:'center', justifyContent:'center',width:'32%' }}>
+        <div className={styles.containerImgModal} style={{display:'flex', alignItems:'center', justifyContent:'center',width:'32%' }}>
 <TransformWrapper  options={{ limitToBounds: false }}>
   {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
     <React.Fragment >
-
       <TransformComponent >
-   
-
         {!work.title && <LoaderAnimation style={{fontSize:'10px'}}/>}
-
-       <div  >
-  
+       <div>
           <img style={{width: '100%', cursor: 'grab', touchAction: 'none', }} src={work.image} key={work.id} onLoad={handleImageLoad} 
           cursor='grab' className={styles.imgModal} alt={work.title} />        
       </div>   
       </TransformComponent>
-
     </React.Fragment>
   )}
 </TransformWrapper> 
-     </div>
+             </div>
      {work.title &&      <button className={styles.buttonAfter} onClick={onNext} style={{cursor:'pointer', bottom:'0%' , backgroundColor:'transparent', position:'relative',right:'0%',top:'5%', border:'none',height:'100%' }}>
-         <GrNext style={{fontSize:'20px'}}/>
-          </button> }
+        <GrNext style={{fontSize:'20px'}}/>
+         </button> }
            </SwiperSlide>
             </Swiper>
          </div>
-       <>
-        <div id="modal-modal-description" style={{ marginTop:'8px', color:'gray',display:'inline', justifyContent:'flex-start', alignItems:'center',height:'10%',marginTop:'15px', width:'100%'}} className={`${styles.modalDescription} ${comfortaa.className}`}>
-        {work.title &&      <Button onClick={handleGoBack} style={{ cursor: "pointer", color:'black' }}>
-       
-                  <CloseIcon />
-                </Button>}
-        {work.title &&    <div style={{fontSize:'15px', width:'65%',cursor:'pointer',position:'fixed',left:'5vw',top:'2.8vw'}}>
-             <Brand />
+    <div id="modal-modal-description" style={{ marginTop:'8px', color:'gray',display:'inline', justifyContent:'flex-start', alignItems:'center',height:'10%',marginTop:'15px', width:'100%'}} className={`${styles.modalDescription} ${comfortaa.className}`}>
+        {work.title &&  
+        <div style={{fontSize:'15px', width:'65%',cursor:'pointer',position:'fixed',left:'5vw',top:'2.8vw'}}>
+           <Brand />
 
-          </div>   
+        </div>   
        }
-         <div style={{display:'flex', justifyContent:'center', marginLeft:'1.5vw', width:'28%'}}>
 
-    {work.title &&    
-    <div>
+   
+    {work.title &&       
+      <div style={{display:'flex', justifyContent:'center', marginLeft:'6vw', width:'28%'}}>
+     <div>
        <span style={{width:'50%',marginRight:'1vw'}}>
            {`${work.title }, ${work.year}. ${work.material} ${work.size}.`} 
-        </span>
-
-        </div>     
-        }
-        {work.title &&     
+      </span>
+    </div>     
         <span style={{width:'50%', marginLeft:'2vw'}}>
           <ShareButton url={pathname} description= {`${work.title }, ${work.year}. ${work.material} ${work.size}.`} />
-        </span>}
+        </span>
         </div>
-        </div>
-       </>   
-          </Box>
+    }
+   </div>
+      </Box>
       </Box>         
-        </>
+        </Box>
     )
 }
 export default Work
