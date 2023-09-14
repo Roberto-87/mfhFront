@@ -4,11 +4,9 @@ import styles from './Navigation.module.css'
 import Brand from "../Brand/Brand";
 import { useState, useEffect } from "react";
 import  NavBarMobile from "../NavbarMobile/NavbarMobile";
-import { usePathname, useRouter  } from 'next/navigation'
-import ButtonsPortfolio from "../ButtonsPortfolio/ButtonsPortfolio";
+import { usePathname  } from 'next/navigation'
 import {comfortaa} from'../../fonts/fonts'
 import DropdownNavbar from "../DropdownNavbar/DropdownNavbar";
-import { set } from "date-fns";
 
 const links = [
     {
@@ -36,8 +34,13 @@ const links = [
   ];
 
   const Navigation = () => {
-    const currentPathName = usePathname();
-    const withoutNavbar = ['/admin', '/', '/en', '/es', '/admin/exhibitions', '/admin/portfolio', '/admin/text', '/admin/biography', '/admin/cover', '/admin/contact', '/admin/works', '/admin/bio', '/admin/signin', '/admin/forgotPassword'];
+  const currentPathName = usePathname();
+  const withoutNavbar = ['/admin', '/', '/en', '/es', '/admin/exhibitions', '/admin/portfolio', '/admin/text', '/admin/biography', '/admin/cover', '/admin/contact', '/admin/works', '/admin/bio', '/admin/signin', '/admin/forgotPassword'];
+   
+if( currentPathName.split('/').length===3&& currentPathName.split('/')[1]==='works' && currentPathName.split('/')[2].split('-').length===5) {
+  withoutNavbar.push(currentPathName)
+}
+  
     const [mobile, setMobile] = useState(typeof window !== 'undefined' && window.innerWidth < 768);
     const [scrolling, setScrolling] = useState(false);
     const [prevScrollY, setPrevScrollY] = useState(0);
@@ -52,7 +55,6 @@ const links = [
           setScrolling(false);
        }
    } 
-
     useEffect(() => {
       const handleResize = () => {
         setMobile(window.innerWidth < 768);

@@ -271,8 +271,8 @@
       display: flex ;
       align-items: center;
       justify-content: center;
-      width:30% !important;
-      margin-top: 10px;
+      width:29% !important;
+      margin-top: 8vh !important;
     }
 
      .modalDescription{

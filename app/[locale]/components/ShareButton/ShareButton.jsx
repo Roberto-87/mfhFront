@@ -1,15 +1,21 @@
-const { Button } = require("@mui/material")
-import {AiOutlineShareAlt} from 'react-icons/ai'
+import {FaFacebookF,FaPinterestP,FaTwitter} from 'react-icons/fa'
+import styles from './ShareButton.module.css'
+import Link from 'next/link'
 
-const ShareButton=()=>{
+const ShareButton=({url})=>{
     return(
-      <div style={{display:'flex', width:'50%'}}>
-      <Button  size="small" style={{color:'#585858ae', border:'#585858ae 0.1px solid', padding:'4px', letterSpacing:'2px'}}>
-SHARE
-            <AiOutlineShareAlt/>
-        </Button>
-      </div>
-        
+
+        <>
+        <div className={styles.btnWrap}>
+        <span className={styles.span}>SHARE</span>
+        <div className={styles.container}>
+            <a target='_blank' href={`https://www.facebook.com/sharer.php?u=${url}`} className={`${styles.fab} ${styles.faFacebookF}`}><FaFacebookF style={{fontSize:'20px'}}/></a>
+            <a target='_blank' href={`https://twitter.com/intent/tweet?url=${url}`} className={`${styles.fab} ${styles.faTwitter}`}><FaTwitter style={{fontSize:'20px'}}/></a>
+            <a target='_blank' href={`https://ar.pinterest.com/pin/create/button/?description=${url}`} className={`${styles.fab} ${styles.faInstagram}`}><FaPinterestP style={{fontSize:'20px'}}/></a>
+         </div>
+    </div>
+
+        </>
     )
 }
 export default ShareButton
