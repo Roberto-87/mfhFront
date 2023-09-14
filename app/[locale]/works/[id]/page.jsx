@@ -132,7 +132,7 @@ return(
          </div>
     <div id="modal-modal-description" style={{ marginTop:'8px', color:'gray',display:'inline', justifyContent:'flex-start', alignItems:'center',height:'10%',marginTop:'15px', width:'100%'}} className={`${styles.modalDescription} ${comfortaa.className}`}>
         {work.title &&  
-        <div className={styles.brandContainer} style={{fontSize:'15px', width:'65%',cursor:'pointer',position:'fixed',left:'5vw',top:'2.8vw'}} className={styles.brand}>
+        <div className={styles.brand} style={{fontSize:'15px', width:'65%',cursor:'pointer',position:'fixed',left:'5vw',top:'2.8vw'}} >
            <Brand />
         </div>   
      }
