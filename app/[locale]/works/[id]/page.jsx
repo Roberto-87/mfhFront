@@ -13,19 +13,16 @@ import {styleCarrouselWorks, Item} from '../../components/CardWorks/styleMui'
 import {comfortaa} from '../../fonts/fonts'
 import { TransformWrapper, TransformComponent} from "react-zoom-pan-pinch";
 import { GrNext, GrPrevious } from 'react-icons/gr';
-import CloseIcon from '@mui/icons-material/Close';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import LoadingBar from 'react-top-loading-bar'
 import ShareButton from "../../components/ShareButton/ShareButton";
 import Brand from '../../components/Brand/Brand'
-import Link from "next/link";
 import { WORKS } from "../../../utils/consts";
 import getData from '../../hooks/getData'
-import {  usePathname, useRouter } from "next/navigation";
-import { Button } from "@mui/material";
+import { useRouter } from "next/navigation";
 import CloseButton from "../../components/CloseButton/CloseButton";
-
+import { Grid } from "@mui/material";
 
 const Work=({params})=>{
      const[imageLoaded, setImageLoaded]= useState(false)
@@ -78,7 +75,6 @@ const onPrevious = () => {
     setProgress(progress + 10);
   }
 };
-
 const onNext = () => {
   if (work.title) {
     let nextWorkIndex = workIndex + 1;
@@ -90,10 +86,8 @@ const onNext = () => {
     setProgress(progress+10  );
   }
 };
-
 const handleImageLoad = () => {
     setImageLoaded(false);
-   
 };
 
 const handleGoBack = () => {
@@ -104,33 +98,31 @@ return(
       <Box>   
        <LoadingBar  color='black'progress={progress}  />
         <Box   aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
-
         <Box sx={styleCarrouselWorks}    >
   {work.title &&
-  <div style={{display:'flex', justifyContent:'flex-end',alignItems:'flex-end', width:'90vw' , position:'fixed', top:'8vh', zIndex:'2'  }}>
-  <CloseButton handleGoBack={handleGoBack}  />
+  <div className={styles.closeButtonContainer} style={{display:'flex', justifyContent:'flex-end',alignItems:'flex-end', width:'90vw' , position:'fixed', top:'8vh', zIndex:'2'  }}>
+     <CloseButton className={styles.closeButton} handleGoBack={handleGoBack}  />
     </div> 
-  }     
-        <div  style={{display:'flex', flexDirection:'row-reverse',  position:'relative', top:'50%',width:'100%',display:'flex', justifyContent:'center'}} >
+  }    <div  style={{display:'flex', flexDirection:'row-reverse',  position:'relative', top:'50%',width:'100%',display:'flex', justifyContent:'center'}} >
          <Swiper navigation={true} modules={[Navigation]} className="mySwiper" style={{width:'100%', height:'100%', }}>
             <SwiperSlide  className={styles.swiper} style={{ display:'flex', justifyContent:'center',height:'95vh', width:'100vw', alignItems:'center', padding:'4px'}}>
             {work.title &&      <button className={styles.buttonBefore}  style={{cursor:'pointer', bottom:'0%', backgroundColor:'transparent', position:'relative',right:'0%',top:'5%',border:'none',height:'100%'}} onClick={onPrevious}>
                 <GrPrevious style={{fontSize:'20px'}}/>
                 </button>  }
         <div className={styles.containerImgModal} style={{display:'flex', alignItems:'center', justifyContent:'center',width:'32%' }}>
-<TransformWrapper  options={{ limitToBounds: false }}>
-  {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
-    <React.Fragment >
-      <TransformComponent >
+      <TransformWrapper  options={{ limitToBounds: false }}>
+        {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+          <React.Fragment >
+        <TransformComponent >
         {!work.title && <LoaderAnimation style={{fontSize:'10px'}}/>}
        <div>
           <img style={{width: '100%', cursor: 'grab', touchAction: 'none', }} src={work.image} key={work.id} onLoad={handleImageLoad} 
           cursor='grab' className={styles.imgModal} alt={work.title} />        
       </div>   
       </TransformComponent>
-    </React.Fragment>
-  )}
-</TransformWrapper> 
+       </React.Fragment>
+      )}
+      </TransformWrapper> 
              </div>
      {work.title &&      <button className={styles.buttonAfter} onClick={onNext} style={{cursor:'pointer', bottom:'0%' , backgroundColor:'transparent', position:'relative',right:'0%',top:'5%', border:'none',height:'100%' }}>
         <GrNext style={{fontSize:'20px'}}/>
@@ -140,29 +132,22 @@ return(
          </div>
     <div id="modal-modal-description" style={{ marginTop:'8px', color:'gray',display:'inline', justifyContent:'flex-start', alignItems:'center',height:'10%',marginTop:'15px', width:'100%'}} className={`${styles.modalDescription} ${comfortaa.className}`}>
         {work.title &&  
-        <div style={{fontSize:'15px', width:'65%',cursor:'pointer',position:'fixed',left:'5vw',top:'2.8vw'}}>
+        <div className={styles.brandContainer} style={{fontSize:'15px', width:'65%',cursor:'pointer',position:'fixed',left:'5vw',top:'2.8vw'}} className={styles.brand}>
            <Brand />
-
         </div>   
-       }
-
-   
-    {work.title &&       
-      <div style={{display:'flex', justifyContent:'center', marginLeft:'6vw', width:'28%'}}>
-     <div>
-       <span style={{width:'50%',marginRight:'1vw'}}>
-           {`${work.title }, ${work.year}. ${work.material} ${work.size}.`} 
-      </span>
-    </div>     
-        <span style={{width:'50%', marginLeft:'2vw'}}>
-          <ShareButton url={pathname} description= {`${work.title }, ${work.year}. ${work.material} ${work.size}.`} />
-        </span>
-        </div>
-    }
-   </div>
-      </Box>
-      </Box>         
-        </Box>
+     }
+  {work.title &&         <Grid container spacing={12}  >
+     <Grid className={styles.containerContainerTitleAndShare}  item xs={12}sx={{display:'flex', justifyContent:'center', width:'100%', marginLeft:'5vw'}} >
+       <div className={styles.containerTitleAndShare} style={{display:'flex', justifyContent:'center', alignContent:'center'}}>
+        <p  className={styles.titleWork}> {`${work.title }, ${work.year}. ${work.material} ${work.size}.`} </p> 
+          <ShareButton style={{height:'10px'}}  url={pathname} description= {`${work.title }, ${work.year}. ${work.material} ${work.size}.`} />
+    </div>
+  </Grid>
+  </Grid>}
+      </div>
+          </Box>
+          </Box>         
+            </Box>
     )
 }
 export default Work

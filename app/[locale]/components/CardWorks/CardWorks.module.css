@@ -127,11 +127,16 @@
       top:'3.8vw'!important;
       margin-top:3px
     }
+    .containerTitleAndShare{
+      margin-bottom: 42px !important;
+      width: 90%;
+    }
   }
 
   @media screen and (min-width: 360px) {
     .containerImgModal  {
-      width: 70% !important;
+      width: 76% !important;
+
     }
     .buttonBefore, .buttonAfter{
       height: 50% !important;
@@ -143,16 +148,28 @@
     .brandModal{
       display: none !important;
     }
+    .imgModal{
+      margin-top: 30px !important;
+    }
+    .containerTitleAndShare{
+      margin-bottom: 42px !important;
+      width: 90%;
+    }
+ 
   }
   @media screen and (min-width: 500px) {
     .containerImgModal  {
-      width: 65% !important;
+      width: 68% !important;
     }
     .buttonBefore, .buttonAfter{
       height: 70% !important;
     }
     .modalDescription{
       margin-bottom:4% !important;
+
+    }
+    .imgModal{
+      margin-top: 45px !important;
 
     }
   }
@@ -199,9 +216,10 @@
 
 
 
-  @media screen and (min-width: 815px) {
+  @media screen and (min-width: 768px) {
     .containerImgModal  {
-      width: 55% !important;
+      width:75% !important;
+
     }
     .buttonBefore, .buttonAfter{
       height: 70% !important;
@@ -212,13 +230,17 @@
        margin-left: 23%;
     }
     .imgModal{
-      width: 80% !important;
+      margin-bottom: -10px !important;
+
     }
+   .containerTitleAndShare{
+       margin-right: 40vw !important;
+    } 
   }
   
   @media screen and (min-width: 880px) {
     .containerImgModal  {
-      width: 50% !important;
+      width: 75% !important;
     
     }
     .buttonBefore, .buttonAfter{
@@ -229,6 +251,19 @@
        justify-content: center !important;
        margin-left:-10%;
     }
+    .imgModal{
+      margin-bottom: -10px !important;
+
+    }
+    .containerContainerTitleAndShare{
+      width: 100vw;
+
+    }
+
+    .containerTitleAndShare{
+      margin-left: 20vw !important;
+      font-size: 20px !important;
+   } 
   }
   @media screen and (min-width: 940px) {
     .containerImgModal  {
@@ -252,7 +287,8 @@
   
   @media screen and (min-width: 1000px) {
     .containerImgModal  {
-      width: 35% !important;
+      width: 31% !important;
+      margin-top: 1vh !important;
     }
     .buttonBefore, .buttonAfter{
       height: 70% !important;
@@ -264,19 +300,37 @@
       width: 100%;
       margin:none
     }
+    .containerTitleAndShare{
+      margin-right: 42px !important;
+      margin-top: -40px;
+      width: 100%;
+    }
   }
+
 
   @media screen and (min-width: 1200px) {
     .containerImgModal  {
       display: flex ;
       align-items: center;
       justify-content: center;
-      width:29% !important;
-      margin-top: 8vh !important;
+      width:30% !important;
+
     }
 
      .modalDescription{
       margin-left: -3%;
+      margin-top: 2%;
+    }
+    .containerTitleAndShare{
+      margin-left: 13.5vw !important;
+      margin-top: -18px;
+      width: 100%;
+      height:30px;
+      font-size: 15px;
+      padding-top: 8px !important;
+    } .titleWork{
+      margin-top: 16px !important;
+
     }
 
   }
@@ -291,5 +345,68 @@
 font-size: 10px;
   }
   }
+  @media screen and (max-width: 281px ) {
+    .brand{
+       margin-top: 45px;
+     }
+     }
 
 
+  @media screen and (min-width: 350px) and (max-width: 767px ) {
+   .brand{
+      margin-top: 50px;
+    } .closeButtonContainer{
+      margin-top: 6px;
+      margin-right: 15px;
+    }
+    }
+    @media screen and (min-width:768px) and (max-width: 1026px ) {
+      .brandContainer{
+        width: 40% !important;
+
+      }
+      .brand{
+         margin-top: 20px !important;
+    
+       }
+       .closeButtonContainer{
+        margin-right: 65px !important;
+        margin-bottom: 10px !important;
+      }.closeButton{
+        height: 20vh;
+      }
+       }
+       @media screen and (min-width:1027px) and (max-width: 1100px ) {
+        .brandContainer{
+          width: 40% !important;
+  
+        }
+        .brand{
+           margin-top: 50px !important;
+         }
+         .closeButtonContainer{
+          margin-right: 65px !important;
+          margin-bottom: 15px !important;
+        }.closeButton{
+          height: 90vh;
+        }
+         }
+  
+
+         @media screen and (min-width:1280px) {
+          .brandContainer{
+            width: 40% !important;
+            margin-top: 10px;
+    
+          }
+          .brand{
+             margin-top: 20px !important;
+        
+           }
+           .closeButtonContainer{
+            margin-right: 65px !important;
+            margin-bottom: 10px !important;
+          }.closeButton{
+            height: 20vh;
+          }
+        }
