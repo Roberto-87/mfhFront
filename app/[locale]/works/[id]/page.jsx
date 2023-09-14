@@ -138,8 +138,7 @@ const onNext = () => {
        <>
         <div id="modal-modal-description" style={{ marginTop:'8px', color:'gray',display:'inline', justifyContent:'flex-start', alignItems:'center',height:'10%',marginTop:'15px', width:'100%'}} className={`${styles.modalDescription} ${comfortaa.className}`}>
         {work.title &&      <Button onClick={handleGoBack} style={{ cursor: "pointer", color:'black' }}>
-
-        
+       
                   <CloseIcon />
                 </Button>}
         {work.title &&    <div style={{fontSize:'15px', width:'65%',cursor:'pointer',position:'fixed',left:'5vw',top:'2.8vw'}}>
@@ -159,7 +158,7 @@ const onNext = () => {
         }
         {work.title &&     
         <span style={{width:'50%', marginLeft:'2vw'}}>
-          <ShareButton url={pathname}/>
+          <ShareButton url={pathname} description= {`${work.title }, ${work.year}. ${work.material} ${work.size}.`} />
         </span>}
         </div>
         </div>
