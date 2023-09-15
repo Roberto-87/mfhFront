@@ -133,14 +133,16 @@ return(
     <div id="modal-modal-description" style={{ marginTop:'8px', color:'gray',display:'inline', justifyContent:'flex-start', alignItems:'center',height:'10%',marginTop:'15px', width:'100%'}} className={`${styles.modalDescription} ${comfortaa.className}`}>
         {work.title &&  
         <div className={styles.brand} style={{fontSize:'15px', width:'65%',cursor:'pointer',position:'fixed',left:'5vw',top:'2.8vw'}} >
-           <Brand />
+           <Brand className={styles.brand_brand} />
         </div>   
      }
   {work.title &&         <Grid container spacing={12}  >
      <Grid className={styles.containerContainerTitleAndShare}  item xs={12}sx={{display:'flex', justifyContent:'center', width:'100%', marginLeft:'5vw'}} >
        <div className={styles.containerTitleAndShare} style={{display:'flex', justifyContent:'center', alignContent:'center'}}>
         <p  className={styles.titleWork}> {`${work.title }, ${work.year}. ${work.material} ${work.size}.`} </p> 
+         <div>
           <ShareButton style={{height:'10px'}}  url={pathname} description= {`${work.title }, ${work.year}. ${work.material} ${work.size}.`} />
+         </div>
     </div>
   </Grid>
   </Grid>}
