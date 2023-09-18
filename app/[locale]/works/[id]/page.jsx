@@ -137,7 +137,8 @@ return(
            <Brand className={styles.brand_brand} />
         </div>   
      }
-  {work.title &&         <Grid container spacing={12}  >
+  {work.title &&      
+     <Grid container spacing={{ xs: 2, md: 3, sm:3,xl:2, lg:1 }} columns={{ xs: 1, sm: 6, md: 9,lg:9}} direction="row" justifyContent="flexEnd" alignItems="center" >
      <Grid className={styles.containerContainerTitleAndShare}  item xs={12}sx={{display:'flex', justifyContent:'center', width:'100%', marginLeft:'5vw'}} >
        <div className={styles.containerTitleAndShare} style={{display:'flex', justifyContent:'center', alignContent:'center'}}>
         <p  className={styles.titleWork}> {`${work.title }, ${work.year}. ${work.material} ${work.size}.`} </p> 

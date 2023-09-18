@@ -106,9 +106,10 @@
 
 
   /* ------------------------------------------------------------- */
-  @media screen and (min-width: 280px )and (max-width: 365px )  {
+  @media screen and (min-width: 280px )and (max-width: 330px )  {
     .containerImgModal  {
-      width: 80% !important;
+      width: 65% !important;
+      margin-top: 20px !important;
     }
     .buttonBefore, .buttonAfter{
      height: 25% !important;
@@ -118,8 +119,7 @@
       margin-bottom:5% !important;
     }
     .brand{
-    width: 100%;
-    padding-top: 14px;
+display: none;
      
     }
     .brand_brand{
@@ -141,13 +141,44 @@
       margin-top: 1vw;
     }
   }
+/* ------------------------------------------------------------- */
 
+  @media screen and (min-width: 331px )and (max-width: 365px )  {
+    .containerImgModal  {
+      width: 80% !important;
+      margin-top: 45px !important;
+    }
+    .buttonBefore, .buttonAfter{
+     height: 25% !important;
+    }
+    .brand{
+      display: none;
+           
+          }
 
+    .containerTitleAndShare{
+      margin-bottom: 42px !important;
+      width: 90%;
+      margin-top: -10px;
+    }
+    .imgModal{
+      margin-top: 30px !important;
+    }
+    .closeButtonContainer{
+      margin-right: 65px !important;
+      margin-top: 5px !important;
+    }
+    .closeButton{
+      height: 20vh;
+      margin-top: 0.1vw;
+    }
+
+  }
 
 /* ------------------------------------------------------------- */
-  @media screen and (min-width: 200px)  and (max-width: 499px){
+  @media screen and (min-width: 366px)  and (max-width: 499px){
     .containerImgModal  {
-      width: 76% !important;
+      width: 55% !important;
 
     }
     .buttonBefore, .buttonAfter{
@@ -218,7 +249,7 @@
   /* ------------------------------------------------------------- */
   @media screen and (min-width: 670px) and (max-width: 767px) {
     .containerImgModal  {
-      width: 45% !important;
+      width: 75% !important;
     }
     .buttonBefore, .buttonAfter{
       height: 70% !important;
@@ -335,9 +366,9 @@
       display: flex ;
       align-items: center;
       justify-content: center;
-      width:55% !important;
+      width:70% !important;
       position: relative !important;
-      top:3vh !important
+      top:1vh !important
       }
    .imgModal{
          margin-top: 10px !important;
@@ -411,12 +442,12 @@
 
   } 
 
-  @media screen and (min-width: 1220px) {
+  @media screen and (min-width: 1200px) {
     .containerImgModal  {
       display: flex ;
       align-items: center;
       justify-content: center;
-      width:50% !important;
+      width:30% !important;
       position: relative !important;
       top:3vh !important
       }
@@ -431,3 +462,23 @@
         top:3vh !important
         }
       }
+      @media screen and (min-width: 1440px) {
+        .containerImgModal  {
+          display: flex ;
+          align-items: center;
+          justify-content: center;
+          width:80% !important;
+          position: relative !important;
+          top:3vh !important
+          }
+        }
+        @media screen and (min-width: 1440px) {
+          .containerImgModal  {
+            display: flex ;
+            align-items: center;
+            justify-content: center;
+            width:30% !important;
+            position: relative !important;
+            top:3vh !important
+            }
+          }
