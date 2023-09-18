@@ -56,7 +56,7 @@ const handleImageLoad = () => {
         <LoadingBar  color='black'progress={progress}  />
      <Box sx={{ marginLeft: '8px' }}>
      <div className={styles.containerData}>
-     <h2 className={`${styles.cardItem} ${styles.title}`}>{work.title.toUpperCase()}, {work.year}</h2>
+     <h2 className={`${styles.cardItem} ${styles.title}`}>{work.title}, {work.year}</h2>
      </div>
      <div  className={styles.containerMaterialSize}>
          <p className={`${styles.cardItem} ${styles.material}`}>{work.material} </p>
