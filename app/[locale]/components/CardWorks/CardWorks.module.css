@@ -106,10 +106,9 @@
 
 
   /* ------------------------------------------------------------- */
-  @media screen and (min-width: 280px )and (max-width: 330px )  {
+  @media screen and (min-width: 280px )and (max-width: 365px )  {
     .containerImgModal  {
-      width: 65% !important;
-      margin-top: 20px !important;
+      width: 80% !important;
     }
     .buttonBefore, .buttonAfter{
      height: 25% !important;
@@ -119,7 +118,8 @@
       margin-bottom:5% !important;
     }
     .brand{
-display: none;
+    width: 100%;
+    padding-top: 14px;
      
     }
     .brand_brand{
@@ -141,109 +141,13 @@ display: none;
       margin-top: 1vw;
     }
   }
+
+
+
 /* ------------------------------------------------------------- */
-
-  @media screen and (min-width: 331px ) {
+  @media screen and (min-width: 200px)  and (max-width: 499px){
     .containerImgModal  {
-      width: 80% !important;
-      margin-top: 45px !important;
-    }
-    .buttonBefore, .buttonAfter{
-     height: 25% !important;
-     }
-
-    .containerTitleAndShare{
-      margin-bottom: 42px !important;
-      width: 90%;
-      margin-top: -10px;
-    }
-    .imgModal{
-      margin-top: 30px !important;
-    }
-    .closeButtonContainer{
-      margin-right: 65px !important;
-      margin-top: 5px !important;
-    }
-    .closeButton{
-      height: 20vh;
-      margin-top: 0.1vw;
-    }
-    .brandContainer{
-      width: 40% !important;
-  
-    }
-    .brand{
-       margin-top: 20px !important;
-  
-     }
-
-  }
-  @media screen and (min-width: 1200px) {
-    .containerImgModal  {
-      display: flex ;
-      align-items: center;
-      justify-content: center;
-      width:70% !important;
-      position: relative !important;
-      top:3vh !important
-      }
-    }
-    @media screen and (min-width: 1242px) {
-      .containerImgModal  {
-        display: flex ;
-        align-items: center;
-        justify-content: center;
-        width:70% !important;
-        position: relative !important;
-        top:-2vh !important
-        }
-        .brandContainer{
-          width: 40% !important;
-      
-        }
-        .brand{
-           margin-top: 25% !important;
-      
-         }
-         .imgModal{
-          margin-top:20% !important;
-        }
-        .closeButton{
-          height: 20vh;
-          margin-top: 20% !important;
-        }
-        .containerTitleAndShare{
-          margin-bottom: 15%!important;
-          width: 90%;
-
-        }
-      }
-    @media screen and (min-width: 1340px) {
-      .containerImgModal  {
-        display: flex ;
-        align-items: center;
-        justify-content: center;
-        width:48% !important;
-        position: relative !important;
-        top:3vh !important
-        }
-      }
-        @media screen and (min-width: 1440px) {
-          .containerImgModal  {
-            display: flex ;
-            align-items: center;
-            justify-content: center;
-            width:55% !important;
-            position: relative !important;
-            top:3vh !important
-            }
-          }
-
-
-/* 
-  @media screen and (min-width: 366px)  and (max-width: 499px){
-    .containerImgModal  {
-      width: 55% !important;
+      width: 76% !important;
 
     }
     .buttonBefore, .buttonAfter{
@@ -268,6 +172,7 @@ display: none;
     }
  
   }
+  /* ------------------------------------------------------------- */
   @media screen and (min-width: 500px) and (max-width: 600px){
     .containerImgModal  {
       width: 65% !important;
@@ -285,6 +190,7 @@ display: none;
     }
    
   }
+  /* ------------------------------------------------------------- */
   @media screen and (min-width: 600px)and (max-width: 629px) {
     .containerImgModal  {
       width: 55% !important;
@@ -309,9 +215,10 @@ display: none;
 
     }
   }
+  /* ------------------------------------------------------------- */
   @media screen and (min-width: 670px) and (max-width: 767px) {
     .containerImgModal  {
-      width: 75% !important;
+      width: 45% !important;
     }
     .buttonBefore, .buttonAfter{
       height: 70% !important;
@@ -335,6 +242,7 @@ display: none;
      }
   }
 
+  /* ------------------------------------------------------------- */
 
   @media screen and (min-width: 768px) and (max-width: 879px) {
     .containerImgModal  {
@@ -372,6 +280,7 @@ display: none;
       height: 20vh;
     }
   }
+/* ------------------------------------------------------------- */
   
   @media screen and (min-width: 880px) and (max-width: 939px) {
     .containerImgModal  {
@@ -395,6 +304,7 @@ display: none;
       font-size: 20px !important;
    } 
   }
+  /* ------------------------------------------------------------- */
 
   @media screen and (min-width: 940px) and (max-width: 999px){
     .containerImgModal  {
@@ -417,6 +327,7 @@ display: none;
     }
 
   }
+/* ------------------------------------------------------------- */
 
  
   @media screen and (min-width: 1000px) and (max-width: 1179px) {
@@ -424,9 +335,9 @@ display: none;
       display: flex ;
       align-items: center;
       justify-content: center;
-      width:70% !important;
+      width:55% !important;
       position: relative !important;
-      top:1vh !important
+      top:3vh !important
       }
    .imgModal{
          margin-top: 10px !important;
@@ -458,6 +369,7 @@ display: none;
     }
 
   }
+/* ------------------------------------------------------------- */
 
   @media screen and (min-width: 1180px) {
     .containerImgModal  {
@@ -499,4 +411,23 @@ display: none;
 
   } 
 
- */
+  @media screen and (min-width: 1220px) {
+    .containerImgModal  {
+      display: flex ;
+      align-items: center;
+      justify-content: center;
+      width:50% !important;
+      position: relative !important;
+      top:3vh !important
+      }
+    }
+    @media screen and (min-width: 1340px) {
+      .containerImgModal  {
+        display: flex ;
+        align-items: center;
+        justify-content: center;
+        width:48% !important;
+        position: relative !important;
+        top:3vh !important
+        }
+      }
