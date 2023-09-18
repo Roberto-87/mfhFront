@@ -191,9 +191,21 @@
    
   }
   /* ------------------------------------------------------------- */
-  @media screen and (min-width: 600px)and (max-width: 669px) {
+  @media screen and (min-width: 600px)and (max-width: 629px) {
     .containerImgModal  {
       width: 55% !important;
+    }
+    .buttonBefore, .buttonAfter{
+      height: 70% !important;
+    }
+    .modalDescription{
+      margin-bottom:4% !important;
+
+    }
+  }
+  @media screen and (min-width: 630px)    {
+    .containerImgModal  {
+      width: 70% !important;
     }
     .buttonBefore, .buttonAfter{
       height: 70% !important;
@@ -234,7 +246,7 @@
 
   @media screen and (min-width: 768px) and (max-width: 879px) {
     .containerImgModal  {
-      width:44.5% !important;
+      width:65% !important;
 
     }
     .buttonBefore, .buttonAfter{
@@ -272,7 +284,7 @@
   
   @media screen and (min-width: 880px) and (max-width: 939px) {
     .containerImgModal  {
-      width: 44.5% !important;
+      width: 70% !important;
     
     }
     .buttonBefore, .buttonAfter{
@@ -296,7 +308,7 @@
 
   @media screen and (min-width: 940px) and (max-width: 999px){
     .containerImgModal  {
-      width: 38% !important;
+      width: 55% !important;
     }
     .buttonBefore, .buttonAfter{
       height: 70% !important;
@@ -318,12 +330,12 @@
 /* ------------------------------------------------------------- */
 
  
-  @media screen and (min-width: 1000px) and (max-width: 1099px) {
+  @media screen and (min-width: 1000px) and (max-width: 1179px) {
     .containerImgModal  {
       display: flex ;
       align-items: center;
       justify-content: center;
-      width:38% !important;
+      width:55% !important;
       position: relative !important;
       top:3vh !important
       }
@@ -358,52 +370,13 @@
 
   }
 /* ------------------------------------------------------------- */
-@media screen and (min-width: 1100px) and (max-width: 1199px) {
-  .containerImgModal  {
-    display: flex ;
-    align-items: center;
-    justify-content: center;
-    width:35% !important;
-    position: relative !important;
-    top:3vh !important
-    }
- .imgModal{
-       margin-top: 10px !important;
-  } 
-  .containerTitleAndShare{
-    margin-left: -4.5vw !important;
-    margin-bottom: 45px !important;
-    width: 100vw;
-    height:30px;
-    padding-top: 8px !important;
-  } 
-  .titleWork{
-    font-size: 15px;
-    margin-top: 16px !important;
-  }
-  .brandContainer{
-    width: 40% !important;
 
-  }
-  .brand{
-     margin-top: 5px !important;
-
-   }
-   .closeButtonContainer{
-    margin-right: 65px !important;
-    margin-bottom: 10px !important;
-  }.closeButton{
-    height: 20vh;
-  }
-
-}
-
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1180px) {
     .containerImgModal  {
       display: flex ;
       align-items: center;
       justify-content: center;
-      width:31% !important;
+      width:55% !important;
       position: relative !important;
       top:3vh !important
       }
@@ -437,3 +410,24 @@
     }
 
   } 
+
+  @media screen and (min-width: 1220px) {
+    .containerImgModal  {
+      display: flex ;
+      align-items: center;
+      justify-content: center;
+      width:50% !important;
+      position: relative !important;
+      top:3vh !important
+      }
+    }
+    @media screen and (min-width: 1340px) {
+      .containerImgModal  {
+        display: flex ;
+        align-items: center;
+        justify-content: center;
+        width:48% !important;
+        position: relative !important;
+        top:3vh !important
+        }
+      }
