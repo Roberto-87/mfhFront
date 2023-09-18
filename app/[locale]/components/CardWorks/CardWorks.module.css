@@ -411,12 +411,12 @@
 
   } 
 
-  @media screen and (min-width: 1220px) {
+  @media screen and (min-width: 1200px) {
     .containerImgModal  {
       display: flex ;
       align-items: center;
       justify-content: center;
-      width:50% !important;
+      width:30% !important;
       position: relative !important;
       top:3vh !important
       }
