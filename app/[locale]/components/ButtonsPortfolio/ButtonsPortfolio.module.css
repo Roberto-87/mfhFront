@@ -15,23 +15,23 @@
     font-size: 1em;
     color: black !important;   
 }  */
-.containerPortfolio{
-    background-color:  #746d6d !important;
-    padding:1px;
+.containerPortfolio {
+    background-color: #746d6d !important;
+    padding: 1px;
     border: none;
     list-style: none;
     cursor: pointer;
     transition: 1s ease-in;
-    display: inline-block;
+    display: inline-block !important;
     align-items: start;
     text-decoration: none !important;
     list-style: none;
     padding: 0;
     font-size: 1em;
-    color: black !important;   
-
-
-}
+    color: black !important;
+    
+  }
+  
 .containerPortfolio:hover {
     text-decoration: underline;
 }

@@ -9,7 +9,7 @@ import { PORTFOLIO } from '../../../utils/consts'
 import styles from '../ButtonsPortfolio/ButtonsPortfolio.module.css'
 import { Divider } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import {AiOutlineCloudDownload} from 'react-icons/ai'
 
 const theme = createTheme({
   components: {
@@ -52,8 +52,8 @@ export default function Example() {
   return (
     <ThemeProvider theme={theme}>
       
-    <Menu as="div" className="relative inline-block text-left" >
-        <Menu.Button className={`${styles.containerPortfolio}${comfortaa.className}`} >
+    <Menu as="div" className="relative block text-left" >
+        <Menu.Button style={{color:'white', padding:'3px'}} className={`${styles.containerPortfolio}${comfortaa.className}`} >
        PORTFOLIO
         </Menu.Button>
 
@@ -66,29 +66,29 @@ export default function Example() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-50 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <div className="py-1 " style={{display:'flex',flexDirection:'column', display:'flex'}}>
-            <Menu.Item>
+        <Menu.Items  className="absolute right-50 z-10 mt-2 w-100 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <div className="py-1 " style={{  display:'flex', position:'fixed', flexDirection:'column',justifyContent:'flex-end' }}>
+            <Menu.Item sx={{width:'100%'}}>
               {({ active }) => (
-                <a href={spanishPortfolio} target="_blank" download class={comfortaa.className} className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
-                  )}
+                <a href={spanishPortfolio} target="_blank" download style={{fontSize:'14px',marginBottom:'1px',color: '#746d6d '}} className={`${comfortaa.className}${classNames(
+                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                  'block px-4 py-2 text-sm'
+                )}`}
                 >
-                  Descargar PDF ES
+                  <AiOutlineCloudDownload style={{fontSize:'20px',color: '#746d6d '}}/> PDF ES
                 </a>
               )}
             </Menu.Item>
-            <Divider />
-            <Menu.Item>
+   {/*          <Divider /> */}
+            <Menu.Item sx={{width:'100%', backgroundColor:'red'}}>
               {({ active }) => (
                 
-                <a href={englishshPortfolio} target="_blank" download className={classNames(
+                <a href={englishshPortfolio} target="_blank"  download style={{fontSize:'14px',marginBottom:'1px',color: '#746d6d ',width:'100%' }} className={`${comfortaa.className}${classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'
-                  )}
+                  )}`}
                 >
-                   Descargar PDF EN
+                   <AiOutlineCloudDownload style={{fontSize:'20px',color: '#746d6d '}}/> PDF EN
                 </a>
               )}
             </Menu.Item>

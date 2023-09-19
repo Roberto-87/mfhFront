@@ -33,7 +33,6 @@ const ButtonsPortfolio=()=>{
   return(
         <Box sx={{display:'flex'}} >
             <a class={comfortaa.className} className={styles.containerPortfolioEs} href={englishshPortfolio} target="_blank" download><i>PORTFOLIO EN</i></a> 
-
             <a class={comfortaa.className} className={styles.containerPortfolioEn} href={spanishPortfolio} target="_blank" download><i>PORTFOLIO ES</i></a>
         </Box>
    
