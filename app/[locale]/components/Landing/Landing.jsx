@@ -7,16 +7,16 @@ import getData from "../../hooks/getData";
 import { COVER } from "../../../utils/consts";
 import {Mplus1} from '../../fonts/fonts'
 import LoadingBar from 'react-top-loading-bar'
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/opacity.css'
+import AOS from 'aos';
 
 
 const Landing=()=>{
    const[image, setImage]= useState()
    const [progress, setProgress] = useState(0)
-     
-useEffect(()=>   setProgress(100),[])
 
-  useEffect(()=>{
-
+useEffect(()=>{
 (async function getCoverImage(){
    try {
       
@@ -27,35 +27,31 @@ useEffect(()=>   setProgress(100),[])
       return {error:error.message}
    }
 }
-)()},[])
+)()
+setProgress(100)
+    AOS.init({
+      duration: 200,
+    })
+
+},[])
 
 return(
   <div className={style.landingContainer}>
       <LoadingBar  color='black'progress={progress}  />
-
-     {
-!image &&      <>
-<ButtonStart/>
- <div className={style.brandContainer}>
-  <Link href='/'><h1 className={`${Mplus1.className}${style.brandLandingWhithoutImg}`}  >MARIA FERRARI HARDOY</h1></Link>
- </div>     
-</>
-     }
-     
-     {image ?    
+    
      <>
-     <ButtonStart/>
-        <img className={style.imageLanding} src={image}   alt="imagen de portada"  />
+        <LazyLoadImage  loading="lazy" effect="opacity" className={style.imageLanding} src={image} data-aos={'fade-up'}  alt="imagen de portada"  />
+     {image && image.length>0 && progress>99 &&   
+     <div style={{position:'relative', top:'10%'}} >
+     <ButtonStart  />
+     </div>
+     }
       <div className={style.brandContainer}>
       <Link href='/'><h1 className={`${Mplus1.className}${style.brandLanding}`} >MARIA FERRARI HARDOY</h1></Link>
       </div>     
-     </>:
+     </>
       <>
-        <div className={style.brandContainer}>
-        <Link href='/'><h1 style={{color:'black'}} className={`${Mplus1.className}${style.brandLanding}`} >MARIA FERRARI HARDOY</h1></Link>
-        </div>     
        </>
-     }
      </div>)
 }
 

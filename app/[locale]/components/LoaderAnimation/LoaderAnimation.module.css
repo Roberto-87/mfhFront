@@ -2,6 +2,7 @@
     animation: spin 1.5s linear infinite;
     font-size:25px;
     transition:ease;
+    margin-top: 20px;
   }
   
   @keyframes spin {
