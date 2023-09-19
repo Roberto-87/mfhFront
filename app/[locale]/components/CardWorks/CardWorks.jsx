@@ -43,10 +43,9 @@ const CardWorks = ({works}) => {
             <Grid  item xs={3}  key={work.id} >
          <Link  href={`/works/${(work?.id)}`} >
              <Button   className={styles.slideBottom} data-aos={scrollUp ? 'fade-up' : 'fade-out'}   >
-    <LazyLoadImage    className={styles.cardImage}  src={work.image} onLoad={handleImageLoad}  alt={work.title} loading="lazy" effect="opacity" />
-
-        {!imageLoaded && 
-        <div style={{top:'3%',marginTop:'30%',width:'101%', height:'30vh', position:'relative', left:'40%',    textAlign: 'center',
+   <LazyLoadImage    className={styles.cardImage}  src={work.image} onLoad={handleImageLoad}  alt={work.title} loading="lazy" effect="opacity" />
+ 
+         {!imageLoaded && <div style={{top:'3%', left:'10%',marginTop:'20%',width:'10vw', height:'30vh', position:'relative',   textAlign: 'center',display:'flex', justifyContent:'center'
 }}>   <LoaderAnimation   />
        </div>
     }

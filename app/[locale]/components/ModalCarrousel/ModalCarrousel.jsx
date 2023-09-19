@@ -102,7 +102,7 @@ setProgress(progress + 10)
     />  
  </div>   
 {!imageLoaded &&
-<div style={{display:'flex', justifyContent:'center', width:'100%', marginLeft:'25%'}}>
+<div style={{display:'flex', justifyContent:'center', width:'100%', marginLeft:'50%'}}>
 <LoaderAnimation/>
 </div>
 }

@@ -11,7 +11,6 @@ import LoaderAnimation from "../../components/LoaderAnimation/LoaderAnimation";
 import LoadingBar from 'react-top-loading-bar'
 
 
-
 const Exhibition=({params })=>{
   const {id}= params
   const [progress, setProgress] = useState(0)
@@ -19,6 +18,8 @@ const Exhibition=({params })=>{
    const[exhibition,setExhibition]= useState('')
    const [open, setOpen] = useState(false);
    const [loading, setLoading] = useState(false);
+   const[imageLoaded, setImageLoaded]= useState(false)
+
    
    const handleOpen = () => {
        setOpen(true);
@@ -28,6 +29,10 @@ const Exhibition=({params })=>{
     setOpen(false)
     setProgress(progress + 10)
   };
+
+  const onHandleLoad=()=>{
+    setImageLoaded(true)
+   }
 
   useEffect(() => { 
     setLoading(true)
@@ -49,17 +54,16 @@ const Exhibition=({params })=>{
     return ( 
       <Box sx={{paddingRight:'1%',paddingLeft:'1%'}}>  
         <LoadingBar  color='black'progress={progress}  />
-    
-      {loading && <LoaderAnimation/>}
-    {exhibition  && <ExhibitionData exhibition={exhibition}/> }
+    <ExhibitionData exhibition={exhibition} /> 
     {exhibitionText.document && 
      <div style={{display:'flex', alignItems:'flex-start', justifyContent:'center'}}>
         <Button className={comfortaa.className} style={{color:'black',margin:'1px', paddingTop:'2px'}} onClick={handleOpen}><i>texto curatorial</i></Button>
      </div>    
     } 
     {open && <ModalCuratorialText progress={progress} exhibitionText={exhibitionText} open={handleOpen} onClose={handleClose}/>}  
-   
-    <ImageListExhibition exhibition={exhibition}/>
+    <div style={{display:'flex', justifyContent:'center', width:'100%'}}>
+    <ImageListExhibition exhibition={exhibition} />
+    </div>
    </Box>
    )
 }

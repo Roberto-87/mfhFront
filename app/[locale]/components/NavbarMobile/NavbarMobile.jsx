@@ -36,10 +36,13 @@ const Navbar =() => {
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
+  const onHandleClick=(e)=>{
+    e.stopPropagation()
+  }
 
   return (
     <ThemeProvider theme={theme}>
-      <Toolbar>
+      <Toolbar >
         <IconButton
           edge="start"
           color="inherit"
@@ -54,11 +57,11 @@ const Navbar =() => {
           <Brand/>
         </Typography>
       </Toolbar>
-      <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer} >
+      <Drawer anchor="left" open={isDrawerOpen}  >
       <div style={{width:'100%', display:'flex', justifyContent:'flex-end' }}>
           <CloseIcon onClick={toggleDrawer} style={{fontSize:'35px',fontWeight: 400,lineHeight:'22px',color: '#837c7c'}}/>
       </div>
-  <List sx={{ width: '100vw', marginTop:'10%'}}  onClick={toggleDrawer}>
+  <List sx={{ width: '100vw', marginTop:'10%'}}  >
     <ListItem  className={styles.animatedListItem} style={{ animationDelay: '0.1s' }}>
       <Link className={styles.linkNavbarMobile}  href={'/works'}>    {currentPathname === '/works' ? <strong>WORKS</strong> : 'WORKS'}</Link>
     </ListItem>
@@ -75,13 +78,13 @@ const Navbar =() => {
       <Link className={styles.linkNavbarMobile}  href={'/contact'}>{currentPathname==='/contact'?<strong>CONTACT</strong>:'CONTACT'}</Link>
     </ListItem>
 
-    <ListItem className={styles.animatedListItem} style={{ animationDelay: '0.5s' }}>
-  <DropdownNavbar className={styles.animatedListItem}  style={{ backgroundColor: 'transparent', color: 'black' }}></DropdownNavbar>
+    <ListItem className={styles.animatedListItem} style={{ animationDelay: '0.5s',  width:'100%' }}>
+  <DropdownNavbar onClick={onHandleClick} className={styles.animatedListItem}  style={{ backgroundColor: 'transparent', color: 'black',width:'50%' }}></DropdownNavbar>
     </ListItem>
    <div >
    </div>
-   <ListItem className={styles.animatedListItem} style={{ animationDelay: '0.5s', width:'100%' }}>
-   <Box sx={{width:'25%', display:'flex',justifyContent:'space-around',position:'absolute', alignItems:'center', marginTop:'8%'}}>
+   <ListItem className={styles.animatedListItem} style={{ animationDelay: '0.5s', width:'100%',}}>
+    <Box sx={{width:'25%', display:'flex',justifyContent:'space-around', alignItems:'center', marginTop:'20%'}}>
    
       <Link href={'https://www.instagram.com/mfhardoy'} target='_blank' >
      <FiInstagram style={{color: '#746d6d ',cursor:'pointer', width:'25px', height:'25px' }}  />
@@ -92,7 +95,7 @@ const Navbar =() => {
     <Link href={'https://www.instagram.com/basiliotaller'} target='_blank' >
      <FiInstagram style={{color: '#746d6d ',cursor:'pointer', width:'25px', height:'25px' }}  />
     </Link>
-   </Box> 
+   </Box>  
    </ListItem>
    
   </List>
