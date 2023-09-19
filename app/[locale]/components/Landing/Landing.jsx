@@ -8,6 +8,7 @@ import { COVER } from "../../../utils/consts";
 import {Mplus1} from '../../fonts/fonts'
 import LoadingBar from 'react-top-loading-bar'
 
+
 const Landing=()=>{
    const[image, setImage]= useState()
    const [progress, setProgress] = useState(0)

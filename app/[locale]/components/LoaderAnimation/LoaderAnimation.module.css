@@ -1,6 +1,6 @@
 .loader{
-    animation: spin 1s linear infinite;
-    font-size:48px;
+    animation: spin 1.5s linear infinite;
+    font-size:25px;
     transition:ease;
   }
   
