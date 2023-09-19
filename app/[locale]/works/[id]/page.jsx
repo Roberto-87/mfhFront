@@ -36,7 +36,6 @@ const Work=({params})=>{
     const path=  window.location.href;
 
     useEffect(()=>{
-      console.log(path)
   AOS.init()
     const fetchDataWork = async () => {
       const allWorks = await getData(`${WORKS}/active`);

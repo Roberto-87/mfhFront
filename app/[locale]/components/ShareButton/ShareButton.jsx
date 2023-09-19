@@ -5,10 +5,7 @@ import { useEffect } from 'react';
 
 const ShareButton=({url,description,image, id})=>{
 
-const emailHtmlContent = `${url}`;
-
-const mailtoLink = `mailto:?subject=Maria Ferrari Hardoy: ${description}&body=${encodeURIComponent(emailHtmlContent)}`;
-
+const mailtoLink = `mailto:?subject=Maria Ferrari Hardoy: ${description}&body=${url}`;
     return(
         <>
         <div className={styles.btnWrap}>
