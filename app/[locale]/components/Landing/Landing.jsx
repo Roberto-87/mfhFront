@@ -23,6 +23,7 @@ useEffect(()=>{
       const response= await getData(`${COVER}/active`)
       if(!response) throw new Error('error al subir los datos')
       const imageFetched= setImage(response[0].image)
+      console.log(response)
    } catch (error) {
       return {error:error.message}
    }
@@ -42,7 +43,7 @@ return(
      <>
         <LazyLoadImage  loading="lazy" effect="opacity" className={style.imageLanding} src={image} data-aos={'fade-up'}  alt="imagen de portada"  />
      {image && image.length>0 && progress>99 &&   
-     <div   >
+     <div style={{position:'relative', top:'5%'}} >
      <ButtonStart  />
      </div>
      }

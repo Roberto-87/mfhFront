@@ -50,6 +50,9 @@
       padding: 0.1%;
 
     } 
+    .containerWithoutImg{
+        background-color: black;
+    }
     .brandContainer{
         width: 100%;
         position: fixed;
@@ -58,7 +61,7 @@
         
     }
     .brandLanding{
-        background-color: rgb(255, 255, 255);
+        background-color: black;
         bottom: 15%;
         position: relative;
         margin-bottom: 60%;
