@@ -42,7 +42,7 @@ return(
      <>
         <LazyLoadImage  loading="lazy" effect="opacity" className={style.imageLanding} src={image} data-aos={'fade-up'}  alt="imagen de portada"  />
      {image && image.length>0 && progress>99 &&   
-     <div style={{position:'relative', top:'10%'}} >
+     <div   >
      <ButtonStart  />
      </div>
      }

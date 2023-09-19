@@ -4,13 +4,6 @@
     gap:4px;
     padding: 8px;
     transition: 2s ease-in-out;
-    
-
-}
-.imageLanding{
-    object-fit: cover;
-    position:fixed;
-    top:0
 }
 
 .containerStartButton button:hover{
@@ -48,7 +41,7 @@
     padding: 0;
     }
     .linkStartButton{
-/*         margin-top: 3%;     */
+        margin-top: 3%;    
         display:flex;
         justify-content: center;
 
