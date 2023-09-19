@@ -7,12 +7,16 @@ import { Item } from './itemStyle';
 import { BIO } from '../../utils/consts';
 import {comfortaa} from '../fonts/fonts'
 import LoadingBar from 'react-top-loading-bar'
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/opacity.css'
+import LoaderAnimation from '../components/LoaderAnimation/LoaderAnimation'
 
 
 const Bio = () => {
   const [progress, setProgress] = useState(0)
    const [bio, setBio] = useState();
    const[loading, setLoading]= useState(false)
+   const[imageLoaded,setImageLoaded]= useState(false)
 
 useEffect(() => {
   setProgress( 100)
@@ -29,6 +33,9 @@ useEffect(() => {
  
  
     }, []);
+    const onHandleLoad=()=>{
+      setImageLoaded(true)
+    }
 
     return (< main>    
       <Box sx={{ flexGrow: 1, marginTop:'2%'}}>
@@ -45,7 +52,12 @@ useEffect(() => {
   <Grid container spacing={2} style={{display: 'flex', justifyContent: 'center', border: 'none'}}>
     <Grid item xs={12} sm={12} md={8} lg={8} gap={2} sx={{border: 'none', color: 'black'}}>
       <Item style={{backgroundColor: 'white'}}>
-      {image && <img style={{width:'30%'}} src={image} alt={title}/>}
+      {image && <LazyLoadImage loading='lazy' onLoad={onHandleLoad} effect='opacity' style={{width:'30%'}} src={image} alt={title}/>}
+{!imageLoaded && 
+<div >
+<LoaderAnimation style={{marginBotton:'25%'}}/>
+</div>
+}
         <p className={comfortaa.className}>{text}</p>
       </Item>
     </Grid>

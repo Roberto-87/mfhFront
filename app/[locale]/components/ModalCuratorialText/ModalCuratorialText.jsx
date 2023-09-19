@@ -3,6 +3,8 @@ import { comfortaa } from "../../fonts/fonts"
 import {style, Item, styleText} from './style'
 import stylesMobile from './ModalCuratorialText.module.css'
 import LoadingBar from 'react-top-loading-bar'
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/opacity.css'
 
 const ModalCuratorialText=({exhibitionText, open, onClose, progress})=>{
    

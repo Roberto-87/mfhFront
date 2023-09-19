@@ -17,13 +17,15 @@ import {
 } from "react-zoom-pan-pinch";
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import LoadingBar from 'react-top-loading-bar'
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/opacity.css'
+import LoaderAnimation from '../LoaderAnimation/LoaderAnimation'
 
 const ModalCarrousel = ({ allImages, activeImage, open,onClose}) => {
   let[imageActiveIndex, setImageActiveIndex]= useState(0)
   const[imageActive, setImageActive]=useState(activeImage)
   const [progress, setProgress] = useState(false);
-  
+  const[imageLoaded, setImageLoaded]= useState(false)
   const onPrevious=(event)=>{   
     event.stopPropagation(); 
     let indexImageActive= allImages.findIndex((url)=> url===imageActive)
@@ -62,6 +64,9 @@ setProgress(progress + 10)
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [imageActiveIndex]);
+  const onHandleLoad=()=>{
+    setImageLoaded(true)
+  }
 
   return (
     <Modal open={open} onClose={onClose} onClick={onClose}  aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
@@ -79,7 +84,9 @@ setProgress(progress + 10)
 <React.Fragment >
   <TransformComponent >
 <div  >
-     <img 
+     <LazyLoadImage
+     loading='lazy'
+     effect='opacity' 
       style={{
         maxWidth:'100%',
         maxHeight:'auto',
@@ -90,10 +97,15 @@ setProgress(progress + 10)
       className={stylesCarrousel.imgCarrousel}
       src={imageActive}
       cursor='grab'
-   
+      onLoad={onHandleLoad}
       alt='imagen de exhibición'
     />  
  </div>   
+{!imageLoaded &&
+<div style={{display:'flex', justifyContent:'center', width:'100%', marginLeft:'25%'}}>
+<LoaderAnimation/>
+</div>
+}
   
   </TransformComponent>
 </React.Fragment>

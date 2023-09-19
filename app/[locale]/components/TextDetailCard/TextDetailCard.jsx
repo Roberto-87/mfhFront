@@ -3,6 +3,7 @@ import {styleTextDetail} from './itemStyle'
 import style from './TextDetailCard.module.css'
 import { imageFormat } from "../../../utils/functions"
 
+
 const TextDetailCard=({paper})=>{
 
   if(paper.image){

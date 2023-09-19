@@ -8,7 +8,7 @@ const ExhibitionLink=({exhibition,handleImageLoad})=>{
     return(
         <Link  href={`/exhibitions/${(exhibition?.id)}`}>
         { exhibition.images.map((each, index)=> index< 1 &&
-          <div key={index} style={{display:'flex',justifyContent:'center'}}>
+          <div key={index} style={{display:'flex',marginLeft:'10%',justifyContent:'center'}}>
             <LazyLoadImage onLoad={handleImageLoad} loading="lazy" effect="opacity" style={{width:'80%'}} alt='imagen exhibicion' className={styleExhibition.cardImageExhibition} key={index} srcSet={imageFormat(each)} src={imageFormat(each)} /> 
               </div>
         )}

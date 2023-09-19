@@ -11,6 +11,7 @@ import LoaderAnimation from "../../components/LoaderAnimation/LoaderAnimation";
 import LoadingBar from 'react-top-loading-bar'
 
 
+
 const Exhibition=({params })=>{
   const {id}= params
   const [progress, setProgress] = useState(0)
@@ -32,7 +33,6 @@ const Exhibition=({params })=>{
     setLoading(true)
     const fetchDataExhibition = async () => {
       const actualExhibition = await getData(`${EXHIBITIONS}/${id}`);
-      console.log(actualExhibition)
       setExhibition(actualExhibition[0]);
       const curatorialTexts= await getData(`${TEXT}/curatorial`)
       const actualCuratorial= curatorialTexts.find((text)=> text.exhibitionId===id && text.status===true) 
