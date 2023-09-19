@@ -72,7 +72,7 @@
         
     }
     .imageLanding{
-        width: 120vh;
+        width: 160vh;
         margin-top: 0;
     
         
@@ -81,6 +81,97 @@
         padding: 1%;
  
     }
+}/* 
+@media screen and (min-width: 1241px) {
+    .landingContainer{
+      display: flex;
+      align-items: flex-start;
+       width: 100vw;
+       height: 100%;
+      margin-top: 0%;
+        left:0;
+      position:fixed;
+      padding: 10%;
+      background-color: black;
+      padding: 0.1%;
+        
+    } 
+    .containerWithoutImg{
+        background-color: black;
+    }
+    .brandContainer{
+        width: 100%;
+        position: fixed;
+        margin-bottom: 0%;
+        top:0;
+        right: 0;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .brandLanding{
+        background-color: black;
+        bottom: 5%;
+        position: relative;
+       margin-bottom: 1%;
+       padding: 1%;
+       display: flex;
+       justify-content: center;
+       
+        
+    }
+    .imageLanding{
+        width: 100vh;
+        
+                
+    }
+    .brandContainer a {
+        padding: 1%;
+     }
+}
+ */
+@media screen and (min-width: 1791px) {
+    .landingContainer{
+      display: flex;
+      align-items: flex-start;
+       width: 100vw;
+       height: 100%;
+      margin-top: 0%;
+        left:0;
+      position:fixed;
+      padding: 10%;
+      background-color: black;
+      padding: 0.1%;
+
+    } 
+    .containerWithoutImg{
+        background-color: black;
+    }
+    .brandContainer{
+        width: 100%;
+        position: fixed;
+        margin-bottom: 0%;
+
+        
+    }
+    .brandLanding{
+        background-color: black;
+        bottom: 15%;
+        position: relative;
+        margin-bottom: 60%;
+       padding: 1%;
+       display: flex;
+       justify-content: center;
+       
+        
+    }
+    .imageLanding{
+        width: 220vh;
+        
+                
+    }
+    .brandContainer a {
+        padding: 1%;
+     }
 }
 
 

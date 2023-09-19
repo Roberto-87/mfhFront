@@ -143,7 +143,7 @@ return(
        <div className={styles.containerTitleAndShare} style={{display:'flex', justifyContent:'center', alignContent:'center'}}>
         <p  className={styles.titleWork}> {`${work.title }, ${work.year}. ${work.material} ${work.size}.`} </p> 
          <div>
-          <ShareButton style={{height:'10px'}}  url={pathname} id={work.id } description= {`${work.title }, ${work.year}. ${work.material} ${work.size}.`} />
+          <ShareButton style={{height:'10px'}}  url={pathname} image={work.image} id={work.id } description= {`${work.title }, ${work.year}. ${work.material} ${work.size}.`} />
          </div>
     </div>
   </Grid>

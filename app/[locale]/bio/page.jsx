@@ -40,6 +40,10 @@ useEffect(() => {
     return (< main>    
       <Box sx={{ flexGrow: 1, marginTop:'2%'}}>
       <LoadingBar  color='black'progress={progress}  />
+      {!imageLoaded && <div style={{top:'5%',left:'50%' , height:'30vh', position:'fixed',   alignItems: 'center',display:'flex', justifyContent:'center'
+}}>   <LoaderAnimation   />
+      </div>
+   }
   {bio && bio?.map(({title, image, subtitle, text, id})=> 
   <>
  
@@ -53,11 +57,7 @@ useEffect(() => {
     <Grid item xs={12} sm={12} md={8} lg={8} gap={2} sx={{border: 'none', color: 'black'}}>
       <Item style={{backgroundColor: 'white'}}>
       {image && <LazyLoadImage loading='lazy' onLoad={onHandleLoad} effect='opacity' style={{width:'30%'}} src={image} alt={title}/>}
-{!imageLoaded && 
-<div >
-<LoaderAnimation style={{marginBotton:'25%'}}/>
-</div>
-}
+
         <p className={comfortaa.className}>{text}</p>
       </Item>
     </Grid>

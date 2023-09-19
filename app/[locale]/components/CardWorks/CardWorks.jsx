@@ -38,6 +38,10 @@ const CardWorks = ({works}) => {
   return (
     <Box sx={{ flexGrow: 1 }} className={comfortaa.className}>
       <Grid container spacing={{ xs: 2, md: 3, sm:3,xl:2, lg:1 }} columns={{ xs: 1, sm: 6, md: 9,lg:9}} direction="row" justifyContent="flexEnd" alignItems="center">
+        {!imageLoaded && <div style={{top:'5%',left:'50%' , height:'30vh', position:'fixed',   alignItems: 'center',display:'flex', justifyContent:'center'
+}}>   <LoaderAnimation   />
+      </div>
+   }
     {works &&
           works?.map((work) => (
             <Grid  item xs={3}  key={work.id} >
@@ -45,10 +49,6 @@ const CardWorks = ({works}) => {
              <Button   className={styles.slideBottom} data-aos={scrollUp ? 'fade-up' : 'fade-out'}   >
    <LazyLoadImage    className={styles.cardImage}  src={work.image} onLoad={handleImageLoad}  alt={work.title} loading="lazy" effect="opacity" />
  
-         {!imageLoaded && <div style={{top:'3%', left:'10%',marginTop:'20%',width:'10vw', height:'30vh', position:'relative',   textAlign: 'center',display:'flex', justifyContent:'center'
-}}>   <LoaderAnimation   />
-       </div>
-    }
              </Button>
              </Link>
            <div>

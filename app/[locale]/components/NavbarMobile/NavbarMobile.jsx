@@ -61,20 +61,20 @@ const Navbar =() => {
       <div style={{width:'100%', display:'flex', justifyContent:'flex-end' }}>
           <CloseIcon onClick={toggleDrawer} style={{fontSize:'35px',fontWeight: 400,lineHeight:'22px',color: '#837c7c'}}/>
       </div>
-  <List sx={{ width: '100vw', marginTop:'10%'}}  >
-    <ListItem  className={styles.animatedListItem} style={{ animationDelay: '0.1s' }}>
+  <List sx={{ width: '100vw', marginTop:'10%'}}   >
+    <ListItem  className={styles.animatedListItem} style={{ animationDelay: '0.1s' }}  onClick={toggleDrawer}>
       <Link className={styles.linkNavbarMobile}  href={'/works'}>    {currentPathname === '/works' ? <strong>WORKS</strong> : 'WORKS'}</Link>
     </ListItem>
-    <ListItem  className={styles.animatedListItem} style={{ animationDelay: '0.2s' }}>
+    <ListItem  className={styles.animatedListItem} style={{ animationDelay: '0.2s' }} onClick={toggleDrawer}>
         <Link className={styles.linkNavbarMobile}  href={'/exhibitions'}> {currentPathname==='/exhibitions'?<strong>EXHIBITIONS</strong>:'EXHIBITIONS'}</Link>
     </ListItem>
-    <ListItem  className={styles.animatedListItem} style={{ animationDelay: '0.3s' }}>
+    <ListItem  className={styles.animatedListItem} style={{ animationDelay: '0.3s' }} onClick={toggleDrawer}>
         <Link className={styles.linkNavbarMobile}  href={'/text'}>   {currentPathname==='/text'?<strong>PAPERS</strong>: 'PAPERS'}</Link>
     </ListItem>
-    <ListItem  className={styles.animatedListItem} style={{ animationDelay: '0.4s' }}>
+    <ListItem  className={styles.animatedListItem} style={{ animationDelay: '0.4s' }} onClick={toggleDrawer}>
      <Link className={styles.linkNavbarMobile}  href={'/bio'}>{currentPathname==='/bio'?<strong> BIO</strong>:'BIO'}</Link>
       </ListItem>    
-    <ListItem  className={styles.animatedListItem} style={{ animationDelay: '0.5s' }}>
+    <ListItem  className={styles.animatedListItem} style={{ animationDelay: '0.5s' }} onClick={toggleDrawer}>
       <Link className={styles.linkNavbarMobile}  href={'/contact'}>{currentPathname==='/contact'?<strong>CONTACT</strong>:'CONTACT'}</Link>
     </ListItem>
 
@@ -83,7 +83,7 @@ const Navbar =() => {
     </ListItem>
    <div >
    </div>
-   <ListItem className={styles.animatedListItem} style={{ animationDelay: '0.5s', width:'100%',}}>
+   <ListItem className={styles.animatedListItem} style={{ animationDelay: '0.5s', width:'100%',}} onClick={toggleDrawer}>
     <Box sx={{width:'25%', display:'flex',justifyContent:'space-around', alignItems:'center', marginTop:'20%'}}>
    
       <Link href={'https://www.instagram.com/mfhardoy'} target='_blank' >

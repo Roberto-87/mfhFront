@@ -42,11 +42,11 @@ const CardExhibitions=({ exhibitions})=>{
         <Box sx={{ flexGrow: 1 }}    >
           <Grid container spacing={{ xs: 2, md: 3, lg:2, xl:2 }} columns={{ xs: 1, sm: 1, md: 1, lg:3, xl:3 }} direction="row" justifyContent="center" alignItems="center" >
           <LoadingBar  color='black'progress={progress}  />
-   {/*        {!imageLoaded &&
-          <div style={{display:'flex', justifyContent:'center',marginTop:'15%'}}>
-          <LoaderAnimation/>
-          </div>
-          } */}
+          {!imageLoaded && <div style={{top:'5%',left:'50%' , height:'30vh', position:'fixed',   alignItems: 'center',display:'flex', justifyContent:'center'
+}}>   <LoaderAnimation   />
+      </div>
+   }
+
             {orderedExhibition && orderedExhibition.map((exhibition, index) => (
               <Grid   item xs={2} sm={4} md={3} lg={2} xl={3} key={index} >
                 <div  direction="column" className={comfortaa.className} data-aos="fade-up"   data-aos-duration="1000">
