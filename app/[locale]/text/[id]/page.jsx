@@ -19,6 +19,7 @@ const Text=({params})=>{
       setProgress(100)
               const fetchData = async () => {
               const papersData = await getData(TEXT);
+              console.log(papersData)
               const text= papersFinder(papersData, id)
               if(!text){
                 router.push(`/${TEXT}`)

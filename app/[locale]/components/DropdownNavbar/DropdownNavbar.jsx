@@ -53,7 +53,7 @@ export default function Example() {
     <ThemeProvider theme={theme}>
       
     <Menu as="div" className="relative block text-left" >
-        <Menu.Button style={{color:'white', padding:'3px'}} className={`${styles.containerPortfolio}${comfortaa.className}`} >
+        <Menu.Button style={{color:'white',   padding:'3px'}} className={`${styles.containerPortfolio}${comfortaa.className}`} >
        PORTFOLIO
         </Menu.Button>
 
