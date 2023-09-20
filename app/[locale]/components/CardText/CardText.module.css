@@ -6,6 +6,7 @@
 font-size: 0.8em;
 margin-left:3%;
 
+
     }
     .type{
         margin: none;
@@ -13,11 +14,7 @@ margin-left:3%;
     }
   }
 
-  .textContainer {
-   margin-bottom: none ;
-   margin-top: 0;
-}
-
 .textContainerContainer{
        margin-top: 20px;
+       width: 105% !important;
    }
