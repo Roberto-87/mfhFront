@@ -18,13 +18,13 @@ const Bio = () => {
    const [bio, setBio] = useState();
    const[loading, setLoading]= useState(false)
    const[imageLoaded,setImageLoaded]= useState(false)
+   const yearRegex = /^\d{4}/;
 
 useEffect(() => {
   setProgress( 100)
   try {
   const fetchData = async () => {
     const bioData = await getData(`${BIO}/active`);
-    
     if(!bioData.length>0)throw new Error('error al obtener los datos de la bio.')
     setBio(bioData)
   };      
@@ -56,11 +56,17 @@ useEffect(() => {
     </div>
   </Grid>
   <Grid container spacing={2} style={{display: 'flex', justifyContent: 'center', border: 'none'}}>
-    <Grid item xs={12} sm={12} md={8} lg={8} gap={2} sx={{border: 'none', color: 'black'}}>
-      <Item style={{backgroundColor: 'white'}}>
+    <Grid item xs={12} sm={12} md={8} lg={9} gap={2} sx={{border: 'none', color: 'black'}}>
+      <Item style={{backgroundColor: 'white' }}>
       {image && <LazyLoadImage loading='lazy' onLoad={onHandleLoad} effect='opacity' style={{width:'30%'}} src={image} alt={title}/>}
-
-        <p className={comfortaa.className}>{text}</p>
+      <p className={comfortaa.className}>{text.split('\n').map((line, index) => (
+  <div key={index} style={{display:'flex', justifyContent:'flex-start' , marginLeft:'0', paddingLeft:'4%'}}>
+      {line.match(yearRegex) ? <p style={{marginTop:'0', marginBottom:'0'}}>{line}</p>:  
+      <p style={{marginLeft:'4.2%', marginTop:'0', marginBottom:'0' }}>{line}</p>
+      }
+    <br />
+  </div>
+))}</p>
       </Item>
     </Grid>
   </Grid>
