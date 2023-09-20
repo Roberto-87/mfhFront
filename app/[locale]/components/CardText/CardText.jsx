@@ -27,6 +27,7 @@ const CardText=({texts})=>{
           </div>
         ))}
       </Grid>
+      
      </Box>
 )}
 

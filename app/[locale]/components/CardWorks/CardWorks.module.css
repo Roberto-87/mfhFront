@@ -724,10 +724,12 @@
               padding-top: 8px !important;
             } 
           } 
+      
           @media screen and (max-width: 700px) {
           .footerContainer{
             display: flex;
             justify-content: center;
-            margin-left: 0;
+            margin-left:0;
+            width:100%
           }
           }
