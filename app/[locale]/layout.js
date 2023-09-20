@@ -3,6 +3,7 @@ import { useLocale } from "next-intl";
 import Navigation from "./components/Navigation/Navigation";
 import SessionProviders from "../sessionProvider";
 import {comfortaa} from './fonts/fonts'
+import Footer from "./components/Footer/Footer";
 
 
 export const metadata = {

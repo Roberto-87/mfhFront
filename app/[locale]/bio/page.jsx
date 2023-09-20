@@ -10,6 +10,7 @@ import LoadingBar from 'react-top-loading-bar'
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/opacity.css'
 import LoaderAnimation from '../components/LoaderAnimation/LoaderAnimation'
+import Footer from '../components/Footer/Footer';
 
 
 const Bio = () => {
@@ -37,7 +38,7 @@ useEffect(() => {
       setImageLoaded(true)
     }
 
-    return (< main>    
+    return (< main style={{ paddingBottom:'25px'}}>    
       <Box sx={{ flexGrow: 1, marginTop:'2%'}}>
       <LoadingBar  color='black'progress={progress}  />
       {!imageLoaded && <div style={{top:'5%',left:'50%' , height:'30vh', position:'fixed',   alignItems: 'center',display:'flex', justifyContent:'center'
@@ -68,6 +69,9 @@ useEffect(() => {
      )
    }
  </Box>
+   {bio && <Box  sx={{width:'100%', display:'flex',justifyContent:'flex-start', alignItems:'center', position:'fixed', bottom:'4%', marginLeft:'5px' }}>
+     <Footer   />
+   </Box> }
 </main>
         )
 }

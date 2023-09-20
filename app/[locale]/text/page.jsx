@@ -5,6 +5,9 @@ import CardText from "../components/CardText/CardText";
 import {TEXT} from '../../utils/consts'
 import { textOrdered } from '../../utils/functions';
 import LoadingBar from 'react-top-loading-bar'
+import { Box } from '@mui/material';
+import Footer from '../components/Footer/Footer';
+import styles from '../components/CardWorks/CardWorks.module.css'
 
 const Works = () => {
   const [progress, setProgress] = useState(0)
@@ -24,6 +27,9 @@ const Works = () => {
     return (< > 
        <LoadingBar  color='black'progress={progress}  />
         <CardText texts={papers} />
+        <Box  sx={{width:'10%', display:'flex',justifyContent:'space-around', alignItems:'center', position:'fixed', bottom:'4%', }}>
+     <Footer   />
+   </Box>   
         </>
         )
 }

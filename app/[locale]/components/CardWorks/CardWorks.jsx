@@ -16,6 +16,8 @@ import LoadingBar from 'react-top-loading-bar'
 import Link from "next/link";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/opacity.css'
+import SocialMedia from "../SocialMedia/SocialMedia";
+import Footer from "../Footer/Footer";
 
 
 const CardWorks = ({works}) => {
@@ -36,7 +38,7 @@ const CardWorks = ({works}) => {
     setImageLoaded(true);     
 }; 
   return (
-    <Box sx={{ flexGrow: 1 }} className={comfortaa.className}>
+    <Box sx={{ flexGrow: 1, paddingBottom:'25px' }} className={comfortaa.className}>
       <Grid container spacing={{ xs: 2, md: 3, sm:3,xl:2, lg:1 }} columns={{ xs: 1, sm: 6, md: 9,lg:9}} direction="row" justifyContent="flexEnd" alignItems="center">
         {!imageLoaded && <div style={{top:'5%',left:'50%' , height:'30vh', position:'fixed',   alignItems: 'center',display:'flex', justifyContent:'center'
 }}>   <LoaderAnimation   />
@@ -65,12 +67,22 @@ const CardWorks = ({works}) => {
      <div className={styles.containerMaterialSize}>
           <p className={`${styles.cardItem} ${styles.size}`}>{work.size}</p>
      </div>
+
     </Box>
      }
+
           </div> 
   </Grid>
           ))}
-      </Grid>          
+      </Grid>        
+     {imageLoaded && 
+      <Box sx={{ flexGrow: 1, paddingTop:'20px',marginLeft:'10px', width:'80%' }} className={comfortaa.className}>
+      <Grid className={styles.footerContainer} sx={{display:'flex', justifyContent:'start'}} >
+        <Footer style={{color:'transparent' }}/>
+      </Grid>
+     </Box>
+          }
+
     </Box>    
   );
   

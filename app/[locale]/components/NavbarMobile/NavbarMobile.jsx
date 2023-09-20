@@ -16,6 +16,7 @@ import{BsInstagram} from 'react-icons/bs'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
 import { usePathname } from 'next/navigation';
+import Footer from '../Footer/Footer';
 
 const theme = createTheme({
   components: {
@@ -84,18 +85,13 @@ const Navbar =() => {
    <div >
    </div>
    <ListItem className={styles.animatedListItem} style={{ animationDelay: '0.5s', width:'100%',position:'fixed' ,top:'72%'}} onClick={toggleDrawer}>
-    <Box sx={{width:'25%', display:'flex',justifyContent:'space-around', alignItems:'center'}}>
-   
-      <Link href={'https://www.instagram.com/mfhardoy'} target='_blank' >
-     <FiInstagram style={{color: '#746d6d ',cursor:'pointer', width:'25px', height:'25px' }}  />
-    </Link>
-    <Link href={'mailto:mariaferrarihardoy@gmail.com'} >
-     <MdOutlineAlternateEmail style={{color: '#746d6d ',cursor:'pointer',width:'25px', height:'25px'}}  /> 
-    </Link>
-    <Link href={'https://www.instagram.com/basiliotaller'} target='_blank' >
-     <FiInstagram style={{color: '#746d6d ',cursor:'pointer', width:'25px', height:'25px' }}  />
-    </Link>
-   </Box>  
+     <Box sx={{width:'25%', display:'flex',justifyContent:'space-around', alignItems:'center', position:'fixed', bottom:'12%'}}>
+     <Footer  />
+   </Box>   
+
+
+
+
    </ListItem>
    
   </List>

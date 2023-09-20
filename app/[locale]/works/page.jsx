@@ -2,6 +2,7 @@ import getData from '../hooks/getData'
 import CardWorks from "../components/CardWorks/CardWorks";
 import {WORKS} from '../../utils/consts.js'
 import { getDimensions } from '../../utils/functions';
+import Footer from '../components/Footer/Footer';
 
 const fetchData = async () => {
   const worksData = await getData(`${WORKS}/active`);
@@ -13,6 +14,7 @@ const Works = async() => {
  const works= await fetchData()
     return (< > 
            <CardWorks works={works} />
+   
            </>
         )
 }
