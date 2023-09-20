@@ -9,6 +9,8 @@ import ModalCuratorialText from "../../components/ModalCuratorialText/ModalCurat
 import ExhibitionData from "../../components/ExhibitionData/ExhibitionData";
 import LoaderAnimation from "../../components/LoaderAnimation/LoaderAnimation";
 import LoadingBar from 'react-top-loading-bar'
+import BackToStart from "../../components/BackToStart/BackToStart";
+import { LiaAngleUpSolid } from "react-icons/lia"
 
 
 const Exhibition=({params })=>{
@@ -63,7 +65,8 @@ const Exhibition=({params })=>{
     {open && <ModalCuratorialText progress={progress} exhibitionText={exhibitionText} open={handleOpen} onClose={handleClose}/>}  
     <div style={{display:'flex', justifyContent:'center', width:'100%'}}>
     <ImageListExhibition exhibition={exhibition} />
-    </div>
+     </div>
+
    </Box>
    )
 }
