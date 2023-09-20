@@ -15,6 +15,7 @@ import AOS from 'aos';
 const Landing=()=>{
    const[image, setImage]= useState()
    const [progress, setProgress] = useState(0)
+   const[imageLoaded, setImageLoaded]= useState(false)
 
 useEffect(()=>{
 (async function getCoverImage(){
@@ -35,14 +36,17 @@ setProgress(100)
     })
 
 },[])
+const onHandleLoad=()=>{
+   setImageLoaded(true)
+}
 
 return(
   <div className={style.landingContainer}>
       <LoadingBar  color='black'progress={progress}  />
     
      <>
-        <LazyLoadImage  loading="lazy" effect="opacity" className={style.imageLanding} src={image} data-aos={'fade-up'}  alt="imagen de portada"  />
-     {image && image.length>0 && progress>99 &&   
+        <LazyLoadImage  loading="lazy" effect="opacity" onLoad={onHandleLoad} className={style.imageLanding} src={image} data-aos={'fade-up'}  alt="imagen de portada"  />
+     {imageLoaded &&   
      <div style={{position:'relative', top:'5%'}} >
      <ButtonStart  />
      </div>
