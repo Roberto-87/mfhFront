@@ -24,6 +24,7 @@ useEffect(() => {
   try {
   const fetchData = async () => {
     const bioData = await getData(`${BIO}/active`);
+    
     if(!bioData.length>0)throw new Error('error al obtener los datos de la bio.')
     setBio(bioData)
   };      
@@ -41,7 +42,7 @@ useEffect(() => {
     return (< main style={{ paddingBottom:'25px'}}>    
       <Box sx={{ flexGrow: 1, marginTop:'2%'}}>
       <LoadingBar  color='black'progress={progress}  />
-      {!imageLoaded && <div style={{top:'5%',left:'50%' , height:'30vh', position:'fixed',   alignItems: 'center',display:'flex', justifyContent:'center'
+      {!bio && <div style={{top:'5%',left:'50%' , height:'30vh', position:'fixed',   alignItems: 'center',display:'flex', justifyContent:'center'
 }}>   <LoaderAnimation   />
       </div>
    }
