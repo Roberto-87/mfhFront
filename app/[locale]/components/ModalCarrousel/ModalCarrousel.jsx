@@ -75,9 +75,9 @@ setProgress(progress + 10)
     <div  style={{display:'flex', flexDirection:'row-reverse',  position:'relative', top:'50%',width:'100%',display:'flex', justifyContent:'center'}} >
      <Swiper navigation={true} modules={[Navigation]} className="mySwiper" style={{width:'100%', height:'100%', }}>
         <SwiperSlide  className={styles.swiper} style={{ display:'flex', justifyContent:'center',height:'95vh', width:'100vw', alignItems:'center', padding:'4px'}}>
-            <div className={styles.containerImgModal} style={{display:'flex', alignItems:'center', justifyContent:'center',width:'32%' }}>
+            <div className={styles.containerImgModal} style={{display:'flex', alignItems:'center', justifyContent:'center',width:'34%',height:'100%' }}>
               <button className={styles.buttonBefore}  style={{cursor:'pointer', bottom:'0%', backgroundColor:'transparent', position:'relative',right:'0%',border:'none',height:'100%'}} onClick={onPrevious}>
-            <GrPrevious/>
+            <GrPrevious  />
             </button>  
 <TransformWrapper  options={{ limitToBounds: false }}>
 {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
