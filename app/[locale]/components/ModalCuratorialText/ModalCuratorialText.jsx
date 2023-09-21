@@ -1,15 +1,11 @@
-import { Box, Button, Grid, Modal, Typography } from "@mui/material"
-import { comfortaa } from "../../fonts/fonts"
+import { Box, Grid, Modal } from "@mui/material"
 import {style, Item, styleText} from './style'
 import stylesMobile from './ModalCuratorialText.module.css'
 import LoadingBar from 'react-top-loading-bar'
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/opacity.css'
 import CloseButton from "../CloseButton/CloseButton"
-import zIndex from "@mui/material/styles/zIndex"
 
 const ModalCuratorialText=({exhibitionText, open, onClose, progress})=>{
-   
    return(
      <Box sx={{display:'flex',flexDirection:'row-reverse' }} onClose={onClose}>
         <Box onClose={onClose} className={stylesMobile.containerClose} style={{   width:'100%', display:'flex', justifyContent:'flex-end', position:'fixed', top:'.1%', left:'2.5%', height:'20%' }}>

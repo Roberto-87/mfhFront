@@ -28,7 +28,10 @@ const Works = () => {
        <LoadingBar  color='black'progress={progress}  />
         <CardText texts={papers} />
         <Box className={styles.footerContainer}  sx={{width:'10%', display:'flex',justifyContent:'space-around', alignItems:'center', position:'fixed', bottom:'4%', left:'0.1%'}}>
+    <div style={{marginLeft:'10px'}}>
      <Footer   />
+
+    </div>
    </Box>   
         </>
         )
