@@ -103,10 +103,55 @@
   position: fixed;
   top:.5%
  }
-
-
-
-      @media screen and (max-width: 700px) {
+ @media screen and (min-width: 200px) and (max-width: 335px){
+  .img{
+    width: 100% !important; 
+    margin-top: 60%;
+  }
+    }
+    @media screen and (min-width: 336px) and (max-width: 576px){
+      .img{
+        width: 100% !important; 
+        margin-top:0%;
+      }
+        }
+        @media screen and (min-width: 577px) and (max-width:699px){
+          .img{
+            width: 80% !important; 
+            margin-top:0%;
+          }
+            }
+            @media screen and (min-width: 700px) and (max-width:795px){
+              .img{
+                width: 70% !important; 
+                margin-top:0%;
+              }
+                }
+                @media screen and (min-width: 796px) and (max-width:910px){
+                  .img{
+                    width: 60% !important; 
+                    margin-top:0%;
+                  }
+                    }
+                    @media screen and (min-width: 911px) and (max-width:1100px){
+                      .img{
+                        width: 50% !important; 
+                        margin-top:0%;
+                      }
+                        }
+                        @media screen and (min-width: 1100px) and (max-width:1200px){
+                          .img{
+                            width: 40% !important; 
+                            margin-top:0%;
+                          }
+                            }
+                            @media screen and (min-width: 1500px) and (max-width:1764px){
+                              .img{
+                                width: 35% !important; 
+                                margin-top:0%;
+                              }
+                                }
+ @media screen and (max-width: 700px) {
         .footerContainer{
          display: flex;
          justify-content: center;

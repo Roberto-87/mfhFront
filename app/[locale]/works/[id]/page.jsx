@@ -114,7 +114,7 @@ return(
         {!imageLoaded && <LoaderAnimation style={{fontSize:'20px'}}/>}
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper" style={{width:'100%', height:'100%', }}>
           <SwiperSlide  className={styles.swiper} style={{ display:'flex', justifyContent:'center',height:'76vh', width:'100vw', alignItems:'flex-start', padding:'4px'}}>
-      <Box sx={{display:'flex', justifyContent:'space-between', width:'100%', alignItems:'center', height:'100%', marginBottom:'2%'}}>
+      <Box sx={{display:'flex', justifyContent:'space-between', width:'10%', alignItems:'center', height:'100%', marginBottom:'2%'}}>
          {imageLoaded &&  
           <button  style={{cursor:'pointer',position:'fixed', bottom:'5%', backgroundColor:'transparent', border:'none',height:'100%'}} onClick={onPrevious}>
              <GrPrevious style={{fontSize:'20px'}}/>
@@ -123,13 +123,13 @@ return(
       <TransformWrapper   options={{ limitToBounds: false }}>
         {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
           <React.Fragment >
-        <TransformComponent >
-       <LazyLoadImage loading="lazy" className={styles.img} effect="opacity" style={{width: '80%', cursor: 'pointer', touchAction: 'none'}} src={work.image} key={work.id} onLoad={handleImageLoad} />
+        <TransformComponent style={styles.imgContainer}>
+       <LazyLoadImage loading="lazy" className={styles.img} effect="opacity" style={{width: '35%', cursor: 'pointer', touchAction: 'none'}} src={work.image} key={work.id} onLoad={handleImageLoad} />
        </TransformComponent>
        </React.Fragment>
       )}
       </TransformWrapper> 
-       <Box sx={{display:'flex', justifyContent:'space-between', width:'100%', alignItems:'center', height:'100%', marginTop:'-1.5%'}}>
+       <Box sx={{display:'flex', justifyContent:'space-between', width:'10%', alignItems:'center', height:'100%', marginTop:'-1.5%'}}>
          {imageLoaded &&    
           <button  style={{cursor:'pointer',position:'fixed', bottom:'5%',right:'0', backgroundColor:'transparent', border:'none',height:'100%'}} onClick={onPrevious}>
              <GrNext style={{fontSize:'20px'}}/>
