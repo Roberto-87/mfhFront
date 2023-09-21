@@ -25,4 +25,5 @@ export const style = {
   
   export const styleText = {
     position:'relative',   
+    zIndex:'100'
   };
