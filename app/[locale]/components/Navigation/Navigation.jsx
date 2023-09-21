@@ -40,7 +40,7 @@ const links = [
 if( currentPathName.split('/').length===3&& currentPathName.split('/')[1]==='works' && currentPathName.split('/')[2].split('-').length===5) {
   withoutNavbar.push(currentPathName)
 }
-if( currentPathName.split('/').length===4&& currentPathName.split('/')[2]==='works' && currentPathName.split('/')[2].split('-').length===5) {
+if( currentPathName.split('/').length===4&& currentPathName.split('/')[2]==='works' && currentPathName.split('/')[3].split('-').length===5) {
   withoutNavbar.push(currentPathName)
 }
   
