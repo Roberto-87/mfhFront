@@ -14,7 +14,7 @@ const ExhibitionData=({exhibition})=>{
   {exhibition &&
   <div >
     <div style={{color:'black'}} className={styles.containerExhibition}>
-        <div style={{display:'flex',justifyContent:'center', alignItems:'center'  }} className={styles.exhibitionNameContainer}>
+        <div style={{display:'flex',justifyContent:'center', alignItems:'center'  }}>
       <h1 className={comfortaa.className} style={{ margin:0, padding:'1%', marginTop:'6px'}}> {exhibition.exhibitionName}</h1>
      </div>
      </div>

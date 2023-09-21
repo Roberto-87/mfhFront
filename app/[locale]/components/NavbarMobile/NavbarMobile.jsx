@@ -80,7 +80,7 @@ const Navbar =() => {
     </ListItem>
 
     <ListItem className={styles.animatedListItem} style={{ animationDelay: '0.5s',  width:'100%' , display:'flex'}}>
-  <DropdownNavbar onClick={onHandleClick} className={styles.animatedListItem}  style={{  backgroundColor: 'transparent', color: 'black',width:'50%',color: '#746d6d '}}></DropdownNavbar>
+  <DropdownNavbar onClick={onHandleClick} className={styles.animatedListItem}></DropdownNavbar>
     </ListItem>
    <div >
    </div>
