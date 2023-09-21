@@ -1,71 +1,81 @@
-/* 
-@media (min-width:  250px) and (max-width: 300px)  {
-  .modalContainer {
-    margin-left:-24vw !important; 
-    margin-top: 8vh;
-     }
-
-  }
-  @media (min-width:  300px) and (max-width: 413px)  {
-    .modalContainer {
-      margin-top: 8vh;
-      display: flex;
-      justify-content: flex-start;
-     }
-     .doc{
-      width: 100% !important;
-     }
-       
-  }
-  @media (min-width:  414px) and (max-width: 539px)  {
-    .modalContainer {
-      margin-left:-18vw !important; 
-      margin-top: 8vh;
-     }
-
-
-       
-  }
- @media (min-width:  540px) and (max-width: 748px)  {
-  .modalContainer {
-    margin-left:-70vw !important; 
-    margin-top: 8vh;
-     }  
-
-  }
-  @media (min-width:  750px) and (max-width: 911px)  {
-    .modalContainer {
-      margin-left:-35vw !important; 
-      margin-top: 8vh;
-       }  
-       .doc{
-        height: 850 !important;
-        width: 1000 !important;
-   
-       }
-  
+@media screen and (min-width: 280px) and (max-width: 309px){
+    .containerClose{
+    left:9% !important 
     }
-    @media (min-width:  912px) and (max-width:1023px)  {
-      .modalContainer {
-        margin-left:-7vw !important; 
-        margin-top: 1vh;
-         } 
-      }
-        @media (min-width:  1024px) and (max-width:1279px)  {
-        .modalContainer {
-          margin-left:-2vw !important; 
-          margin-top: 8vh; 
-           }
-        } 
-       @media (min-width:  1280px)  {
-          .modalContainer {
-            margin-left:-8vw !important; 
-            display: flex !important;
-            flex-direction: row !important;  
-            margin-top: 3vh;
-            padding: 5% !important;    
-             }
-          }
-      
- */
-  /*280 360 375 390 393 412 414 540 768 820 912  1024 1280*/
+    .containerDocument{
+       width: 95.5% !important; 
+    }
+    
+    }
+
+@media screen and (min-width: 310px) and (max-width: 359px){
+    .containerClose{
+    left:6% !important 
+    }
+    .containerDocument{
+       width: 96% !important; 
+    }
+    
+    }
+
+@media screen and (min-width: 360px) and (max-width: 391px){
+    .containerClose{
+    left:6% !important 
+    }
+    .containerDocument{
+       width: 96.5% !important; 
+    }
+    
+    }
+
+@media screen and (min-width: 391px) and (max-width: 407px){
+    .containerClose{
+    left:6% !important 
+    }
+    .containerDocument{
+       width: 97% !important; 
+    }
+    
+    }
+
+
+@media screen and (min-width: 408px) and (max-width: 499px){
+    .containerClose{
+    left:5% !important 
+    }
+    .containerDocument{
+       width: 97.5% !important; 
+    }
+    
+    }
+
+@media screen and (min-width: 500px) and (max-width: 537px){
+    .containerClose{
+    left:4% !important 
+    }
+    .containerDocument{
+       width: 97.5% !important; 
+    }
+    
+    }
+
+
+@media screen and (min-width: 538px) and (max-width: 700px){
+    .containerClose{
+    left:3.5% !important 
+    }
+    .containerDocument{
+       width: 97.5% !important; 
+    }
+    
+    }
+
+@media screen and  (max-width: 820px){
+.containerClose{
+left:2%
+}
+.containerDocument{
+   width: 98%; 
+}
+
+}

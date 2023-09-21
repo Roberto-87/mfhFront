@@ -7,11 +7,12 @@ export const style = {
 /*     right: '15%',   */
     width: 1350,
     height:600,
-    bgcolor: 'background.paper',
+/*     bgcolor: 'background.paper', */
     boxShadow: 24,
     p: 2, 
     transition: 'transform 0.5s ease', 
     transform: 'scale(1)',
+    
   };
 
  export const Item = styled(Paper)(({ theme }) => ({
