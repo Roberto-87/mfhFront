@@ -22,8 +22,8 @@
             align-items: center;
     overflow: hidden;
     cursor: pointer;
-    width: 110px;
-  /*   height: 72px; */
+    width: 76px;
+    height: 30px;  
     background-color: #EEEEED;
     border-radius: 80px;
     padding: 0 18px;

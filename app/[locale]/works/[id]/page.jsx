@@ -22,7 +22,9 @@ import { WORKS } from "../../../utils/consts";
 import getData from '../../hooks/getData'
 import { useRouter } from "next/navigation";
 import CloseButton from "../../components/CloseButton/CloseButton";
-import { Grid } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/opacity.css'
 
 const Work=({params})=>{
      const[imageLoaded, setImageLoaded]= useState(false)
@@ -35,7 +37,7 @@ const Work=({params})=>{
     const router= useRouter()
     const path=  window.location.href;
 
-    useEffect(()=>{
+useEffect(()=>{
   AOS.init()
     const fetchDataWork = async () => {
       const allWorks = await getData(`${WORKS}/active`);
@@ -51,6 +53,7 @@ const Work=({params})=>{
     };   
     fetchDataWork();  
     setProgress(100)
+   
     const handleKeyDown = (event) => {
         if (event.code === 'ArrowLeft') {
           onPrevious();
@@ -87,7 +90,7 @@ const onNext = () => {
   }
 };
 const handleImageLoad = () => {
-    setImageLoaded(false);
+    setImageLoaded(true);
 };
 
 const handleGoBack = () => {
@@ -95,62 +98,59 @@ const handleGoBack = () => {
 };
  
 return(
-      <Box>   
-       <LoadingBar  color='black'progress={progress}  />
-        <Box   aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
-        <Box sx={styleCarrouselWorks}    >
-  {work.title &&
-  <div className={styles.closeButtonContainer} style={{display:'flex', justifyContent:'flex-end',alignItems:'flex-end', width:'90vw' , position:'fixed', top:'8vh', zIndex:'2'  }}>
-     <CloseButton className={styles.closeButton} handleGoBack={handleGoBack}  />
-    </div> 
-  }    <div  style={{display:'flex', flexDirection:'row-reverse',  position:'relative', top:'50%',width:'100%',display:'flex', justifyContent:'center'}} >
-         <Swiper navigation={true} modules={[Navigation]} className="mySwiper" style={{width:'100%', height:'100%', }}>
-            <SwiperSlide  className={styles.swiper} style={{ display:'flex', justifyContent:'center',height:'95vh', width:'100vw', alignItems:'center', padding:'4px'}}>
-            {work.title &&      <button className={styles.buttonBefore}  style={{cursor:'pointer', bottom:'0%', backgroundColor:'transparent', position:'relative',right:'0%',top:'5%',border:'none',height:'100%'}} onClick={onPrevious}>
-                <GrPrevious style={{fontSize:'20px'}}/>
-                </button>  }
-        <div className={styles.containerImgModal} style={{display:'flex', alignItems:'center', justifyContent:'center',width:'32%' }}>
-      <TransformWrapper  options={{ limitToBounds: false }}>
+  <Box sx={{ flexGrow: 1 , display:'flex', justifyContent:'center'}}>
+      <LoadingBar  color='black'progress={progress}  />
+  <Grid container spacing={3} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3,lg:2 }}>
+    <Grid xs={9} sx={{marginLeft:'1.5%'}} >
+     <Box sx={{display:'flex', justifyContent:'space-between', width:'100%'}}>
+       <Brand/> 
+       {imageLoaded &&  <CloseButton className={styles.closeButton} handleGoBack={handleGoBack}  />}
+    </Box>
+    </Grid>
+    <Grid xs={8}>
+    </Grid>
+    <Grid xs={12}>
+     <Item > 
+        {!imageLoaded && <LoaderAnimation style={{fontSize:'20px'}}/>}
+        <Swiper navigation={true} modules={[Navigation]} className="mySwiper" style={{width:'100%', height:'100%', }}>
+          <SwiperSlide  className={styles.swiper} style={{ display:'flex', justifyContent:'center',height:'76vh', width:'100vw', alignItems:'flex-start', padding:'4px'}}>
+      <Box sx={{display:'flex', justifyContent:'space-between', width:'100%', alignItems:'center', height:'100%', marginBottom:'2%'}}>
+         {imageLoaded &&  
+          <button  style={{cursor:'pointer',position:'fixed', bottom:'5%', backgroundColor:'transparent', border:'none',height:'100%'}} onClick={onPrevious}>
+             <GrPrevious style={{fontSize:'20px'}}/>
+          </button>  }
+      </Box>
+      <TransformWrapper   options={{ limitToBounds: false }}>
         {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
           <React.Fragment >
         <TransformComponent >
-        {!work.title && <LoaderAnimation style={{fontSize:'10px'}}/>}
-       <div>
-          <img style={{width: '100%', cursor: 'grab', touchAction: 'none', }} src={work.image} key={work.id} onLoad={handleImageLoad} 
-          cursor='grab' className={styles.imgModal} alt={work.title} />        
-      </div>   
-      </TransformComponent>
+       <LazyLoadImage loading="lazy" className={styles.img} effect="opacity" style={{width: '80%', cursor: 'pointer', touchAction: 'none'}} src={work.image} key={work.id} onLoad={handleImageLoad} />
+       </TransformComponent>
        </React.Fragment>
       )}
       </TransformWrapper> 
-             </div>
-     {work.title &&      <button className={styles.buttonAfter} onClick={onNext} style={{cursor:'pointer', bottom:'0%' , backgroundColor:'transparent', position:'relative',right:'0%',top:'5%', border:'none',height:'100%' }}>
-        <GrNext style={{fontSize:'20px'}}/>
-         </button> }
-           </SwiperSlide>
-            </Swiper>
-         </div>
-    <div id="modal-modal-description" style={{ marginTop:'8px', color:'gray',display:'inline', justifyContent:'flex-start', alignItems:'center',height:'10%',marginTop:'15px', width:'100%'}} className={`${styles.modalDescription} ${comfortaa.className}`}>
-        {work.title &&  
-        <div className={styles.brand} style={{fontSize:'15px', width:'65%',cursor:'pointer',position:'fixed',left:'5vw',top:'2.8vw'}} >
-           <Brand className={styles.brand_brand} />
-        </div>   
-     }
-  {work.title &&      
-     <Grid container spacing={{ xs: 2, md: 3, sm:3,xl:2, lg:1 }} columns={{ xs: 1, sm: 6, md: 9,lg:9}} direction="row" justifyContent="flexEnd" alignItems="center" >
-     <Grid className={styles.containerContainerTitleAndShare}  item xs={12}sx={{display:'flex', justifyContent:'center', width:'100%', marginLeft:'5vw'}} >
-       <div className={styles.containerTitleAndShare} style={{display:'flex', justifyContent:'center', alignContent:'center'}}>
-        <p  className={styles.titleWork}> {`${work.title }, ${work.year}. ${work.material} ${work.size}.`} </p> 
-         <div>
-          <ShareButton style={{height:'10px'}}  url={pathname} image={work.image} id={work.id } description= {`${work.title }, ${work.year}. ${work.material} ${work.size}.`} />
-         </div>
-    </div>
+       <Box sx={{display:'flex', justifyContent:'space-between', width:'100%', alignItems:'center', height:'100%', marginTop:'-1.5%'}}>
+         {imageLoaded &&    
+          <button  style={{cursor:'pointer',position:'fixed', bottom:'5%',right:'0', backgroundColor:'transparent', border:'none',height:'100%'}} onClick={onPrevious}>
+             <GrNext style={{fontSize:'20px'}}/>
+          </button>  
+                }
+      </Box>   
+          </SwiperSlide>
+           </Swiper>
+     
+      {imageLoaded &&   
+      <Box sx={{display:'flex', justifyContent:'center', marginTop:'.6%' }}>
+        <>
+        <p  className={`${styles.titleWork}${comfortaa.className}`}> {`${work.title }, ${work.year}. ${work.material} ${work.size}.`} </p> 
+        <ShareButton url={pathname} image={work.image} id={work.id } description= {`${work.title }, ${work.year}. ${work.material} ${work.size}.`} />
+        </>
+      </Box>
+         }
+     </Item>
+    </Grid>
   </Grid>
-  </Grid>}
-      </div>
-          </Box>
-          </Box>         
-            </Box>
+</Box>
     )
 }
 export default Work
