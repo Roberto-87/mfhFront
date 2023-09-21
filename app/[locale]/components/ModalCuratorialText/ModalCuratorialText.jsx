@@ -5,27 +5,27 @@ import stylesMobile from './ModalCuratorialText.module.css'
 import LoadingBar from 'react-top-loading-bar'
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/opacity.css'
+import CloseButton from "../CloseButton/CloseButton"
 
 const ModalCuratorialText=({exhibitionText, open, onClose, progress})=>{
    
    return(
-        <Box>
-                 <LoadingBar  color='black'progress={progress}  />
-            <Modal className={stylesMobile.modalContainer}  open={open} onClose={onClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
-                <Box sx={style}>
-                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 1, sm: 1, md: 9, xl:3 }}  direction="row" justifyContent="center" alignItems="center">
-             <Item >
-     {/*          <div style={{width:'50%'}}> */}
-                <embed className={stylesMobile.doc} src={(exhibitionText.document)} width={1200} height={500} priority style={{styleText}}/>
-           {/*    </div> */}
-             </Item>
-             <Typography id="modal-modal-description" className={`${stylesMobile.containe}${comfortaa.className}`} sx={{ mt: 2, color:'Black' }}>
-               {exhibitionText.title}- {exhibitionText.author}
-             </Typography>
-               </Grid>
-            </Box>
-           </Modal>
-      </Box>
-    )
+     <Box>
+        <LoadingBar  color='black'progress={progress}  />
+   <Modal className={stylesMobile.modalContainer} open={open} onClose={onClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
+    <Box  sx={{ flexGrow: 1, display:'flex', justifyContent:'center', width:'100% '}}  >
+      <Grid container spacing={3}>
+        <Grid xs={12} md={12} lg={12} sm={12} >
+         <Item  style={{width:'100%', display:'flex', justifyContent:'center', height:'100vh'}} >
+      <Box loading="lazy" sx={{display:'flex', justifyContent:'center',color:'black', width:'100%',height:'100vh', marginTop:'4%' }} className={style.lastContainerDocument}>
+        <embed className={stylesMobile.docModal}  src={(exhibitionText.document)} width={1200} height={540} priority style={{styleText}}/>
+     </Box>     
+        </Item>
+      </Grid>
+     </Grid>
+   </Box>
+  </Modal>
+</Box>
+)
 }
 export default ModalCuratorialText

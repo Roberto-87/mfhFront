@@ -21,7 +21,7 @@ const ImageListExhibition=({exhibition})=>{
    const handleScroll = () => {
      const currentScrollY = window.scrollY;
      setActScrollY(currentScrollY)
-      if(currentScrollY > 400){
+      if(currentScrollY > 60){
         setScrolling(true);
         setPrevScrollY(actScrollY)
        } else if(currentScrollY ===0 ) {
