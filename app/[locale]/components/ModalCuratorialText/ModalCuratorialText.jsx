@@ -10,7 +10,7 @@ import CloseButton from "../CloseButton/CloseButton"
 const ModalCuratorialText=({exhibitionText, open, onClose, progress})=>{
    
    return(
-     <Box>
+     <Box style={{backgroundColor:'white'}}>
         <LoadingBar  color='black'progress={progress}  />
    <Modal className={stylesMobile.modalContainer} open={open} onClose={onClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
     <Box  sx={{ flexGrow: 1, display:'flex', justifyContent:'center', width:'100% '}}  >
