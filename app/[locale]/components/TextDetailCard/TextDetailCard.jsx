@@ -15,12 +15,19 @@ import { Item } from "../CardText/itemStyle";
 const TextDetailCard=({paper})=>{
 return(
   <Box >
+ {  paper.image &&  paper.format === 'pdf' ?
   <Box sx={stylePaper} loading="lazy"  >
 <embed className={stylesMobile.docModal}  src={(paper.image)} width={800} height={550} priority style={{styleText}}/>  
- </Box>      
+ </Box>
+ :
+  <Box sx={stylePaper} loading="lazy"  >
+<img className={stylesMobile.docModal}  src={(paper.image)} width={800} height={550} priority style={{styleText}}/>  
+  </Box>    
+}
  </Box>   
 );
   }
+
 export default TextDetailCard
 
 {/* <Box sx={{ flexGrow: 1 }}>
