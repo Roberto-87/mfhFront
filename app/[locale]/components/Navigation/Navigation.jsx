@@ -10,24 +10,24 @@ import DropdownNavbar from "../DropdownNavbar/DropdownNavbar";
 
 const links = [
     {
-      label: "OBRAS ",
+      label: "WORKS ",
       route: "/works",
     },
     {
-      label: "EXHIBICIONES",
+      label: "EXHIBITIONS",
       route: "/exhibitions",
     },
     
     {
-      label: "TEXTOS",
+      label: "TEXTS",
       route: "/text",
     },
      {
-      label: "BIOGRAFIA",
+      label: "BIO",
       route: "/bio",
     }, 
      {  
-    label: "CONTACTO",
+    label: "CONTACT",
     route: "/contact",
   },
 
@@ -71,11 +71,10 @@ if( currentPathName.split('/').length===4&& currentPathName.split('/')[2]==='wor
       }
     }, [scrolling, mobile]);
 
-  
     return (
       !withoutNavbar.includes(currentPathName) ?
         <header className={`${styles.navbarContainer} `}>
-          {mobile ? <NavBarMobile />
+          {mobile ? <NavBarMobile  />
             :
             <nav className={`${styles.brandContainer} `}>
               <Brand />
@@ -86,7 +85,7 @@ if( currentPathName.split('/').length===4&& currentPathName.split('/')[2]==='wor
                   }
                 </li>
               ))}
-              <li className={styles.navbarItem}><DropdownNavbar /></li>
+              <li className={styles.navbarItem}><DropdownNavbar /></li>         
             </nav>
           }
         </header>
