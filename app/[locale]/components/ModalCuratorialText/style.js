@@ -42,7 +42,7 @@ export const style = {
   };
   export const stylePaper = {
     position: 'absolute',
-    top: '54%',
+    top: '55%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
     height: 550,

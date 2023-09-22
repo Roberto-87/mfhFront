@@ -29,21 +29,3 @@ return(
   }
 
 export default TextDetailCard
-
-{/* <Box sx={{ flexGrow: 1 }}>
-    <Grid container spacing={3}>
-      <Grid xs={12} md={12} lg={12} sm={12} >
-      {  paper.image &&      <Item  style={{width:'100%', display:'flex', justifyContent:'center'}} >
- {  paper.image &&  paper.format === 'pdf' ?
-<Box loading="lazy" sx={{display:'flex', justifyContent:'center',color:'black', width:'100%',height:'60vh' }} className={style.lastContainerDocument}>
-  <iframe type="application/pdf" frameborder={0} width={100} loading="lazy" effect="opacity" className={style.document} src={paper.image} style={{width:'100%',height:'100%',marginRight:'10px', marginBottom:'10%' }} alt={paper.title}/>
-</Box>
-  :
-<Box loading="lazy" sx={{display:'flex', justifyContent:'center',color:'black', width:'100%',height:'100%'}} className={style.lastContainerDocument}>
- <img loading="lazy" effect="opacity" className={style.document} src={imageFormat(paper.image)} style={{width:'35%'}} alt={paper.title}/>
- </Box>}
-        </Item>
-        }
-      </Grid>
-    </Grid>
-  </Box> */}
