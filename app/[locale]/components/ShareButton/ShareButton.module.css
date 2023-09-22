@@ -31,7 +31,8 @@
     -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 /*     margin-left: 10px !important; */
-margin-left: 20px !important;
+margin-left: 15px !important;
+margin-top: .5%;
 
 }
 
@@ -53,7 +54,9 @@ margin-left: 20px !important;
     line-height: 70px;
     letter-spacing: 2px;
     color: #EEEEED;
-    background-color: #1F1E1E;
+/*     background-color: #1F1E1E; */
+    background-color:#fff;
+    color:#000;
     padding: 0 18px;
     -webkit-transition: all 1.2s ease;
     transition: all 1.2s ease;
@@ -74,6 +77,7 @@ margin-left: 20px !important;
     width: 180px;
 /*     height: 64px; */
     border-radius: 80px;
+
 
     
 }
