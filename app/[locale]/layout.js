@@ -26,6 +26,7 @@ export default function RootLayout({ children, params }) {
 
       <body>
         <header>
+          
           <Navigation />
         </header>
         <SessionProviders>{children}</SessionProviders>
