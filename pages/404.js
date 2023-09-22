@@ -14,10 +14,10 @@ export default function Custom404() {
             </h2>
           </div>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <p>Página no encontrada</p>
+            <p>PAGE NOT FOUND</p>
           </div>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <Link href="/" style={{textDecoration:'none', color:'black', border: '1px solid black', borderRadius:'5%', padding:'1%'}}>
+            <Link href="/" style={{textDecoration:'none', color:'black', border: '1px solid black', borderRadius:'2%', padding:'1%'}}>
                <strong>Back to Home</strong>{" "}
             </Link>
           </div>
