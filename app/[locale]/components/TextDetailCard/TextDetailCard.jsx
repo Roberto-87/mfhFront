@@ -1,4 +1,6 @@
 import { Box } from "@mui/material"
+import {  styleText, stylePaper} from '../ModalCuratorialText/style'
+import stylesMobile from '../ModalCuratorialText/ModalCuratorialText.module.css'
 import {styleTextDetail} from './itemStyle'
 import style from './TextDetailCard.module.css'
 import { imageFormat } from "../../../utils/functions"
@@ -12,7 +14,16 @@ import { Item } from "../CardText/itemStyle";
 
 const TextDetailCard=({paper})=>{
 return(
-  <Box sx={{ flexGrow: 1 }}>
+  <Box >
+  <Box sx={stylePaper} loading="lazy"  >
+<embed className={stylesMobile.docModal}  src={(paper.image)} width={800} height={550} priority style={{styleText}}/>  
+ </Box>      
+ </Box>   
+);
+  }
+export default TextDetailCard
+
+{/* <Box sx={{ flexGrow: 1 }}>
     <Grid container spacing={3}>
       <Grid xs={12} md={12} lg={12} sm={12} >
       {  paper.image &&      <Item  style={{width:'100%', display:'flex', justifyContent:'center'}} >
@@ -28,7 +39,4 @@ return(
         }
       </Grid>
     </Grid>
-  </Box>
-);
-  }
-export default TextDetailCard
+  </Box> */}

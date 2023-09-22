@@ -27,3 +27,28 @@ export const style = {
     position:'relative',   
     zIndex:'100'
   };
+
+  export const styleModalCuratorial = {
+    position: 'absolute',
+    top: '52%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    height: 550,
+    width:'100%',
+    bgcolor: 'background.paper', 
+    boxShadow: 24,
+    display:'flex',
+    justifyContent:'center'
+  };
+  export const stylePaper = {
+    position: 'absolute',
+    top: '54%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    height: 550,
+    width:'100%',
+    bgcolor: 'background.paper', 
+
+    display:'flex',
+    justifyContent:'center'
+  };

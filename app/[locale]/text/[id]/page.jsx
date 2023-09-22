@@ -34,7 +34,7 @@ const Text=({params})=>{
 return(
   <>
      <LoadingBar  color='black'progress={progress}  />
-    <TextDetailCard paper={paper}/>
+     <TextDetailCard paper={paper}/>
   </>
    )
 } 
