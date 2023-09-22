@@ -47,7 +47,6 @@ useEffect(() => {
 
     return (
       <Box sx={{ flexGrow: 1 }}>
-
  <LoadingBar  color='black'progress={progress}  />
     {!bio && 
      <div style={{top:'5%',left:'50%' , height:'30vh', position:'fixed',   alignItems: 'center',display:'flex', justifyContent:'center'}}>
@@ -55,13 +54,13 @@ useEffect(() => {
     </div>
     }    
      
-    <Grid container spacing={2}   sx={{marginTop:'1%'}} >
-      <Grid xs={2}></Grid>
-         <Grid xs={9} rowSpacing={1} >
+    <Grid container spacing={2}   sx={{marginTop:'1%',display:'flex', justifyContent:'center'}} >
+
+         <Grid xs={9} rowSpacing={1}  >
     {bio && bio?.map(({title, image, subtitle, text, id})=> 
-            <Item key={id}>
-              <div style={{display:'flex', justifyContent:'center'}}>
-             <h2 className={comfortaa.className}>{title}</h2>
+            <Item key={id} >
+              <div style={{display:'flex', justifyContent:'center', width:'100%'}}>
+             <h2 className={comfortaa.className}  >{title}</h2>
               </div>
              <p className={comfortaa.className}>{subtitle}</p>
    {image && <LazyLoadImage loading='lazy' onLoad={onHandleLoad} effect='opacity' style={{width:'30%'}} src={image} alt={title}/>}
@@ -75,7 +74,7 @@ useEffect(() => {
           ))}</p>  
             </Item>
   )}        
-          </Grid><Grid xs={1}>
+
           </Grid>
         </Grid> 
           {bio && <Box  sx={{width:'100%', display:'flex',justifyContent:'flex-start', alignItems:'center', position:'fixed', bottom:'4%', marginLeft:'5px' }}>
