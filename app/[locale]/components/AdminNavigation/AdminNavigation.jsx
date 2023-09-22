@@ -29,7 +29,7 @@ const links = [
       icon: <BiLibrary/>
     },
     {
-      label: "PAPERS",
+      label: "TEXTS",
       route: "/admin/text",
       icon:<RiNewspaperLine/>
     },
