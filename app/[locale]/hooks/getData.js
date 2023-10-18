@@ -9,5 +9,7 @@ const getData = async (route) => {
     return { error };
   }
 };
+
+
   
 export default getData;

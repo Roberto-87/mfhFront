@@ -1,5 +1,6 @@
-/*   export const BASE_URL= 'http://localhost:3001/'    */
-   export const BASE_URL='https://mfh-backend.onrender.com/'  
+/*    export const BASE_URL= 'http://localhost:3001/'     */
+    export const BASE_URL='https://mfh-backend.onrender.com/'  
+
 export const PORTFOLIO= 'portfolio'
 export const WORK= 'work'
 export const TEXT= 'text'

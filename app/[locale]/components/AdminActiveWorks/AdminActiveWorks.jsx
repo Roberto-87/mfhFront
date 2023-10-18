@@ -1,3 +1,4 @@
+'use client'
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { useState, useEffect } from "react";
@@ -6,15 +7,17 @@ import {MdOutlineRefresh} from 'react-icons/md'
 import CardAdminActivity from "../CardAdminActivity/CardAdminActivity";
 import putData from "../../hooks/putData";
 
+
 const AdminActiveWorks=({title, fetchingData})=>{
     const [inActiveWorks,setInActiveWorks]= useState([])
     const [activeWorks, setActiveWorks]= useState([])
     const [refresh, setRefresh]= useState(false)
-
+    
     useEffect(() => {
        const fetchData = async () => {
         let allWorksAdmin = await getData(fetchingData)
-              if(allWorksAdmin.length>0){
+        
+        if(allWorksAdmin.length>0){
           const inactiveWorks= allWorksAdmin?.filter((work)=> work.status!==true).sort((a,b)=>b.number-a.number)
           setInActiveWorks(inactiveWorks);
         }
@@ -24,6 +27,7 @@ const AdminActiveWorks=({title, fetchingData})=>{
         }
       };      
       fetchData();  
+
       setRefresh(false)
     }, [refresh]);
   

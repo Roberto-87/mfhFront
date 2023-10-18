@@ -25,6 +25,9 @@ import CloseButton from "../../components/CloseButton/CloseButton";
 import { Grid, Paper } from "@mui/material";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/opacity.css'
+import { Dropbox } from 'dropbox';
+import axios from "axios";
+
 
 const Work=({params})=>{
      const[imageLoaded, setImageLoaded]= useState(false)
@@ -36,6 +39,7 @@ const Work=({params})=>{
     const {id}= params
     const router= useRouter()
     const path=  window.location.href;
+    const accessToken = 'sl.Bmy-rTFc5NPKvGzTygZW_Q9NO4JUcQu18VeFvSq-q650Vl3i1yLeVKHCxEiw-_Kw38q_L3UE_J8UK5QiVYhxOaaxOnDkZCfQrpF2d8nObkmXjQNUuO-Tqbb1kHPRPTzU_7p1b-FWTGCU';
 
 useEffect(()=>{
   AOS.init()
@@ -62,9 +66,9 @@ useEffect(()=>{
       }
     };
     document.addEventListener('keydown', handleKeyDown);
-    return () => {
+   return () => {
         document.removeEventListener('keydown', handleKeyDown);
-      };
+      }; 
 },[])   
 
 const onPrevious = () => {
@@ -74,10 +78,14 @@ const onPrevious = () => {
       previousWorkIndex = works.length - 1;
     }
     const previousWork = works[previousWorkIndex];
+    setWork( works[previousWorkIndex])
     router.push(`${previousWork.id}`);
     setProgress(progress + 10);
-  }
+    
+  }  
+
 };
+
 const onNext = () => {
   if (work.title) {
     let nextWorkIndex = workIndex + 1;

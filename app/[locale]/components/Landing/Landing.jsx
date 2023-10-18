@@ -24,7 +24,7 @@ useEffect(()=>{
       const response= await getData(`${COVER}/active`)
       if(!response) throw new Error('error al subir los datos')
       const imageFetched= setImage(response[0].image)
-      console.log(response)
+
    } catch (error) {
       return {error:error.message}
    }

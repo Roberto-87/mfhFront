@@ -13,6 +13,12 @@ import FormUploadBioNoPhoto from '../FormUploadBioNoPhoto/FormUploadBioNoPhoto';
 import FormUploadBioPhoto from '../FormUploadBioPhoto/FormUploadBioPhoto';
 import { Button } from '@mui/material';
 import { imageFormat } from '../../../utils/functions';
+import { postData } from '../../hooks/postData';
+const dotenv = require('dotenv');
+dotenv.config();
+const { REACT_APP_CLOUD_NAME,UPLOAD_PRESET}= process.env
+
+
 
 const ImageUploader = ({folder = 'Obras', title='obra'}) => {
    const [selectedFiles, setSelectedFiles] = useState([]);
@@ -24,7 +30,7 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
    const [noPhoto, setNoPhoto]= useState(false)
    const inputFileRef = useRef(null);
 
-   useEffect(() => {
+  useEffect(() => {
     setNoPhoto(false)
     const router= window.location.pathname.split('/').at(-1)
     setPathname(router)
@@ -34,41 +40,42 @@ const ImageUploader = ({folder = 'Obras', title='obra'}) => {
     setSelectedFiles(event.target.files);
   }; 
 /* ------------------------------------------ */
-   const handleUpload = async () => {   
-     try {
-    setHandleUploadClicked(true)
-      for (let i = 0; i < selectedFiles.length; i++) {
-        const formData = new FormData();
-        formData.append('file', selectedFiles[i]);
-        formData.append('upload_preset', 'fiwvpzcu');
-        formData.append('folder', folder)
+const handleUpload = async () => { 
+try {
+  setHandleUploadClicked(true)
+    for (let i = 0; i < selectedFiles.length; i++) {
+      const formData = new FormData();
+      formData.append('file', selectedFiles[i]);
+      formData.append('upload_preset', 'n4prvdoa');
+      formData.append('folder', folder)
 
 
-        const response = await axios.post(
-          'https://api.cloudinary.com/v1_1/mariaferrari/upload',
-          formData,
-          {
-            headers: { 'Content-Type': 'multipart/form-data' },
-            params: { secure: true } // Agregar esta línea
-          }
-        );
-        if(!response) throw new Error('error al subir los datos')
-          console.log(response.data.url)
-       setUrlImage(response.data.url)
-      }
-    } catch (error) {
-      console.error('Upload error:', error);
-      swal('Hubo un error en la carga de los archivos:\n',  error.response.data.error.message)
-      setClean(true)
-      setError(true)
-      setUrlImage()
-      setSelectedFiles([]);
-      if (inputFileRef.current) {
-        inputFileRef.current.value = '';
-      }
-          setHandleUploadClicked(false)
-    }
-  };  
+      const response = await axios.post(
+        'https://api.cloudinary.com/v1_1/mariaferrarihardoy/upload',
+        formData,
+        {
+          headers: { 'Content-Type': 'multipart/form-data' },
+          params: { secure: true } // Agregar esta línea
+        }
+      );if(!response) throw new Error('error al subir los datos')
+      console.log(response.data.url)
+   setUrlImage(response.data.url)
+  }
+} catch (error) {
+  console.error('Upload error:', error);
+  swal('Hubo un error en la carga de los archivos:\n',  error.response.data.error.message)
+  setClean(true)
+  setError(true)
+  setUrlImage()
+  setSelectedFiles([]);
+  if (inputFileRef.current) {
+    inputFileRef.current.value = '';
+  }
+      setHandleUploadClicked(false)
+}
+};  
+
+
   /* ------------------------------------------ */
   const handleClean = () => {
     setClean(true)

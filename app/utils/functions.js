@@ -45,7 +45,7 @@ export const papersFinder=(papers, id)=>{
   return papers.find((text)=> text.id===id)
 }
 
-export const uploadFunction =async(selectedFiles)=>{
+export const uploadFunction =async(selectedFiles,folder)=>{
   try {
       for (let i = 0; i < selectedFiles.length; i++) {
         const formData = new FormData();
