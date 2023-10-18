@@ -26,12 +26,12 @@ const FormUploadExhibition = ({title}) => {
       for (let i = 0; i < selectedFiles.length; i++) {
         const formData = new FormData();
         formData.append('file', selectedFiles[i]);
-        formData.append('upload_preset', 'fiwvpzcu');
+        formData.append('upload_preset', 'n4prvdoa');
         formData.append('folder', 'Exhibiciones')
 
 
         const response = await axios.post(
-          'https://api.cloudinary.com/v1_1/mariaferrari/upload',
+          'https://api.cloudinary.com/v1_1/mariaferrarihardoy/upload',
           formData,
           {
             headers: { 'Content-Type': 'multipart/form-data' },
