@@ -17,9 +17,8 @@ const ButtonsPortfolio=()=>{
           const response= await getData(PORTFOLIO)
           if(!response) throw new Error('no se encontraron portfolios')
           const spanishPortfolios = response.filter(portfolio => portfolio.language === 'Español');
-        const englishPortfolios = response.filter(portfolio => portfolio.language === 'Ingles');
-        console.log(response)
-
+          const englishPortfolios = response.filter(portfolio => portfolio.language === 'Ingles');
+       
           setSpanishPortfolio(spanishPortfolios[0].image);
           setEnglishshPortfolio(englishPortfolios[0].image);
           
@@ -33,8 +32,8 @@ const ButtonsPortfolio=()=>{
  
   return(
         <Box sx={{display:'flex'}} >
-            <a class={comfortaa.className} className={styles.containerPortfolioEs} href={englishshPortfolio} target="_blank" download><i>PORTFOLIO EN</i></a> 
-            <a class={comfortaa.className} className={styles.containerPortfolioEn} href={spanishPortfolio} target="_blank" download><i>PORTFOLIO ES</i></a>
+            <a class={comfortaa.className} className={styles.containerPortfolioEs} href={englishshPortfolio} target="_blank" download><i>PORTFOLIO ES</i></a> 
+            <a class={comfortaa.className} className={styles.containerPortfolioEn} href={spanishPortfolio} target="_blank" download><i>PORTFOLIO EN</i></a>
         </Box>
    
     )
