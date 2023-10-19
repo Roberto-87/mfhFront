@@ -68,7 +68,7 @@ export default function Example() {
         {  spanishPortfolio && spanishPortfolio.length > 0 &&
             <Menu.Item sx={{width:'100%'}}>
               {({ active }) => (
-                <a href={spanishPortfolio} target="_blank" download style={{fontSize:'14px',marginBottom:'1px',color: '#746d6d '}} className={`${comfortaa.className}${classNames(
+                <a href={spanishPortfolio[0].image} target="_blank" download style={{fontSize:'14px',marginBottom:'1px',color: '#746d6d '}} className={`${comfortaa.className}${classNames(
                   active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                   'block px-4 py-2 text-sm'
                 )}`}
@@ -82,7 +82,7 @@ export default function Example() {
            <Menu.Item sx={{width:'100%', backgroundColor:'red'}}>
               {({ active }) => (
                 
-                <a href={englishPortfolio} target="_blank"  download style={{fontSize:'14px',marginBottom:'1px',color: '#746d6d ',width:'100%' }} className={`${comfortaa.className}${classNames(
+                <a href={englishPortfolio[0].image} target="_blank"  download style={{fontSize:'14px',marginBottom:'1px',color: '#746d6d ',width:'100%' }} className={`${comfortaa.className}${classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'
                   )}`}
